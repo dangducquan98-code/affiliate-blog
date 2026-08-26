@@ -1,0 +1,37 @@
+---
+export const prerender = true;
+
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PostCard from '../../components/PostCard.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog')).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
+);
+---
+
+<BaseLayout
+  title="Blog"
+  description="Review, so sánh và hướng dẫn chọn gadget Shopee đáng tiền — củ sạc, hub, tai nghe, phụ kiện."
+  canonicalPath="/blog"
+>
+  <section class="container">
+    <h1>Blog</h1>
+    <p style="color: var(--ink-muted); max-width: 36rem;">
+      Review sâu, so sánh thật tay, hướng dẫn chọn đồ — viết cho người hay mua trên Shopee.
+    </p>
+    <ul class="post-list" style="margin-top: 1.5rem;">
+      {
+        posts.map((post) => (
+          <PostCard
+            href={`/blog/${post.id}`}
+            title={post.data.title}
+            description={post.data.description}
+            date={post.data.date}
+            category={post.data.category}
+          />
+        ))
+      }
+    </ul>
+  </section>
+</BaseLayout>

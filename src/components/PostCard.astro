@@ -1,0 +1,24 @@
+---
+interface Props {
+  href: string;
+  title: string;
+  description: string;
+  date: Date;
+  category: string;
+}
+
+const { href, title, description, date, category } = Astro.props;
+const dateLabel = date.toLocaleDateString('vi-VN', {
+  year: 'numeric',
+  month: 'short',
+  day: 'numeric',
+});
+---
+
+<li class="post-item">
+  <a href={href}>
+    <p class="post-item__meta">{dateLabel} · {category}</p>
+    <h3 class="post-item__title">{title}</h3>
+    <p class="post-item__desc">{description}</p>
+  </a>
+</li>

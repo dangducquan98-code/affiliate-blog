@@ -1,0 +1,21 @@
+---
+interface Props {
+  name: string;
+  blurb: string;
+  priceHint: string;
+  goSlug: string;
+}
+
+const { name, blurb, priceHint, goSlug } = Astro.props;
+---
+
+<li class="deal-item">
+  <div class="deal-item__top">
+    <h3 class="deal-item__name">{name}</h3>
+    <span class="deal-item__price">{priceHint}</span>
+  </div>
+  <p class="deal-item__blurb">{blurb}</p>
+  <p style="margin-top: 0.75rem;">
+    <a class="btn btn--primary" href={`/go/${goSlug}`}>Xem trên Shopee</a>
+  </p>
+</li>

@@ -1,0 +1,72 @@
+---
+export const prerender = true;
+
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PostCard from '../components/PostCard.astro';
+import { getCollection } from 'astro:content';
+import { getFeaturedDeals } from '../lib/deals';
+
+const posts = (await getCollection('blog')).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
+);
+const latest = posts.slice(0, 3);
+const featuredDeals = getFeaturedDeals().slice(0, 3);
+---
+
+<BaseLayout
+  title="Kiu Chốt Deal"
+  description="Review gadget Shopee thật tay — củ sạc, hub USB-C, tai nghe, phụ kiện dưới 800k. Nói rõ đáng mua hay không."
+  canonicalPath="/"
+>
+  <section class="container hero">
+    <h1 class="hero__brand">Kiu <em>Chốt Deal</em></h1>
+    <p class="hero__lead">
+      Review gadget & phụ kiện công nghệ đáng tiền — sạc, hub, tai nghe, gậy selfie.
+      Thật tay, nói thẳng, kèm deal đang chạy trên Shopee.
+    </p>
+    <div class="cta-row">
+      <a class="btn btn--primary" href="/deals">Xem deal đang chạy</a>
+      <a class="btn btn--ghost" href="/blog">Đọc review mới</a>
+    </div>
+  </section>
+
+  <section class="container section">
+    <div class="section__head">
+      <h2>Bài mới</h2>
+      <a href="/blog">Tất cả bài →</a>
+    </div>
+    <ul class="post-list">
+      {
+        latest.map((post) => (
+          <PostCard
+            href={`/blog/${post.id}`}
+            title={post.data.title}
+            description={post.data.description}
+            date={post.data.date}
+            category={post.data.category}
+          />
+        ))
+      }
+    </ul>
+  </section>
+
+  <section class="container section">
+    <div class="section__head">
+      <h2>Deal nổi bật</h2>
+      <a href="/deals">Deal hub →</a>
+    </div>
+    <ul class="deal-list">
+      {
+        featuredDeals.map((deal) => (
+          <li class="deal-item">
+            <div class="deal-item__top">
+              <h3 class="deal-item__name">{deal.name}</h3>
+              <span class="deal-item__price">{deal.priceHint}</span>
+            </div>
+            <p class="deal-item__blurb">{deal.blurb}</p>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+</BaseLayout>

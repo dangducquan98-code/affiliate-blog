@@ -44,3 +44,11 @@ Các skill trong `.cursor/skills/` là bắt buộc, không phải gợi ý:
 - Static-first hoặc hybrid rendering (Vercel-friendly): Next.js / Astro / Hugo đều được — chọn cái tối ưu cho SEO + affiliate + tốc độ.
 - Analytics: Vercel Analytics hoặc GA4/Plausible — đo traffic từ đâu về.
 - Affiliate link manager: đơn giản, không cần DB phức tạp lúc đầu.
+
+## Quyết định đã chốt (Phase 1 → 2A)
+
+- **Niche:** Gadget & phụ kiện công nghệ đáng tiền (tech < ~800k)
+- **Stack:** Astro 7 + TypeScript + MDX + `@astrojs/vercel` (`output: 'server'`, content prerender, `/go` SSR 302)
+- **Brand placeholder:** Kiu Chốt Deal (`SITE_URL` từ env)
+- **Affiliate:** `src/data/affiliates.yaml` (metadata) + `AFFILIATE_*` trong `.env.local` (không commit URL)
+- **Branch MVP:** `feature/mvp-scaffold` — plan: `docs/superpowers/plans/2026-08-26-mvp-scaffold.md`

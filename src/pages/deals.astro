@@ -1,0 +1,34 @@
+---
+export const prerender = true;
+
+import BaseLayout from '../layouts/BaseLayout.astro';
+import DealItem from '../components/DealItem.astro';
+import { getDeals } from '../lib/deals';
+
+const deals = getDeals();
+---
+
+<BaseLayout
+  title="Deal hub"
+  description="Deal gadget Shopee đang đẩy — củ sạc, hub, tai nghe, phụ kiện. Giá có thể đổi khi hết sale."
+  canonicalPath="/deals"
+>
+  <section class="container">
+    <h1>Deal đang chạy</h1>
+    <p style="color: var(--ink-muted); max-width: 36rem;">
+      Danh sách món mình đang để ý / đang đẩy. Giá chỉ là khoảng tham khảo — vào Shopee check lại trước khi chốt.
+    </p>
+    <ul class="deal-list" style="margin-top: 1.5rem;">
+      {
+        deals.map((deal) => (
+          <DealItem
+            name={deal.name}
+            blurb={deal.blurb}
+            priceHint={deal.priceHint}
+            goSlug={deal.goSlug}
+          />
+        ))
+      }
+    </ul>
+  </section>
+</BaseLayout>

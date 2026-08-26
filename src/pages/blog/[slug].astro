@@ -1,0 +1,50 @@
+---
+export const prerender = true;
+
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+const dateLabel = post.data.date.toLocaleDateString('vi-VN', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+---
+
+<BaseLayout
+  title={post.data.title}
+  description={post.data.description}
+  canonicalPath={`/blog/${post.id}`}
+  ogImage={post.data.ogImage || '/og-default.svg'}
+  ogType="article"
+>
+  <article class="container-narrow">
+    <header class="post-hero">
+      <p class="post-hero__meta">{dateLabel} · {post.data.category}</p>
+      <h1>{post.data.title}</h1>
+      <p style="color: var(--ink-muted);">{post.data.description}</p>
+      {
+        post.data.tags.length > 0 && (
+          <div class="tag-row">
+            {post.data.tags.map((tag) => (
+              <span class="tag">{tag}</span>
+            ))}
+          </div>
+        )
+      }
+    </header>
+    <div class="prose">
+      <Content />
+    </div>
+  </article>
+</BaseLayout>

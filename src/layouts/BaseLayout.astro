@@ -1,0 +1,69 @@
+---
+import Analytics from '@vercel/analytics/astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { getSiteUrl } from '../lib/site';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+  canonicalPath?: string;
+  ogImage?: string;
+  ogType?: string;
+}
+
+const {
+  title,
+  description = 'Review gadget Shopee thật tay — nói rõ đáng mua hay không, kèm deal đang chạy.',
+  canonicalPath = Astro.url.pathname,
+  ogImage = '/og-default.svg',
+  ogType = 'website',
+} = Astro.props;
+
+const siteUrl = getSiteUrl().replace(/\/$/, '');
+const canonical = new URL(canonicalPath, `${siteUrl}/`).href;
+const ogImageUrl = new URL(ogImage, `${siteUrl}/`).href;
+const fullTitle = title.includes('Kiu Chốt Deal')
+  ? title
+  : `${title} · Kiu Chốt Deal`;
+---
+
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta property="og:type" content={ogType} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:locale" content="vi_VN" />
+    <meta property="og:site_name" content="Kiu Chốt Deal" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageUrl} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,600;0,9..40,700;1,9..40,400&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="site-wrap">
+      <Header />
+      <main class="site-main">
+        <slot />
+      </main>
+      <Footer />
+    </div>
+    <Analytics />
+  </body>
+</html>
