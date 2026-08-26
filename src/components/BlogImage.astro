@@ -1,0 +1,35 @@
+---
+import { getPublicStorageUrl, withImageTransform } from '../lib/supabase';
+
+interface Props {
+  src?: string | null;
+  alt: string;
+  width?: number;
+  quality?: number;
+  class?: string;
+  loading?: 'lazy' | 'eager';
+}
+
+const {
+  src,
+  alt,
+  width = 1200,
+  quality = 75,
+  class: className,
+  loading = 'lazy',
+} = Astro.props;
+
+const publicUrl = getPublicStorageUrl(src);
+const url = publicUrl ? withImageTransform(publicUrl, { width, quality }) : null;
+---
+
+{url && (
+  <img
+    src={url}
+    alt={alt}
+    class={className}
+    loading={loading}
+    decoding="async"
+    width={width}
+  />
+)}

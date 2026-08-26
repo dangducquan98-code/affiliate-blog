@@ -1,13 +1,16 @@
 ---
+import BlogImage from './BlogImage.astro';
+
 interface Props {
   href: string;
   title: string;
   description: string;
   date: Date;
   category: string;
+  coverImage?: string | null;
 }
 
-const { href, title, description, date, category } = Astro.props;
+const { href, title, description, date, category, coverImage } = Astro.props;
 const dateLabel = date.toLocaleDateString('vi-VN', {
   year: 'numeric',
   month: 'short',
@@ -17,6 +20,13 @@ const dateLabel = date.toLocaleDateString('vi-VN', {
 
 <li class="post-item">
   <a href={href}>
+    {
+      coverImage && (
+        <div class="post-item__cover">
+          <BlogImage src={coverImage} alt={title} width={800} quality={70} />
+        </div>
+      )
+    }
     <p class="post-item__meta">{dateLabel} · {category}</p>
     <h3 class="post-item__title">{title}</h3>
     <p class="post-item__desc">{description}</p>

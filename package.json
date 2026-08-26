@@ -12,8 +12,6 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/mdx": "^7.0.8",
-    "@astrojs/sitemap": "^3.7.3",
     "@astrojs/vercel": "^11.0.8",
     "@supabase/supabase-js": "^2.112.4",
     "@vercel/analytics": "^2.0.1",

@@ -1,50 +1,132 @@
 ---
-export const prerender = true;
+export const prerender = false;
 
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { getCollection, render } from 'astro:content';
+import BlogImage from '../../components/BlogImage.astro';
+import { getPublishedPostBySlug } from '../../lib/posts';
+import { renderMarkdown } from '../../lib/markdown';
+import { getPublicStorageUrl } from '../../lib/supabase';
+import { BRAND_NAME, getSiteUrl } from '../../lib/site';
 
-export async function getStaticPaths() {
-  const posts = await getCollection('blog');
-  return posts.map((post) => ({
-    params: { slug: post.id },
-    props: { post },
-  }));
+const slug = Astro.params.slug ?? '';
+const { post, configured, error } = await getPublishedPostBySlug(slug);
+
+if (!post && configured && !error) {
+  Astro.response.status = 404;
 }
 
-const { post } = Astro.props;
-const { Content } = await render(post);
-const dateLabel = post.data.date.toLocaleDateString('vi-VN', {
-  year: 'numeric',
-  month: 'long',
-  day: 'numeric',
-});
+const html = post ? renderMarkdown(post.content) : '';
+const dateLabel = post
+  ? new Date(post.created_at).toLocaleDateString('vi-VN', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+    })
+  : '';
+
+const siteUrl = getSiteUrl().replace(/\/$/, '');
+const coverPublic = post?.cover_image ? getPublicStorageUrl(post.cover_image) : null;
+const coverAbsolute = coverPublic || '/og-default.svg';
+
+const jsonLd = post
+  ? {
+      '@context': 'https://schema.org',
+      '@type': 'Article',
+      headline: post.title,
+      description: post.description,
+      datePublished: post.created_at,
+      dateModified: post.updated_at,
+      author: { '@type': 'Person', name: 'Quân Kiu' },
+      publisher: { '@type': 'Organization', name: BRAND_NAME },
+      mainEntityOfPage: `${siteUrl}/blog/${post.slug}`,
+      image: coverAbsolute.startsWith('http')
+        ? coverAbsolute
+        : new URL(coverAbsolute, `${siteUrl}/`).href,
+    }
+  : null;
 ---
 
-<BaseLayout
-  title={post.data.title}
-  description={post.data.description}
-  canonicalPath={`/blog/${post.id}`}
-  ogImage={post.data.ogImage || '/og-default.svg'}
-  ogType="article"
->
-  <article class="container-narrow">
-    <header class="post-hero">
-      <p class="post-hero__meta">{dateLabel} · {post.data.category}</p>
-      <h1>{post.data.title}</h1>
-      <p style="color: var(--ink-muted);">{post.data.description}</p>
-      {
-        post.data.tags.length > 0 && (
-          <div class="tag-row">
-            {post.data.tags.map((tag) => (
-              <span class="tag">{tag}</span>
-            ))}
-          </div>
-        )
-      }
-    </header>
-    <div class="prose">
-      <Content />
-    </div>
-  </article>
-</BaseLayout>
+{
+  !post ? (
+    <BaseLayout
+      title={configured && !error ? 'Không tìm thấy bài' : 'Blog chưa sẵn sàng'}
+      description="Chưa tải được bài viết."
+      canonicalPath={`/blog/${slug}`}
+    >
+      <section class="container-narrow">
+        <h1>{configured && !error ? 'Không tìm thấy bài' : 'Chưa xem được bài này'}</h1>
+        <p class="fallback-notice">
+          {configured && !error
+            ? 'Bài không tồn tại hoặc chưa được publish.'
+            : error ||
+              'Supabase chưa cấu hình. Điền env thật, chạy SQL migration và import bài viết.'}
+        </p>
+        <p>
+          <a href="/blog">← Về danh sách blog</a>
+        </p>
+      </section>
+    </BaseLayout>
+  ) : (
+    <BaseLayout
+      title={post.title}
+      description={post.description}
+      canonicalPath={`/blog/${post.slug}`}
+      ogImage={coverAbsolute}
+      ogType="article"
+    >
+      <article class="container-narrow">
+        <header class="post-hero">
+          {post.cover_image && (
+            <div class="post-hero__cover">
+              <BlogImage
+                src={post.cover_image}
+                alt={post.title}
+                width={1200}
+                quality={75}
+                loading="eager"
+              />
+            </div>
+          )}
+          <p class="post-hero__meta">
+            {dateLabel} · {post.category}
+          </p>
+          <h1>{post.title}</h1>
+          <p style="color: var(--ink-muted);">{post.description}</p>
+          {post.tags.length > 0 && (
+            <div class="tag-row">
+              {post.tags.map((tag) => (
+                <span class="tag">{tag}</span>
+              ))}
+            </div>
+          )}
+        </header>
+        <div class="prose" set:html={html} />
+        {post.products.length > 0 && (
+          <section class="product-block" aria-label="Sản phẩm trong bài">
+            <h2>Sản phẩm đề xuất</h2>
+            <ul class="product-block__list">
+              {post.products.map((product) => (
+                <li class="product-block__item">
+                  <div>
+                    <strong>{product.name}</strong>
+                    {product.priceHint && (
+                      <div style="color: var(--ink-muted); font-size: 0.92rem;">
+                        {product.priceHint}
+                      </div>
+                    )}
+                  </div>
+                  <a class="btn btn--primary" href={`/go/${product.goSlug}`}>
+                    Xem deal
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
+      </article>
+      {jsonLd && (
+        <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+      )}
+    </BaseLayout>
+  )
+}

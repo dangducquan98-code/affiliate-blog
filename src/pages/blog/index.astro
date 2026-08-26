@@ -1,13 +1,11 @@
 ---
-export const prerender = true;
+export const prerender = false;
 
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PostCard from '../../components/PostCard.astro';
-import { getCollection } from 'astro:content';
+import { listPublishedPosts } from '../../lib/posts';
 
-const posts = (await getCollection('blog')).sort(
-  (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
-);
+const { posts, configured, error } = await listPublishedPosts();
 ---
 
 <BaseLayout
@@ -20,18 +18,29 @@ const posts = (await getCollection('blog')).sort(
     <p style="color: var(--ink-muted); max-width: 36rem;">
       Review sâu, so sánh thật tay, hướng dẫn chọn đồ — viết cho người hay mua trên Shopee.
     </p>
-    <ul class="post-list" style="margin-top: 1.5rem;">
-      {
-        posts.map((post) => (
-          <PostCard
-            href={`/blog/${post.id}`}
-            title={post.data.title}
-            description={post.data.description}
-            date={post.data.date}
-            category={post.data.category}
-          />
-        ))
-      }
-    </ul>
+    {
+      error ? (
+        <p class="fallback-notice" style="margin-top: 1.5rem;">{error}</p>
+      ) : posts.length === 0 ? (
+        <p class="fallback-notice" style="margin-top: 1.5rem;">
+          {configured
+            ? 'Chưa có bài published. Vào /admin để tạo bài hoặc publish.'
+            : 'Supabase chưa cấu hình — danh sách bài sẽ xuất hiện sau khi điền env và import dữ liệu.'}
+        </p>
+      ) : (
+        <ul class="post-list" style="margin-top: 1.5rem;">
+          {posts.map((post) => (
+            <PostCard
+              href={`/blog/${post.slug}`}
+              title={post.title}
+              description={post.description}
+              date={new Date(post.created_at)}
+              category={post.category}
+              coverImage={post.cover_image}
+            />
+          ))}
+        </ul>
+      )
+    }
   </section>
 </BaseLayout>

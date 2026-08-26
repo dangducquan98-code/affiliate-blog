@@ -1,20 +1,18 @@
 ---
-export const prerender = true;
+export const prerender = false;
 
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PostCard from '../components/PostCard.astro';
-import { getCollection } from 'astro:content';
+import { listPublishedPosts } from '../lib/posts';
 import { getFeaturedDeals } from '../lib/deals';
+import { BRAND_NAME } from '../lib/site';
 
-const posts = (await getCollection('blog')).sort(
-  (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
-);
-const latest = posts.slice(0, 3);
+const { posts, configured, error } = await listPublishedPosts(3);
 const featuredDeals = getFeaturedDeals().slice(0, 3);
 ---
 
 <BaseLayout
-  title="Quân Kiu Daily"
+  title={BRAND_NAME}
   description="Review gadget Shopee thật tay — củ sạc, hub USB-C, tai nghe, phụ kiện dưới 800k. Nói rõ đáng mua hay không."
   canonicalPath="/"
 >
@@ -35,19 +33,30 @@ const featuredDeals = getFeaturedDeals().slice(0, 3);
       <h2>Bài mới</h2>
       <a href="/blog">Tất cả bài →</a>
     </div>
-    <ul class="post-list">
-      {
-        latest.map((post) => (
-          <PostCard
-            href={`/blog/${post.id}`}
-            title={post.data.title}
-            description={post.data.description}
-            date={post.data.date}
-            category={post.data.category}
-          />
-        ))
-      }
-    </ul>
+    {
+      error ? (
+        <p class="fallback-notice">{error}</p>
+      ) : posts.length === 0 ? (
+        <p class="fallback-notice">
+          {configured
+            ? 'Chưa có bài published. Đăng nhập /admin để viết bài hoặc chạy script migrate MDX.'
+            : 'Supabase chưa cấu hình — blog sẽ hiển thị bài sau khi điền env thật và migrate dữ liệu.'}
+        </p>
+      ) : (
+        <ul class="post-list">
+          {posts.map((post) => (
+            <PostCard
+              href={`/blog/${post.slug}`}
+              title={post.title}
+              description={post.description}
+              date={new Date(post.created_at)}
+              category={post.category}
+              coverImage={post.cover_image}
+            />
+          ))}
+        </ul>
+      )
+    }
   </section>
 
   <section class="container section">
