@@ -33,3 +33,4 @@ pnpm-debug.log*
 !.vscode/extensions.json
 .vercel
 .env*
+!.env.example

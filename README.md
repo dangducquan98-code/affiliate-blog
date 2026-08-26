@@ -1,13 +1,12 @@
-# Kiu Chốt Deal
+# Quân Kiu Daily
 
-Blog review gadget & phụ kiện công nghệ đáng tiền (Shopee Affiliate) — Astro + TypeScript, static-first, deploy Vercel.
-
-Brand name hiện tại là **placeholder** (đổi sau khi chốt tên/domain).
+Blog review gadget & phụ kiện công nghệ đáng tiền (Shopee Affiliate) — Astro 7 + TypeScript + Supabase, deploy Vercel.
 
 ## Prerequisites
 
 - Node.js `>= 22.12`
 - npm
+- (Khi sẵn sàng) Supabase project
 
 ## Setup
 
@@ -16,12 +15,7 @@ npm install
 cp .env.example .env.local
 ```
 
-Chỉnh `.env.local`:
-
-- `SITE_URL` — URL canonical (local: `http://localhost:4321`)
-- `AFFILIATE_<SLUG>` — destination Shopee (placeholder OK; **không commit** file này)
-
-Ví dụ slug `ugreen-hub-uno` → env key `AFFILIATE_UGREEN_HUB_UNO`.
+Chỉnh `.env.local` (xem mục Env bên dưới). Với placeholder, site vẫn **build và chạy**; blog list/detail hiện thông báo fallback cho đến khi có keys thật.
 
 ## Dev
 
@@ -29,7 +23,7 @@ Ví dụ slug `ugreen-hub-uno` → env key `AFFILIATE_UGREEN_HUB_UNO`.
 npm run dev
 ```
 
-Mở http://localhost:4321
+Mở http://localhost:4321 — Admin: http://localhost:4321/admin (mật khẩu = `ADMIN_PASSWORD`).
 
 ## Build
 
@@ -38,52 +32,89 @@ npm run build
 npm run preview
 ```
 
-`npm run build` phải pass trước khi merge/`main`.
+`npm run build` phải pass trước khi merge `main`.
 
-## Thêm bài viết
+## Env cần điền
 
-1. Tạo file MDX trong `src/content/blog/<slug>.mdx`
-2. Frontmatter bắt buộc: `title`, `description`, `date`, `tags`, `category`, `products` (mảng slug `/go/…`), `ogImage` (optional)
-3. Thêm disclosure affiliate đầu bài
-4. CTA dùng đường dẫn sạch: `[text](/go/<slug>)` — không dán raw affiliate URL vào content
+| Biến | Mục đích |
+|------|----------|
+| `SITE_URL` | Canonical / OG / sitemap |
+| `AFFILIATE_<SLUG>` | Destination Shopee cho `/go/<slug>` |
+| `SUPABASE_URL` | Project URL |
+| `SUPABASE_ANON_KEY` | Public read (published posts) |
+| `SUPABASE_SERVICE_ROLE_KEY` | Admin write + upload (server only) |
+| `ADMIN_PASSWORD` | Mật khẩu đăng nhập `/admin` |
+| `ADMIN_SESSION_SECRET` | Ký cookie session (đặt chuỗi dài, riêng biệt) |
 
-Schema: `src/content.config.ts`
+**Không commit** `.env.local`.
 
-## Thêm affiliate link
+## Supabase SQL migration
 
-1. Thêm metadata vào `src/data/affiliates.yaml` (`slug`, `name`, `category`) — **không** ghi URL
-2. Thêm `AFFILIATE_<SLUG_UPPER_WITH_UNDERSCORES>=https://…` vào `.env.local`
-3. (Tuỳ chọn) thêm deal vào `src/data/deals.yaml` với `goSlug` trùng slug
-4. Trong bài / deals, link tới `/go/<slug>`
+1. Tạo project trên Supabase
+2. Mở SQL Editor (hoặc CLI `supabase db push`)
+3. Chạy toàn bộ file:
 
-Route `/go/[slug]` trả **302** tới URL trong env. Thiếu env → 500; slug không có trong YAML → 404.
+`supabase/migrations/20260826_blog_upgrade.sql`
+
+File tạo:
+
+- bảng `posts` + index + trigger `updated_at`
+- RLS: anon/authenticated chỉ `SELECT` khi `published = true`
+- bucket Storage `blog-images` (public read)
+
+## Migrate 5 bài MDX cũ → DB
+
+Sau khi SQL + env thật:
+
+```bash
+npm run migrate:posts
+```
+
+Script đọc `src/content/blog/*.mdx`, map `products` → `{name, priceHint, goSlug}` từ YAML, upsert theo `slug`, `published: true`.
+
+## Admin
+
+1. Mở `/admin` → redirect login nếu chưa có session
+2. Đăng nhập bằng `ADMIN_PASSWORD`
+3. Viết / sửa bài (Markdown textarea), gắn products `{name, priceHint, goSlug}`
+4. Upload ảnh cover → bucket `blog-images`
+5. Toggle Publish / Unpublish
+
+API admin dùng **service role** và chỉ chạy sau khi cookie session hợp lệ.
+
+## Affiliate links (`/go`)
+
+Giữ nguyên:
+
+1. Metadata: `src/data/affiliates.yaml`
+2. Destination: `AFFILIATE_*` trong `.env.local`
+3. Content / products dùng `/go/<slug>` — không dán raw affiliate URL
 
 ## Deal hub
 
-Sửa `src/data/deals.yaml`. Mỗi deal: `name`, `blurb`, `priceHint`, `goSlug`, `tags`, `featured`.
+Sửa `src/data/deals.yaml` (chưa chuyển sang DB ở phase này).
 
 ## SEO
 
-- Sitemap: `@astrojs/sitemap` (cần `SITE_URL` đúng)
-- `robots.txt` → trỏ sitemap
-- Layout: title, description, canonical, Open Graph, Twitter card
+- Layout: title, description, canonical, Open Graph, Twitter
+- Article JSON-LD trên trang bài
+- Dynamic `/sitemap.xml` (static routes + published posts)
+- `robots.txt` → `/sitemap.xml`
 
-## Analytics
+## Ảnh
 
-`@vercel/analytics` đã gắn trong `BaseLayout`. Trên Vercel, Web Analytics bật trong project dashboard — **không cần** `VERCEL_ANALYTICS_ID` cho setup cơ bản. Local/dev thường không gửi metric production.
+Component `BlogImage.astro` append `?width=&quality=` (Supabase Image Transformations) lên URL public Storage.
 
-## Deploy (sau này)
+## Deploy (sau khi chủ dự án duyệt)
 
-1. Đẩy repo lên GitHub
-2. Import project vào Vercel
-3. Khai báo env: `SITE_URL` + toàn bộ `AFFILIATE_*`
-4. Deploy từ branch `main` (sau khi chủ dự án duyệt merge)
-
-Hiện tại Phase 2A chỉ làm **local + branch `feature/mvp-scaffold`** — chưa push, chưa tạo remote.
+1. Điền env thật trên Vercel (`SITE_URL`, `SUPABASE_*`, `ADMIN_*`, `AFFILIATE_*`)
+2. Chạy SQL migration + `npm run migrate:posts` (local hoặc CI one-shot)
+3. Merge `feature/blog-upgrade` → `main` sau khi duyệt
+4. Vercel auto-deploy từ `main`
 
 ## Stack
 
-- Astro 7 + TypeScript strict
-- MDX content collections
-- `@astrojs/vercel` (`output: 'server'`, trang content `prerender = true`, `/go` SSR)
-- YAML data + env destinations
+- Astro 7 (`output: 'server'`) + `@astrojs/vercel`
+- Supabase Postgres + Storage
+- Markdown (`marked`) SSR
+- Admin session cookie (HMAC) + `ADMIN_PASSWORD`
