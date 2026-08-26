@@ -12,6 +12,7 @@
     "astro": "astro",
     "migrate:posts": "tsx scripts/migrate-mdx-to-supabase.ts",
     "seed:tiktok-series": "tsx scripts/seed-tiktok-series.ts",
+    "rewrite:tiktok-series": "tsx scripts/rewrite-tiktok-series.ts",
     "test:unit": "node --import tsx --test src/lib/products.test.ts"
   },
   "dependencies": {

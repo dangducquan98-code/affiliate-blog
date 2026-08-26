@@ -1,0 +1,93 @@
+Mở TikTok. Vuốt. Vuốt. Vuốt.
+
+Ơ thật ra video của mình cũng nằm trong đống bị vuốt đó. Có thế thôi!
+
+**Disclosure:** bài này có link affiliate Shopee qua `/go/...`. Anh em mua qua link, mình có thể có hoa hồng; giá không đổi. Mình nói rõ để khỏi kiểu “nói chuyện như đang giấu gì”.
+
+## Hook không phải “câu hay” — hook là lý do dừng tay
+
+Mình từng mở đầu kiểu sách vở: “Hôm nay mình sẽ chia sẻ về…” — chết ngay ở giây một. Không phải vì nội dung tệ. Vì tay người xem đang ở chế độ săn cảm giác. Lời chào lịch sự không phải cảm giác.
+
+Giờ mình thử mở bằng tình huống. “Cáp này mình thay lần thứ ba trong năm.” “Hub một cổng. Một. Cổng.” “Quay review mà tiếng như đang nói trong toilet.” Người ta dừng vì nhận ra mình. Không phải vì mình “chuyên gia”.
+
+Kênh quanh 4K followers không sống nhờ studio. Sống nhờ độ thật đủ để ai đó nghĩ: ờ, đúng mình luôn.
+
+## 1. Phản biện nhẹ — nhưng phải đúng
+
+“Đừng mua đèn vòng nếu…” nghe có vẻ clickbait. Được. Miễn là phần sau phải *đúng*. Nếu anh em mở video, thấy mình câu view rồi bán bừa — lần sau họ vuốt sớm hơn, và lần sau nữa họ không quay lại.
+
+Cách mình viết hook phản biện: lấy một sai lầm mình từng mắc, nói thẳng. Ví dụ mình từng nghĩ “đèn nào cũng được miễn sáng”. Xong mặt bóng như làm livestream đám cưới. Hook thành: “Đừng bật đèn vòng full nếu phòng bạn đã sáng sẵn.” Rồi mới giải thích góc, khoảng cách, khi nào cần panel.
+
+Không phải vì câu phản biện “hot” mà dùng. Vì nó cắt được ồn ào trong đầu người xem.
+
+## 2. Con số cụ thể — não thích nắm được cái gì đó
+
+“3 giây”. “Dưới 300k”. “Một cổng”. Não thích nắm được một vật thể. “Rất nhiều”, “cực kỳ quan trọng”, “tối ưu trải nghiệm” — nghe AI-sáo, tay vuốt.
+
+Trên kênh review, mình hay gắn số với nỗi đau: thay cáp lần thứ mấy, mic hết pin đúng take đẹp, đèn làm bóng dưới mắt lúc 10 giờ tối. Số không cần “nghiên cứu”. Số cần *của mình*.
+
+Thử viết hook không số, rồi viết lại có số. Đọc thành tiếng. Câu nào dừng tay hơn thì giữ.
+
+## 3. Tự vấn — gần giọng nhật ký
+
+“Không biết có phải mình kỳ không mà…” — gần lớp giọng nhật ký mình hay viết. Kênh nhỏ sống nhờ độ thật, không nhờ studio. Tự vấn không phải yếu. Tự vấn là tín hiệu: đang nói chuyện, không đang đọc brochure.
+
+Nhưng đừng tự vấn cả phút. Một câu tự vấn mở cửa. Sau đó vào điểm. Hook mà ôm đồm thì cũng chết — chỉ chết chậm hơn lời chào.
+
+## 4. Hình + tiếng phải “sạch đủ” ngay giây đầu
+
+Hook hay mà **không nghe rõ** — người ta vuốt. Hook hay mà **mặt tối như hang** — người ta vuốt. Mình học bài này hơi muộn: chăm chút chữ, quên mic, quên góc đèn.
+
+Không cần setup đắt. Cần setup đỡ hại hook.
+
+[Mic không dây mini](/go/mic-wireless-mini) — đi lại vẫn nói được, khỏi sợ tụt dây lúc đang vào câu mở. Với take ngồi bàn, [mic Boya cài áo](/go/mic-boya-m1) vẫn ổn và dễ bắt đầu hơn.
+
+[Đèn LED panel nhỏ](/go/den-led-panel) — chỉnh góc, đỡ bóng dưới mắt hơn là chỉ bật ring light thẳng mặt. [Kẹp máy + cold shoe](/go/phone-clamp-cold-shoe) — gắn mic/đèn gọn, khỏi “lóc cóc” tìm chỗ để đúng lúc sắp bấm quay.
+
+Quay hook sạch đã là một nửa video. Nửa còn lại là đừng nói dài dòng trước khi vào điểm.
+
+## 5. Hook viết trước — rồi mới nghĩ “câu hay”
+
+Mình từng viết cả kịch bản rồi mới “chế” hook ở trên cùng. Kết quả hook trở thành tóm tắt. Tóm tắt không dừng tay.
+
+Giờ mình viết hook trước, đọc to, tưởng tượng For You đang trôi. Nếu chính mình muốn vuốt — viết lại. Chỉ khi hook đứng được mới triển khai thân bài.
+
+Có vẻ ngược. Nhưng TikTok thưởng phần đầu trước. Phần sau chỉ có cơ hội nếu phần đầu không bị giết.
+
+## Một bài học từ analytics thật (không phải “best practice”)
+
+Mình không khoe số cho vui. Chỉ kể để khỏi ảo: có tuần mình đăng đều, view ổn, nhưng retention 3 giây đầu thấp — nghĩa là người vào rồi đi gần như ngay. Khi đó đừng đổ cho thuật toán trước. Hãy nghe lại giây đầu bằng loa điện thoại, không phải tai nghe studio.
+
+Thường sẽ thấy một trong ba thứ: mở miệng chậm, câu đầu generic, hoặc tiếng/mặt chưa “đủ sạch” để não quyết định dừng. Sửa ba thứ đó rẻ hơn chạy ads. Với kênh ~4K, ads không phải bài toán đầu; hook mới là.
+
+Popunder / traffic ngoài TikTok cũng vậy: kéo về blog rồi người ta bounce vì dòng mở bài nhạt — cùng một bệnh. Mở phải đâm vào tình huống. Định nghĩa thì để từ điển.
+
+## Hook “đồ nghề” vs hook “nỗi đau”
+
+Mình từng mở bằng tên sản phẩm: “Review mic XYZ”. Ổn với người đang tìm đúng mic đó. Yếu với For You lạnh. Hook nỗi đau (“tiếng như toilet”) kéo được cả người chưa biết mình cần mic.
+
+Cách làm: viết hai phiên bản hook — một theo tên đồ, một theo nỗi đau. Đăng cái nỗi đau trước. Để tên đồ ở caption / giữa clip / cuối. Affiliate vẫn gắn được; chỉ là không đẩy sản phẩm vào giây 0 khi người ta chưa nhận ra mình.
+
+## Nhưng… vậy khi nào được mở bằng chào hỏi?
+
+Khi audience đã quen mặt — live, series cố định, hoặc clip “đáp comment”. Còn For You lạnh, người lạ, sản phẩm mới: chào hỏi là xa xỉ.
+
+Vậy khi nào hook “phản biện” trở thành clickbait xấu? Khi phần thân không giữ lời. Giữ lời thì phản biện là lọc. Không giữ lời thì phản biện là lừa.
+
+Cũng có lúc hook mạnh quá so với nội dung mỏng — retention tụt ở giây 10–15. Khi đó đừng chỉ sửa hook cho “êm”. Hãy hỏi: thân bài có đủ điểm thật không? Hook giỏi không cứu được review hời hợt. Cookie cũng không.
+
+## Checklist 3 giây đầu
+
+- [ ] Câu đầu có tình huống / số / phản biện thật — không phải “Hôm nay mình sẽ…”?
+- [ ] Đọc to một lần: chính mình có muốn dừng không?
+- [ ] Tiếng nghe rõ trên tai nghe + loa điện thoại chưa?
+- [ ] Mặt/sản phẩm nhìn đủ sáng, không bị bóng xấu che điểm chính?
+- [ ] Hook có khớp với phần thân, không câu view rồi đổi đề?
+
+Tick 4/5 rồi hãy bấm đăng. Thiếu tiếng hoặc thiếu sáng thì sửa gear trước — đừng chữa bằng caption.
+
+## Kết
+
+Ba giây đầu không cần đẹp. Cần **rõ vấn đề**. Đẹp mà mơ hồ vẫn chết. Xấu nhẹ mà đúng nỗi đau thì thường sống. Có thế thôi — phần còn lại là đừng phản bội giây đầu bằng thân bài mỏng.
+
+Anh em đang mở video bằng lời chào, hay bằng tình huống? Clip gần nhất của bạn, giây đầu nói gì — paste thử xem dưới comment? Nếu đọc lại mà chính mình muốn vuốt, viết lại trước khi đăng tiếp. 👇
