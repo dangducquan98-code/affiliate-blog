@@ -1,0 +1,89 @@
+---
+export const prerender = false;
+
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { requireAdmin } from '../../../lib/admin-auth';
+import { listProductsAdmin } from '../../../lib/products';
+import { isSupabaseServiceConfigured } from '../../../lib/supabase';
+
+if (!requireAdmin(Astro.cookies)) {
+  return Astro.redirect('/admin/login');
+}
+
+const configured = isSupabaseServiceConfigured();
+const result = configured
+  ? await listProductsAdmin()
+  : {
+      products: [],
+      error: 'Supabase service role chưa cấu hình.',
+      tableMissing: false,
+    };
+---
+
+<BaseLayout
+  title="Quản lý sản phẩm"
+  description="Catalog sản phẩm affiliate"
+  canonicalPath="/admin/products"
+  hideChrome={true}
+>
+  <section class="admin-shell">
+    <div class="admin-bar">
+      <div>
+        <h1 style="margin: 0;">Sản phẩm</h1>
+        <p style="margin: 0.35rem 0 0; color: var(--ink-muted);">
+          Dán link Shopee vào affiliate_url — /go dùng DB trước, fallback env.
+        </p>
+      </div>
+      <div class="admin-form__row">
+        <a class="btn btn--primary" href="/admin/products/new">Thêm sản phẩm</a>
+        <a class="btn btn--ghost" href="/admin">← Bài viết</a>
+      </div>
+    </div>
+
+    {result.error && <p class="fallback-notice">{result.error}</p>}
+    {
+      result.tableMissing && (
+        <p class="fallback-notice">
+          Migration chưa chạy: <code>supabase/migrations/20260826_products.sql</code>
+        </p>
+      )
+    }
+
+    {
+      !result.error && result.products.length === 0 && (
+        <p class="fallback-notice">Chưa có sản phẩm. Thêm mới hoặc chạy seed trong migration.</p>
+      )
+    }
+
+    {
+      result.products.length > 0 && (
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>Tên</th>
+              <th>Slug</th>
+              <th>Category</th>
+              <th>Giá gợi ý</th>
+              <th>Affiliate URL</th>
+            </tr>
+          </thead>
+          <tbody>
+            {result.products.map((p) => (
+              <tr>
+                <td>
+                  <a href={`/admin/products/${p.id}`}>{p.name}</a>
+                </td>
+                <td>
+                  <code>{p.slug}</code>
+                </td>
+                <td>{p.category}</td>
+                <td>{p.price_hint || '—'}</td>
+                <td>{p.affiliate_url ? 'Đã có' : 'Trống'}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      )
+    }
+  </section>
+</BaseLayout>

@@ -1,26 +1,12 @@
 import type { APIRoute } from 'astro';
-import { getAffiliate, resolveAffiliateUrl } from '../../lib/affiliates';
+import { resolveGoDestination } from '../../lib/go-resolve';
 
 export const prerender = false;
 
-export const GET: APIRoute = ({ params }) => {
-  const slug = params.slug;
-  if (!slug) {
-    return new Response('Missing slug', { status: 400 });
+export const GET: APIRoute = async ({ params }) => {
+  const result = await resolveGoDestination(params.slug);
+  if (!result.ok) {
+    return new Response(result.message, { status: result.status });
   }
-
-  const affiliate = getAffiliate(slug);
-  if (!affiliate) {
-    return new Response('Affiliate not found', { status: 404 });
-  }
-
-  const destination = resolveAffiliateUrl(slug);
-  if (!destination) {
-    return new Response(
-      `Missing env ${slug} destination. Set AFFILIATE_* in .env.local`,
-      { status: 500 },
-    );
-  }
-
-  return Response.redirect(destination, 302);
+  return Response.redirect(result.destination, 302);
 };

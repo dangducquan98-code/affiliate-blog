@@ -10,13 +10,13 @@
  *   npx tsx scripts/migrate-mdx-to-supabase.ts
  *
  * Idempotent by slug (upsert on slug conflict).
+ * products stored as [{ "slug": "..." }].
  */
 
 import { readFileSync, readdirSync } from 'node:fs';
 import { join, basename } from 'node:path';
 import { createClient } from '@supabase/supabase-js';
 import matter from 'gray-matter';
-import { parse as parseYaml } from 'yaml';
 
 function loadEnvFile(path: string): void {
   try {
@@ -54,33 +54,16 @@ if (!url || url.includes('placeholder') || !serviceKey || serviceKey.includes('p
   process.exit(1);
 }
 
-type Affiliate = { slug: string; name: string };
-type Deal = { goSlug: string; priceHint?: string; name?: string };
-
-const affiliates = parseYaml(readFileSync('src/data/affiliates.yaml', 'utf8')) as Affiliate[];
-const deals = parseYaml(readFileSync('src/data/deals.yaml', 'utf8')) as Deal[];
-
-const affiliateBySlug = new Map(affiliates.map((a) => [a.slug, a]));
-const dealBySlug = new Map(deals.map((d) => [d.goSlug, d]));
-
-function toProducts(productSlugs: unknown): Array<{ name: string; priceHint: string; goSlug: string }> {
+/** Store catalog refs as [{ slug }] — names/prices resolved at render time. */
+function toProducts(productSlugs: unknown): Array<{ slug: string }> {
   if (!Array.isArray(productSlugs)) return [];
   return productSlugs
-    .map((slug) => String(slug))
+    .map((slug) => String(slug).trim())
     .filter(Boolean)
-    .map((goSlug) => {
-      const aff = affiliateBySlug.get(goSlug);
-      const deal = dealBySlug.get(goSlug);
-      return {
-        goSlug,
-        name: aff?.name || deal?.name || goSlug,
-        priceHint: deal?.priceHint || '',
-      };
-    });
+    .map((slug) => ({ slug }));
 }
 
 function stripMdxChrome(body: string): string {
-  // Remove HTML disclosure blocks from old MDX; keep markdown content.
   return body
     .replace(/<p class="disclosure">[\s\S]*?<\/p>\s*/i, '')
     .replace(/^\s+/, '');

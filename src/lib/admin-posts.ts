@@ -1,4 +1,32 @@
-import type { PostProduct } from '../../posts';
+import type { Product } from './products';
+
+/** New catalog ref stored on posts.products */
+export type PostProductRef = { slug: string };
+
+/** Legacy shape from MDX migrate / older admin saves */
+export type PostProductLegacy = {
+  name: string;
+  priceHint: string;
+  goSlug: string;
+};
+
+export type PostProduct = PostProductRef | PostProductLegacy;
+
+export type DisplayProduct = {
+  slug: string;
+  name: string;
+  priceHint: string;
+};
+
+export function isLegacyProduct(item: PostProduct): item is PostProductLegacy {
+  return 'goSlug' in item && Boolean((item as PostProductLegacy).goSlug);
+}
+
+export function productSlugOf(item: PostProduct): string {
+  if ('slug' in item && item.slug) return item.slug;
+  if (isLegacyProduct(item)) return item.goSlug;
+  return '';
+}
 
 export function parseProductsInput(raw: unknown): PostProduct[] {
   if (typeof raw === 'string') {
@@ -9,17 +37,66 @@ export function parseProductsInput(raw: unknown): PostProduct[] {
     }
   }
   if (!Array.isArray(raw)) return [];
+  return normalizeStoredProducts(raw);
+}
+
+export function normalizeStoredProducts(raw: unknown[]): PostProduct[] {
   return raw
     .map((item) => {
       if (!item || typeof item !== 'object') return null;
       const row = item as Record<string, unknown>;
+
+      // New format: { slug }
+      const slug = String(row.slug || '').trim();
+      if (slug && !row.goSlug && !row.name) {
+        return { slug } satisfies PostProductRef;
+      }
+      if (slug && !row.goSlug) {
+        return { slug } satisfies PostProductRef;
+      }
+
+      // Legacy: { name, priceHint, goSlug }
       const name = String(row.name || '').trim();
       const priceHint = String(row.priceHint || '').trim();
       const goSlug = String(row.goSlug || '').trim();
-      if (!name || !goSlug) return null;
-      return { name, priceHint, goSlug };
+      if (name && goSlug) {
+        return { name, priceHint, goSlug } satisfies PostProductLegacy;
+      }
+
+      // Slug-only even if extra empty fields
+      if (slug) return { slug } satisfies PostProductRef;
+      return null;
     })
     .filter((item): item is PostProduct => item !== null);
+}
+
+/** Join catalog by slug; keep legacy display fields when present. */
+export function resolveDisplayProducts(
+  products: PostProduct[],
+  catalog: Map<string, Product>,
+): DisplayProduct[] {
+  return products
+    .map((item) => {
+      const slug = productSlugOf(item);
+      if (!slug) return null;
+      const fromCatalog = catalog.get(slug);
+      if (fromCatalog) {
+        return {
+          slug,
+          name: fromCatalog.name,
+          priceHint: fromCatalog.price_hint,
+        };
+      }
+      if (isLegacyProduct(item)) {
+        return {
+          slug: item.goSlug,
+          name: item.name,
+          priceHint: item.priceHint,
+        };
+      }
+      return { slug, name: slug, priceHint: '' };
+    })
+    .filter((item): item is DisplayProduct => item !== null);
 }
 
 export function slugify(input: string): string {

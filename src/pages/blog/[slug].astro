@@ -3,7 +3,7 @@ export const prerender = false;
 
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import BlogImage from '../../components/BlogImage.astro';
-import { getPublishedPostBySlug } from '../../lib/posts';
+import { getPublishedPostBySlug, hydratePostProducts } from '../../lib/posts';
 import { renderMarkdown } from '../../lib/markdown';
 import { getPublicStorageUrl } from '../../lib/supabase';
 import { BRAND_NAME, getSiteUrl } from '../../lib/site';
@@ -16,6 +16,7 @@ if (!post && configured && !error) {
 }
 
 const html = post ? renderMarkdown(post.content) : '';
+const displayProducts = post ? await hydratePostProducts(post) : [];
 const dateLabel = post
   ? new Date(post.created_at).toLocaleDateString('vi-VN', {
       year: 'numeric',
@@ -101,11 +102,11 @@ const jsonLd = post
           )}
         </header>
         <div class="prose" set:html={html} />
-        {post.products.length > 0 && (
+        {displayProducts.length > 0 && (
           <section class="product-block" aria-label="Sản phẩm trong bài">
             <h2>Sản phẩm đề xuất</h2>
             <ul class="product-block__list">
-              {post.products.map((product) => (
+              {displayProducts.map((product) => (
                 <li class="product-block__item">
                   <div>
                     <strong>{product.name}</strong>
@@ -115,7 +116,7 @@ const jsonLd = post
                       </div>
                     )}
                   </div>
-                  <a class="btn btn--primary" href={`/go/${product.goSlug}`}>
+                  <a class="btn btn--primary" href={`/go/${product.slug}`}>
                     Xem deal
                   </a>
                 </li>

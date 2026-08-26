@@ -3,10 +3,20 @@ export const prerender = false;
 
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import { requireAdmin } from '../../../lib/admin-auth';
+import { listProductsAdmin } from '../../../lib/products';
 
 if (!requireAdmin(Astro.cookies)) {
   return Astro.redirect('/admin/login');
 }
+
+const { products: catalog, error: catalogError, tableMissing } = await listProductsAdmin();
+const catalogJson = JSON.stringify(
+  catalog.map((p) => ({
+    slug: p.slug,
+    name: p.name,
+    price_hint: p.price_hint,
+  })),
+);
 ---
 
 <BaseLayout
@@ -21,6 +31,14 @@ if (!requireAdmin(Astro.cookies)) {
       <a class="btn btn--ghost" href="/admin">← Danh sách</a>
     </div>
     <p id="error" class="admin-error" hidden></p>
+    {
+      (catalogError || tableMissing) && (
+        <p class="fallback-notice">
+          {catalogError ||
+            'Bảng products chưa có — chạy migration rồi gắn sản phẩm từ catalog.'}
+        </p>
+      )
+    }
     <form id="post-form" class="admin-form">
       <label>
         Tiêu đề
@@ -55,11 +73,19 @@ if (!requireAdmin(Astro.cookies)) {
         <textarea name="content" required placeholder="Viết Markdown thuần..."></textarea>
       </label>
       <div>
-        <p style="font-weight: 600; margin: 0 0 0.5rem;">Sản phẩm gắn /go</p>
-        <div id="products" class="admin-products"></div>
-        <button class="btn btn--ghost" type="button" id="add-product" style="margin-top: 0.5rem;">
-          + Thêm sản phẩm
-        </button>
+        <p style="font-weight: 600; margin: 0 0 0.5rem;">Sản phẩm từ catalog</p>
+        <p style="margin: 0 0 0.75rem; color: var(--ink-muted); font-size: 0.92rem;">
+          Chọn slug có sẵn — lưu dạng <code>{`{ "slug": "..." }`}</code>.
+          {
+            catalog.length === 0 && (
+              <>
+                {' '}
+                <a href="/admin/products">Thêm sản phẩm trước →</a>
+              </>
+            )
+          }
+        </p>
+        <div id="products" class="admin-products-pick" data-catalog={catalogJson} data-selected="[]"></div>
       </div>
       <label class="admin-form__row" style="font-weight: 600;">
         <input type="checkbox" name="published" />
@@ -73,41 +99,51 @@ if (!requireAdmin(Astro.cookies)) {
 </BaseLayout>
 
 <script>
-  type Product = { name: string; priceHint: string; goSlug: string };
+  type CatalogItem = { slug: string; name: string; price_hint: string };
 
   const productsEl = document.getElementById('products');
-  const addBtn = document.getElementById('add-product');
   const form = document.getElementById('post-form') as HTMLFormElement | null;
   const errorEl = document.getElementById('error');
   const uploadBtn = document.getElementById('upload-cover');
   const coverInput = document.getElementById('cover_image') as HTMLInputElement | null;
   const coverFile = document.getElementById('cover_file') as HTMLInputElement | null;
 
-  function addProductRow(product: Product = { name: '', priceHint: '', goSlug: '' }) {
+  const catalog: CatalogItem[] = productsEl?.dataset.catalog
+    ? JSON.parse(productsEl.dataset.catalog)
+    : [];
+  const selected = new Set<string>(
+    productsEl?.dataset.selected ? JSON.parse(productsEl.dataset.selected) : [],
+  );
+
+  function renderCatalog() {
     if (!productsEl) return;
-    const row = document.createElement('div');
-    row.className = 'admin-products__row';
-    row.innerHTML = `
-      <label>Tên<input data-field="name" value="${product.name.replace(/"/g, '&quot;')}" /></label>
-      <label>Giá gợi ý<input data-field="priceHint" value="${product.priceHint.replace(/"/g, '&quot;')}" /></label>
-      <label>goSlug<input data-field="goSlug" value="${product.goSlug.replace(/"/g, '&quot;')}" placeholder="ugreen-hub-uno" /></label>
-      <button class="btn btn--danger" type="button" data-remove>Xóa</button>
-    `;
-    row.querySelector('[data-remove]')?.addEventListener('click', () => row.remove());
-    productsEl.appendChild(row);
+    if (catalog.length === 0) {
+      productsEl.innerHTML = '<p class="fallback-notice">Catalog trống.</p>';
+      return;
+    }
+    productsEl.innerHTML = catalog
+      .map(
+        (p) => `
+      <label class="admin-products-pick__item">
+        <input type="checkbox" data-slug="${p.slug}" ${selected.has(p.slug) ? 'checked' : ''} />
+        <span>
+          <strong>${p.name}</strong>
+          <code>${p.slug}</code>
+          ${p.price_hint ? `<span class="muted">${p.price_hint}</span>` : ''}
+        </span>
+      </label>`,
+      )
+      .join('');
   }
 
-  function readProducts(): Product[] {
+  function readProducts(): { slug: string }[] {
     if (!productsEl) return [];
-    return [...productsEl.querySelectorAll('.admin-products__row')].map((row) => ({
-      name: (row.querySelector('[data-field="name"]') as HTMLInputElement).value.trim(),
-      priceHint: (row.querySelector('[data-field="priceHint"]') as HTMLInputElement).value.trim(),
-      goSlug: (row.querySelector('[data-field="goSlug"]') as HTMLInputElement).value.trim(),
-    })).filter((p) => p.name && p.goSlug);
+    return [...productsEl.querySelectorAll<HTMLInputElement>('input[data-slug]:checked')].map(
+      (input) => ({ slug: input.dataset.slug || '' }),
+    ).filter((p) => p.slug);
   }
 
-  addBtn?.addEventListener('click', () => addProductRow());
-  addProductRow();
+  renderCatalog();
 
   uploadBtn?.addEventListener('click', async () => {
     if (!coverFile?.files?.[0]) {

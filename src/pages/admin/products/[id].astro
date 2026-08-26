@@ -1,0 +1,140 @@
+---
+export const prerender = false;
+
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { requireAdmin } from '../../../lib/admin-auth';
+import { getProductByIdAdmin } from '../../../lib/products';
+
+if (!requireAdmin(Astro.cookies)) {
+  return Astro.redirect('/admin/login');
+}
+
+const id = Astro.params.id ?? '';
+const { product, error, tableMissing } = await getProductByIdAdmin(id);
+
+if (!product && !error && !tableMissing) {
+  Astro.response.status = 404;
+}
+---
+
+<BaseLayout
+  title={product ? `Sửa: ${product.name}` : 'Không tìm thấy sản phẩm'}
+  description="Sửa sản phẩm catalog"
+  canonicalPath={`/admin/products/${id}`}
+  hideChrome={true}
+>
+  <section class="admin-shell">
+    {
+      !product ? (
+        <div>
+          <h1>Không tải được sản phẩm</h1>
+          <p class="fallback-notice">
+            {error || (tableMissing ? 'Bảng products chưa tồn tại.' : 'Sản phẩm không tồn tại.')}
+          </p>
+          <a class="btn btn--ghost" href="/admin/products">← Danh sách</a>
+        </div>
+      ) : (
+        <>
+          <div class="admin-bar">
+            <div>
+              <h1 style="margin: 0;">Sửa sản phẩm</h1>
+              <p style="margin: 0.35rem 0 0; color: var(--ink-muted);">
+                /go/<code>{product.slug}</code>
+              </p>
+            </div>
+            <a class="btn btn--ghost" href="/admin/products">← Danh sách</a>
+          </div>
+          <p id="error" class="admin-error" hidden></p>
+          <p id="status" style="color: var(--ink-muted);" hidden></p>
+          <form id="product-form" class="admin-form" data-id={product.id}>
+            <label>
+              Tên
+              <input name="name" required value={product.name} />
+            </label>
+            <label>
+              Slug (khớp /go)
+              <input name="slug" required value={product.slug} />
+            </label>
+            <label>
+              Category
+              <input name="category" required value={product.category} />
+            </label>
+            <label>
+              Giá gợi ý
+              <input name="price_hint" value={product.price_hint} />
+            </label>
+            <label>
+              Affiliate URL (Shopee)
+              <input name="affiliate_url" type="url" value={product.affiliate_url ?? ''} />
+            </label>
+            <label>
+              Image path/URL (optional)
+              <input name="image" value={product.image ?? ''} />
+            </label>
+            <div class="admin-form__row">
+              <button class="btn btn--primary" type="submit">Lưu thay đổi</button>
+              <button class="btn btn--danger" type="button" id="delete-product">Xóa</button>
+            </div>
+          </form>
+        </>
+      )
+    }
+  </section>
+</BaseLayout>
+
+{
+  product && (
+    <script>
+      const form = document.getElementById('product-form') as HTMLFormElement | null;
+      const errorEl = document.getElementById('error');
+      const statusEl = document.getElementById('status');
+      const deleteBtn = document.getElementById('delete-product');
+      const productId = form?.dataset.id || '';
+
+      form?.addEventListener('submit', async (event) => {
+        event.preventDefault();
+        if (errorEl) {
+          errorEl.hidden = true;
+          errorEl.textContent = '';
+        }
+        const data = new FormData(form);
+        const payload = {
+          name: String(data.get('name') || ''),
+          slug: String(data.get('slug') || ''),
+          category: String(data.get('category') || ''),
+          price_hint: String(data.get('price_hint') || ''),
+          affiliate_url: String(data.get('affiliate_url') || ''),
+          image: String(data.get('image') || ''),
+        };
+
+        const res = await fetch(`/api/admin/products/${productId}`, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+        });
+        const result = await res.json().catch(() => ({}));
+        if (!res.ok) {
+          if (errorEl) {
+            errorEl.hidden = false;
+            errorEl.textContent = result.error || 'Lưu thất bại.';
+          }
+          return;
+        }
+        if (statusEl) {
+          statusEl.hidden = false;
+          statusEl.textContent = 'Đã lưu.';
+        }
+      });
+
+      deleteBtn?.addEventListener('click', async () => {
+        if (!confirm('Xóa sản phẩm này?')) return;
+        const res = await fetch(`/api/admin/products/${productId}`, { method: 'DELETE' });
+        if (!res.ok) {
+          alert('Xóa thất bại.');
+          return;
+        }
+        window.location.href = '/admin/products';
+      });
+    </script>
+  )
+}

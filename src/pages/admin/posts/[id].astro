@@ -3,7 +3,9 @@ export const prerender = false;
 
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import { requireAdmin } from '../../../lib/admin-auth';
+import { productSlugOf } from '../../../lib/admin-posts';
 import { getPostByIdAdmin } from '../../../lib/posts';
+import { listProductsAdmin } from '../../../lib/products';
 
 if (!requireAdmin(Astro.cookies)) {
   return Astro.redirect('/admin/login');
@@ -11,12 +13,21 @@ if (!requireAdmin(Astro.cookies)) {
 
 const id = Astro.params.id ?? '';
 const { post, error } = await getPostByIdAdmin(id);
+const { products: catalog, error: catalogError, tableMissing } = await listProductsAdmin();
 
 if (!post && !error) {
   Astro.response.status = 404;
 }
 
-const productsJson = JSON.stringify(post?.products ?? []);
+const selectedSlugs = post ? post.products.map(productSlugOf).filter(Boolean) : [];
+const catalogJson = JSON.stringify(
+  catalog.map((p) => ({
+    slug: p.slug,
+    name: p.name,
+    price_hint: p.price_hint,
+  })),
+);
+const selectedJson = JSON.stringify(selectedSlugs);
 ---
 
 <BaseLayout
@@ -48,6 +59,13 @@ const productsJson = JSON.stringify(post?.products ?? []);
           </div>
           <p id="error" class="admin-error" hidden></p>
           <p id="status" style="color: var(--ink-muted);" hidden></p>
+          {
+            (catalogError || tableMissing) && (
+              <p class="fallback-notice">
+                {catalogError || 'Bảng products chưa có — vẫn sửa được bài, gắn catalog sau khi migrate.'}
+              </p>
+            )
+          }
           <form id="post-form" class="admin-form" data-id={post.id}>
             <label>
               Tiêu đề
@@ -82,11 +100,13 @@ const productsJson = JSON.stringify(post?.products ?? []);
               <textarea name="content" required>{post.content}</textarea>
             </label>
             <div>
-              <p style="font-weight: 600; margin: 0 0 0.5rem;">Sản phẩm gắn /go</p>
-              <div id="products" class="admin-products" data-initial={productsJson}></div>
-              <button class="btn btn--ghost" type="button" id="add-product" style="margin-top: 0.5rem;">
-                + Thêm sản phẩm
-              </button>
+              <p style="font-weight: 600; margin: 0 0 0.5rem;">Sản phẩm từ catalog</p>
+              <div
+                id="products"
+                class="admin-products-pick"
+                data-catalog={catalogJson}
+                data-selected={selectedJson}
+              ></div>
             </div>
             <label class="admin-form__row" style="font-weight: 600;">
               <input type="checkbox" name="published" checked={post.published} />
@@ -109,11 +129,10 @@ const productsJson = JSON.stringify(post?.products ?? []);
 {
   post && (
     <script>
-      type Product = { name: string; priceHint: string; goSlug: string };
+      type CatalogItem = { slug: string; name: string; price_hint: string };
 
       const form = document.getElementById('post-form') as HTMLFormElement | null;
       const productsEl = document.getElementById('products');
-      const addBtn = document.getElementById('add-product');
       const errorEl = document.getElementById('error');
       const statusEl = document.getElementById('status');
       const uploadBtn = document.getElementById('upload-cover');
@@ -123,39 +142,43 @@ const productsJson = JSON.stringify(post?.products ?? []);
       const deleteBtn = document.getElementById('delete-post');
       const postId = form?.dataset.id || '';
 
-      function addProductRow(product: Product = { name: '', priceHint: '', goSlug: '' }) {
+      const catalog: CatalogItem[] = productsEl?.dataset.catalog
+        ? JSON.parse(productsEl.dataset.catalog)
+        : [];
+      const selected = new Set<string>(
+        productsEl?.dataset.selected ? JSON.parse(productsEl.dataset.selected) : [],
+      );
+
+      function renderCatalog() {
         if (!productsEl) return;
-        const row = document.createElement('div');
-        row.className = 'admin-products__row';
-        row.innerHTML = `
-          <label>Tên<input data-field="name" value="${product.name.replace(/"/g, '&quot;')}" /></label>
-          <label>Giá gợi ý<input data-field="priceHint" value="${product.priceHint.replace(/"/g, '&quot;')}" /></label>
-          <label>goSlug<input data-field="goSlug" value="${product.goSlug.replace(/"/g, '&quot;')}" /></label>
-          <button class="btn btn--danger" type="button" data-remove>Xóa</button>
-        `;
-        row.querySelector('[data-remove]')?.addEventListener('click', () => row.remove());
-        productsEl.appendChild(row);
+        if (catalog.length === 0) {
+          productsEl.innerHTML =
+            '<p class="fallback-notice">Catalog trống. <a href="/admin/products">Thêm sản phẩm →</a></p>';
+          return;
+        }
+        productsEl.innerHTML = catalog
+          .map(
+            (p) => `
+          <label class="admin-products-pick__item">
+            <input type="checkbox" data-slug="${p.slug}" ${selected.has(p.slug) ? 'checked' : ''} />
+            <span>
+              <strong>${p.name}</strong>
+              <code>${p.slug}</code>
+              ${p.price_hint ? `<span class="muted">${p.price_hint}</span>` : ''}
+            </span>
+          </label>`,
+          )
+          .join('');
       }
 
-      function readProducts(): Product[] {
+      function readProducts(): { slug: string }[] {
         if (!productsEl) return [];
-        return [...productsEl.querySelectorAll('.admin-products__row')]
-          .map((row) => ({
-            name: (row.querySelector('[data-field="name"]') as HTMLInputElement).value.trim(),
-            priceHint: (row.querySelector('[data-field="priceHint"]') as HTMLInputElement).value.trim(),
-            goSlug: (row.querySelector('[data-field="goSlug"]') as HTMLInputElement).value.trim(),
-          }))
-          .filter((p) => p.name && p.goSlug);
+        return [...productsEl.querySelectorAll<HTMLInputElement>('input[data-slug]:checked')]
+          .map((input) => ({ slug: input.dataset.slug || '' }))
+          .filter((p) => p.slug);
       }
 
-      const initial = productsEl?.dataset.initial ? JSON.parse(productsEl.dataset.initial) : [];
-      if (Array.isArray(initial) && initial.length > 0) {
-        initial.forEach((p: Product) => addProductRow(p));
-      } else {
-        addProductRow();
-      }
-
-      addBtn?.addEventListener('click', () => addProductRow());
+      renderCatalog();
 
       uploadBtn?.addEventListener('click', async () => {
         if (!coverFile?.files?.[0]) {

@@ -39,9 +39,9 @@ npm run preview
 | Biến | Mục đích |
 |------|----------|
 | `SITE_URL` | Canonical / OG / sitemap |
-| `AFFILIATE_<SLUG>` | Destination Shopee cho `/go/<slug>` |
+| `AFFILIATE_<SLUG>` | Fallback destination Shopee cho `/go/<slug>` (khi DB chưa có URL) |
 | `SUPABASE_URL` | Project URL |
-| `SUPABASE_ANON_KEY` | Public read (published posts) |
+| `SUPABASE_ANON_KEY` | Public read (published posts + products) |
 | `SUPABASE_SERVICE_ROLE_KEY` | Admin write + upload (server only) |
 | `ADMIN_PASSWORD` | Mật khẩu đăng nhập `/admin` |
 | `ADMIN_SESSION_SECRET` | Ký cookie session (đặt chuỗi dài, riêng biệt) |
@@ -50,45 +50,61 @@ npm run preview
 
 ## Supabase SQL migration
 
-1. Tạo project trên Supabase
-2. Mở SQL Editor (hoặc CLI `supabase db push`)
-3. Chạy toàn bộ file:
+Chạy **theo thứ tự** trong SQL Editor (hoặc CLI):
 
-`supabase/migrations/20260826_blog_upgrade.sql`
+1. `supabase/migrations/20260826_blog_upgrade.sql` — bảng `posts`, RLS, bucket `blog-images`
+2. `supabase/migrations/20260826_products.sql` — bảng `products`, RLS SELECT, seed 10 gear quay video
 
-File tạo:
+**Lưu ý:** Nếu chưa chạy (2), admin `/admin/products` và join catalog sẽ báo bảng thiếu — **không crash** `/go` (vẫn fallback env).
 
-- bảng `posts` + index + trigger `updated_at`
-- RLS: anon/authenticated chỉ `SELECT` khi `published = true`
-- bucket Storage `blog-images` (public read)
+File products tạo:
+
+- bảng `products` (`slug` unique, `affiliate_url` nullable, `price_hint`, `image`…)
+- index `slug`, `category`
+- RLS: anon/authenticated `SELECT` all; write qua service role
+- seed gear (`affiliate_url` trống — điền trong admin)
 
 ## Migrate 5 bài MDX cũ → DB
 
-Sau khi SQL + env thật:
+Sau khi SQL posts + env thật:
 
 ```bash
 npm run migrate:posts
 ```
 
-Script đọc `src/content/blog/*.mdx`, map `products` → `{name, priceHint, goSlug}` từ YAML, upsert theo `slug`, `published: true`.
+Script đọc `src/content/blog/*.mdx`, lưu `products` dạng `[{ "slug": "..." }]`, upsert theo `slug`, `published: true`.
+
+## Seed series TikTok (3 bài đầu)
+
+Sau khi **cả hai** migration + env thật:
+
+```bash
+npm run seed:tiktok-series
+```
+
+Outline đầy đủ: `docs/content-series-tiktok.md`. Giọng văn: `docs/voice-profile-quankiu.md`.
 
 ## Admin
 
-1. Mở `/admin` → redirect login nếu chưa có session
-2. Đăng nhập bằng `ADMIN_PASSWORD`
-3. Viết / sửa bài (Markdown textarea), gắn products `{name, priceHint, goSlug}`
+1. Mở `/admin` → login bằng `ADMIN_PASSWORD`
+2. **Quản lý sản phẩm** (`/admin/products`): CRUD catalog, dán `affiliate_url` Shopee
+3. Viết / sửa bài (Markdown textarea), **chọn sản phẩm từ catalog** (checkbox theo slug)
 4. Upload ảnh cover → bucket `blog-images`
 5. Toggle Publish / Unpublish
 
-API admin dùng **service role** và chỉ chạy sau khi cookie session hợp lệ.
+API admin dùng **service role** sau khi cookie session hợp lệ.
+
+`posts.products` lưu `[{ "slug": "mic-boya-m1" }]`. Item legacy `{name, priceHint, goSlug}` vẫn render được.
 
 ## Affiliate links (`/go`)
 
-Giữ nguyên:
+Thứ tự resolve:
 
-1. Metadata: `src/data/affiliates.yaml`
-2. Destination: `AFFILIATE_*` trong `.env.local`
-3. Content / products dùng `/go/<slug>` — không dán raw affiliate URL
+1. `products.affiliate_url` trong DB (nếu có và không rỗng)
+2. Fallback `AFFILIATE_<SLUG>` trong env
+3. 404 nếu không có metadata (DB hoặc `affiliates.yaml`); 500 nếu có metadata nhưng thiếu URL
+
+`src/data/affiliates.yaml` giữ cho deal hub / metadata cũ. Product mới chỉ cần trong DB.
 
 ## Deal hub
 
@@ -107,8 +123,8 @@ Component `BlogImage.astro` append `?width=&quality=` (Supabase Image Transforma
 
 ## Deploy (sau khi chủ dự án duyệt)
 
-1. Điền env thật trên Vercel (`SITE_URL`, `SUPABASE_*`, `ADMIN_*`, `AFFILIATE_*`)
-2. Chạy SQL migration + `npm run migrate:posts` (local hoặc CI one-shot)
+1. Điền env thật trên Vercel (`SITE_URL`, `SUPABASE_*`, `ADMIN_*`, `AFFILIATE_*` fallback)
+2. Chạy SQL migrations (posts → products) + `migrate:posts` / `seed:tiktok-series` nếu cần
 3. Merge `feature/blog-upgrade` → `main` sau khi duyệt
 4. Vercel auto-deploy từ `main`
 
@@ -118,3 +134,4 @@ Component `BlogImage.astro` append `?width=&quality=` (Supabase Image Transforma
 - Supabase Postgres + Storage
 - Markdown (`marked`) SSR
 - Admin session cookie (HMAC) + `ADMIN_PASSWORD`
+- Products catalog + `/go` DB→env fallback

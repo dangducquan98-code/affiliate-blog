@@ -1,0 +1,91 @@
+---
+export const prerender = false;
+
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { requireAdmin } from '../../../lib/admin-auth';
+
+if (!requireAdmin(Astro.cookies)) {
+  return Astro.redirect('/admin/login');
+}
+---
+
+<BaseLayout
+  title="Thêm sản phẩm"
+  description="Tạo sản phẩm catalog"
+  canonicalPath="/admin/products/new"
+  hideChrome={true}
+>
+  <section class="admin-shell">
+    <div class="admin-bar">
+      <h1 style="margin: 0;">Thêm sản phẩm</h1>
+      <a class="btn btn--ghost" href="/admin/products">← Danh sách</a>
+    </div>
+    <p id="error" class="admin-error" hidden></p>
+    <form id="product-form" class="admin-form">
+      <label>
+        Tên
+        <input name="name" required placeholder="Mic Boya BY-M1" />
+      </label>
+      <label>
+        Slug (khớp /go)
+        <input name="slug" placeholder="tu-dong-tu-ten" />
+      </label>
+      <label>
+        Category
+        <input name="category" required placeholder="mic, den, gimbal-tripod..." />
+      </label>
+      <label>
+        Giá gợi ý
+        <input name="price_hint" placeholder="~150–250k" />
+      </label>
+      <label>
+        Affiliate URL (Shopee)
+        <input name="affiliate_url" type="url" placeholder="https://s.shopee.vn/..." />
+      </label>
+      <label>
+        Image path/URL (optional)
+        <input name="image" placeholder="ten-file.jpg hoặc URL" />
+      </label>
+      <div class="admin-form__row">
+        <button class="btn btn--primary" type="submit">Lưu sản phẩm</button>
+      </div>
+    </form>
+  </section>
+</BaseLayout>
+
+<script>
+  const form = document.getElementById('product-form') as HTMLFormElement | null;
+  const errorEl = document.getElementById('error');
+
+  form?.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    if (errorEl) {
+      errorEl.hidden = true;
+      errorEl.textContent = '';
+    }
+    const data = new FormData(form);
+    const payload = {
+      name: String(data.get('name') || ''),
+      slug: String(data.get('slug') || ''),
+      category: String(data.get('category') || ''),
+      price_hint: String(data.get('price_hint') || ''),
+      affiliate_url: String(data.get('affiliate_url') || ''),
+      image: String(data.get('image') || ''),
+    };
+
+    const res = await fetch('/api/admin/products', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    });
+    const result = await res.json().catch(() => ({}));
+    if (!res.ok) {
+      if (errorEl) {
+        errorEl.hidden = false;
+        errorEl.textContent = result.error || 'Lưu thất bại.';
+      }
+      return;
+    }
+    window.location.href = `/admin/products/${result.product.id}`;
+  });
+</script>
