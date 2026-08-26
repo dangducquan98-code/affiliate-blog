@@ -1,0 +1,80 @@
+---
+export const prerender = false;
+
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { requireAdmin } from '../../lib/admin-auth';
+import { listAllPostsAdmin } from '../../lib/posts';
+import { isSupabaseServiceConfigured } from '../../lib/supabase';
+
+if (!requireAdmin(Astro.cookies)) {
+  return Astro.redirect('/admin/login');
+}
+
+const configured = isSupabaseServiceConfigured();
+const { posts, error } = configured
+  ? await listAllPostsAdmin()
+  : {
+      posts: [],
+      error:
+        'Supabase service role chưa cấu hình — CRUD sẽ hoạt động sau khi điền env thật.',
+    };
+---
+
+<BaseLayout
+  title="Admin"
+  description="Quản trị bài viết Quân Kiu Daily"
+  canonicalPath="/admin"
+  hideChrome={true}
+>
+  <section class="admin-shell">
+    <div class="admin-bar">
+      <div>
+        <h1 style="margin: 0;">Admin bài viết</h1>
+        <p style="margin: 0.35rem 0 0; color: var(--ink-muted);">Quân Kiu Daily</p>
+      </div>
+      <div class="admin-form__row">
+        <a class="btn btn--primary" href="/admin/posts/new">Viết bài mới</a>
+        <form method="POST" action="/api/admin/logout">
+          <button class="btn btn--ghost" type="submit">Đăng xuất</button>
+        </form>
+      </div>
+    </div>
+
+    {error && <p class="fallback-notice">{error}</p>}
+
+    {
+      !error && posts.length === 0 && (
+        <p class="fallback-notice">Chưa có bài nào. Tạo bài mới hoặc chạy script migrate MDX.</p>
+      )
+    }
+
+    {
+      posts.length > 0 && (
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>Tiêu đề</th>
+              <th>Slug</th>
+              <th>Trạng thái</th>
+              <th>Cập nhật</th>
+            </tr>
+          </thead>
+          <tbody>
+            {posts.map((post) => (
+              <tr>
+                <td>
+                  <a href={`/admin/posts/${post.id}`}>{post.title}</a>
+                </td>
+                <td>
+                  <code>{post.slug}</code>
+                </td>
+                <td>{post.published ? 'Published' : 'Draft'}</td>
+                <td>{new Date(post.updated_at).toLocaleString('vi-VN')}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      )
+    }
+  </section>
+</BaseLayout>

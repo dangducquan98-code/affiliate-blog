@@ -1,0 +1,66 @@
+---
+export const prerender = false;
+
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { readAdminSession } from '../../lib/admin-auth';
+
+if (readAdminSession(Astro.cookies)) {
+  return Astro.redirect('/admin');
+}
+---
+
+<BaseLayout
+  title="Đăng nhập Admin"
+  description="Đăng nhập quản trị Quân Kiu Daily"
+  canonicalPath="/admin/login"
+  hideChrome={true}
+>
+  <section class="admin-shell">
+    <h1>Admin · Đăng nhập</h1>
+    <p style="color: var(--ink-muted);">Nhập mật khẩu admin (biến <code>ADMIN_PASSWORD</code>).</p>
+    <p id="error" class="admin-error" hidden></p>
+    <form id="login-form" class="admin-form">
+      <label>
+        Mật khẩu
+        <input type="password" name="password" autocomplete="current-password" required />
+      </label>
+      <div class="admin-form__row">
+        <button class="btn btn--primary" type="submit">Đăng nhập</button>
+        <a class="btn btn--ghost" href="/">Về trang chủ</a>
+      </div>
+    </form>
+  </section>
+</BaseLayout>
+
+<script>
+  const form = document.getElementById('login-form') as HTMLFormElement | null;
+  const errorEl = document.getElementById('error');
+
+  form?.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    if (errorEl) {
+      errorEl.hidden = true;
+      errorEl.textContent = '';
+    }
+
+    const data = new FormData(form);
+    const password = String(data.get('password') || '');
+
+    const res = await fetch('/api/admin/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ password }),
+    });
+
+    if (!res.ok) {
+      const payload = await res.json().catch(() => ({}));
+      if (errorEl) {
+        errorEl.hidden = false;
+        errorEl.textContent = payload.error || 'Đăng nhập thất bại.';
+      }
+      return;
+    }
+
+    window.location.href = '/admin';
+  });
+</script>

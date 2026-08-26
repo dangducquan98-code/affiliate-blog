@@ -1,0 +1,237 @@
+---
+export const prerender = false;
+
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { requireAdmin } from '../../../lib/admin-auth';
+import { getPostByIdAdmin } from '../../../lib/posts';
+
+if (!requireAdmin(Astro.cookies)) {
+  return Astro.redirect('/admin/login');
+}
+
+const id = Astro.params.id ?? '';
+const { post, error } = await getPostByIdAdmin(id);
+
+if (!post && !error) {
+  Astro.response.status = 404;
+}
+
+const productsJson = JSON.stringify(post?.products ?? []);
+---
+
+<BaseLayout
+  title={post ? `Sửa: ${post.title}` : 'Không tìm thấy bài'}
+  description="Sửa bài viết"
+  canonicalPath={`/admin/posts/${id}`}
+  hideChrome={true}
+>
+  <section class="admin-shell">
+    {
+      !post ? (
+        <div>
+          <h1>Không tải được bài</h1>
+          <p class="fallback-notice">{error || 'Bài không tồn tại.'}</p>
+          <a class="btn btn--ghost" href="/admin">← Danh sách</a>
+        </div>
+      ) : (
+        <>
+          <div class="admin-bar">
+            <div>
+              <h1 style="margin: 0;">Sửa bài</h1>
+              <p style="margin: 0.35rem 0 0; color: var(--ink-muted);">
+                <a href={`/blog/${post.slug}`} target="_blank" rel="noreferrer">
+                  Xem public →
+                </a>
+              </p>
+            </div>
+            <a class="btn btn--ghost" href="/admin">← Danh sách</a>
+          </div>
+          <p id="error" class="admin-error" hidden></p>
+          <p id="status" style="color: var(--ink-muted);" hidden></p>
+          <form id="post-form" class="admin-form" data-id={post.id}>
+            <label>
+              Tiêu đề
+              <input name="title" required value={post.title} />
+            </label>
+            <label>
+              Slug (URL)
+              <input name="slug" required value={post.slug} />
+            </label>
+            <label>
+              Mô tả (SEO)
+              <textarea name="description" style="min-height: 5rem;" required>{post.description}</textarea>
+            </label>
+            <label>
+              Category
+              <input name="category" required value={post.category} />
+            </label>
+            <label>
+              Tags (phẩy)
+              <input name="tags" value={post.tags.join(', ')} />
+            </label>
+            <label>
+              Cover image path/URL
+              <input name="cover_image" id="cover_image" value={post.cover_image ?? ''} />
+            </label>
+            <div class="admin-form__row">
+              <input type="file" id="cover_file" accept="image/*" />
+              <button class="btn btn--ghost" type="button" id="upload-cover">Upload ảnh cover</button>
+            </div>
+            <label>
+              Nội dung Markdown
+              <textarea name="content" required>{post.content}</textarea>
+            </label>
+            <div>
+              <p style="font-weight: 600; margin: 0 0 0.5rem;">Sản phẩm gắn /go</p>
+              <div id="products" class="admin-products" data-initial={productsJson}></div>
+              <button class="btn btn--ghost" type="button" id="add-product" style="margin-top: 0.5rem;">
+                + Thêm sản phẩm
+              </button>
+            </div>
+            <label class="admin-form__row" style="font-weight: 600;">
+              <input type="checkbox" name="published" checked={post.published} />
+              Published
+            </label>
+            <div class="admin-form__row">
+              <button class="btn btn--primary" type="submit">Lưu thay đổi</button>
+              <button class="btn btn--ghost" type="button" id="toggle-publish">
+                {post.published ? 'Unpublish' : 'Publish nhanh'}
+              </button>
+              <button class="btn btn--danger" type="button" id="delete-post">Xóa bài</button>
+            </div>
+          </form>
+        </>
+      )
+    }
+  </section>
+</BaseLayout>
+
+{
+  post && (
+    <script>
+      type Product = { name: string; priceHint: string; goSlug: string };
+
+      const form = document.getElementById('post-form') as HTMLFormElement | null;
+      const productsEl = document.getElementById('products');
+      const addBtn = document.getElementById('add-product');
+      const errorEl = document.getElementById('error');
+      const statusEl = document.getElementById('status');
+      const uploadBtn = document.getElementById('upload-cover');
+      const coverInput = document.getElementById('cover_image') as HTMLInputElement | null;
+      const coverFile = document.getElementById('cover_file') as HTMLInputElement | null;
+      const toggleBtn = document.getElementById('toggle-publish');
+      const deleteBtn = document.getElementById('delete-post');
+      const postId = form?.dataset.id || '';
+
+      function addProductRow(product: Product = { name: '', priceHint: '', goSlug: '' }) {
+        if (!productsEl) return;
+        const row = document.createElement('div');
+        row.className = 'admin-products__row';
+        row.innerHTML = `
+          <label>Tên<input data-field="name" value="${product.name.replace(/"/g, '&quot;')}" /></label>
+          <label>Giá gợi ý<input data-field="priceHint" value="${product.priceHint.replace(/"/g, '&quot;')}" /></label>
+          <label>goSlug<input data-field="goSlug" value="${product.goSlug.replace(/"/g, '&quot;')}" /></label>
+          <button class="btn btn--danger" type="button" data-remove>Xóa</button>
+        `;
+        row.querySelector('[data-remove]')?.addEventListener('click', () => row.remove());
+        productsEl.appendChild(row);
+      }
+
+      function readProducts(): Product[] {
+        if (!productsEl) return [];
+        return [...productsEl.querySelectorAll('.admin-products__row')]
+          .map((row) => ({
+            name: (row.querySelector('[data-field="name"]') as HTMLInputElement).value.trim(),
+            priceHint: (row.querySelector('[data-field="priceHint"]') as HTMLInputElement).value.trim(),
+            goSlug: (row.querySelector('[data-field="goSlug"]') as HTMLInputElement).value.trim(),
+          }))
+          .filter((p) => p.name && p.goSlug);
+      }
+
+      const initial = productsEl?.dataset.initial ? JSON.parse(productsEl.dataset.initial) : [];
+      if (Array.isArray(initial) && initial.length > 0) {
+        initial.forEach((p: Product) => addProductRow(p));
+      } else {
+        addProductRow();
+      }
+
+      addBtn?.addEventListener('click', () => addProductRow());
+
+      uploadBtn?.addEventListener('click', async () => {
+        if (!coverFile?.files?.[0]) {
+          alert('Chọn file ảnh trước.');
+          return;
+        }
+        const body = new FormData();
+        body.append('file', coverFile.files[0]);
+        const res = await fetch('/api/admin/upload', { method: 'POST', body });
+        const payload = await res.json().catch(() => ({}));
+        if (!res.ok) {
+          alert(payload.error || 'Upload thất bại');
+          return;
+        }
+        if (coverInput) coverInput.value = payload.path || payload.url || '';
+        alert('Upload OK.');
+      });
+
+      form?.addEventListener('submit', async (event) => {
+        event.preventDefault();
+        if (errorEl) {
+          errorEl.hidden = true;
+          errorEl.textContent = '';
+        }
+        const data = new FormData(form);
+        const payload = {
+          title: String(data.get('title') || ''),
+          slug: String(data.get('slug') || ''),
+          description: String(data.get('description') || ''),
+          category: String(data.get('category') || ''),
+          tags: String(data.get('tags') || ''),
+          cover_image: String(data.get('cover_image') || ''),
+          content: String(data.get('content') || ''),
+          published: (form.elements.namedItem('published') as HTMLInputElement).checked,
+          products: readProducts(),
+        };
+
+        const res = await fetch(`/api/admin/posts/${postId}`, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+        });
+        const result = await res.json().catch(() => ({}));
+        if (!res.ok) {
+          if (errorEl) {
+            errorEl.hidden = false;
+            errorEl.textContent = result.error || 'Lưu thất bại.';
+          }
+          return;
+        }
+        if (statusEl) {
+          statusEl.hidden = false;
+          statusEl.textContent = 'Đã lưu.';
+        }
+      });
+
+      toggleBtn?.addEventListener('click', async () => {
+        const published = !(form?.elements.namedItem('published') as HTMLInputElement).checked;
+        const res = await fetch(`/api/admin/posts/${postId}`, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ published }),
+        });
+        if (res.ok) window.location.reload();
+        else alert('Không đổi được trạng thái publish.');
+      });
+
+      deleteBtn?.addEventListener('click', async () => {
+        if (!confirm('Xóa bài này vĩnh viễn?')) return;
+        const res = await fetch(`/api/admin/posts/${postId}`, { method: 'DELETE' });
+        if (!res.ok) {
+          alert('Xóa thất bại.');
+          return;
+        }
+        window.location.href = '/admin';
+      });
+    </script>
+  )
+}
