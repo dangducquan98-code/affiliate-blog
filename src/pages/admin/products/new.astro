@@ -23,7 +23,7 @@ if (!requireAdmin(Astro.cookies)) {
     <p id="error" class="admin-error" hidden></p>
     <form id="product-form" class="admin-form">
       <label>
-        Tên
+        Tên *
         <input name="name" required placeholder="Mic Boya BY-M1" />
       </label>
       <label>
@@ -31,7 +31,7 @@ if (!requireAdmin(Astro.cookies)) {
         <input name="slug" placeholder="tu-dong-tu-ten" />
       </label>
       <label>
-        Category
+        Category *
         <input name="category" required placeholder="mic, den, gimbal-tripod..." />
       </label>
       <label>
@@ -46,16 +46,20 @@ if (!requireAdmin(Astro.cookies)) {
         Image path/URL (optional)
         <input name="image" placeholder="ten-file.jpg hoặc URL" />
       </label>
-      <div class="admin-form__row">
-        <button class="btn btn--primary" type="submit">Lưu sản phẩm</button>
+      <div class="admin-form__actions">
+        <button class="btn btn--primary" type="submit" id="save-btn">Lưu sản phẩm</button>
+        <a class="btn btn--ghost" href="/admin/products">← Quay lại</a>
       </div>
     </form>
   </section>
 </BaseLayout>
 
 <script>
+  import { showToast, setLoading } from '../../../scripts/admin-shared';
+
   const form = document.getElementById('product-form') as HTMLFormElement | null;
   const errorEl = document.getElementById('error');
+  const saveBtn = document.getElementById('save-btn') as HTMLButtonElement | null;
 
   form?.addEventListener('submit', async (event) => {
     event.preventDefault();
@@ -73,19 +77,24 @@ if (!requireAdmin(Astro.cookies)) {
       image: String(data.get('image') || ''),
     };
 
+    setLoading(saveBtn, true, 'Đang lưu…');
     const res = await fetch('/api/admin/products', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload),
     });
     const result = await res.json().catch(() => ({}));
+    setLoading(saveBtn, false);
     if (!res.ok) {
+      const msg = result.error || 'Lưu thất bại.';
       if (errorEl) {
         errorEl.hidden = false;
-        errorEl.textContent = result.error || 'Lưu thất bại.';
+        errorEl.textContent = msg;
       }
+      showToast(msg, 'err');
       return;
     }
+    showToast('Đã tạo sản phẩm.');
     window.location.href = `/admin/products/${result.product.id}`;
   });
 </script>

@@ -18,6 +18,17 @@ const result = configured
       error: 'Supabase service role chưa cấu hình.',
       tableMissing: false,
     };
+
+const productsJson = JSON.stringify(
+  result.products.map((p) => ({
+    id: p.id,
+    name: p.name,
+    slug: p.slug,
+    category: p.category,
+    price_hint: p.price_hint,
+    has_affiliate: Boolean(p.affiliate_url),
+  })),
+);
 ---
 
 <BaseLayout
@@ -26,7 +37,7 @@ const result = configured
   canonicalPath="/admin/products"
   hideChrome={true}
 >
-  <section class="admin-shell">
+  <section class="admin-shell admin-shell--wide">
     <div class="admin-bar">
       <div>
         <h1 style="margin: 0;">Sản phẩm</h1>
@@ -36,7 +47,7 @@ const result = configured
       </div>
       <div class="admin-form__row">
         <a class="btn btn--primary" href="/admin/products/new">Thêm sản phẩm</a>
-        <a class="btn btn--ghost" href="/admin">← Bài viết</a>
+        <a class="btn btn--ghost" href="/admin">← Quay lại</a>
       </div>
     </div>
 
@@ -49,41 +60,141 @@ const result = configured
       )
     }
 
+    <div class="admin-toolbar">
+      <input id="product-search" type="search" placeholder="Tìm theo tên / slug…" autocomplete="off" />
+      <select id="affiliate-filter" aria-label="Lọc affiliate">
+        <option value="all">Tất cả link</option>
+        <option value="ok">Đã dán affiliate</option>
+        <option value="empty">Còn trống</option>
+      </select>
+    </div>
+
     {
       !result.error && result.products.length === 0 && (
-        <p class="fallback-notice">Chưa có sản phẩm. Thêm mới hoặc chạy seed trong migration.</p>
+        <p class="fallback-notice">
+          Chưa có sản phẩm. <a href="/admin/products/new">Thêm mới</a> hoặc chạy seed trong migration.
+        </p>
       )
     }
 
     {
       result.products.length > 0 && (
-        <table class="admin-table">
-          <thead>
-            <tr>
-              <th>Tên</th>
-              <th>Slug</th>
-              <th>Category</th>
-              <th>Giá gợi ý</th>
-              <th>Affiliate URL</th>
-            </tr>
-          </thead>
-          <tbody>
-            {result.products.map((p) => (
+        <div class="admin-table-wrap">
+          <table class="admin-table">
+            <thead>
               <tr>
-                <td>
-                  <a href={`/admin/products/${p.id}`}>{p.name}</a>
-                </td>
-                <td>
-                  <code>{p.slug}</code>
-                </td>
-                <td>{p.category}</td>
-                <td>{p.price_hint || '—'}</td>
-                <td>{p.affiliate_url ? 'Đã có' : 'Trống'}</td>
+                <th>Tên</th>
+                <th>Slug</th>
+                <th>Category</th>
+                <th>Giá</th>
+                <th>Affiliate</th>
+                <th>Thao tác</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody id="products-tbody" data-products={productsJson}></tbody>
+          </table>
+        </div>
       )
     }
+    <p id="products-empty-filter" class="fallback-notice" hidden>Không có sản phẩm khớp bộ lọc.</p>
   </section>
 </BaseLayout>
+
+<script>
+  import { showToast, setLoading } from '../../../scripts/admin-shared';
+
+  type Row = {
+    id: string;
+    name: string;
+    slug: string;
+    category: string;
+    price_hint: string;
+    has_affiliate: boolean;
+  };
+
+  const tbody = document.getElementById('products-tbody');
+  const searchEl = document.getElementById('product-search') as HTMLInputElement | null;
+  const filterEl = document.getElementById('affiliate-filter') as HTMLSelectElement | null;
+  const emptyFilter = document.getElementById('products-empty-filter');
+  const all: Row[] = tbody?.dataset.products ? JSON.parse(tbody.dataset.products) : [];
+
+  function escapeHtml(s: string): string {
+    return s
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;');
+  }
+
+  function filtered(): Row[] {
+    const q = (searchEl?.value || '').trim().toLowerCase();
+    const aff = filterEl?.value || 'all';
+    return all.filter((p) => {
+      if (aff === 'ok' && !p.has_affiliate) return false;
+      if (aff === 'empty' && p.has_affiliate) return false;
+      if (
+        q &&
+        !p.name.toLowerCase().includes(q) &&
+        !p.slug.toLowerCase().includes(q) &&
+        !(p.category || '').toLowerCase().includes(q)
+      ) {
+        return false;
+      }
+      return true;
+    });
+  }
+
+  function render() {
+    if (!tbody) return;
+    const rows = filtered();
+    if (emptyFilter) emptyFilter.hidden = rows.length > 0 || all.length === 0;
+    tbody.innerHTML = rows
+      .map(
+        (p) => `
+      <tr>
+        <td><a href="/admin/products/${p.id}">${escapeHtml(p.name)}</a></td>
+        <td><code>${escapeHtml(p.slug)}</code></td>
+        <td>${escapeHtml(p.category || '—')}</td>
+        <td>${escapeHtml(p.price_hint || '—')}</td>
+        <td>
+          <span class="admin-badge ${p.has_affiliate ? 'admin-badge--ok' : 'admin-badge--warn'}">
+            ${p.has_affiliate ? 'Đã dán' : 'Trống'}
+          </span>
+        </td>
+        <td>
+          <div class="admin-table__actions">
+            <a class="btn btn--ghost" href="/admin/products/${p.id}">Sửa</a>
+            <button class="btn btn--danger" type="button" data-delete="${p.id}">Xoá</button>
+          </div>
+        </td>
+      </tr>`,
+      )
+      .join('');
+  }
+
+  searchEl?.addEventListener('input', render);
+  filterEl?.addEventListener('change', render);
+
+  tbody?.addEventListener('click', async (event) => {
+    const btn = (event.target as HTMLElement | null)?.closest(
+      'button[data-delete]',
+    ) as HTMLButtonElement | null;
+    if (!btn) return;
+    const id = btn.dataset.delete || '';
+    const product = all.find((p) => p.id === id);
+    if (!id || !confirm(`Xoá sản phẩm “${product?.name || id}”?`)) return;
+    setLoading(btn, true, 'Đang xoá…');
+    const res = await fetch(`/api/admin/products/${id}`, { method: 'DELETE' });
+    if (!res.ok) {
+      setLoading(btn, false);
+      showToast('Xoá thất bại.', 'err');
+      return;
+    }
+    const idx = all.findIndex((p) => p.id === id);
+    if (idx >= 0) all.splice(idx, 1);
+    showToast('Đã xoá sản phẩm.');
+    render();
+  });
+
+  render();
+</script>

@@ -45,12 +45,32 @@ export const POST: APIRoute = async ({ request, cookies }) => {
   const parsed = parsePostPayload(body);
   if (parsed.error || !parsed.data) return json({ error: parsed.error || 'Invalid payload' }, 400);
 
+  const { data: existing } = await client
+    .from('posts')
+    .select('id')
+    .eq('slug', parsed.data.slug)
+    .maybeSingle();
+  if (existing) {
+    return json(
+      { error: `Slug "${parsed.data.slug}" đã tồn tại. Chọn slug khác.` },
+      409,
+    );
+  }
+
   const { data, error } = await client
     .from('posts')
     .insert(parsed.data)
     .select('*')
     .single();
 
-  if (error) return json({ error: error.message }, 500);
+  if (error) {
+    if (error.code === '23505' || /duplicate|unique/i.test(error.message)) {
+      return json(
+        { error: `Slug "${parsed.data.slug}" đã tồn tại. Chọn slug khác.` },
+        409,
+      );
+    }
+    return json({ error: error.message }, 500);
+  }
   return json({ post: data }, 201);
 };

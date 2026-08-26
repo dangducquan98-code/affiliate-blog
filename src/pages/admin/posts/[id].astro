@@ -25,9 +25,11 @@ const catalogJson = JSON.stringify(
     slug: p.slug,
     name: p.name,
     price_hint: p.price_hint,
+    has_affiliate: Boolean(p.affiliate_url),
   })),
 );
 const selectedJson = JSON.stringify(selectedSlugs);
+const category = post?.category || 'huong-dan';
 ---
 
 <BaseLayout
@@ -36,13 +38,15 @@ const selectedJson = JSON.stringify(selectedSlugs);
   canonicalPath={`/admin/posts/${id}`}
   hideChrome={true}
 >
-  <section class="admin-shell">
+  <section class="admin-shell admin-shell--wide">
     {
       !post ? (
         <div>
           <h1>Không tải được bài</h1>
           <p class="fallback-notice">{error || 'Bài không tồn tại.'}</p>
-          <a class="btn btn--ghost" href="/admin">← Danh sách</a>
+          <a class="btn btn--ghost" href="/admin">
+            ← Quay lại
+          </a>
         </div>
       ) : (
         <>
@@ -51,37 +55,59 @@ const selectedJson = JSON.stringify(selectedSlugs);
               <h1 style="margin: 0;">Sửa bài</h1>
               <p style="margin: 0.35rem 0 0; color: var(--ink-muted);">
                 <a href={`/blog/${post.slug}`} target="_blank" rel="noreferrer">
-                  Xem public →
+                  Xem trên blog →
                 </a>
+                {' · '}
+                <span class={`admin-badge ${post.published ? 'admin-badge--ok' : 'admin-badge--muted'}`}>
+                  {post.published ? 'Đã xuất bản' : 'Nháp'}
+                </span>
               </p>
             </div>
-            <a class="btn btn--ghost" href="/admin">← Danh sách</a>
+            <a class="btn btn--ghost" href="/admin">
+              ← Quay lại
+            </a>
           </div>
           <p id="error" class="admin-error" hidden></p>
-          <p id="status" style="color: var(--ink-muted);" hidden></p>
-          {
-            (catalogError || tableMissing) && (
-              <p class="fallback-notice">
-                {catalogError || 'Bảng products chưa có — vẫn sửa được bài, gắn catalog sau khi migrate.'}
-              </p>
-            )
-          }
-          <form id="post-form" class="admin-form" data-id={post.id}>
+          {(catalogError || tableMissing) && (
+            <p class="fallback-notice">
+              {catalogError ||
+                'Bảng products chưa có — vẫn sửa được bài, gắn catalog sau khi migrate.'}
+            </p>
+          )}
+          <form
+            id="post-form"
+            class="admin-form"
+            data-id={post.id}
+            data-published={post.published ? '1' : '0'}
+          >
             <label>
-              Tiêu đề
-              <input name="title" required value={post.title} />
+              Tiêu đề *
+              <input id="title" name="title" required value={post.title} />
             </label>
             <label>
-              Slug (URL)
-              <input name="slug" required value={post.slug} />
+              Slug (URL) *
+              <input id="slug" name="slug" required value={post.slug} />
             </label>
             <label>
-              Mô tả (SEO)
+              Mô tả (SEO) *
               <textarea name="description" style="min-height: 5rem;" required>{post.description}</textarea>
             </label>
             <label>
-              Category
-              <input name="category" required value={post.category} />
+              Category *
+              <select id="category" name="category" data-current={category} required>
+                <option value="huong-dan" selected={category === 'huong-dan'}>
+                  Hướng dẫn
+                </option>
+                <option value="review" selected={category === 'review'}>
+                  Review
+                </option>
+                <option value="so-sanh" selected={category === 'so-sanh'}>
+                  So sánh
+                </option>
+                <option value="deal" selected={category === 'deal'}>
+                  Deal / mua sắm
+                </option>
+              </select>
             </label>
             <label>
               Tags (phẩy)
@@ -93,33 +119,93 @@ const selectedJson = JSON.stringify(selectedSlugs);
             </label>
             <div class="admin-form__row">
               <input type="file" id="cover_file" accept="image/*" />
-              <button class="btn btn--ghost" type="button" id="upload-cover">Upload ảnh cover</button>
+              <button class="btn btn--ghost" type="button" id="upload-cover">
+                Upload ảnh cover
+              </button>
             </div>
-            <label>
-              Nội dung Markdown
-              <textarea name="content" required>{post.content}</textarea>
-            </label>
+            <div id="cover-preview-wrap" class="admin-cover-preview" hidden>
+              <img id="cover-preview" alt="Xem trước cover" />
+            </div>
+
+            <div class="admin-editor__meta">
+              <div class="admin-editor__tabs">
+                <button class="btn btn--ghost" type="button" id="tab-edit" aria-selected="true">
+                  Soạn thảo
+                </button>
+                <button class="btn btn--ghost" type="button" id="tab-preview" aria-selected="false">
+                  Xem trước
+                </button>
+                <button class="btn btn--ghost" type="button" id="tab-split" aria-selected="false">
+                  Song song
+                </button>
+              </div>
+              <span id="word-count" class="admin-hint">0 từ</span>
+            </div>
+            <p id="md-hint" class="admin-hint"></p>
+            <div id="editor-panes" class="admin-editor__panes">
+              <div id="edit-pane">
+                <label>
+                  Nội dung Markdown *
+                  <textarea id="content" name="content" class="admin-editor__textarea" required>{post.content}</textarea>
+                </label>
+              </div>
+              <div id="preview-pane" hidden>
+                <div id="preview" class="admin-preview prose"></div>
+              </div>
+            </div>
+
             <div>
               <p style="font-weight: 600; margin: 0 0 0.5rem;">Sản phẩm từ catalog</p>
+              <input
+                id="product-search"
+                type="search"
+                placeholder="Tìm sản phẩm theo tên / slug…"
+                style="margin-bottom: 0.65rem;"
+              />
               <div
                 id="products"
                 class="admin-products-pick"
                 data-catalog={catalogJson}
                 data-selected={selectedJson}
-              ></div>
+              />
             </div>
-            <label class="admin-form__row" style="font-weight: 600;">
-              <input type="checkbox" name="published" checked={post.published} />
-              Published
-            </label>
-            <div class="admin-form__row">
-              <button class="btn btn--primary" type="submit">Lưu thay đổi</button>
-              <button class="btn btn--ghost" type="button" id="toggle-publish">
-                {post.published ? 'Unpublish' : 'Publish nhanh'}
+
+            <input type="checkbox" name="published" checked={post.published} hidden />
+
+            <div class="admin-form__actions">
+              <button class="btn btn--ghost" type="button" id="save-draft">
+                Lưu nháp
               </button>
-              <button class="btn btn--danger" type="button" id="delete-post">Xóa bài</button>
+              <button class="btn btn--primary" type="button" id="save-publish">
+                Xuất bản
+              </button>
+              <button class="btn btn--ghost" type="button" id="unpublish">
+                Huỷ xuất bản
+              </button>
+              <button class="btn btn--danger" type="button" id="delete-post">
+                Xoá bài
+              </button>
             </div>
           </form>
+
+          <div class="admin-quick-product" style="margin-top: 1.25rem;">
+            <p style="margin: 0; font-weight: 600;">Thêm sản phẩm nhanh</p>
+            <p class="admin-hint">
+              Tạo product mới và tự gắn vào bài đang sửa — không cần rời trang.
+            </p>
+            <div id="quick-product-form">
+              <div class="admin-form__row">
+                <input id="qp-name" placeholder="Tên sản phẩm" style="flex: 1.4;" />
+                <input id="qp-slug" placeholder="slug (tuỳ chọn)" style="flex: 1;" />
+                <input id="qp-category" placeholder="category" value="khac" style="flex: 0.8;" />
+                <input id="qp-price" placeholder="Giá gợi ý" style="flex: 0.8;" />
+                <input id="qp-aff" placeholder="Affiliate URL (tuỳ chọn)" style="flex: 1.2;" />
+                <button class="btn btn--ghost" type="button" id="qp-submit">
+                  Thêm
+                </button>
+              </div>
+            </div>
+          </div>
         </>
       )
     }
@@ -129,131 +215,12 @@ const selectedJson = JSON.stringify(selectedSlugs);
 {
   post && (
     <script>
-      type CatalogItem = { slug: string; name: string; price_hint: string };
-
+      import { initPostEditor } from '../../../scripts/admin-post-editor';
       const form = document.getElementById('post-form') as HTMLFormElement | null;
-      const productsEl = document.getElementById('products');
-      const errorEl = document.getElementById('error');
-      const statusEl = document.getElementById('status');
-      const uploadBtn = document.getElementById('upload-cover');
-      const coverInput = document.getElementById('cover_image') as HTMLInputElement | null;
-      const coverFile = document.getElementById('cover_file') as HTMLInputElement | null;
-      const toggleBtn = document.getElementById('toggle-publish');
-      const deleteBtn = document.getElementById('delete-post');
-      const postId = form?.dataset.id || '';
-
-      const catalog: CatalogItem[] = productsEl?.dataset.catalog
-        ? JSON.parse(productsEl.dataset.catalog)
-        : [];
-      const selected = new Set<string>(
-        productsEl?.dataset.selected ? JSON.parse(productsEl.dataset.selected) : [],
-      );
-
-      function renderCatalog() {
-        if (!productsEl) return;
-        if (catalog.length === 0) {
-          productsEl.innerHTML =
-            '<p class="fallback-notice">Catalog trống. <a href="/admin/products">Thêm sản phẩm →</a></p>';
-          return;
-        }
-        productsEl.innerHTML = catalog
-          .map(
-            (p) => `
-          <label class="admin-products-pick__item">
-            <input type="checkbox" data-slug="${p.slug}" ${selected.has(p.slug) ? 'checked' : ''} />
-            <span>
-              <strong>${p.name}</strong>
-              <code>${p.slug}</code>
-              ${p.price_hint ? `<span class="muted">${p.price_hint}</span>` : ''}
-            </span>
-          </label>`,
-          )
-          .join('');
-      }
-
-      function readProducts(): { slug: string }[] {
-        if (!productsEl) return [];
-        return [...productsEl.querySelectorAll<HTMLInputElement>('input[data-slug]:checked')]
-          .map((input) => ({ slug: input.dataset.slug || '' }))
-          .filter((p) => p.slug);
-      }
-
-      renderCatalog();
-
-      uploadBtn?.addEventListener('click', async () => {
-        if (!coverFile?.files?.[0]) {
-          alert('Chọn file ảnh trước.');
-          return;
-        }
-        const body = new FormData();
-        body.append('file', coverFile.files[0]);
-        const res = await fetch('/api/admin/upload', { method: 'POST', body });
-        const payload = await res.json().catch(() => ({}));
-        if (!res.ok) {
-          alert(payload.error || 'Upload thất bại');
-          return;
-        }
-        if (coverInput) coverInput.value = payload.path || payload.url || '';
-        alert('Upload OK.');
-      });
-
-      form?.addEventListener('submit', async (event) => {
-        event.preventDefault();
-        if (errorEl) {
-          errorEl.hidden = true;
-          errorEl.textContent = '';
-        }
-        const data = new FormData(form);
-        const payload = {
-          title: String(data.get('title') || ''),
-          slug: String(data.get('slug') || ''),
-          description: String(data.get('description') || ''),
-          category: String(data.get('category') || ''),
-          tags: String(data.get('tags') || ''),
-          cover_image: String(data.get('cover_image') || ''),
-          content: String(data.get('content') || ''),
-          published: (form.elements.namedItem('published') as HTMLInputElement).checked,
-          products: readProducts(),
-        };
-
-        const res = await fetch(`/api/admin/posts/${postId}`, {
-          method: 'PUT',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload),
-        });
-        const result = await res.json().catch(() => ({}));
-        if (!res.ok) {
-          if (errorEl) {
-            errorEl.hidden = false;
-            errorEl.textContent = result.error || 'Lưu thất bại.';
-          }
-          return;
-        }
-        if (statusEl) {
-          statusEl.hidden = false;
-          statusEl.textContent = 'Đã lưu.';
-        }
-      });
-
-      toggleBtn?.addEventListener('click', async () => {
-        const published = !(form?.elements.namedItem('published') as HTMLInputElement).checked;
-        const res = await fetch(`/api/admin/posts/${postId}`, {
-          method: 'PUT',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ published }),
-        });
-        if (res.ok) window.location.reload();
-        else alert('Không đổi được trạng thái publish.');
-      });
-
-      deleteBtn?.addEventListener('click', async () => {
-        if (!confirm('Xóa bài này vĩnh viễn?')) return;
-        const res = await fetch(`/api/admin/posts/${postId}`, { method: 'DELETE' });
-        if (!res.ok) {
-          alert('Xóa thất bại.');
-          return;
-        }
-        window.location.href = '/admin';
+      initPostEditor({
+        mode: 'edit',
+        postId: form?.dataset.id || '',
+        initialPublished: form?.dataset.published === '1',
       });
     </script>
   )

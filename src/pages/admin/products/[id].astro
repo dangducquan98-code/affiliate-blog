@@ -31,7 +31,9 @@ if (!product && !error && !tableMissing) {
           <p class="fallback-notice">
             {error || (tableMissing ? 'Bảng products chưa tồn tại.' : 'Sản phẩm không tồn tại.')}
           </p>
-          <a class="btn btn--ghost" href="/admin/products">← Danh sách</a>
+          <a class="btn btn--ghost" href="/admin/products">
+            ← Quay lại
+          </a>
         </div>
       ) : (
         <>
@@ -40,23 +42,30 @@ if (!product && !error && !tableMissing) {
               <h1 style="margin: 0;">Sửa sản phẩm</h1>
               <p style="margin: 0.35rem 0 0; color: var(--ink-muted);">
                 /go/<code>{product.slug}</code>
+                {' · '}
+                <span
+                  class={`admin-badge ${product.affiliate_url ? 'admin-badge--ok' : 'admin-badge--warn'}`}
+                >
+                  {product.affiliate_url ? 'Đã dán affiliate' : 'Trống affiliate'}
+                </span>
               </p>
             </div>
-            <a class="btn btn--ghost" href="/admin/products">← Danh sách</a>
+            <a class="btn btn--ghost" href="/admin/products">
+              ← Quay lại
+            </a>
           </div>
           <p id="error" class="admin-error" hidden></p>
-          <p id="status" style="color: var(--ink-muted);" hidden></p>
           <form id="product-form" class="admin-form" data-id={product.id}>
             <label>
-              Tên
+              Tên *
               <input name="name" required value={product.name} />
             </label>
             <label>
-              Slug (khớp /go)
+              Slug (khớp /go) *
               <input name="slug" required value={product.slug} />
             </label>
             <label>
-              Category
+              Category *
               <input name="category" required value={product.category} />
             </label>
             <label>
@@ -71,9 +80,13 @@ if (!product && !error && !tableMissing) {
               Image path/URL (optional)
               <input name="image" value={product.image ?? ''} />
             </label>
-            <div class="admin-form__row">
-              <button class="btn btn--primary" type="submit">Lưu thay đổi</button>
-              <button class="btn btn--danger" type="button" id="delete-product">Xóa</button>
+            <div class="admin-form__actions">
+              <button class="btn btn--primary" type="submit" id="save-btn">
+                Lưu thay đổi
+              </button>
+              <button class="btn btn--danger" type="button" id="delete-product">
+                Xoá
+              </button>
             </div>
           </form>
         </>
@@ -85,10 +98,12 @@ if (!product && !error && !tableMissing) {
 {
   product && (
     <script>
+      import { showToast, setLoading } from '../../../scripts/admin-shared';
+
       const form = document.getElementById('product-form') as HTMLFormElement | null;
       const errorEl = document.getElementById('error');
-      const statusEl = document.getElementById('status');
-      const deleteBtn = document.getElementById('delete-product');
+      const deleteBtn = document.getElementById('delete-product') as HTMLButtonElement | null;
+      const saveBtn = document.getElementById('save-btn') as HTMLButtonElement | null;
       const productId = form?.dataset.id || '';
 
       form?.addEventListener('submit', async (event) => {
@@ -107,32 +122,36 @@ if (!product && !error && !tableMissing) {
           image: String(data.get('image') || ''),
         };
 
+        setLoading(saveBtn, true, 'Đang lưu…');
         const res = await fetch(`/api/admin/products/${productId}`, {
           method: 'PUT',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(payload),
         });
         const result = await res.json().catch(() => ({}));
+        setLoading(saveBtn, false);
         if (!res.ok) {
+          const msg = result.error || 'Lưu thất bại.';
           if (errorEl) {
             errorEl.hidden = false;
-            errorEl.textContent = result.error || 'Lưu thất bại.';
+            errorEl.textContent = msg;
           }
+          showToast(msg, 'err');
           return;
         }
-        if (statusEl) {
-          statusEl.hidden = false;
-          statusEl.textContent = 'Đã lưu.';
-        }
+        showToast('Đã lưu sản phẩm.');
       });
 
       deleteBtn?.addEventListener('click', async () => {
-        if (!confirm('Xóa sản phẩm này?')) return;
+        if (!confirm('Xoá sản phẩm này?')) return;
+        setLoading(deleteBtn, true, 'Đang xoá…');
         const res = await fetch(`/api/admin/products/${productId}`, { method: 'DELETE' });
+        setLoading(deleteBtn, false);
         if (!res.ok) {
-          alert('Xóa thất bại.');
+          showToast('Xoá thất bại.', 'err');
           return;
         }
+        showToast('Đã xoá.');
         window.location.href = '/admin/products';
       });
     </script>
