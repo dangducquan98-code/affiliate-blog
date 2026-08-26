@@ -2,7 +2,7 @@
 import Analytics from '@vercel/analytics/astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import { getSiteUrl } from '../lib/site';
+import { BRAND_NAME, getSiteUrl } from '../lib/site';
 import '../styles/global.css';
 
 interface Props {
@@ -11,6 +11,7 @@ interface Props {
   canonicalPath?: string;
   ogImage?: string;
   ogType?: string;
+  hideChrome?: boolean;
 }
 
 const {
@@ -19,14 +20,13 @@ const {
   canonicalPath = Astro.url.pathname,
   ogImage = '/og-default.svg',
   ogType = 'website',
+  hideChrome = false,
 } = Astro.props;
 
 const siteUrl = getSiteUrl().replace(/\/$/, '');
 const canonical = new URL(canonicalPath, `${siteUrl}/`).href;
 const ogImageUrl = new URL(ogImage, `${siteUrl}/`).href;
-const fullTitle = title.includes('Kiu Chốt Deal')
-  ? title
-  : `${title} · Kiu Chốt Deal`;
+const fullTitle = title.includes(BRAND_NAME) ? title : `${title} · ${BRAND_NAME}`;
 ---
 
 <!doctype html>
@@ -43,7 +43,7 @@ const fullTitle = title.includes('Kiu Chốt Deal')
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={ogImageUrl} />
     <meta property="og:locale" content="vi_VN" />
-    <meta property="og:site_name" content="Kiu Chốt Deal" />
+    <meta property="og:site_name" content={BRAND_NAME} />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={fullTitle} />
     <meta name="twitter:description" content={description} />
@@ -58,11 +58,11 @@ const fullTitle = title.includes('Kiu Chốt Deal')
   </head>
   <body>
     <div class="site-wrap">
-      <Header />
+      {!hideChrome && <Header />}
       <main class="site-main">
         <slot />
       </main>
-      <Footer />
+      {!hideChrome && <Footer />}
     </div>
     <Analytics />
   </body>
