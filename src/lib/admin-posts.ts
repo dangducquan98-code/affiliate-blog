@@ -16,6 +16,8 @@ export type DisplayProduct = {
   slug: string;
   name: string;
   priceHint: string;
+  /** True when catalog has a non-empty affiliate_url, or legacy product (env fallback via /go). */
+  hasLink: boolean;
 };
 
 export function isLegacyProduct(item: PostProduct): item is PostProductLegacy {
@@ -81,10 +83,12 @@ export function resolveDisplayProducts(
       if (!slug) return null;
       const fromCatalog = catalog.get(slug);
       if (fromCatalog) {
+        const url = fromCatalog.affiliate_url?.trim() ?? '';
         return {
           slug,
           name: fromCatalog.name,
           priceHint: fromCatalog.price_hint,
+          hasLink: url.length > 0,
         };
       }
       if (isLegacyProduct(item)) {
@@ -92,9 +96,10 @@ export function resolveDisplayProducts(
           slug: item.goSlug,
           name: item.name,
           priceHint: item.priceHint,
+          hasLink: true,
         };
       }
-      return { slug, name: slug, priceHint: '' };
+      return { slug, name: slug, priceHint: '', hasLink: false };
     })
     .filter((item): item is DisplayProduct => item !== null);
 }

@@ -74,7 +74,7 @@ describe('resolveDisplayProducts', () => {
           name: 'Mic Boya',
           category: 'mic',
           price_hint: '~200k',
-          affiliate_url: null,
+          affiliate_url: 'https://shopee.vn/example',
           image: null,
           created_at: '',
           updated_at: '',
@@ -86,15 +86,43 @@ describe('resolveDisplayProducts', () => {
       catalog,
     );
     assert.deepEqual(display, [
-      { slug: 'mic-boya-m1', name: 'Mic Boya', priceHint: '~200k' },
-      { slug: 'ugreen-hub-uno', name: 'Hub cũ', priceHint: '300k' },
+      { slug: 'mic-boya-m1', name: 'Mic Boya', priceHint: '~200k', hasLink: true },
+      { slug: 'ugreen-hub-uno', name: 'Hub cũ', priceHint: '300k', hasLink: true },
+    ]);
+  });
+
+  it('sets hasLink false when catalog affiliate_url is empty', () => {
+    const catalog = new Map([
+      [
+        'diamondhook-bo-the',
+        {
+          id: '2',
+          slug: 'diamondhook-bo-the',
+          name: 'Diamond Hook',
+          category: 'other',
+          price_hint: '~50k',
+          affiliate_url: null,
+          image: null,
+          created_at: '',
+          updated_at: '',
+        },
+      ],
+    ]);
+    const display = resolveDisplayProducts([{ slug: 'diamondhook-bo-the' }], catalog);
+    assert.deepEqual(display, [
+      {
+        slug: 'diamondhook-bo-the',
+        name: 'Diamond Hook',
+        priceHint: '~50k',
+        hasLink: false,
+      },
     ]);
   });
 
   it('uses slug as name when catalog miss', () => {
     const display = resolveDisplayProducts([{ slug: 'unknown-gear' }], new Map());
     assert.deepEqual(display, [
-      { slug: 'unknown-gear', name: 'unknown-gear', priceHint: '' },
+      { slug: 'unknown-gear', name: 'unknown-gear', priceHint: '', hasLink: false },
     ]);
   });
 });

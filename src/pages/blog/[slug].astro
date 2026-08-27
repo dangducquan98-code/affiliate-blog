@@ -118,9 +118,11 @@ const jsonLd = post
                       </div>
                     )}
                   </div>
-                  <a class="btn btn--primary" href={`/go/${product.slug}`}>
-                    Xem deal
-                  </a>
+                  {product.hasLink && (
+                    <a class="btn btn--primary" href={`/go/${product.slug}`}>
+                      Xem deal
+                    </a>
+                  )}
                 </li>
               ))}
             </ul>
