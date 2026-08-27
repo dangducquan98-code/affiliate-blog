@@ -82,6 +82,8 @@ Hiểu đơn giản (không thay thế điều khoản từng sàn — anh em t�
 
 Năm bước đó không đảm bảo tháng đầu có lương. Chúng giảm xác suất bạn bỏ cuộc vì tự làm hỏng trust.
 
+FAQ xong rồi thì cần khung việc thật: thử [7 ngày affiliate](/blog/7-ngay-affiliate). Nếu view có mà đơn không, soi [5 sai lầm review](/blog/5-sai-lam-review).
+
 ## Kết
 
 FAQ này cố ý không có list “mua ngay đồ này”. Vì câu hỏi người mới thật ra không phải thiếu link — thiếu thứ tự. Bao giờ có tiền, bao nhiêu follow, xin hàng lúc nào, quay gì trước, cookie chạy sao: năm câu đó nếu trả lời bằng deal sẽ thành vòng lặp mệt.

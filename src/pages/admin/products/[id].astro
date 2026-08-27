@@ -46,7 +46,7 @@ if (!product && !error && !tableMissing) {
                 <span
                   class={`admin-badge ${product.affiliate_url ? 'admin-badge--ok' : 'admin-badge--warn'}`}
                 >
-                  {product.affiliate_url ? 'Đã dán affiliate' : 'Trống affiliate'}
+                  {product.affiliate_url ? 'Đã dán affiliate' : '⚠ Chưa dán link — publish bài gắn SP sẽ bị chặn'}
                 </span>
               </p>
             </div>
@@ -55,6 +55,11 @@ if (!product && !error && !tableMissing) {
             </a>
           </div>
           <p id="error" class="admin-error" hidden></p>
+          {!product.affiliate_url && (
+            <p class="fallback-notice">
+              Chưa dán link affiliate. Điền URL Shopee bên dưới trước khi gắn sản phẩm vào bài và publish.
+            </p>
+          )}
           <form id="product-form" class="admin-form" data-id={product.id}>
             <label>
               Tên *
@@ -73,8 +78,13 @@ if (!product && !error && !tableMissing) {
               <input name="price_hint" value={product.price_hint} />
             </label>
             <label>
-              Affiliate URL (Shopee)
-              <input name="affiliate_url" type="url" value={product.affiliate_url ?? ''} />
+              Affiliate URL (Shopee) — bắt buộc trước khi publish bài gắn SP
+              <input
+                name="affiliate_url"
+                type="url"
+                value={product.affiliate_url ?? ''}
+                placeholder="https://s.shopee.vn/..."
+              />
             </label>
             <label>
               Image path/URL (optional)

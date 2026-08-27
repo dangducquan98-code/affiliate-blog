@@ -100,6 +100,8 @@ Cũng đừng biến script thành kịch sân khấu. Không cần thoại bón
 
 Tick được thì quay. Thiếu script thì đừng “lấy cảm hứng” bằng cách bấm record rồi tính sau — mình đã thử, mệt phết.
 
+Kịch bản chỉ work nếu 3 giây đầu đủ dừng người — khung mình hay dùng nằm ở [hook TikTok 3 giây](/blog/tiktok-hook-3-giay). Sau khi cắt xong, đừng quên [viết mô tả SEO](/blog/huong-dan-viet-mo-ta-video-seo) cho caption.
+
 ## Kết
 
 Kịch bản tốt không làm video nhàm. Nó làm video **bớt ôm đồm**. Freestyle không phải tội. Freestyle không có điểm đến mới là tội — với cả thời gian dựng lẫn cookie affiliate.

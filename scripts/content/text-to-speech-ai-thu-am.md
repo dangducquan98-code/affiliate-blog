@@ -70,6 +70,8 @@ Cũng không dùng TTS để đóng giả “đang livestream tư vấn” nếu
 
 Mình dùng cả hai. Không thần thánh hóa AI. Không kỳ thị AI. Chọn theo việc.
 
+TTS giúp nhanh, nhưng hook và mô tả vẫn quyết định người xem dừng lại — xem [hook 3 giây](/blog/tiktok-hook-3-giay) và [mô tả SEO](/blog/huong-dan-viet-mo-ta-video-seo).
+
 ## Kết
 
 Chuyển văn bản thành thu âm không phải “không cần giọng nữa”. Nó là cách giữ nhịp đăng khi đời thực (máy lạnh, Gấu, deadline BA) xen vào. Viết như đang nói, test giọng trên điện thoại, train khi cần đồng bộ, và vẫn giữ mic sạch cho ngày muốn nói thật.

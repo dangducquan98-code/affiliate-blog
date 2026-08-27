@@ -1,0 +1,28 @@
+---
+import type { RelatedPostSummary } from '../lib/posts';
+
+interface Props {
+  posts: RelatedPostSummary[];
+}
+
+const { posts } = Astro.props;
+---
+
+{
+  posts.length > 0 && (
+    <section class="related-posts" aria-label="Đọc tiếp">
+      <h2>Đọc tiếp</h2>
+      <p class="related-posts__lead">Cùng cụm chủ đề — đọc tiếp nếu còn hứng.</p>
+      <ul class="related-posts__list">
+        {posts.map((p) => (
+          <li>
+            <a href={`/blog/${p.slug}`}>
+              <strong>{p.title}</strong>
+              <span>{p.description}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+  )
+}

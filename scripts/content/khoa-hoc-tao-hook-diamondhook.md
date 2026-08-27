@@ -139,6 +139,8 @@ Không bắt buộc. Nhiều người làm được chỉ với sổ tay + đọ
 
 Nếu đang ở tuần đầu: đừng tối ưu mua sắm. Làm bài tập 20 phút ở trên đã. Khi nào cảm thấy “thiếu randomizer tư duy” thật sự, lúc đó mới xem [bộ thẻ DiamondHook](/go/diamondhook-bo-the) cho đáng.
 
+Khoá hook chỉ là một góc — mình vẫn luyện khung tự viết trong [hook TikTok 3 giây](/blog/tiktok-hook-3-giay) và [tổng hợp câu hook](/blog/tong-hop-cau-hook-tiktok) trước khi chi thêm.
+
 ## Kết
 
 Tạo phần mở đầu hấp dẫn là kỹ năng lặp lại được: có ý tưởng rõ, chọn một tư duy móc, viết ngắn, test bằng loa điện thoại, rồi mới dựng dài. Tool chỉ là bàn đạp.

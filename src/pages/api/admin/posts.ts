@@ -1,6 +1,7 @@
 import type { APIRoute } from 'astro';
 import { requireAdmin } from '../../../lib/admin-auth';
 import { parsePostPayload } from '../../../lib/admin-posts';
+import { rejectIfMissingAffiliateUrls } from '../../../lib/publish-affiliate-check';
 import { createServiceClient, isSupabaseServiceConfigured } from '../../../lib/supabase';
 
 export const prerender = false;
@@ -8,7 +9,7 @@ export const prerender = false;
 function json(data: unknown, status = 200): Response {
   return new Response(JSON.stringify(data), {
     status,
-    headers: { 'Content-Type': 'application/json' },
+    headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store' },
   });
 }
 
@@ -44,6 +45,11 @@ export const POST: APIRoute = async ({ request, cookies }) => {
 
   const parsed = parsePostPayload(body);
   if (parsed.error || !parsed.data) return json({ error: parsed.error || 'Invalid payload' }, 400);
+
+  if (parsed.data.published) {
+    const blocked = await rejectIfMissingAffiliateUrls(client, parsed.data.products);
+    if (blocked) return blocked;
+  }
 
   const { data: existing } = await client
     .from('posts')

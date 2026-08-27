@@ -74,6 +74,8 @@ Có tuần mình chỉ làm được 3 clip thay vì 7. Không sao. Quan trọng
 
 **Ảo tưởng 4:** Phải giấu cảm xúc mệt. Ơ… mệt thì nói mệt, miễn đừng biến thành drama kéo view. Người xem nhận ra giả tạo nhanh lắm.
 
+Hành trình không thay checklist kỹ thuật — nếu bạn đang kẹt hook/kịch bản, nhảy sang [hook 3 giây](/blog/tiktok-hook-3-giay) và [FAQ affiliate](/blog/faq-bat-dau-affiliate).
+
 ## Kết — hành trình “không có gì bùng nổ” vẫn đáng kể
 
 Từ 200 view đến ~4K follow, mình không có khoảnh khắc “đêm đó đổi đời”. Mình có nhiều buổi tối ngồi cắt video trong khi ngoài kia người khác đang scroll giải trí. Có lần muốn bỏ. Có lần so sánh rồi tự cười vì đang so với người chơi game khác.

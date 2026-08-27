@@ -73,6 +73,8 @@ Khi mình loạn — tuần bán dày rồi tự ân hận — mình hay mở l�
 
 Cái mình cần nhớ mỗi ngày không nằm ở bìa sách. Nằm ở câu hỏi: hôm nay mình đang cho gì trước khi xin click?
 
+Mindset này chỉ “nghe hay” nếu bạn vẫn đăng đều — xem [hành trình 4K follow](/blog/hanh-trinh-4k-follow) và khung [7 ngày affiliate](/blog/7-ngay-affiliate) để biến tư duy thành việc nhỏ.
+
 ## Kết
 
 Câu mình từng ghét giờ thành câu mình áp dụng mỗi ngày — không vì đạo đức giả, vì toán đơn giản: tin → click → cookie → đơn (đôi khi muộn). Bán trước phá mắt xích đầu. Phá mắt xích đầu thì hoa hồng trên giấy chỉ để tự an ủi.

@@ -211,3 +211,66 @@ export async function hydratePostProducts(post: Post) {
   const { bySlug } = await getProductsBySlugs(slugs);
   return resolveDisplayProducts(post.products, bySlug);
 }
+
+export type RelatedPostSummary = {
+  slug: string;
+  title: string;
+  description: string;
+  category: string;
+};
+
+/** 2–3 related published posts: same category first, then cluster peers. */
+export async function listRelatedPosts(
+  current: Pick<Post, 'slug' | 'category'>,
+  limit = 3,
+): Promise<RelatedPostSummary[]> {
+  const { createAnonClient, isSupabaseConfigured } = await import('./supabase');
+  const { clusterPeersOf, normalizeCategorySlug } = await import('./content-clusters');
+
+  if (!isSupabaseConfigured()) return [];
+  const client = createAnonClient();
+  if (!client) return [];
+
+  const category = normalizeCategorySlug(current.category);
+  const peerSlugs = clusterPeersOf(current.slug);
+
+  try {
+    const { data, error } = await client
+      .from('posts')
+      .select('slug, title, description, category')
+      .eq('published', true)
+      .neq('slug', current.slug)
+      .order('created_at', { ascending: false })
+      .limit(40);
+
+    if (error || !data) return [];
+
+    const rows = data.map((row) => ({
+      slug: String(row.slug),
+      title: String(row.title),
+      description: String(row.description ?? ''),
+      category: String(row.category ?? ''),
+    }));
+
+    const sameCategory = rows.filter(
+      (p) => normalizeCategorySlug(p.category) === category,
+    );
+    const peerSet = new Set(peerSlugs);
+    const fromCluster = rows.filter((p) => peerSet.has(p.slug));
+
+    const picked: RelatedPostSummary[] = [];
+    const seen = new Set<string>();
+
+    for (const list of [sameCategory, fromCluster, rows]) {
+      for (const p of list) {
+        if (seen.has(p.slug)) continue;
+        seen.add(p.slug);
+        picked.push(p);
+        if (picked.length >= limit) return picked;
+      }
+    }
+    return picked;
+  } catch {
+    return [];
+  }
+}

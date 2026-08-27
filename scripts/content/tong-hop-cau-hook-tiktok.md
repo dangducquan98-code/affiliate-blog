@@ -173,6 +173,8 @@ Không. Thuộc 3 nhóm khớp ngách là đủ để đăng đều một tháng
 
 List dài để lúc bí có chỗ mở. Không phải để nhồi mọi video thành “5 bí mật chuyên gia không muốn bạn biết”.
 
+Kho câu chỉ là nguyên liệu — cách mình xếp hook vào mạch video nằm ở [hook 3 giây](/blog/tiktok-hook-3-giay) và [kịch bản quay ngắn](/blog/tiktok-kich-ban-quay-ngan).
+
 ## Kết
 
 Hook giữ chân không phải câu copy đẹp nhất. Là câu đúng nhất với nỗi đau tuần này của audience anh em. Kho trên là nguyên liệu. Gia vị là chuyện thật của bạn.

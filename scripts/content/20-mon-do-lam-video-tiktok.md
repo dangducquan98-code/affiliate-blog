@@ -115,6 +115,8 @@ Quay ngoài, đi xa, livestream dài: hết pin giữa take là… bỏ xừ. S�
 
 Ba link ở trên (đèn, tripod, mic) là “tầng một” mình thấy hay đau sớm. Các món còn lại — mua đúng nỗi đau, không mua đúng FOMO.
 
+Đồ không thay thế nội dung — nếu bạn còn kẹt “quay cái gì”, đọc [chọn sản phẩm review](/blog/tiktok-chon-san-pham-review) rồi mới mua thêm. Muốn thấy mình dùng gear trong quy trình thật: [hậu trường 30 giây](/blog/hau-truong-1-video-30-giay).
+
 ## Kết
 
 20+ món nghe nhiều. Thực tế tuần đầu chỉ cần vài món (hoặc không món nào ngoài điện thoại). List này để anh em **biết tên đồ** khi gặp vấn đề — không phải để đốt lương tháng một chiều.

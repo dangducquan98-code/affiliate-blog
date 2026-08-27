@@ -66,6 +66,8 @@ Hậu quả: mình đuổi view bằng hiệu ứng, text giật, nhạc trendin
 
 View là cửa. Niềm tin mới là hành lang tới cookie. Cookie-based affiliate sống nhờ người xem còn nhớ mình sau khi tắt app — rồi mới mua. Muốn vậy thì clip phải để lại gì đó ngoài “deal hôm nay”.
 
+Sửa sai lầm sẽ bền hơn nếu bạn giữ [giá trị trước, bán hàng sau](/blog/gia-tri-truoc-ban-hang-sau). Còn lộ trình làm việc từng ngày: [7 ngày affiliate](/blog/7-ngay-affiliate).
+
 ## Pattern chung mình thấy sau khi mắc đủ
 
 Năm sai trên nhìn khác nhau, nhưng chung một gốc: **mình ưu tiên chốt đơn trước khi kiếm quyền được nói.**

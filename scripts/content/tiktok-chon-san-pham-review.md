@@ -102,6 +102,8 @@ Tripod linh hoạt? Mình có dùng khi mỏi tay — nhưng không phải món 
 
 Nếu tick được 4/5, quay. Nếu dưới 3, để đó — đừng chữa cháy bằng caption dài.
 
+Chọn sản phẩm xong mà mở video bằng giá thì dễ mất niềm tin — mình từng mắc đủ trong [5 sai lầm review](/blog/5-sai-lam-review). Tư duy dài hơi hơn nằm ở [giá trị trước, bán hàng sau](/blog/gia-tri-truoc-ban-hang-sau).
+
 ## Kết
 
 Chọn sản phẩm không phải bước “sáng tạo”. Nó là bước **đỡ phí công**. Quay hai mươi video sai sản phẩm mệt phết hơn quay năm video đúng vấn đề. Cookie affiliate cũng vậy: nhiều click rỗng không bằng ít click đúng người đang cần.

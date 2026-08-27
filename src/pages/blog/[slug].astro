@@ -3,7 +3,8 @@ export const prerender = false;
 
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import BlogImage from '../../components/BlogImage.astro';
-import { getPublishedPostBySlug, hydratePostProducts } from '../../lib/posts';
+import RelatedPosts from '../../components/RelatedPosts.astro';
+import { getPublishedPostBySlug, hydratePostProducts, listRelatedPosts } from '../../lib/posts';
 import { renderMarkdown } from '../../lib/markdown';
 import { getPublicStorageUrl } from '../../lib/supabase';
 import { BRAND_NAME, getSiteUrl } from '../../lib/site';
@@ -17,6 +18,7 @@ if (!post && configured && !error) {
 
 const html = post ? renderMarkdown(post.content) : '';
 const displayProducts = post ? await hydratePostProducts(post) : [];
+const related = post ? await listRelatedPosts(post, 3) : [];
 const dateLabel = post
   ? new Date(post.created_at).toLocaleDateString('vi-VN', {
       year: 'numeric',
@@ -124,6 +126,7 @@ const jsonLd = post
             </ul>
           </section>
         )}
+        <RelatedPosts posts={related} />
       </article>
       {jsonLd && (
         <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />

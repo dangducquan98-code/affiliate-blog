@@ -136,6 +136,8 @@ Không. Ads mua reach. Mô tả tốt giúp discovery tự nhiên và lần tìm
 
 Cũng đừng biến mọi video thành trang bán. Content-first: bỏ hết link, đọc lại caption + xem lại clip — còn đáng dừng không? Không đáng thì sửa nội dung trước khi tối ưu hashtag.
 
+Mô tả đẹp không cứu được hook yếu — nếu video bị vuốt sớm, quay lại [hook 3 giây](/blog/tiktok-hook-3-giay). Muốn thấy timeline thật từ chọn chuyện đến đăng, đọc [hậu trường 1 video 30 giây](/blog/hau-truong-1-video-30-giay).
+
 ## Kết
 
 Mô tả chuẩn SEO TikTok Việt Nam không phải nghệ thuật tối mật. Là nói đúng tên món, đúng nỗi đau, đúng chữ người ta gõ — ngắn, sạch, khớp video. Làm đều mỗi lần đăng còn hơn tối ưu một lần rồi bỏ.

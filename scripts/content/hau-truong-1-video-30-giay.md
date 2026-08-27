@@ -95,6 +95,8 @@ Có đêm mình chỉ có 60 phút thật. Khi đó mình giảm scope: tái s�
 
 Tick đủ thì 3 tiếng không phí. Thiếu tick mà đăng vẫn được — chỉ là mình đang đánh bạc với reach.
 
+Hậu trường này sẽ đỡ “mất thời gian vô ích” nếu bạn đã có khung [hook](/blog/tiktok-hook-3-giay) và [kịch bản](/blog/tiktok-kich-ban-quay-ngan) trước khi bấm quay. Danh sách đồ mình từng đụng: [20 món đồ làm video](/blog/20-mon-do-lam-video-tiktok).
+
 ## Kết
 
 30 giây trên For You là phần nổi. Phần chìm là chọn chuyện, viết, quay lại, cắt, và ngồi nói với người xem sau khi đăng. Mình kể timeline này không để khoe chăm chỉ — để anh em đặt kỳ vọng đúng trước khi tự mắng mình “sao chậm vậy”.

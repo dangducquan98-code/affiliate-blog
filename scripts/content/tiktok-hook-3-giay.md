@@ -107,6 +107,8 @@ Cũng có lúc hook mạnh quá so với nội dung mỏng — retention tụt �
 
 Tick 4/5 rồi hãy bấm đăng. Thiếu tiếng hoặc thiếu sáng thì sửa setup trước — đừng chữa bằng caption.
 
+Hook xong rồi mà thân video loãng thì người xem vẫn vuốt — mình gom nhịp claim → bằng chứng → chốt trong [kịch bản quay ngắn](/blog/tiktok-kich-ban-quay-ngan). Cần “kho câu” luyện thêm thì lật [tổng hợp câu hook](/blog/tong-hop-cau-hook-tiktok).
+
 ## Kết
 
 Ba giây đầu không cần đẹp. Cần **rõ vấn đề**. Đẹp mà mơ hồ vẫn chết. Xấu nhẹ mà đúng nỗi đau thì thường sống. Có thế thôi — phần còn lại là đừng phản bội giây đầu bằng thân bài mỏng.

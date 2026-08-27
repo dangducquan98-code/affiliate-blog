@@ -87,6 +87,8 @@ Cộng đồng hay kể kiểu: kênh chỉ review gia dụng, mỗi clip có tr
 
 Tài khoản mới lên view? Đăng đều, nhạc/hashtag trending vừa phải, tương tác thật. Kênh cá nhân vs team? Cá nhân dễ dựng thương hiệu; team dễ ra nhiều clip. Bị bóp reach? Đổi dạng video, tăng comment chất, đừng spam link.
 
+Lộ trình 7 ngày dễ lệch nếu bạn chưa rõ câu hỏi cơ bản — đọc [FAQ bắt đầu affiliate](/blog/faq-bat-dau-affiliate) trước khi ép KPI đơn. Và nhớ [giá trị trước](/blog/gia-tri-truoc-ban-hang-sau) kẻo lại hard-sell sớm.
+
 ## Kết
 
 Bảy ngày không biến anh em thành “pro overnight”. Bảy ngày đủ để dựng thói quen đúng thứ tự: ngách → giá trị → hook → checklist → sửa lỗi → đọc số → chỉ mua gear khi đau thật.
