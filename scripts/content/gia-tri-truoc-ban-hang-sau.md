@@ -69,11 +69,19 @@ Bán hàng sau không phải bán yếu. Là bán khi đã có quyền được 
 
 ## Công cụ giúp mình nhớ thứ tự (không bắt buộc)
 
-Khi mình loạn — tuần bán dày rồi tự ân hận — mình hay mở lại checklist kiểu lộ trình ngắn: ngách → giá trị → hook → CTA muộn. Có giai đoạn mình gom ý từ sách **7 Ngày Affiliate** rồi viết lại theo cách mình hiểu trên kênh ~4K. Nếu anh em thích bản đóng gói sẵn (mẫu script + checklist), có link sạch: [sách 7 Ngày Affiliate](/go/sach-7-ngay-affiliate). Không mua sách vẫn làm được nếu tự ghi sổ và quay đều — sách chỉ là một cách nhớ thứ tự thôi.
+Khi mình loạn — tuần bán dày rồi tự ân hận — mình hay mở lại checklist: ngách → giá trị → hook → CTA muộn. Có giai đoạn mình gom ý từ sách **7 Ngày Affiliate** rồi viết lại theo cách mình hiểu trên kênh ~4K. Nếu anh em thích bản đóng gói sẵn (mẫu script + checklist), link mình để sạch khi cần: [sách 7 Ngày Affiliate](/go/sach-7-ngay-affiliate). Không mua sách vẫn làm được nếu tự ghi sổ và quay đều — sách chỉ là một cách nhớ thứ tự.
 
 Cái mình cần nhớ mỗi ngày không nằm ở bìa sách. Nằm ở câu hỏi: hôm nay mình đang cho gì trước khi xin click?
 
 Mindset này chỉ “nghe hay” nếu bạn vẫn đăng đều — xem [hành trình 4K follow](/blog/hanh-trinh-4k-follow) và khung [7 ngày affiliate](/blog/7-ngay-affiliate) để biến tư duy thành việc nhỏ.
+
+## FAQ nhanh
+
+**Content-first có nghĩa là không được gắn link?** Không. Được gắn — sau khi đã cho quan điểm / bài học, một lần đủ rõ.
+
+**Cookie có cần người ta mua ngay trong clip không?** Không luôn. Nhiều đơn đến từ người đã quen mặt rồi mua sau trong cửa sổ cookie.
+
+**Tuần này nên thử gì nếu đang bán dày?** Một clip bỏ giá khỏi 5 giây đầu; CTA một câu cuối hoặc để bio. Đo comment/save, không chỉ view.
 
 ## Kết
 

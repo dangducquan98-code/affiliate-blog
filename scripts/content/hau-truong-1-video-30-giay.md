@@ -52,13 +52,13 @@ Lý do 1 tiếng:
 
 Không glamorous. Nhưng đây là chỗ tạo độ thật. Take đầu thường giả nhất.
 
-Gear mình thực sự đụng trong bước này (không phải list wishlist):
+Gear mình thực sự đụng trong bước này (không phải list wishlist) — mình đang dùng đúng lúc đau:
 
-- [Mic Boya BY-M1](/go/mic-boya-m1) khi phòng ồn / máy lạnh.
-- [Đèn vòng 10 inch](/go/den-ring-light-10) khi tối hoặc góc thiếu sáng.
+- [Mic Boya BY-M1](/go/mic-boya-m1) khi phòng ồn / máy lạnh — rẻ mà đủ để take sạch hơn mic máy.
+- [Đèn vòng 10 inch](/go/den-ring-light-10) khi tối hoặc góc thiếu sáng — một góc bàn, không cần panel đắt.
 - [Tripod điện thoại linh hoạt](/go/tripod-phone-flexible) khi cần khung ổn định và rảnh tay chỉnh sản phẩm.
 
-Không có ba món này vẫn quay được buổi sáng cạnh cửa sổ + mic máy. Mình gắn link vì đúng chỗ chúng xuất hiện trong quy trình — không vì “đủ nghề mới được đăng”.
+Không có ba món này vẫn quay được buổi sáng cạnh cửa sổ + mic máy. Link để vì chúng xuất hiện trong quy trình — không vì “đủ nghề mới được đăng”.
 
 ## Phút 135–180: CapCut — cắt cho người xem, không cắt cho ego
 
@@ -96,6 +96,12 @@ Có đêm mình chỉ có 60 phút thật. Khi đó mình giảm scope: tái s�
 Tick đủ thì 3 tiếng không phí. Thiếu tick mà đăng vẫn được — chỉ là mình đang đánh bạc với reach.
 
 Hậu trường này sẽ đỡ “mất thời gian vô ích” nếu bạn đã có khung [hook](/blog/tiktok-hook-3-giay) và [kịch bản](/blog/tiktok-kich-ban-quay-ngan) trước khi bấm quay. Danh sách đồ mình từng đụng: [20 món đồ làm video](/blog/20-mon-do-lam-video-tiktok).
+
+## Nên mua nếu / Không nên nếu (gear hậu trường)
+
+**Nên mua nếu:** tiếng ù / mặt tối / tay mỏi đang làm bạn bỏ take sạch; bạn đã quay ≥ vài clip và biết đau cái nào trước.
+
+**Không nên nếu:** chưa chọn được chuyện để nói; đang mua set “đủ nghề” trước video đầu. Sửa outline + góc cửa sổ trước.
 
 ## Kết
 

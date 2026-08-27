@@ -100,7 +100,7 @@ Luồng mình thấy hợp:
 4. Quay thử hook 5–8 giây; xem lại bằng loa điện thoại.
 5. Chỉ khi nghe rõ + muốn xem tiếp mới dựng hết clip.
 
-Muốn dùng đúng bộ thẻ vật lý (in màu, chọn lọc mẫu mở đầu), anh em xem [DiamondHook — bộ thẻ viết câu hook](/go/diamondhook-bo-the). Thường khóa học / hướng dẫn video đi kèm chương trình xây kênh (TiktokHero); bài này không thay được xem video bài giảng — chỉ giúp anh em có checklist chữ khi chưa mở được bài học.
+Nếu anh em đã làm bài tập mà vẫn bí *cách vào*, mình để link sạch bộ thẻ vật lý mình từng nhắc: [DiamondHook — bộ thẻ viết câu hook](/go/diamondhook-bo-the). Mình coi nó là randomizer tư duy — bốc thẻ rồi viết lại bằng giọng mình. Thường có hướng dẫn video đi kèm chương trình xây kênh (TiktokHero); bài này không thay bài giảng — chỉ là checklist chữ.
 
 Tài liệu hỗ trợ gốc còn có hướng dẫn sử dụng thẻ riêng — đọc hướng dẫn trước khi “bốc đại cho vui” sẽ đỡ phí thẻ.
 
@@ -137,9 +137,23 @@ Thứ tự mình giữ: **ý tưởng → hook → thân thật → caption SEO 
 
 Không bắt buộc. Nhiều người làm được chỉ với sổ tay + đọc to. Thẻ và bài giảng hữu ích khi anh em đã đăng đều mà vẫn bí *cách vào*, hoặc muốn tốc độ ideate cao hơn (đặc biệt làm nhiều clip/tuần).
 
-Nếu đang ở tuần đầu: đừng tối ưu mua sắm. Làm bài tập 20 phút ở trên đã. Khi nào cảm thấy “thiếu randomizer tư duy” thật sự, lúc đó mới xem [bộ thẻ DiamondHook](/go/diamondhook-bo-the) cho đáng.
+Nếu đang ở tuần đầu: đừng tối ưu mua sắm. Làm bài tập 20 phút ở trên đã. Khi nào cảm thấy thiếu randomizer tư duy thật sự — lúc đó link mình để cuối mạch cũng được: [bộ thẻ DiamondHook](/go/diamondhook-bo-the). Không mua thẻ vẫn làm được nếu sổ tay + đọc to đều.
 
 Khoá hook chỉ là một góc — mình vẫn luyện khung tự viết trong [hook TikTok 3 giây](/blog/tiktok-hook-3-giay) và [tổng hợp câu hook](/blog/tong-hop-cau-hook-tiktok) trước khi chi thêm.
+
+## Nên mua thẻ nếu / Không nên nếu
+
+**Nên mua thẻ nếu:** bạn đã đăng đều vài tuần mà vẫn ngồi nhìn ô trống “câu mở”; bạn thích bốc ngẫu nhiên một tư duy rồi viết 3 biến thể; bạn làm nhiều clip/tuần và cần tốc độ ideate.
+
+**Không nên nếu:** chưa đăng video nào; chưa có brief nỗi đau rõ; đang tìm “câu viral copy nguyên”. Thẻ không quay hộ — quy trình 3 bước phía trên mới là nền.
+
+## FAQ nhanh
+
+**Không có thẻ thì làm hook được không?** Được. Sổ tay + 5 định dạng + đọc to là đủ để ra clip.
+
+**AI viết hook có ổn không?** Ổn khi bạn nhét ý tưởng + cấu trúc của mình vào, rồi sửa giọng “mình”. Đăng nguyên bản AI thường mất độ thật.
+
+**Mua thẻ trước hay luyện khung trước?** Luyện khung + bài tập 20 phút trước. Thẻ là tăng tốc khi đã biết mình bí đúng đoạn mở.
 
 ## Kết
 

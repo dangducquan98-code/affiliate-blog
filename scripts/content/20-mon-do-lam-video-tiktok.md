@@ -14,15 +14,15 @@ Smartphone là đủ. Ưu tiên máy camera ổn (iPhone 11 trở lên, Samsung 
 
 ### 2. Đèn livestream / ring light
 
-Đèn tròn ~26–33cm, chỉnh sáng + tông vàng/trắng. Không đèn, mặt tối, lên hình xỉn. Mình dùng đèn tầm ~200k là sáng bừng góc bàn — chưa đụng đồ tiền triệu. Ring nhỏ 10 inch cũng đủ indoor: [đèn vòng 10 inch](/go/den-ring-light-10).
+Đèn tròn ~26–33cm, chỉnh sáng + tông vàng/trắng. Không đèn, mặt tối, lên hình xỉn. Mình dùng đèn tầm ~200k là sáng bừng góc bàn — chưa đụng đồ tiền triệu. Ring nhỏ 10 inch mình đang dùng indoor cũng đủ: [đèn vòng 10 inch](/go/den-ring-light-10) — gắn vì rẻ mà đủ, không vì studio.
 
 ### 3. Tripod (chân máy)
 
-Loại ~1.2–1.6m, đầu xoay linh hoạt. Đợt đầu mình kê chồng sách; có tripod rồi mới thấy đổi góc dễ. Tripod đầu mình từng dùng chắc nhưng hơi nặng; sau chuyển loại gọn hơn vì hay unbox nhiều góc. Với setup bàn, [tripod điện thoại linh hoạt](/go/tripod-phone-flexible) thường đủ — nhẹ, gập được, đỡ mang cả chân máy “đi phượt” khi chỉ quay góc bàn.
+Loại ~1.2–1.6m, đầu xoay linh hoạt. Đợt đầu mình kê chồng sách; có tripod rồi mới thấy đổi góc dễ. Tripod đầu mình từng dùng chắc nhưng hơi nặng; sau chuyển loại gọn hơn vì hay unbox nhiều góc. Với setup bàn, mình hay để [tripod điện thoại linh hoạt](/go/tripod-phone-flexible) — nhẹ, gập được, đỡ mang cả chân máy “đi phượt” khi chỉ quay góc bàn. Nếu bạn cần, link sạch ở đây; không mỏi tay thì chồng sách vẫn sống.
 
 ### 4. Micro thu âm rời
 
-Lav, mic cắm Lightning/USB-C, hoặc không dây. Tiếng rõ, đỡ rè, outdoor đỡ gió hơn mic máy (vẫn nên có bọc xốp nếu gió). Mình ưu tiên mic cài áo giá mềm lúc đầu — ví dụ [Boya BY-M1](/go/mic-boya-m1). Hãng “hot TikTok” cũng nhiều; quan trọng là tiếng sạch trên *máy và phòng của bạn*, không phải logo.
+Lav, mic cắm Lightning/USB-C, hoặc không dây. Tiếng rõ, đỡ rè, outdoor đỡ gió hơn mic máy (vẫn nên có bọc xốp nếu gió). Mình đang dùng mic cài áo giá mềm lúc đầu — [Boya BY-M1](/go/mic-boya-m1) — vì tiếng sạch hơn mic máy khi máy lạnh ồn. Hãng “hot” cũng nhiều; quan trọng là tiếng trên *máy và phòng của bạn*, không phải logo.
 
 ## Nhóm “có thì sướng”, chưa có vẫn quay được
 
@@ -116,6 +116,18 @@ Quay ngoài, đi xa, livestream dài: hết pin giữa take là… bỏ xừ. S�
 Ba link ở trên (đèn, tripod, mic) là “tầng một” mình thấy hay đau sớm. Các món còn lại — mua đúng nỗi đau, không mua đúng FOMO.
 
 Đồ không thay thế nội dung — nếu bạn còn kẹt “quay cái gì”, đọc [chọn sản phẩm review](/blog/tiktok-chon-san-pham-review) rồi mới mua thêm. Muốn thấy mình dùng gear trong quy trình thật: [hậu trường 30 giây](/blog/hau-truong-1-video-30-giay).
+
+## Nên mua tầng một nếu / Không nên nếu
+
+**Nên mua mic/đèn/tripod nếu:** tiếng, sáng, hoặc tay mỏi đang giết hook — và bạn đã biết đau cái nào trước.
+
+**Không nên nếu:** chưa có video nào; đang mua 20 món vì list. Điện thoại + cửa sổ trước.
+
+## FAQ nhanh
+
+**Mua hết list rồi mới đăng?** Không. List là menu khi gặp vấn đề — không phải giỏ hàng ngày 1.
+
+**Sách Content Bạc Tỷ / 7 Ngày Affiliate có bắt buộc không?** Không. Có checklist + mẫu script thì đỡ mò; vẫn phải quay.
 
 ## Kết
 

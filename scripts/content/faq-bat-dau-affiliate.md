@@ -84,6 +84,14 @@ Năm bước đó không đảm bảo tháng đầu có lương. Chúng giảm x
 
 FAQ xong rồi thì cần khung việc thật: thử [7 ngày affiliate](/blog/7-ngay-affiliate). Nếu view có mà đơn không, soi [5 sai lầm review](/blog/5-sai-lam-review).
 
+## Checklist hành động (làm hôm nay — không cần deal)
+
+- [ ] Viết 1 câu ngách hẹp đủ nói 20 clip
+- [ ] Quay 1 clip một nỗi đau (không “top 10”)
+- [ ] CTA muộn hoặc để bio — không hô mua ở giây đầu
+- [ ] Block 10 phút trả lời comment sau khi đăng
+- [ ] Đo bằng tin / save / comment chất — không chỉ view
+
 ## Kết
 
 FAQ này cố ý không có list “mua ngay đồ này”. Vì câu hỏi người mới thật ra không phải thiếu link — thiếu thứ tự. Bao giờ có tiền, bao nhiêu follow, xin hàng lúc nào, quay gì trước, cookie chạy sao: năm câu đó nếu trả lời bằng deal sẽ thành vòng lặp mệt.

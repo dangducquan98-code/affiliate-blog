@@ -156,7 +156,7 @@ Ba câu. Một ý. Câu nào “đụng” hơn thì dùng.
 
 Đôi lúc mình không thiếu sản phẩm — thiếu *cách mở*. Lúc đó có người dùng bộ thẻ gợi ý cấu trúc câu mở để random một tư duy rồi viết lại bằng giọng mình.
 
-Nếu anh em hay bí đúng đoạn mở, có thể xem [bộ thẻ DiamondHook](/go/diamondhook-bo-the) (thẻ vật lý, mẫu câu / tư duy mở đầu). Mình coi nó là prompt vật lý: bốc thẻ → viết 3 biến thể → chọn 1. Không phải thần dược; thẻ không quay hộ.
+Nếu anh em hay bí đúng đoạn mở — không thiếu sản phẩm, thiếu *cách vào* — mình từng dùng kiểu prompt vật lý: [bộ thẻ DiamondHook](/go/diamondhook-bo-the). Bốc thẻ → viết 3 biến thể → chọn 1. Không phải thần dược; thẻ không quay hộ.
 
 Muốn hiểu sâu hơn cách dùng thẻ + khung hook: xem thêm bài khóa học / hướng dẫn DiamondHook trên blog. Còn bài “hook 3 giây” series TikTok thì đi vào phần tiếng + hình sạch ở giây đầu — bổ sung cho list câu chữ này.
 
@@ -174,6 +174,19 @@ Không. Thuộc 3 nhóm khớp ngách là đủ để đăng đều một tháng
 List dài để lúc bí có chỗ mở. Không phải để nhồi mọi video thành “5 bí mật chuyên gia không muốn bạn biết”.
 
 Kho câu chỉ là nguyên liệu — cách mình xếp hook vào mạch video nằm ở [hook 3 giây](/blog/tiktok-hook-3-giay) và [kịch bản quay ngắn](/blog/tiktok-kich-ban-quay-ngan).
+
+## Nên dùng bộ thẻ nếu / Không nên nếu
+
+**Nên xem thẻ nếu:** list 13 nhóm vẫn để bạn “biết mà không viết ra câu”; bạn cần randomizer tư duy mỗi ngày quay.
+
+**Không nên nếu:** bạn chưa chọn nổi 1 nhóm khớp ngách; bạn đang copy nguyên câu mẫu. Thuộc 3 nhóm + điền nỗi đau tuần này trước đã.
+
+## Checklist hành động (10 phút)
+
+- [ ] Chọn đúng 1 nhóm khớp ngách tuần này
+- [ ] Điền nỗi đau + số cụ thể vào 3 câu
+- [ ] Đọc to bằng loa điện thoại — bỏ câu tự muốn vuốt
+- [ ] Quay 1 take hook trước khi viết thân
 
 ## Kết
 

@@ -44,11 +44,11 @@ Hậu quả: người xem gắn mình với chất lượng thấp trước khi 
 2. Đổi góc cửa sổ / tắt quạt / ngồi gần nguồn sáng (vẫn rẻ).
 3. Chỉ khi vẫn đau thật — tiếng không nghe nổi, mặt vẫn tối dù đã đổi góc — mới nâng gear có chủ đích.
 
-Hai món mình đang dùng khi cần “sửa sai” phần kỹ thuật (không phải mua để thành pro overnight):
+Hai món mình đang dùng khi cần “sửa sai” phần kỹ thuật — không phải mua để thành pro overnight. Cái này mình gắn vì rẻ mà đủ dùng đúng nỗi đau:
 
-Mic cài áo [Boya BY-M1](/go/mic-boya-m1) — khi máy lạnh/ quạt át mic máy. Giá mềm, đủ để tiếng sạch hơn rõ rệt.
+Mic cài áo [Boya BY-M1](/go/mic-boya-m1) — khi máy lạnh/ quạt át mic máy.
 
-[Đèn vòng 10 inch](/go/den-ring-light-10) — khi quay tối hoặc góc nhà thiếu sáng. Một góc bàn là đủ; chưa cần panel đắt nếu cửa sổ đã cứu được buổi sáng.
+[Đèn vòng 10 inch](/go/den-ring-light-10) — khi quay tối hoặc góc nhà thiếu sáng. Một góc bàn là đủ; cửa sổ buổi sáng cứu được thì chưa cần panel.
 
 Tripod mua sau cũng được. Đừng mua cả set vì FOMO sau một clip flop.
 
@@ -75,3 +75,17 @@ Năm sai trên nhìn khác nhau, nhưng chung một gốc: **mình ưu tiên ch�
 Sửa không phải bằng cách “bán khéo hơn”. Sửa bằng cách nói thật hơn, hẹp ngách hơn, và chỉ mua gear khi đã biết mình đau cái gì. View sẽ đến sau — đôi khi chậm hơn ego muốn. Nhưng đơn từ người tin thường bền hơn đơn từ người bị hô mua.
 
 Anh em đang mắc sai nào nhiều nhất — mở bằng giá, review đẹp đều, hay đuổi view quên niềm tin? Kể một dòng, mình đọc. 👇
+
+## Nên mua gear nếu / Không nên nếu
+
+**Nên mua nếu:** đã sửa kịch bản + góc sáng mà tiếng/mặt vẫn làm người xem vuốt giây đầu.
+
+**Không nên nếu:** đang đổ lỗi thiết bị để tránh viết lại hook; chưa có một điểm ưng + một điểm không ưng trong clip.
+
+## Checklist hành động (sửa 5 sai)
+
+- [ ] 3 giây đầu: vấn đề / tình huống — không mở bằng giá
+- [ ] Mỗi clip: 1 điểm ưng + 1 điểm không ưng (hoặc điều kiện dùng)
+- [ ] Sản phẩm nằm trong ngách mình hay kể
+- [ ] Take sạch trước khi nghĩ mua đồ
+- [ ] Sau đăng: hỏi “bỏ link còn đáng share không?”

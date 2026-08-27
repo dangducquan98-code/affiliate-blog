@@ -33,13 +33,13 @@ Ví dụ sai: “Trong bối cảnh chuyển đổi số…”. Ví dụ đúng 
 
 Vào Ausync Lab, Sign Up (Google / Apple / email tùy họ hỗ trợ). Chọn giọng mặc định để test nhanh trước — đừng training ngay từ phút đầu. Test 2–3 câu hook thật của bạn. Nghe trên loa điện thoại + tai nghe. Nếu vẫn “đọc sách”, đổi giọng hoặc sửa câu.
 
-Link sạch khi anh em muốn thử đúng tool mình đang nói tới: [Ausync Lab TTS](/go/ausync-lab-tts). (Ưu đãi / credits nếu có sẽ theo chương trình phía họ — mình không hứa số % cố định vì hay đổi.)
+Nếu bạn cần đúng tool mình đang nói tới, link sạch mình để đây: [Ausync Lab TTS](/go/ausync-lab-tts). Mình gắn vì hay dùng khi mệt giọng / cần VO nhanh — không phải vì “AI thay hết mic”. Credits/ưu đãi theo phía họ (hay đổi).
 
 ### 3. Training giọng (khi đã chắc cần đồng bộ kênh)
 
 Upload mẫu nói rõ, ít tạp âm. Phòng yên. Nói tự nhiên như clip thật — đừng đọc đều như MC đám cưới. Độ dài mẫu theo hướng dẫn tool; mình ưu tiên vài đoạn ngắn sạch hơn một file dài ồn.
 
-Đây là chỗ mic vẫn quan trọng: muốn clone gần giọng mình thì file gốc phải sạch. Mic cài áo [Boya BY-M1](/go/mic-boya-m1) mình dùng khi thu mẫu indoor — đỡ ù máy lạnh hơn mic máy. Ra ngoài gió thì tính bọc xốp sau; đừng mua set trước khi biết mình hay quay outdoor.
+Đây là chỗ mic vẫn quan trọng: muốn clone gần giọng mình thì file gốc phải sạch. Mình đang dùng [Boya BY-M1](/go/mic-boya-m1) khi thu mẫu indoor — đỡ ù máy lạnh hơn mic máy. Ra ngoài gió thì tính bọc xốp sau; đừng mua set trước khi biết mình hay quay outdoor.
 
 ### 4. Xuất & dựng
 
@@ -71,6 +71,19 @@ Cũng không dùng TTS để đóng giả “đang livestream tư vấn” nếu
 Mình dùng cả hai. Không thần thánh hóa AI. Không kỳ thị AI. Chọn theo việc.
 
 TTS giúp nhanh, nhưng hook và mô tả vẫn quyết định người xem dừng lại — xem [hook 3 giây](/blog/tiktok-hook-3-giay) và [mô tả SEO](/blog/huong-dan-viet-mo-ta-video-seo).
+
+## Nên dùng TTS nếu / Không nên nếu
+
+**Nên dùng nếu:** cần VO slideshow / unbox im / thử nhịp script; phòng ồn hoặc giọng mệt nhưng vẫn muốn giữ nhịp đăng.
+
+**Không nên nếu:** clip cần cảm xúc / phản biện / “đừng mua nếu…” — ưu tiên giọng thật; hoặc bạn định đóng giả livestream bằng AI.
+
+## Checklist TTS (trước khi convert credits)
+
+- [ ] Script viết như nhắn bạn — câu ngắn xen dài
+- [ ] Test 2–3 câu hook trên loa điện thoại
+- [ ] Số / tên model nghe thử trước khi xuất hàng loạt
+- [ ] Clip cảm xúc quan trọng → cân nhắc thu mic thật
 
 ## Kết
 

@@ -60,13 +60,13 @@ Trên blog, mình dùng `/go/<slug>` để quản lý. Trên TikTok, mình kéo 
 
 Khi kịch bản đã ngắn, setup đỡ phải nghĩ giữa take. Không phải mua hết mới được đăng.
 
-Hai món giải đúng nỗi đau lúc mình hay “gãy” giữa take:
+Hai món giải đúng nỗi đau lúc mình hay “gãy” giữa take — mình đang dùng khi cần, không phải set trưng:
 
-[Tripod linh hoạt cho điện thoại](/go/tripod-phone-flexible) — khỏi cầm máy run, khỏi cắt ngang vì mỏi tay. Quay một mạch 20–45 giây theo script ngắn thì cái này cứu khá nhiều take. (Walk-and-talk ngoài đường thì mới tính gimbal — indoor ngồi bàn thường thừa.)
+[Tripod linh hoạt cho điện thoại](/go/tripod-phone-flexible) — khỏi cầm máy run, khỏi cắt ngang vì mỏi tay. Quay một mạch 20–45 giây theo script ngắn thì cái này cứu khá nhiều take. (Walk-and-talk mới tính gimbal — indoor bàn thường thừa.)
 
-[Wind muff / bọc xốp mic](/go/lav-mic-foam) — ra ngoài gió đỡ “phèo phèo”. Indoor máy lạnh thì khoảng cách miệng + mic sạch quan trọng hơn phụ kiện gió; muff để dành khi bạn hay quay outdoor.
+[Wind muff / bọc xốp mic](/go/lav-mic-foam) — outdoor gió đỡ “phèo phèo”. Indoor máy lạnh thì khoảng cách miệng + mic sạch quan trọng hơn; muff để khi bạn hay quay ngoài.
 
-Đèn? Cửa sổ trước. Ring light chỉ khi góc cửa sổ không cứu nổi mặt — và đừng bật full mọi lúc. Mục tiêu là take sạch theo script, không phải showroom gear.
+Đèn? Cửa sổ trước. Ring chỉ khi cửa sổ không cứu nổi mặt. Mục tiêu là take sạch theo script, không phải showroom gear.
 
 ## Một take “đủ” thường ngắn hơn mình nghĩ
 
@@ -101,6 +101,12 @@ Cũng đừng biến script thành kịch sân khấu. Không cần thoại bón
 Tick được thì quay. Thiếu script thì đừng “lấy cảm hứng” bằng cách bấm record rồi tính sau — mình đã thử, mệt phết.
 
 Kịch bản chỉ work nếu 3 giây đầu đủ dừng người — khung mình hay dùng nằm ở [hook TikTok 3 giây](/blog/tiktok-hook-3-giay). Sau khi cắt xong, đừng quên [viết mô tả SEO](/blog/huong-dan-viet-mo-ta-video-seo) cho caption.
+
+## Nên mua tripod/muff nếu / Không nên nếu
+
+**Nên mua nếu:** tay mỏi / khung run làm gãy take một mạch; hoặc hay quay outdoor bị gió phèo mic.
+
+**Không nên nếu:** chưa có script 5–10 dòng; đang freestyle rồi đổ lỗi thiết bị. Viết trước, mua sau.
 
 ## Kết
 

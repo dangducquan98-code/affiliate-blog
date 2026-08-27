@@ -71,15 +71,15 @@ A/B đơn giản: cùng sản phẩm, đổi hook / đổi cảnh mở. Một bi
 
 Về gear: không cần đợi studio. Mình từng quay cửa sổ + điện thoại. Khi tiếng ù máy lạnh hoặc mặt tối làm hook chết, lúc đó mới nâng cấp có chủ đích.
 
-Hai món giải đúng nỗi đau lúc mình quay review nghiêm túc hơn:
+Hai món giải đúng nỗi đau lúc mình quay review nghiêm túc hơn — mình đang dùng khi đau thật, không mua trước:
 
-Mic cài áo [Boya BY-M1](/go/mic-boya-m1) — tiếng sạch hơn mic máy khi ngồi phòng điều hòa. Giá mềm, dễ bắt đầu.
+Mic cài áo [Boya BY-M1](/go/mic-boya-m1) — tiếng sạch hơn mic máy khi ngồi phòng điều hòa. Rẻ mà đủ bắt đầu.
 
-[Đèn vòng 10 inch](/go/den-ring-light-10) — mặt đỡ tối, đỡ bóng đổ. Một góc bàn là đủ; chưa cần panel đắt nếu cửa sổ đã cứu được.
+[Đèn vòng 10 inch](/go/den-ring-light-10) — mặt đỡ tối, đỡ bóng đổ. Một góc bàn là đủ; cửa sổ cứu được thì chưa cần panel.
 
 Tripod / gimbal mua sau cũng được — khi tay mỏi hoặc hay quay outdoor. Đừng mua set “đủ nghề” trước khi biết mình đau cái gì.
 
-Nếu anh em thích học theo checklist + mẫu script đóng gói, mình từng đọc và tổng hợp từ sách **7 Ngày Affiliate** — có mẫu kịch bản, checklist, hướng dẫn từng bước. Link sạch khi cần: [sách 7 Ngày Affiliate](/go/sach-7-ngay-affiliate). Không bắt buộc mua sách mới làm được; lộ trình 7 ngày phía trên vẫn chạy nếu anh em tự ghi sổ và quay đều.
+Nếu anh em thích checklist + mẫu script đóng gói, mình từng đọc và tổng hợp từ sách **7 Ngày Affiliate**. Link sạch khi cần: [sách 7 Ngày Affiliate](/go/sach-7-ngay-affiliate). Không bắt buộc mua — lộ trình 7 ngày phía trên vẫn chạy nếu tự ghi sổ và quay đều.
 
 ## Case mình rút ra (không thần thánh hóa số)
 
@@ -88,6 +88,18 @@ Cộng đồng hay kể kiểu: kênh chỉ review gia dụng, mỗi clip có tr
 Tài khoản mới lên view? Đăng đều, nhạc/hashtag trending vừa phải, tương tác thật. Kênh cá nhân vs team? Cá nhân dễ dựng thương hiệu; team dễ ra nhiều clip. Bị bóp reach? Đổi dạng video, tăng comment chất, đừng spam link.
 
 Lộ trình 7 ngày dễ lệch nếu bạn chưa rõ câu hỏi cơ bản — đọc [FAQ bắt đầu affiliate](/blog/faq-bat-dau-affiliate) trước khi ép KPI đơn. Và nhớ [giá trị trước](/blog/gia-tri-truoc-ban-hang-sau) kẻo lại hard-sell sớm.
+
+## Nên mua sách nếu / Không nên nếu
+
+**Nên mua sách nếu:** bạn thích mẫu script/checklist đóng gói và sẽ mở ra làm thật, không chỉ bookmark.
+
+**Không nên nếu:** chưa chọn ngách; chưa đăng clip nào. Làm Ngày 1–4 trước đã.
+
+## FAQ nhanh
+
+**Bỏ lỡ một ngày có phải làm lại từ đầu?** Không. Tiếp ngày bạn đang kẹt — ngách, hook, hay CTA.
+
+**Ngày nào được gắn link?** Sau trải nghiệm thật; CTA muộn. Nửa đầu video là nỗi đau.
 
 ## Kết
 

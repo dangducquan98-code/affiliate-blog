@@ -84,13 +84,13 @@ Nếu tuần này không có món nào qua bộ lọc — mình đăng lại ins
 
 Không cần đợi “đủ đồ”. Mình từng quay bằng điện thoại + ánh sáng cửa sổ. Sau mới thêm dần.
 
-Hai món giải đúng nỗi đau lúc mình bắt đầu quay review nghiêm túc:
+Hai món giải đúng nỗi đau lúc mình bắt đầu quay review nghiêm túc — mình đang dùng khi đau thật:
 
-Mic cài áo [Boya BY-M1](/go/mic-boya-m1) — tiếng sạch hơn mic điện thoại khi ngồi trong phòng máy lạnh. Giá mềm, dễ bắt đầu. (Ra ngoài gió thì thêm bọc xốp — mua sau cũng được, đừng mua set trước khi biết mình hay quay outdoor.)
+Mic cài áo [Boya BY-M1](/go/mic-boya-m1) — tiếng sạch hơn mic điện thoại trong phòng máy lạnh. Rẻ mà đủ bắt đầu. (Gió outdoor thì bọc xốp sau.)
 
-[Đèn vòng 10 inch](/go/den-ring-light-10) — mặt đỡ tối, đỡ bóng đổ kiểu phim kinh dị. Một góc bàn là đủ. Chưa cần panel đắt nếu cửa sổ + đèn nhỏ đã cứu được hook.
+[Đèn vòng 10 inch](/go/den-ring-light-10) — mặt đỡ tối, đỡ bóng đổ. Một góc bàn là đủ. Cửa sổ + đèn nhỏ cứu được hook thì chưa cần panel.
 
-Tripod linh hoạt? Mình có dùng khi mỏi tay — nhưng không phải món “mua trước khi biết mình hay cầm máy run”. Mua đúng cái đang đau. Không có link cũng không sao; quan trọng là biết *cần* gì trước.
+Tripod? Mua khi mỏi tay thật — không mua trước khi biết mình hay run. Quan trọng là biết *cần* gì trước.
 
 ## Checklist trước khi bấm quay
 
@@ -103,6 +103,12 @@ Tripod linh hoạt? Mình có dùng khi mỏi tay — nhưng không phải món 
 Nếu tick được 4/5, quay. Nếu dưới 3, để đó — đừng chữa cháy bằng caption dài.
 
 Chọn sản phẩm xong mà mở video bằng giá thì dễ mất niềm tin — mình từng mắc đủ trong [5 sai lầm review](/blog/5-sai-lam-review). Tư duy dài hơi hơn nằm ở [giá trị trước, bán hàng sau](/blog/gia-tri-truoc-ban-hang-sau).
+
+## Nên mua gear nếu / Không nên nếu
+
+**Nên mua nếu:** đã qua bộ lọc 5 câu và tiếng/sáng đang làm clip “suýt được”.
+
+**Không nên nếu:** chọn sản phẩm theo trend/hoa hồng rồi mua đồ để “trông chuyên nghiệp”. Lọc sản phẩm trước, gear sau.
 
 ## Kết
 

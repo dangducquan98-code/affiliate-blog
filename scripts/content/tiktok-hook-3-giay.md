@@ -47,11 +47,11 @@ Không cần setup đắt. Cần setup đỡ hại hook.
 
 Cách mình tự kiểm trước khi đăng: xem lại giây 0–3 bằng **loa điện thoại**, không phải tai nghe. Nếu phải “căng tai” mới nghe — sửa tiếng trước. Nếu phải nheo mắt mới thấy mặt/sản phẩm — sửa sáng trước. Chữ hook hay không cứu được tín hiệu xấu ở lớp cảm giác.
 
-Hai món từng cứu giây đầu của mình khi indoor:
+Hai món từng cứu giây đầu của mình khi indoor — mình đang dùng vì đúng đau, không vì “đủ nghề”:
 
-[Mic Boya cài áo](/go/mic-boya-m1) — ngồi bàn, máy lạnh, nói gần miệng một chút là tiếng đủ sạch để người ta chịu nghe hết câu mở. (Đi lại nhiều thì tính mic không dây sau — đừng mua trước khi biết mình hay walk-and-talk.)
+[Mic Boya cài áo](/go/mic-boya-m1) — ngồi bàn, máy lạnh, nói gần miệng một chút là tiếng đủ sạch để người ta chịu nghe hết câu mở. (Walk-and-talk mới tính mic không dây.)
 
-[Đèn LED panel nhỏ](/go/den-led-panel) — chỉnh góc, đỡ bóng dưới mắt hơn là chỉ bật ring light thẳng mặt. Không phải “mua đèn là hook hay”; đèn chỉ để não khỏi reject vì mặt tối.
+[Đèn LED panel nhỏ](/go/den-led-panel) — chỉnh góc, đỡ bóng dưới mắt hơn ring thẳng mặt. Không phải mua đèn là hook hay; đèn chỉ để não khỏi reject vì mặt tối.
 
 Quay hook sạch đã là một nửa video. Nửa còn lại là đừng nói dài dòng trước khi vào điểm.
 
@@ -108,6 +108,12 @@ Cũng có lúc hook mạnh quá so với nội dung mỏng — retention tụt �
 Tick 4/5 rồi hãy bấm đăng. Thiếu tiếng hoặc thiếu sáng thì sửa setup trước — đừng chữa bằng caption.
 
 Hook xong rồi mà thân video loãng thì người xem vẫn vuốt — mình gom nhịp claim → bằng chứng → chốt trong [kịch bản quay ngắn](/blog/tiktok-kich-ban-quay-ngan). Cần “kho câu” luyện thêm thì lật [tổng hợp câu hook](/blog/tong-hop-cau-hook-tiktok).
+
+## Nên mua mic/đèn nếu / Không nên nếu
+
+**Nên mua nếu:** nghe lại giây 0–3 bằng loa điện thoại mà phải căng tai / nheo mắt — và đã thử đổi góc cửa sổ.
+
+**Không nên nếu:** hook còn kiểu “Hôm nay mình sẽ…”; chưa làm bài tập 3 phiên bản. Sửa chữ trước, sửa đồ sau.
 
 ## Kết
 

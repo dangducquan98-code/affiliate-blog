@@ -87,7 +87,7 @@ Số follow không phải KPI duy nhất. Cookie + niềm tin + nhịp đăng b�
 
 Gear không cứu content rỗng. Nhưng mic kém + phòng vọng có thể làm bạn ngại đăng. Danh sách “đồ mình từng đụng” nằm ở [20 món đồ làm video TikTok](/blog/20-mon-do-lam-video-tiktok). Chọn sản phẩm để review thì xem [Cách chọn sản phẩm review](/blog/tiktok-chon-san-pham-review).
 
-Nếu bạn đang thiếu tiếng sạch khi quay trong nhà: mic lav kiểu Boya là hướng mình hay thử trước khi nghĩ tới setup đắt. Link deal (khi đã dán URL thật) đi qua `/go/...` — không nhồi ở đây cho đủ checklist.
+Nếu bạn đang thiếu tiếng sạch khi quay trong nhà: mình đang dùng [mic cài áo Boya BY-M1](/go/mic-boya-m1) — rẻ mà đủ indoor máy lạnh. Không phải phải mua mới làm được; cửa sổ + mic máy vẫn ra clip. Cái này mình gắn vì đúng nỗi đau “tiếng toilet”, không vì đủ nghề.
 
 Đèn / tripod cũng vậy: mua khi bạn quay đủ nhiều để biết góc nhà tối và tay run thật sự phiền. Đừng mua vì FOMO. Một tripod linh hoạt và một nguồn sáng ổn thường đủ để bạn dừng đổ lỗi “máy xấu”.
 
@@ -109,7 +109,7 @@ Không phải challenge viral. Chỉ khung để khỏi đứng hình:
 
 **Tuần 3 — Đo và sửa một thứ**
 
-- Nếu có blog `/links` + UTM: xem bài nào từ bio/comment.
+- Nếu bio trỏ về blog + UTM: xem bài nào từ bio/comment mang traffic.
 - Nếu đã có click `/go`: xem slug nào được bấm (sau khi admin có tracking).
 - Chỉ sửa **một** thứ: hook, hoặc chọn sản phẩm, hoặc độ dài — đừng sửa cả ba cùng lúc.
 
@@ -117,9 +117,17 @@ Không phải challenge viral. Chỉ khung để khỏi đứng hình:
 
 - Đọc lại [sai lầm review](/blog/5-sai-lam-review) và [FAQ](/blog/faq-bat-dau-affiliate).
 - Viết 1 video “mình từng sai gì” — thường chân thật hơn video “review đẹp”.
-- Gắn bio TikTok vào `/links` (hoặc một bài đang đẩy) kèm UTM theo `docs/utm-convention.md` — đừng trỏ homepage chung rồi đoán người ta đọc gì.
+- Gắn bio TikTok vào **một bài đang đẩy** (pillar này hoặc bài series) kèm UTM theo `docs/utm-convention.md` — đừng trỏ homepage chung rồi đoán người ta đọc gì.
 
 Sau 30 ngày, bạn không cần “thành công”. Bạn cần **dữ liệu nhỏ** và thói quen không chết. Đó đã hơn phần lớn người chỉ bookmark tutorial rồi thôi.
+
+## Checklist hành động (tuần này)
+
+- [ ] Xác định mình thuộc nhóm nào ở mục “Bạn đang đứng ở đâu?”
+- [ ] Viết 5 hook + đăng ≥1 clip (dù xấu)
+- [ ] Mỗi clip: bỏ hết CTA — còn đáng xem không?
+- [ ] Bio trỏ 1 bài cụ thể + UTM (không trỏ homepage chung)
+- [ ] Chỉ mua gear khi đã biết mình đau tiếng / sáng / tay mỏi thật
 
 ## Kết — câu hỏi cho bạn
 

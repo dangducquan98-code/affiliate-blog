@@ -126,7 +126,7 @@ Caption sạch + video thật > caption “full SEO” mà nội dung rỗng.
 
 Khi anh em đã quay đều mà vẫn bí cách nói / cách chọn từ khóa / cách dựng thông điệp ngắn. Lúc đó đọc thêm tài liệu thực chiến giúp — không phải để thay việc quay.
 
-Cuốn [Content Bạc Tỷ](/go/sach-content-bac-ty) mình từng để tham khảo khung 4 bước chiến dịch + chọn từ khóa; lấy checklist rồi vẫn phải viết bằng giọng mình. Sách không đăng hộ video.
+Khi anh em đã quay đều mà vẫn bí cách chọn từ / dựng thông điệp ngắn, mình từng đọc [Content Bạc Tỷ](/go/sach-content-bac-ty) để lấy khung 4 bước + chọn từ khóa — rồi viết lại bằng giọng mình. Sách không đăng hộ video; không mua cũng viết được caption nếu bám checklist phía trên.
 
 Nếu anh em đang lo hook giây đầu hơn caption: đọc thêm bài hook trên blog này trước, rồi quay lại viết mô tả. Thứ tự đúng: giữ chân trước, SEO sau.
 
@@ -137,6 +137,18 @@ Không. Ads mua reach. Mô tả tốt giúp discovery tự nhiên và lần tìm
 Cũng đừng biến mọi video thành trang bán. Content-first: bỏ hết link, đọc lại caption + xem lại clip — còn đáng dừng không? Không đáng thì sửa nội dung trước khi tối ưu hashtag.
 
 Mô tả đẹp không cứu được hook yếu — nếu video bị vuốt sớm, quay lại [hook 3 giây](/blog/tiktok-hook-3-giay). Muốn thấy timeline thật từ chọn chuyện đến đăng, đọc [hậu trường 1 video 30 giây](/blog/hau-truong-1-video-30-giay).
+
+## Nên đọc thêm sách nếu / Không cần nếu
+
+**Nên đọc thêm nếu:** đã đăng đều, hook ổn, nhưng caption vẫn generic hoặc bí từ khóa Việt.
+
+**Không cần nếu:** chưa có video nào; đang tối ưu hashtag trước khi có nội dung đứng. Sửa clip trước, SEO sau.
+
+## FAQ nhanh
+
+**Hashtag càng nhiều càng tốt?** Không. 5–7 đúng ngành thường sạch hơn 20 cái cầu may.
+
+**Nhồi raw affiliate vào caption được không?** Mình không làm vậy — để bio / comment ghim / blog `/go`. Caption giữ chữ người ta search.
 
 ## Kết
 
