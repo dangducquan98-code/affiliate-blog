@@ -3,6 +3,7 @@ export const prerender = false;
 
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { requireAdmin } from '../../lib/admin-auth';
+import { getClickStatsLast7Days } from '../../lib/click-events';
 import { listAllPostsAdmin } from '../../lib/posts';
 import { listProductsAdmin } from '../../lib/products';
 import { isSupabaseServiceConfigured } from '../../lib/supabase';
@@ -10,6 +11,8 @@ import { isSupabaseServiceConfigured } from '../../lib/supabase';
 if (!requireAdmin(Astro.cookies)) {
   return Astro.redirect('/admin/login');
 }
+
+Astro.response.headers.set('Cache-Control', 'no-store');
 
 const configured = isSupabaseServiceConfigured();
 const { posts, error } = configured
@@ -23,6 +26,10 @@ const { posts, error } = configured
 const productsResult = configured
   ? await listProductsAdmin()
   : { products: [], error: null, tableMissing: false };
+
+const clickStats = configured
+  ? await getClickStatsLast7Days()
+  : { total: 0, top: [], available: false, error: null };
 
 const publishedCount = posts.filter((p) => p.published).length;
 const draftCount = posts.length - publishedCount;
@@ -84,7 +91,56 @@ const postsJson = JSON.stringify(
             <div class="admin-stat__value">{missingAffiliate}</div>
             <div class="admin-stat__label">Chưa dán link affiliate</div>
           </div>
+          <div class="admin-stat">
+            <div class="admin-stat__value">{clickStats.available ? clickStats.total : '—'}</div>
+            <div class="admin-stat__label">Click /go 7 ngày</div>
+          </div>
         </div>
+      )
+    }
+
+    {
+      clickStats.error && (
+        <p class="fallback-notice">{clickStats.error}</p>
+      )
+    }
+
+    {
+      clickStats.available && (
+        <section class="admin-click-panel" aria-label="Top click /go 7 ngày">
+          <div class="section__head" style="margin-bottom: 0.75rem;">
+            <h2 style="margin: 0; font-size: 1.1rem;">Top slug /go (7 ngày)</h2>
+            <span style="color: var(--ink-muted); font-size: 0.9rem;">
+              Tổng {clickStats.total} click
+            </span>
+          </div>
+          {clickStats.top.length === 0 ? (
+            <p class="fallback-notice">Chưa có click nào trong 7 ngày.</p>
+          ) : (
+            <div class="admin-table-wrap">
+              <table class="admin-table">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Slug</th>
+                    <th>Clicks</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {clickStats.top.map((row, i) => (
+                    <tr>
+                      <td>{i + 1}</td>
+                      <td>
+                        <code>{row.slug}</code>
+                      </td>
+                      <td>{row.count}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
+        </section>
       )
     }
 

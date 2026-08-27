@@ -2,16 +2,26 @@ import { createClient, type SupabaseClient } from '@supabase/supabase-js';
 
 const PLACEHOLDER_MARKERS = ['placeholder', 'https://placeholder.supabase.co'];
 
+function readEnv(name: string): string {
+  const fromProcess =
+    typeof process !== 'undefined' && process.env ? process.env[name] : undefined;
+  // Astro/Vite injects .env* into import.meta.env for server code
+  const fromMeta = (import.meta as ImportMeta & { env?: Record<string, string> }).env?.[
+    name
+  ];
+  return String(fromMeta ?? fromProcess ?? '').trim();
+}
+
 export function getSupabaseUrl(): string {
-  return (process.env.SUPABASE_URL || '').trim();
+  return readEnv('SUPABASE_URL');
 }
 
 export function getSupabaseAnonKey(): string {
-  return (process.env.SUPABASE_ANON_KEY || '').trim();
+  return readEnv('SUPABASE_ANON_KEY');
 }
 
 export function getSupabaseServiceRoleKey(): string {
-  return (process.env.SUPABASE_SERVICE_ROLE_KEY || '').trim();
+  return readEnv('SUPABASE_SERVICE_ROLE_KEY');
 }
 
 export function isSupabaseConfigured(): boolean {

@@ -15,7 +15,8 @@
     "rewrite:tiktok-series": "tsx scripts/rewrite-tiktok-series.ts",
     "import:blogspot": "tsx scripts/import-blogspot-posts.ts",
     "import:diverse": "tsx scripts/import-diverse-posts.ts",
-    "test:unit": "node --import tsx --test src/lib/products.test.ts src/lib/categories.test.ts"
+    "content:internal-links": "tsx scripts/upsert-pillar-and-internal-links.ts",
+    "test:unit": "node --import tsx --test src/lib/products.test.ts src/lib/categories.test.ts src/lib/click-meta.test.ts src/lib/publish-guard.test.ts"
   },
   "dependencies": {
     "@astrojs/vercel": "^11.0.8",
