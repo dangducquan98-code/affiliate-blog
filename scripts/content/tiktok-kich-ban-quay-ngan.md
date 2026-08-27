@@ -32,6 +32,16 @@ Ví dụ khung tin nhắn mình hay dùng:
 
 Đủ ngắn để quay một mạch. Đủ rõ để chốt.
 
+## Mẫu script ~30 giây (copy rồi sửa số liệu của bạn)
+
+Hook: “Hub này mình mua vì rẻ — giờ cổng lỏng.”  
+Vấn đề: “Hay rút cắm mỗi ngày thì đừng tiết kiệm sai chỗ.”  
+Điểm 1: “Mình thấy lỏng sau khoảng hai tuần dùng văn phòng.”  
+Điểm 2: “Nếu chỉ cắm cố định, cái rẻ vẫn ổn.”  
+Chốt: “Cần thì mình để note ở bio — không thì thôi, đừng mua vì mình nói.”
+
+Đọc to một lần. Nếu chỗ nào nghe như báo cáo tuần — viết lại. Affiliate chỉ xuất hiện ở chốt, sau khi quan điểm đã rõ.
+
 ## 3. Cắt gì — và giữ gì
 
 Cắt phần mình giải thích lại lần hai. Cắt lời chào dài. Cắt đoạn “ờ thì… ừm…”. Cắt CTA hô hào.
@@ -40,23 +50,25 @@ Giữ chỗ tự vấn — nghe người thật hơn. Nhưng đừng tự vấn 
 
 Dựng video mà thấy phải “cứu” quá nhiều — thường là kịch bản chưa chặt, không phải máy cắt chậm.
 
+Mẹo thực dụng: nếu timeline có quá năm chỗ cắt “ờ/thì”, đừng cố cứu. Quay lại năm dòng script. Dựng nhẹ hơn là ngồi chữa cháy.
+
 ## 4. Chốt gì — không phải “mua đi”
 
 Chốt của mình thường là một trong ba kiểu: (1) đừng mua nếu…, (2) mua nếu đúng nỗi đau này…, (3) mình đang dùng cái này vì…. Affiliate đặt sau khi quan điểm đã rõ. Nhồi link sớm thì nghe như quảng cáo — và kênh nhỏ chết vì nghe như quảng cáo.
 
 Trên blog, mình dùng `/go/<slug>` để quản lý. Trên TikTok, mình kéo về bio hoặc comment ghim, rồi về bài nếu cần giải thích dài. Cookie không cần anh em mua ngay trong video. Cần anh em tin đủ để còn đường quay lại.
 
-## 5. Gear giúp “quay một mạch” (mua đúng cái đang đau)
+## 5. Setup vừa đủ để quay một mạch
 
-Khi kịch bản đã ngắn, setup đỡ phải nghĩ giữa take.
+Khi kịch bản đã ngắn, setup đỡ phải nghĩ giữa take. Không phải mua hết mới được đăng.
 
-[Gimbal điện thoại giá mềm](/go/gimbal-phone-budget) — walk-and-talk đỡ rung. Không bắt buộc mọi video. Indoor ngồi bàn thì [tripod linh hoạt](/go/tripod-phone-flexible) thường đủ và ít học máy hơn.
+Hai món giải đúng nỗi đau lúc mình hay “gãy” giữa take:
 
-[Wind muff / bọc xốp mic](/go/lav-mic-foam) — ra ngoài gió đỡ “phèo phèo”. Indoor máy lạnh thì mic sạch + khoảng cách miệng quan trọng hơn phụ kiện gió.
+[Tripod linh hoạt cho điện thoại](/go/tripod-phone-flexible) — khỏi cầm máy run, khỏi cắt ngang vì mỏi tay. Quay một mạch 20–45 giây theo script ngắn thì cái này cứu khá nhiều take. (Walk-and-talk ngoài đường thì mới tính gimbal — indoor ngồi bàn thường thừa.)
 
-[Đèn vòng nhỏ](/go/den-ring-light-10) — chỉ khi góc cửa sổ không cứu nổi mặt. Đừng bật full mọi lúc; hook bị bóng xấu còn tệ hơn hơi tối.
+[Wind muff / bọc xốp mic](/go/lav-mic-foam) — ra ngoài gió đỡ “phèo phèo”. Indoor máy lạnh thì khoảng cách miệng + mic sạch quan trọng hơn phụ kiện gió; muff để dành khi bạn hay quay outdoor.
 
-Không phải mua hết mới được đăng. Mua đúng cái đang *đau*. Hết pin đúng lúc vào flow? Tính pin. Rung khi đi? Tính gimbal/tripod. Gió? Tính muff. Tiếng toilet? Tính mic trước đã.
+Đèn? Cửa sổ trước. Ring light chỉ khi góc cửa sổ không cứu nổi mặt — và đừng bật full mọi lúc. Mục tiêu là take sạch theo script, không phải showroom gear.
 
 ## Một take “đủ” thường ngắn hơn mình nghĩ
 
@@ -68,7 +80,7 @@ Với affiliate, take ngắn còn giúp CTA nằm đúng chỗ: sau quan điểm
 
 ## Series vs one-shot — đừng nhồi cả series vào một clip
 
-Ba bài series TikTok trên blog này (chọn sản phẩm → hook → kịch bản) lẽ ra nếu quay video cũng nên tách clip. Một clip “full quy trình làm TikTok” thường chết vì ôm đốm. Người xem cần một việc hôm nay. Ngày mai quay việc tiếp.
+Ba bài series TikTok trên blog này (chọn sản phẩm → hook → kịch bản) lẽ ra nếu quay video cũng nên tách clip. Một clip “full quy trình làm TikTok” thường chết vì ôm đồm. Người xem cần một việc hôm nay. Ngày mai quay việc tiếp.
 
 Cách mình lên lịch: mỗi clip một checklist nhỏ. Cuối clip hỏi một câu mở — giống cuối bài blog — để comment thành ý tưởng clip sau. Đó là vòng nội dung rẻ, không cần ngồi nghĩ “trend gì đang hot”.
 
@@ -84,14 +96,14 @@ Cũng đừng biến script thành kịch sân khấu. Không cần thoại bón
 
 - [ ] Năm đến mười dòng script đã viết — hook / vấn đề / 1–2 điểm / chốt?
 - [ ] Đọc to một lần, cắt chỗ ngại nói và chỗ lặp lần hai?
-- [ ] CTA có lối thoát sạch (bio / `/go/...`) và không hô “mua ngay”?
-- [ ] Setup (mic/đèn/đỡ máy) đủ để quay một mạch, không phải dừng chữa cháy giữa take?
+- [ ] CTA có lối thoát sạch (bio / blog) và không hô “mua ngay”?
+- [ ] Setup đủ để quay một mạch, không phải dừng chữa cháy giữa take?
 - [ ] Video chỉ giải một việc — phần còn lại để clip sau?
 
 Tick được thì quay. Thiếu script thì đừng “lấy cảm hứng” bằng cách bấm record rồi tính sau — mình đã thử, mệt phết.
 
 ## Kết
 
-Kịch bản tốt không làm video nhàm. Nó làm video **bớt ôm đốm**. Freestyle không phải tội. Freestyle không có điểm đến mới là tội — với cả thời gian dựng lẫn cookie affiliate.
+Kịch bản tốt không làm video nhàm. Nó làm video **bớt ôm đồm**. Freestyle không phải tội. Freestyle không có điểm đến mới là tội — với cả thời gian dựng lẫn cookie affiliate.
 
 Anh em đang viết script trước, hay bấm quay rồi tính? Nếu đang freestyle — thử viết năm dòng trước clip tiếp theo xem khác gì: dựng có nhẹ hơn không, chốt có rõ hơn không, chính mình có đỡ muốn tắt giữa chừng không? 👇

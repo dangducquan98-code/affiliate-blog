@@ -28,6 +28,13 @@ Trên kênh review, mình hay gắn số với nỗi đau: thay cáp lần thứ
 
 Thử viết hook không số, rồi viết lại có số. Đọc thành tiếng. Câu nào dừng tay hơn thì giữ.
 
+Ví dụ mình từng sửa:
+
+- Trước: “Mic rất quan trọng khi quay review.”
+- Sau: “Tiếng mình từng như toilet — vì mic điện thoại + máy lạnh.”
+
+Cùng một ý. Câu sau có hình trong đầu. Câu trước là brochure.
+
 ## 3. Tự vấn — gần giọng nhật ký
 
 “Không biết có phải mình kỳ không mà…” — gần lớp giọng nhật ký mình hay viết. Kênh nhỏ sống nhờ độ thật, không nhờ studio. Tự vấn không phải yếu. Tự vấn là tín hiệu: đang nói chuyện, không đang đọc brochure.
@@ -40,9 +47,13 @@ Hook hay mà **không nghe rõ** — người ta vuốt. Hook hay mà **mặt t�
 
 Không cần setup đắt. Cần setup đỡ hại hook.
 
-[Mic không dây mini](/go/mic-wireless-mini) — đi lại vẫn nói được, khỏi sợ tụt dây lúc đang vào câu mở. Với take ngồi bàn, [mic Boya cài áo](/go/mic-boya-m1) vẫn ổn và dễ bắt đầu hơn.
+Cách mình tự kiểm trước khi đăng: xem lại giây 0–3 bằng **loa điện thoại**, không phải tai nghe. Nếu phải “căng tai” mới nghe — sửa tiếng trước. Nếu phải nheo mắt mới thấy mặt/sản phẩm — sửa sáng trước. Chữ hook hay không cứu được tín hiệu xấu ở lớp cảm giác.
 
-[Đèn LED panel nhỏ](/go/den-led-panel) — chỉnh góc, đỡ bóng dưới mắt hơn là chỉ bật ring light thẳng mặt. [Kẹp máy + cold shoe](/go/phone-clamp-cold-shoe) — gắn mic/đèn gọn, khỏi “lóc cóc” tìm chỗ để đúng lúc sắp bấm quay.
+Hai món từng cứu giây đầu của mình khi indoor:
+
+[Mic Boya cài áo](/go/mic-boya-m1) — ngồi bàn, máy lạnh, nói gần miệng một chút là tiếng đủ sạch để người ta chịu nghe hết câu mở. (Đi lại nhiều thì tính mic không dây sau — đừng mua trước khi biết mình hay walk-and-talk.)
+
+[Đèn LED panel nhỏ](/go/den-led-panel) — chỉnh góc, đỡ bóng dưới mắt hơn là chỉ bật ring light thẳng mặt. Không phải “mua đèn là hook hay”; đèn chỉ để não khỏi reject vì mặt tối.
 
 Quay hook sạch đã là một nửa video. Nửa còn lại là đừng nói dài dòng trước khi vào điểm.
 
@@ -62,11 +73,23 @@ Thường sẽ thấy một trong ba thứ: mở miệng chậm, câu đầu gen
 
 Popunder / traffic ngoài TikTok cũng vậy: kéo về blog rồi người ta bounce vì dòng mở bài nhạt — cùng một bệnh. Mở phải đâm vào tình huống. Định nghĩa thì để từ điển.
 
+## Bài tập 10 phút: viết 3 phiên bản hook
+
+Trước khi quay, mình hay ép mình viết ba dòng mở khác nhau cho cùng một video:
+
+1. Phiên bản chào / “hôm nay chia sẻ” (thường bỏ).
+2. Phiên bản tên sản phẩm (“Review mic XYZ”).
+3. Phiên bản nỗi đau + số / tình huống.
+
+Đọc to cả ba. Giữ cái khiến chính mình dừng tay. Thường là số 3. Số 2 để caption. Số 1… vào thùng rác cho lành.
+
+Làm bài tập này trước khi nghĩ tới link affiliate. Link không cứu được giây đầu chết.
+
 ## Hook “đồ nghề” vs hook “nỗi đau”
 
 Mình từng mở bằng tên sản phẩm: “Review mic XYZ”. Ổn với người đang tìm đúng mic đó. Yếu với For You lạnh. Hook nỗi đau (“tiếng như toilet”) kéo được cả người chưa biết mình cần mic.
 
-Cách làm: viết hai phiên bản hook — một theo tên đồ, một theo nỗi đau. Đăng cái nỗi đau trước. Để tên đồ ở caption / giữa clip / cuối. Affiliate vẫn gắn được; chỉ là không đẩy sản phẩm vào giây 0 khi người ta chưa nhận ra mình.
+Cách làm: đăng cái nỗi đau trước. Để tên đồ ở caption / giữa clip / cuối. Affiliate vẫn gắn được; chỉ là không đẩy sản phẩm vào giây 0 khi người ta chưa nhận ra mình.
 
 ## Nhưng… vậy khi nào được mở bằng chào hỏi?
 
@@ -84,7 +107,7 @@ Cũng có lúc hook mạnh quá so với nội dung mỏng — retention tụt �
 - [ ] Mặt/sản phẩm nhìn đủ sáng, không bị bóng xấu che điểm chính?
 - [ ] Hook có khớp với phần thân, không câu view rồi đổi đề?
 
-Tick 4/5 rồi hãy bấm đăng. Thiếu tiếng hoặc thiếu sáng thì sửa gear trước — đừng chữa bằng caption.
+Tick 4/5 rồi hãy bấm đăng. Thiếu tiếng hoặc thiếu sáng thì sửa setup trước — đừng chữa bằng caption.
 
 ## Kết
 
