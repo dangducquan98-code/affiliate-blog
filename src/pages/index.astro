@@ -13,18 +13,18 @@ const featuredDeals = getFeaturedDeals().slice(0, 3);
 
 <BaseLayout
   title={BRAND_NAME}
-  description="Review gadget Shopee thật tay — củ sạc, hub USB-C, tai nghe, phụ kiện dưới 800k. Nói rõ đáng mua hay không."
+  description="Làm video TikTok kiếm tiền affiliate + review gear quay đáng tiền. Quân Kiu kể thật: hook, kịch bản, hậu trường — content trước, deal sau."
   canonicalPath="/"
 >
   <section class="container hero">
     <h1 class="hero__brand">Quân Kiu <em>Daily</em></h1>
     <p class="hero__lead">
-      Review gadget & phụ kiện công nghệ đáng tiền — sạc, hub, tai nghe, gậy selfie.
-      Thật tay, nói thẳng, kèm deal đang chạy trên Shopee.
+      Làm video TikTok kiếm tiền + review gear đáng tiền + affiliate cookie Shopee.
+      Mình viết những gì đang làm thật — hook, kịch bản, hậu trường — không bán hàng trước.
     </p>
     <div class="cta-row">
-      <a class="btn btn--primary" href="/deals">Xem deal đang chạy</a>
-      <a class="btn btn--ghost" href="/blog">Đọc review mới</a>
+      <a class="btn btn--primary" href="/blog">Đọc bài mới</a>
+      <a class="btn btn--ghost" href="/links">Link đang đẩy</a>
     </div>
   </section>
 
@@ -61,9 +61,12 @@ const featuredDeals = getFeaturedDeals().slice(0, 3);
 
   <section class="container section">
     <div class="section__head">
-      <h2>Deal nổi bật</h2>
+      <h2>Gear đang dùng</h2>
       <a href="/deals">Deal hub →</a>
     </div>
+    <p style="color: var(--ink-muted); margin-top: -0.5rem;">
+      Mic, đèn, tripod — món mình hay nhắc khi quay. Secondary; đọc bài trước khi mua.
+    </p>
     <ul class="deal-list">
       {
         featuredDeals.map((deal) => (
@@ -73,6 +76,9 @@ const featuredDeals = getFeaturedDeals().slice(0, 3);
               <span class="deal-item__price">{deal.priceHint}</span>
             </div>
             <p class="deal-item__blurb">{deal.blurb}</p>
+            <p>
+              <a href={`/go/${deal.goSlug}`}>Xem deal →</a>
+            </p>
           </li>
         ))
       }

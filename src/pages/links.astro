@@ -1,0 +1,75 @@
+---
+export const prerender = false;
+
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { listPublishedPosts } from '../lib/posts';
+import { BRAND_NAME } from '../lib/site';
+
+/** Prefer these slugs for link-in-bio (order = display). Fallback: newest published. */
+const PINNED_SLUGS = [
+  'tiktok-hook-3-giay',
+  'tiktok-kich-ban-quay-ngan',
+  'hau-truong-1-video-30-giay',
+  '7-ngay-affiliate',
+  '20-mon-do-lam-video-tiktok',
+] as const;
+
+const { posts, configured, error } = await listPublishedPosts();
+
+const bySlug = new Map(posts.map((p) => [p.slug, p]));
+const pinned = PINNED_SLUGS.map((slug) => bySlug.get(slug)).filter(
+  (p): p is NonNullable<typeof p> => Boolean(p),
+);
+
+const fallback = posts
+  .filter((p) => !PINNED_SLUGS.includes(p.slug as (typeof PINNED_SLUGS)[number]))
+  .slice(0, Math.max(0, 5 - pinned.length));
+
+const links = [...pinned, ...fallback].slice(0, 5);
+---
+
+<BaseLayout
+  title="Links"
+  description="Mình là Quân Kiu — làm TikTok affiliate. Vài bài đang đẩy: hook, kịch bản, hậu trường, lộ trình 7 ngày."
+  canonicalPath="/links"
+>
+  <section class="container-narrow links-page">
+    <header class="links-hero">
+      <p class="links-hero__eyebrow">{BRAND_NAME}</p>
+      <h1>Quân Kiu</h1>
+      <p class="links-hero__lead">
+        Mình làm TikTok affiliate — review gear quay + kể cách làm video kiếm tiền cookie Shopee.
+        Dưới đây là vài bài đang đẩy. Không nhồi deal; đọc xong rồi quyết.
+      </p>
+    </header>
+
+    {
+      error ? (
+        <p class="fallback-notice">{error}</p>
+      ) : !configured ? (
+        <p class="fallback-notice">Supabase chưa cấu hình — danh sách link sẽ hiện sau khi điền env.</p>
+      ) : links.length === 0 ? (
+        <p class="fallback-notice">Chưa có bài published.</p>
+      ) : (
+        <ul class="links-list">
+          {links.map((post) => (
+            <li>
+              <a
+                class="links-list__item"
+                href={`/blog/${post.slug}?utm_source=tiktok&utm_medium=bio&utm_campaign=${post.slug}`}
+              >
+                <span class="links-list__title">{post.title}</span>
+                <span class="links-list__desc">{post.description}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      )
+    }
+
+    <div class="cta-row links-cta">
+      <a class="btn btn--primary" href="/blog">Xem tất cả bài</a>
+      <a class="btn btn--ghost" href="/">Về trang chủ</a>
+    </div>
+  </section>
+</BaseLayout>

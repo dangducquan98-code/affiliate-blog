@@ -1,42 +1,30 @@
-- name: Củ sạc 20W đáng mua dưới 200k
-  blurb: Sạc nhanh iPhone, có chứng chỉ — đừng mua no-name chỉ vì rẻ hơn 30k.
-  priceHint: ~150–199k
-  goSlug: cu-sac-20w
-  tags: [sạc, iPhone, dưới-200k]
+- name: Mic cài áo Boya BY-M1
+  blurb: Mic lav mình hay dùng khi quay review — tiếng sạch hơn mic điện thoại, giá mềm.
+  priceHint: ~150–250k
+  goSlug: mic-boya-m1
+  tags: [mic, tiktok, quay]
   featured: true
-- name: Hub UGREEN Uno 6-in-1
-  blurb: Một hub cho MacBook Air M1 — HDMI + USB + sạc. Review thật tay trên blog.
-  priceHint: ~450–550k
-  goSlug: ugreen-hub-uno
-  tags: [hub, MacBook, UGREEN]
+- name: Đèn vòng ring light 10 inch
+  blurb: Ánh sáng đều khi quay trong nhà — đủ cho face cam TikTok, không cần studio.
+  priceHint: ~120–250k
+  goSlug: den-ring-light-10
+  tags: [đèn, ring-light, tiktok]
   featured: true
-- name: Tai nghe Bluetooth dưới 300k
-  blurb: Ba tiêu chí mình không bỏ qua trước khi bấm mua.
-  priceHint: ~199–299k
-  goSlug: tai-nghe-bt-300k
-  tags: [tai-nghe, bluetooth]
+- name: Đèn LED panel softbox nhỏ
+  blurb: Khi cần sáng mềm hơn ring light — panel nhỏ cho góc bàn / background.
+  priceHint: ~200–400k
+  goSlug: den-led-panel
+  tags: [đèn, led, quay]
   featured: true
-- name: Gậy selfie mini Bluetooth
-  blurb: Đi một mình vẫn có ảnh đẹp — nhỏ gọn bỏ túi.
-  priceHint: ~80–120k
-  goSlug: gay-selfie-mini
-  tags: [gậy-selfie, phụ-kiện]
-  featured: false
-- name: Cáp sạc silicon iPhone
-  blurb: Dây mềm, ít gãy gốc — dưới 100k mà bền hơn dây cứng.
-  priceHint: ~49–89k
-  goSlug: cap-silicon-iphone
-  tags: [cáp, iPhone]
+- name: Tripod điện thoại linh hoạt
+  blurb: Quay một mình không run tay — kẹp phone, góc linh hoạt, bỏ túi được.
+  priceHint: ~80–180k
+  goSlug: tripod-phone-flexible
+  tags: [tripod, gimbal, tiktok]
   featured: true
-- name: Combo sạc + cáp silicon
-  blurb: Lấy củ 20W kèm dây silicon nếu đang thiếu cả hai.
-  priceHint: ~200–280k
-  goSlug: cu-sac-20w
-  tags: [combo, sạc]
-  featured: false
-- name: Hub HDMI cho laptop Windows
-  blurb: Cùng dòng hub USB-C — check 4K thật trước khi mua.
-  priceHint: ~400–500k
-  goSlug: ugreen-hub-uno
-  tags: [hub, laptop]
+- name: Bọc xốp / wind muff mic lav
+  blurb: Giảm gió và hơi thở khi mic cài áo — món nhỏ nhưng cứu nhiều take ngoài trời.
+  priceHint: ~30–80k
+  goSlug: lav-mic-foam
+  tags: [mic, phụ-kiện]
   featured: false
