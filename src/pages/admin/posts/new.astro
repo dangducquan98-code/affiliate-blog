@@ -2,6 +2,7 @@
 export const prerender = false;
 
 import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { CATEGORIES, DEFAULT_CATEGORY_SLUG } from '../../../lib/categories';
 import { requireAdmin } from '../../../lib/admin-auth';
 import { listProductsAdmin } from '../../../lib/products';
 
@@ -55,11 +56,14 @@ const catalogJson = JSON.stringify(
       </label>
       <label>
         Category *
-        <select id="category" name="category" data-current="huong-dan" required>
-          <option value="huong-dan">Hướng dẫn</option>
-          <option value="review">Review</option>
-          <option value="so-sanh">So sánh</option>
-          <option value="deal">Deal / mua sắm</option>
+        <select id="category" name="category" data-current={DEFAULT_CATEGORY_SLUG} required>
+          {
+            CATEGORIES.map((cat) => (
+              <option value={cat.slug} selected={cat.slug === DEFAULT_CATEGORY_SLUG}>
+                {cat.label}
+              </option>
+            ))
+          }
         </select>
       </label>
       <label>

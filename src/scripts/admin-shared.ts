@@ -1,5 +1,9 @@
 /** Shared admin client helpers (toast, loading, word count). */
 
+import { categorySelectOptions, DEFAULT_CATEGORY_SLUG } from '../lib/categories';
+
+export { DEFAULT_CATEGORY_SLUG };
+
 export function showToast(message: string, type: 'ok' | 'err' = 'ok'): void {
   let host = document.getElementById('admin-toast-host');
   if (!host) {
@@ -34,11 +38,6 @@ export function countWords(text: string): number {
   return text.trim() ? text.trim().split(/\s+/).length : 0;
 }
 
-export const POST_CATEGORIES = [
-  { value: 'huong-dan', label: 'Hướng dẫn' },
-  { value: 'review', label: 'Review' },
-  { value: 'so-sanh', label: 'So sánh' },
-  { value: 'deal', label: 'Deal / mua sắm' },
-] as const;
+export const POST_CATEGORIES = categorySelectOptions();
 
 export const MARKDOWN_HINT = `Gợi ý Markdown: # tiêu đề · **đậm** · *nghiêng* · [text](/go/slug) · - checklist · > trích`;

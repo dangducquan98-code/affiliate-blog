@@ -1,5 +1,6 @@
 import { marked } from 'marked';
 import {
+  DEFAULT_CATEGORY_SLUG,
   MARKDOWN_HINT,
   POST_CATEGORIES,
   countWords,
@@ -61,9 +62,10 @@ export function initPostEditor(opts: EditorOptions): void {
 
   if (hintEl) hintEl.textContent = MARKDOWN_HINT;
 
-  // Fill category options if empty
-  if (categorySelect && categorySelect.options.length <= 1) {
-    const current = categorySelect.dataset.current || categorySelect.value || 'huong-dan';
+  // Keep select options in sync with shared categories config
+  if (categorySelect) {
+    const current =
+      categorySelect.dataset.current || categorySelect.value || DEFAULT_CATEGORY_SLUG;
     categorySelect.innerHTML = POST_CATEGORIES.map(
       (c) =>
         `<option value="${c.value}" ${c.value === current ? 'selected' : ''}>${c.label}</option>`,

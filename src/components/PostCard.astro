@@ -1,5 +1,6 @@
 ---
 import BlogImage from './BlogImage.astro';
+import { getCategoryLabel } from '../lib/categories';
 
 interface Props {
   href: string;
@@ -16,10 +17,16 @@ const dateLabel = date.toLocaleDateString('vi-VN', {
   month: 'short',
   day: 'numeric',
 });
+const categoryLabel = getCategoryLabel(category);
+const categoryHref = `/category/${category}`;
 ---
 
 <li class="post-item">
-  <a href={href}>
+  <p class="post-item__meta">
+    {dateLabel} ·{' '}
+    <a class="post-item__cat" href={categoryHref}>{categoryLabel}</a>
+  </p>
+  <a class="post-item__link" href={href}>
     {
       coverImage && (
         <div class="post-item__cover">
@@ -27,7 +34,6 @@ const dateLabel = date.toLocaleDateString('vi-VN', {
         </div>
       )
     }
-    <p class="post-item__meta">{dateLabel} · {category}</p>
     <h3 class="post-item__title">{title}</h3>
     <p class="post-item__desc">{description}</p>
   </a>

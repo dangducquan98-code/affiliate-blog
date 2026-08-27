@@ -49,7 +49,10 @@ function mapRow(row: Record<string, unknown>): Post {
   };
 }
 
-export async function listPublishedPosts(limit?: number): Promise<PostsResult> {
+async function queryPublishedPosts(options?: {
+  limit?: number;
+  category?: string;
+}): Promise<PostsResult> {
   const { createAnonClient, isSupabaseConfigured } = await import('./supabase');
   if (!isSupabaseConfigured()) {
     return {
@@ -72,8 +75,12 @@ export async function listPublishedPosts(limit?: number): Promise<PostsResult> {
       .eq('published', true)
       .order('created_at', { ascending: false });
 
-    if (typeof limit === 'number') {
-      query = query.limit(limit);
+    if (options?.category) {
+      query = query.eq('category', options.category);
+    }
+
+    if (typeof options?.limit === 'number') {
+      query = query.limit(options.limit);
     }
 
     const { data, error } = await query;
@@ -94,6 +101,17 @@ export async function listPublishedPosts(limit?: number): Promise<PostsResult> {
     const message = err instanceof Error ? err.message : 'Lỗi không xác định';
     return { posts: [], configured: true, error: `Không tải được bài viết: ${message}` };
   }
+}
+
+export async function listPublishedPosts(limit?: number): Promise<PostsResult> {
+  return queryPublishedPosts({ limit });
+}
+
+export async function listPublishedPostsByCategory(
+  category: string,
+  limit?: number,
+): Promise<PostsResult> {
+  return queryPublishedPosts({ category, limit });
 }
 
 export async function getPublishedPostBySlug(

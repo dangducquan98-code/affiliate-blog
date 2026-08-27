@@ -2,6 +2,7 @@
 export const prerender = false;
 
 import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { CATEGORIES, DEFAULT_CATEGORY_SLUG, isValidCategorySlug } from '../../../lib/categories';
 import { requireAdmin } from '../../../lib/admin-auth';
 import { productSlugOf } from '../../../lib/admin-posts';
 import { getPostByIdAdmin } from '../../../lib/posts';
@@ -29,7 +30,8 @@ const catalogJson = JSON.stringify(
   })),
 );
 const selectedJson = JSON.stringify(selectedSlugs);
-const category = post?.category || 'huong-dan';
+const rawCategory = post?.category || DEFAULT_CATEGORY_SLUG;
+const category = isValidCategorySlug(rawCategory) ? rawCategory : DEFAULT_CATEGORY_SLUG;
 ---
 
 <BaseLayout
@@ -95,18 +97,13 @@ const category = post?.category || 'huong-dan';
             <label>
               Category *
               <select id="category" name="category" data-current={category} required>
-                <option value="huong-dan" selected={category === 'huong-dan'}>
-                  Hướng dẫn
-                </option>
-                <option value="review" selected={category === 'review'}>
-                  Review
-                </option>
-                <option value="so-sanh" selected={category === 'so-sanh'}>
-                  So sánh
-                </option>
-                <option value="deal" selected={category === 'deal'}>
-                  Deal / mua sắm
-                </option>
+                {
+                  CATEGORIES.map((cat) => (
+                    <option value={cat.slug} selected={cat.slug === category}>
+                      {cat.label}
+                    </option>
+                  ))
+                }
               </select>
             </label>
             <label>

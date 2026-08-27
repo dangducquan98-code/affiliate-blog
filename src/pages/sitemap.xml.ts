@@ -1,4 +1,5 @@
 import type { APIRoute } from 'astro';
+import { CATEGORIES } from '../lib/categories';
 import { listPublishedPosts } from '../lib/posts';
 import { getSiteUrl } from '../lib/site';
 
@@ -15,12 +16,16 @@ function xmlEscape(value: string): string {
 
 export const GET: APIRoute = async () => {
   const site = getSiteUrl().replace(/\/$/, '');
-  const staticPaths = ['/', '/blog', '/deals', '/about'];
+  const staticPaths = ['/', '/blog', '/categories', '/deals', '/about'];
   const { posts } = await listPublishedPosts();
 
   const urls = [
     ...staticPaths.map((path) => ({
       loc: `${site}${path === '/' ? '' : path}`,
+      lastmod: undefined as string | undefined,
+    })),
+    ...CATEGORIES.map((cat) => ({
+      loc: `${site}/category/${cat.slug}`,
       lastmod: undefined as string | undefined,
     })),
     ...posts.map((post) => ({

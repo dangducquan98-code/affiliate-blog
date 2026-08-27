@@ -1,0 +1,48 @@
+---
+export const prerender = false;
+
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { CATEGORIES } from '../../lib/categories';
+import { listPublishedPosts } from '../../lib/posts';
+
+const { posts, error } = await listPublishedPosts();
+const counts = new Map<string, number>();
+for (const post of posts) {
+  counts.set(post.category, (counts.get(post.category) ?? 0) + 1);
+}
+---
+
+<BaseLayout
+  title="Chủ đề"
+  description="Khám phá bài viết theo chủ đề: Làm TikTok, Affiliate, Review Gear, AI & Công cụ, Deal."
+  canonicalPath="/categories"
+>
+  <section class="container">
+    <h1>Chủ đề</h1>
+    <p style="color: var(--ink-muted); max-width: 36rem;">
+      Chọn chủ đề bạn quan tâm — cùng hệ thống category dùng cho blog và admin.
+    </p>
+    {
+      error ? (
+        <p class="fallback-notice" style="margin-top: 1.5rem;">{error}</p>
+      ) : (
+        <ul class="category-list" style="margin-top: 1.5rem;">
+          {CATEGORIES.map((cat) => {
+            const count = counts.get(cat.slug) ?? 0;
+            return (
+              <li class="category-item">
+                <a href={`/category/${cat.slug}`}>
+                  <h2 class="category-item__title">{cat.label}</h2>
+                  <p class="category-item__desc">{cat.description}</p>
+                  <p class="category-item__meta">
+                    {count === 0 ? 'Chưa có bài' : `${count} bài`}
+                  </p>
+                </a>
+              </li>
+            );
+          })}
+        </ul>
+      )
+    }
+  </section>
+</BaseLayout>

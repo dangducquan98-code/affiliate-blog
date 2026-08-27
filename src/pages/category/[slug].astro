@@ -1,0 +1,77 @@
+---
+export const prerender = false;
+
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PostCard from '../../components/PostCard.astro';
+import { getCategoryBySlug } from '../../lib/categories';
+import { listPublishedPostsByCategory } from '../../lib/posts';
+
+const slug = Astro.params.slug ?? '';
+const category = getCategoryBySlug(slug);
+
+if (!category) {
+  Astro.response.status = 404;
+}
+
+const { posts, configured, error } = category
+  ? await listPublishedPostsByCategory(category.slug)
+  : { posts: [], configured: true, error: null };
+---
+
+{
+  !category ? (
+    <BaseLayout
+      title="Không tìm thấy chủ đề"
+      description="Category không tồn tại."
+      canonicalPath={`/category/${slug}`}
+    >
+      <section class="container">
+        <h1>Không tìm thấy chủ đề</h1>
+        <p class="fallback-notice">Category này không có trong hệ thống.</p>
+        <p>
+          <a href="/categories">← Tất cả chủ đề</a>
+        </p>
+      </section>
+    </BaseLayout>
+  ) : (
+    <BaseLayout
+      title={category.label}
+      description={category.description}
+      canonicalPath={`/category/${category.slug}`}
+    >
+      <section class="container">
+        <p style="margin: 0 0 0.5rem;">
+          <a href="/categories" style="color: var(--ink-muted); text-decoration: none;">
+            ← Chủ đề
+          </a>
+        </p>
+        <h1>{category.label}</h1>
+        <p style="color: var(--ink-muted); max-width: 36rem;">{category.description}</p>
+        {error ? (
+          <p class="fallback-notice" style="margin-top: 1.5rem;">
+            {error}
+          </p>
+        ) : posts.length === 0 ? (
+          <p class="fallback-notice" style="margin-top: 1.5rem;">
+            {configured
+              ? 'Chưa có bài trong chủ đề này.'
+              : 'Supabase chưa cấu hình — danh sách bài sẽ xuất hiện sau khi điền env.'}
+          </p>
+        ) : (
+          <ul class="post-list" style="margin-top: 1.5rem;">
+            {posts.map((post) => (
+              <PostCard
+                href={`/blog/${post.slug}`}
+                title={post.title}
+                description={post.description}
+                date={new Date(post.created_at)}
+                category={post.category}
+                coverImage={post.cover_image}
+              />
+            ))}
+          </ul>
+        )}
+      </section>
+    </BaseLayout>
+  )
+}
