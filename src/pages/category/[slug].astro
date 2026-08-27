@@ -22,12 +22,12 @@ const { posts, configured, error } = category
   !category ? (
     <BaseLayout
       title="Không tìm thấy chủ đề"
-      description="Category không tồn tại."
+      description="Chủ đề này không có trên blog."
       canonicalPath={`/category/${slug}`}
     >
       <section class="container">
         <h1>Không tìm thấy chủ đề</h1>
-        <p class="fallback-notice">Category này không có trong hệ thống.</p>
+        <p class="fallback-notice">Không có chủ đề này. Xem danh sách chủ đề bên dưới.</p>
         <p>
           <a href="/categories">← Tất cả chủ đề</a>
         </p>

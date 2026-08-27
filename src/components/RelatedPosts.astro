@@ -12,7 +12,7 @@ const { posts } = Astro.props;
   posts.length > 0 && (
     <section class="related-posts" aria-label="Đọc tiếp">
       <h2>Đọc tiếp</h2>
-      <p class="related-posts__lead">Cùng cụm chủ đề — đọc tiếp nếu còn hứng.</p>
+      <p class="related-posts__lead">Bài gần chủ đề này — chọn tiếp nếu bạn còn muốn đọc.</p>
       <ul class="related-posts__list">
         {posts.map((p) => (
           <li>

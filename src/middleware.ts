@@ -17,7 +17,6 @@ function isPublicCachePath(pathname: string): boolean {
     pathname.startsWith('/blog') ||
     pathname.startsWith('/category') ||
     pathname.startsWith('/categories') ||
-    pathname.startsWith('/links') ||
     pathname.startsWith('/deals') ||
     pathname.startsWith('/about')
   );
