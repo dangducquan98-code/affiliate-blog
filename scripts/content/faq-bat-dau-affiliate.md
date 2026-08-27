@@ -77,7 +77,7 @@ Hiểu đơn giản (không thay thế điều khoản từng sàn — anh em t�
 1. Chọn ngách hẹp đủ nói 20 clip mà không hết chuyện  
 2. Đăng đều hơn đăng đẹp  
 3. Mỗi clip một ý + một điểm thật (kể cả điểm yếu)  
-4. CTA muộn, disclosure rõ  
+4. CTA muộn, nội dung trung thực (không lừa dối)  
 5. Đo bằng tin + save + comment chất, không chỉ view  
 
 Năm bước đó không đảm bảo tháng đầu có lương. Chúng giảm xác suất bạn bỏ cuộc vì tự làm hỏng trust.

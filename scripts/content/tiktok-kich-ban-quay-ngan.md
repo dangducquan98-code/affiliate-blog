@@ -2,8 +2,6 @@ Mình từng “quay freestyle”. Xong ngồi dựng bốn mươi phút để c
 
 Giờ mình viết trước. Không phải viết tiểu thuyết — viết như tin nhắn cho bạn.
 
-**Disclosure:** series này có thể gắn link affiliate Shopee (`/go/...`). Có hoa hồng nếu anh em mua trong cửa sổ cookie; không ảnh hưởng giá. Mình vẫn nói đồ nào đáng, đồ nào chữa cháy tạm.
-
 ## Vì sao freestyle làm mình mệt
 
 Freestyle nghe “thật”. Đôi khi thật luôn. Nhưng với review sản phẩm + affiliate, freestyle dễ thành lòng vòng: mở chậm, vào điểm muộn, chốt mơ hồ, link quên gắn. Analytics nhìn cũng được. Cookie thì… ừm.

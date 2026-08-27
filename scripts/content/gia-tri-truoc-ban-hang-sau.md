@@ -4,8 +4,6 @@ Rồi mình làm kiểu bán trước một thời gian. View có. Đơn lủng.
 
 Bài này kể chuyện chuyển tư duy đó — và vì sao content-first không đối nghịch với kiếm hoa hồng.
 
-**Disclosure:** bài trên Quân Kiu Daily có thể chứa link affiliate (`/go/...`). Minh bạch một lần cho rõ.
-
 ## Vì sao lúc đầu mình ghét câu đó
 
 Vì mình dịch sai. Mình nghe “giá trị trước” như “đừng bán”. Trong đầu người mới, không bán = không ăn. Vậy thì làm affiliate để gì?
@@ -65,7 +63,7 @@ Mình không cấm CTA. Mình đặt CTA đúng chỗ:
 - Sau khi đã cho quan điểm / bài học
 - Gắn vào nỗi đau vừa nói (“mình đang dùng X vì…”)
 - Một lần đủ rõ, không lặp hô mua
-- Disclosure minh bạch, không giấu
+- Nói thật trải nghiệm — không lừa dối
 
 Bán hàng sau không phải bán yếu. Là bán khi đã có quyền được nói. Quyền đó không mua bằng follow — mua bằng độ thật trong từng clip / từng bài.
 

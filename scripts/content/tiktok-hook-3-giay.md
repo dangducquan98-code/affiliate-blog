@@ -2,8 +2,6 @@ Mở TikTok. Vuốt. Vuốt. Vuốt.
 
 Ơ thật ra video của mình cũng nằm trong đống bị vuốt đó. Có thế thôi!
 
-**Disclosure:** bài này có link affiliate Shopee qua `/go/...`. Anh em mua qua link, mình có thể có hoa hồng; giá không đổi. Mình nói rõ để khỏi kiểu “nói chuyện như đang giấu gì”.
-
 ## Hook không phải “câu hay” — hook là lý do dừng tay
 
 Mình từng mở đầu kiểu sách vở: “Hôm nay mình sẽ chia sẻ về…” — chết ngay ở giây một. Không phải vì nội dung tệ. Vì tay người xem đang ở chế độ săn cảm giác. Lời chào lịch sự không phải cảm giác.

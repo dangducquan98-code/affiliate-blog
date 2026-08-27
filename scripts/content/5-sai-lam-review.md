@@ -2,8 +2,6 @@ Mình từng nghĩ làm review là cầm sản phẩm lên, nói “đáng mua�
 
 Không phải vì mình lười. Mình mắc đủ sai. Bài này liệt 5 sai lầm mình từng làm (và đôi lúc vẫn suýt tái phạm), kèm cách sửa thực dụng. Không phải checklist “chuyên gia”. Là nhật ký tự vấn — để anh em đỡ mất vài tháng học bằng tiền view.
 
-**Disclosure:** Quân Kiu Daily có thể chứa link affiliate (`/go/...`). Anh em bấm, mua trong cửa sổ cookie, mình có thể nhận hoa hồng — giá anh em trả không đổi. Mình vẫn nói theo trải nghiệm thật.
-
 ## Sai lầm 1: Mở miệng bằng giá và “mua ngay”
 
 Clip cũ của mình hay mở: “Hôm nay deal X chỉ còn… link bio.” Tay người ta vuốt. Đúng thôi — họ vào TikTok để xem chuyện, không phải catalogue.

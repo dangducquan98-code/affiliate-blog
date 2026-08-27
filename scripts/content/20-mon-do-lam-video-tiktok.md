@@ -2,8 +2,6 @@ Mình từng kê điện thoại lên chồng sách, bật đèn trần, quay re
 
 Bài này mình tổng hợp **20+ món** có thể cần khi làm video TikTok kiếm tiền, kèm trải nghiệm thật lúc mới bắt đầu. Không phải checklist “mua hết hôm nay”. Là menu: biết món nào bắt buộc, món nào nâng cấp, món nào bỏ cũng được.
 
-**Disclosure:** có vài link affiliate Shopee dạng `/go/...`. Anh em bấm mua trong cửa sổ cookie, mình có thể nhận hoa hồng — giá không đổi. Phần lớn danh sách mình chỉ kể; chỉ gắn link vài món mình thấy đáng ưu tiên sớm.
-
 ## Nguyên tắc trước khi đọc list
 
 Đừng vội mua đồ đắt. Bắt đầu với những gì đang có, nâng cấp khi **đau thật** (tiếng ù, mặt tối, tay mỏi). Ưu tiên đồ dễ dùng, đa năng, gọn. Đọc review thật — nhất là mic, đèn, tripod — trước khi chốt.

@@ -65,8 +65,11 @@ function toProducts(productSlugs: unknown): Array<{ slug: string }> {
 
 function stripMdxChrome(body: string): string {
   return body
-    .replace(/<p class="disclosure">[\s\S]*?<\/p>\s*/i, '')
-    .replace(/^\s+/, '');
+    .replace(/<p\s+class=["']disclosure["']>[\s\S]*?<\/p>\s*/gi, '')
+    .replace(/^##\s*Disclosure[^\n]*\n+(?:(?!^##\s).*\n?)*/gim, '')
+    .replace(/^\*\*Disclosure:\*\*[^\n]*\n+(?:\n)?/gim, '')
+    .replace(/^\s+/, '')
+    .replace(/\n{3,}/g, '\n\n');
 }
 
 const blogDir = join(process.cwd(), 'src/content/blog');

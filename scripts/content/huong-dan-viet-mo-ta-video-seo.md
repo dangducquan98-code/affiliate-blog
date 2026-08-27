@@ -2,8 +2,6 @@ Mình từng nghĩ mô tả TikTok chỉ là chỗ “nhét hashtag cho đủ”
 
 Ơ thật ra phần mô tả không phải trang trí. Nó là lớp SEO nhỏ mà nhiều người bỏ qua vì “nội dung mới quan trọng”. Đúng — nội dung phải đứng trước. Nhưng mô tả kém thì video hay cũng khó được tìm lại. Bài này mình viết lại cách mình đang làm mô tả cho thị trường Việt: ngắn, có từ khóa người ta thật sự gõ, không spam.
 
-**Disclosure:** bài trên Quân Kiu Daily có thể chứa link affiliate (`/go/...`). Anh em bấm, mua trong cửa sổ cookie, mình có thể nhận hoa hồng — giá anh em trả không đổi.
-
 ## Mô tả không cứu được video tệ — nhưng nó cứu được video hay bị chôn
 
 Test nhanh: anh em search trên TikTok mấy từ kiểu “cáp sạc nhanh”, “quat mini”, “hop hut am”. Kết quả không chỉ là video đẹp. Kết quả là video có chữ / caption / mô tả khớp đúng cách người Việt tìm.

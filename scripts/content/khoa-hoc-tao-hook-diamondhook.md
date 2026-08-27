@@ -4,8 +4,6 @@ Lúc đó mình mới hiểu: hook không phải trang trí. Hook là cánh cử
 
 Bài này mình viết lại theo hướng thực chiến: mục đích, quy trình 3 bước, vài định dạng móc bắt buộc phải nắm, và cách dùng thẻ / prompt khi bí — giữ ý gốc từ tài liệu TiktokHero / DiamondHook, bỏ giọng bán khóa học dày đặc.
 
-**Disclosure:** bài có thể chứa link affiliate (`/go/...`). Anh em mua qua link, mình có thể có hoa hồng; giá không đổi.
-
 ## Mục đích: mở được cửa — không phải thuộc slogan
 
 Mục tiêu đơn giản: tạo phần mở đầu (hook) đủ cuốn để người xem **muốn xem tiếp ngay**, áp dụng được cho video, caption, email, post blog — cùng một tư duy, khác độ dài.

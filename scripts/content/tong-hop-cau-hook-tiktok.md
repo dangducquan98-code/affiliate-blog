@@ -2,8 +2,6 @@ Mình hay dừng tay giữa For You không phải vì “câu hay”. Vì câu m
 
 Thế là mình sưu tầm lại các nhóm hook hay thấy trên kênh Việt, lọc cái dùng được cho review / affiliate / lifestyle. Không phải lý thuyết khô. Là kho câu để biến tấu — gắn trải nghiệm thật của anh em vào chỗ trống.
 
-**Disclosure:** bài có thể chứa link affiliate (`/go/...`). Anh em mua qua link, mình có thể có hoa hồng; giá không đổi.
-
 ## Hook là lý do dừng — không phải lời chào
 
 “Hôm nay mình sẽ chia sẻ…” chết ở giây một với For You lạnh. Tay đang săn cảm giác. Lời chào lịch sự không phải cảm giác.

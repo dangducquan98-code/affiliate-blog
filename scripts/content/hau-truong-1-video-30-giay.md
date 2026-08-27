@@ -2,8 +2,6 @@ Người ngoài thấy clip 30 giây. Mình thấy cái đồng hồ: gần 3 ti
 
 Bài này là hậu trường một video ngắn kiểu mình hay làm. Không phải chuẩn studio. Là lịch thực tế của người làm ban ngày, tối về còn nhà cửa — để anh em đỡ ảo tưởng “mỗi clip mười phút là xong”.
 
-**Disclosure:** có thể có link affiliate (`/go/...`) tới gear mình đang dùng trong quy trình. Giá anh em trả không đổi.
-
 ## Tổng quan timeline (một đêm “ổn”)
 
 | Bước | Thời gian xấp xỉ | Việc thật |

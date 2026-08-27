@@ -104,10 +104,6 @@ Trước khi bấm quay, mình tự hỏi:
 
 Không phải vì hoa hồng thấp mà bỏ. Nhưng nếu cả 4 câu đều “không” — mình bỏ.
 
-## Disclosure (nói thẳng)
-
-Bài trên Quân Kiu Daily có thể chứa **link affiliate Shopee**. Anh em bấm, mua trong cửa sổ cookie, mình có thể nhận hoa hồng — **giá anh em trả không đổi**. Mình vẫn chọn/review theo trải nghiệm thật; không thích thì nói không thích.
-
 ## Gear tối thiểu để bắt đầu (không cần studio)
 
 Không cần đợi “đủ đồ”. Mình từng quay bằng điện thoại + ánh sáng cửa sổ. Sau mới thêm dần:
@@ -164,10 +160,6 @@ Người ta dừng vì *nhận ra mình*. Không phải vì mình “chuyên gia
 **3. Tự vấn**  
 “Không biết có phải mình kỳ không mà…” — gần giọng nhật ký. Kênh nhỏ sống nhờ độ thật, không nhờ studio.
 
-## Disclosure
-
-Có link affiliate Shopee ở cuối / trong CTA. Anh em mua qua link, mình có thể có hoa hồng; giá không đổi. Mình nói rõ để khỏi “nói chuyện như đang giấu gì”.
-
 ## Vì sao gear lại dính tới hook?
 
 Hook mà **không nghe rõ** — người ta vuốt. Hook mà **mặt tối như hang** — người ta vuốt.
@@ -220,10 +212,6 @@ Cắt lời chào dài.
 Cắt đoạn “ờ thì… ừm…”.
 
 Giữ lại chỗ tự vấn — nghe người thật hơn. Nhưng đừng tự vấn cả phút.
-
-## Disclosure
-
-Series này có thể gắn link affiliate (Shopee). Có hoa hồng nếu anh em mua trong cửa sổ cookie; không ảnh hưởng giá. Mình vẫn nói đồ nào đáng, đồ nào chữa cháy tạm.
 
 ## Gear giúp “quay một mạch”
 

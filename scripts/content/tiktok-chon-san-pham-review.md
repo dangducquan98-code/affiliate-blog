@@ -2,8 +2,6 @@ Hôm qua mình mở Shopee Affiliate, định “review nhanh” một món đan
 
 Có thế thôi đã đủ để dừng lại.
 
-**Disclosure:** bài trên Quân Kiu Daily có thể chứa link affiliate Shopee (`/go/...`). Anh em bấm, mua trong cửa sổ cookie, mình có thể nhận hoa hồng — giá anh em trả không đổi. Mình vẫn chọn và nói theo trải nghiệm thật; không thích thì nói không thích.
-
 ## Mình từng review vì “thấy mọi người đang làm”
 
 Giai đoạn đầu kênh TikTok review sản phẩm (giờ quanh 4K followers), mình chọn sản phẩm kiểu: đang trend thì làm, hoa hồng cao thì làm, bạn bè hỏi thì làm. View thì có. Cookie affiliate? Lủng cà lủng củng. Người xem vào, xem xong, không biết mua cái gì, đi đâu, rồi vuốt tiếp.

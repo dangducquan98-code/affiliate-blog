@@ -2,8 +2,6 @@ Mình từng nghĩ “làm TikTok affiliate” là mở app, chọn món hoa h�
 
 Không phải vì mình không chịu làm. Mình làm khá nhiều. Nhưng làm sai thứ tự — bán trước, giá trị sau — thì mỗi clip như chữa cháy. Bài này mình gom lại thành một lộ trình 7 ngày thực chiến: chọn ngách, viết hook, dựng checklist, tránh lỗi hay gặp. Ý tưởng gốc mình từng tổng hợp từ sách + ví dụ cộng đồng; phần dưới là cách mình hiểu và đang dùng lại trên kênh ~4K.
 
-**Disclosure:** bài trên Quân Kiu Daily có thể chứa link affiliate (`/go/...`). Anh em bấm, mua trong cửa sổ cookie, mình có thể nhận hoa hồng — giá anh em trả không đổi. Mình vẫn nói theo trải nghiệm thật.
-
 ## Ngày 1–2: Tư duy nền — chọn ngách trước khi chọn sản phẩm
 
 Không cần là hot TikToker. Cần chủ đề rõ, đăng đều, nội dung có ích. Cộng đồng lớn dần từ đó — không phải từ một clip “nổ” rồi im.

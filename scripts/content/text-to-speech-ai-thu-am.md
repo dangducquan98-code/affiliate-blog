@@ -2,8 +2,6 @@ Mình từng ngồi trước mic, mở CapCut, viết xong kịch bản… rồi
 
 Không phải ai làm TikTok / review cũng thích ngồi thu âm từng câu. Có người ngại nghe giọng mình. Có người cần voice-over nhanh cho slideshow, unbox im lặng, hoặc đăng đều khi không kịp quay face-cam. Lúc đó text-to-speech (TTS) — chuyển văn bản thành thu âm — cứu được nhịp đăng. Không thay được hết trải nghiệm “nói thiệt trước camera”, nhưng nó là công cụ. Công cụ thì phải biết khi nào dùng, khi nào đừng.
 
-**Disclosure:** bài có thể chứa link affiliate (`/go/...`). Anh em bấm / đăng ký qua link, mình có thể nhận hoa hồng hoặc ưu đãi — trải nghiệm và giới hạn mình vẫn nói thẳng.
-
 ## Vì sao mình đụng tới TTS tiếng Việt?
 
 Mình làm review gadget + phụ kiện công nghệ đáng tiền, kênh TikTok quanh 4K. Nhiều clip cần thoại rõ. Mic giúp. Nhưng đôi lúc mình cần bản voice-over sạch để dựng trước, hoặc thử nhịp câu trước khi ngồi quay lại bằng giọng thật.

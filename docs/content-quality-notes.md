@@ -25,11 +25,11 @@ Test nhanh: tưởng tượng xoá mọi `/go/...` và CTA — bài còn đứng
 - [ ] **Bỏ hết link → bài còn giá trị?** Ví dụ thật, con số, sai lầm, bài học — không generic.
 - [ ] **Link nằm tự nhiên** trong mạch “đồ mình đang dùng / nếu cần thì đây” — không “mua ngay” lặp lại mọi đoạn.
 - [ ] **Số link/bài:** tối đa **2–3 chỗ** gắn `/go/...` + **1 CTA mềm** cuối bài. Không nhồi.
-- [ ] **Tỷ lệ ước lượng:** ≥85% nội dung giá trị, ≤15% CTA/link/disclosure.
+- [ ] **Tỷ lệ ước lượng:** ≥85% nội dung giá trị, ≤15% CTA/link.
 - [ ] **Mở bài bằng tình huống** (không định nghĩa / “Hôm nay mình sẽ…”).
 - [ ] **Kết bằng câu hỏi mở thực chất** (để comment / suy nghĩ — không hô mua).
 - [ ] **Voice:** xưng “mình”, gọi “bạn” / “anh em”; khẩu ngữ vừa phải; không AI-sáo.
-- [ ] **Disclosure affiliate** một lần gần đầu (minh bạch), không lặp kiểu bán hàng.
+- [ ] **Không dùng disclosure block** (theo chủ dự án). Nội dung vẫn phải trung thực, không lừa dối — nói thật trải nghiệm; không giấu điểm yếu để chốt đơn.
 - [ ] SEO cơ bản: title, description, canonical/OG theo template site — nhưng SEO không thay thế giá trị đọc.
 
 ---
