@@ -14,6 +14,7 @@
     "seed:tiktok-series": "tsx scripts/seed-tiktok-series.ts",
     "rewrite:tiktok-series": "tsx scripts/rewrite-tiktok-series.ts",
     "import:blogspot": "tsx scripts/import-blogspot-posts.ts",
+    "import:diverse": "tsx scripts/import-diverse-posts.ts",
     "test:unit": "node --import tsx --test src/lib/products.test.ts"
   },
   "dependencies": {
