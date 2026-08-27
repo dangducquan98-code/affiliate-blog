@@ -1,5 +1,5 @@
 /**
- * Import 3 rewritten Blogspot posts + ensure related products exist.
+ * Import rewritten Blogspot (label: tiktok) posts + ensure related products exist.
  *
  * Usage:
  *   npm run import:blogspot
@@ -83,6 +83,18 @@ const newProducts: ProductSeed[] = [
     category: 'cong-cu-ai',
     price_hint: 'theo gói credits',
   },
+  {
+    slug: 'sach-content-bac-ty',
+    name: 'Sách Content Bạc Tỷ',
+    category: 'sach',
+    price_hint: '~99–199k',
+  },
+  {
+    slug: 'diamondhook-bo-the',
+    name: 'Bộ thẻ DiamondHook — viết câu hook mở đầu',
+    category: 'sach',
+    price_hint: 'theo shop',
+  },
 ];
 
 const posts: SeedPost[] = [
@@ -127,6 +139,42 @@ const posts: SeedPost[] = [
       { slug: 'mic-boya-m1' },
     ],
     contentFile: '20-mon-do-lam-video-tiktok.md',
+    published: true,
+    cover_image: null,
+  },
+  {
+    slug: 'huong-dan-viet-mo-ta-video-seo',
+    title: 'Viết mô tả video chuẩn SEO TikTok Việt Nam — ngắn, đúng chữ người ta search',
+    description:
+      'Mình từng nghĩ caption chỉ để nhét hashtag. Sai. Khung 200–300 ký tự, từ khóa Việt, hashtag vừa đủ, mẫu theo ngành — bỏ link vẫn đọc được.',
+    category: 'tiktok-money',
+    tags: ['tiktok', 'seo-tiktok', 'ky-nang', 'mo-ta', 'hashtag'],
+    products: [{ slug: 'sach-content-bac-ty' }],
+    contentFile: 'huong-dan-viet-mo-ta-video-seo.md',
+    published: true,
+    cover_image: null,
+  },
+  {
+    slug: 'tong-hop-cau-hook-tiktok',
+    title: 'Tổng hợp câu hook giữ chân người xem — kho biến tấu từ KOC/KOL Việt',
+    description:
+      '13 nhóm hook hỏi–FOMO–POV–mẹo kèm cách điền nỗi đau thật. Copy nguyên sẽ bị vuốt; đọc to, chọn 1, gắn trải nghiệm của bạn.',
+    category: 'tiktok-money',
+    tags: ['tiktok', 'hook', 'ky-nang', 'koc', 'kich-ban'],
+    products: [{ slug: 'diamondhook-bo-the' }],
+    contentFile: 'tong-hop-cau-hook-tiktok.md',
+    published: true,
+    cover_image: null,
+  },
+  {
+    slug: 'khoa-hoc-tao-hook-diamondhook',
+    title: 'Tạo phần mở đầu hấp dẫn (hook) — quy trình 3 bước + định dạng móc kiểu DiamondHook',
+    description:
+      'Bí ô trống “câu mở”? Ý tưởng → tư duy móc → kịch bản. Năm định dạng bắt buộc, prompt khi bí, và khi nào mới đáng dùng bộ thẻ.',
+    category: 'tiktok-money',
+    tags: ['tiktok', 'hook', 'ky-nang', 'diamondhook', 'khoa-hoc'],
+    products: [{ slug: 'diamondhook-bo-the' }],
+    contentFile: 'khoa-hoc-tao-hook-diamondhook.md',
     published: true,
     cover_image: null,
   },
