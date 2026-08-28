@@ -1,0 +1,197 @@
+---
+export const prerender = false;
+
+import AdminLayout from '../../../layouts/AdminLayout.astro';
+import { requireAdmin } from '../../../lib/admin-auth';
+import { listAllPostsAdmin } from '../../../lib/posts';
+import { isSupabaseServiceConfigured } from '../../../lib/supabase';
+
+if (!requireAdmin(Astro.cookies)) {
+  return Astro.redirect('/admin/login');
+}
+
+Astro.response.headers.set('Cache-Control', 'no-store');
+
+const configured = isSupabaseServiceConfigured();
+const { posts, error } = configured
+  ? await listAllPostsAdmin()
+  : {
+      posts: [],
+      error: 'Supabase service role chưa cấu hình — CRUD sẽ hoạt động sau khi điền env thật.',
+    };
+
+const postsJson = JSON.stringify(
+  posts.map((p) => ({
+    id: p.id,
+    title: p.title,
+    slug: p.slug,
+    category: p.category,
+    published: p.published,
+    updated_at: p.updated_at,
+  })),
+);
+
+const initialStatus = Astro.url.searchParams.get('status') || 'all';
+const validStatus = ['all', 'published', 'draft'].includes(initialStatus) ? initialStatus : 'all';
+---
+
+<AdminLayout
+  title="Bài viết"
+  description="Quản lý bài viết blog"
+  canonicalPath="/admin/posts"
+  activeNav="posts"
+  wide={true}
+>
+  <p slot="lead">Tìm, lọc và chỉnh sửa bài viết. Xuất bản chỉ khi sản phẩm gắn kèm đã có link affiliate.</p>
+  <div slot="actions">
+    <a class="btn btn--primary" href="/admin/posts/new">Bài mới</a>
+  </div>
+
+  {error && <p class="fallback-notice">{error}</p>}
+
+  <div class="admin-toolbar">
+    <input id="post-search" type="search" placeholder="Tìm theo tiêu đề…" autocomplete="off" />
+    <select id="post-status-filter" aria-label="Lọc trạng thái" data-initial={validStatus}>
+      <option value="all">Tất cả trạng thái</option>
+      <option value="published">Đã xuất bản</option>
+      <option value="draft">Nháp</option>
+    </select>
+  </div>
+
+  {
+    !error && posts.length === 0 && (
+      <div class="empty-state">
+        <p class="empty-state__title">Chưa có bài nào</p>
+        <p>
+          <a class="btn btn--primary" href="/admin/posts/new">Tạo bài mới</a>
+        </p>
+      </div>
+    )
+  }
+
+  {
+    posts.length > 0 && (
+      <div class="admin-table-wrap">
+        <table class="admin-table" id="posts-table">
+          <thead>
+            <tr>
+              <th>Tiêu đề</th>
+              <th>Trạng thái</th>
+              <th>Category</th>
+              <th>Cập nhật</th>
+              <th>Thao tác</th>
+            </tr>
+          </thead>
+          <tbody id="posts-tbody" data-posts={postsJson}></tbody>
+        </table>
+      </div>
+    )
+  }
+  <p id="posts-empty-filter" class="fallback-notice" hidden>Không có bài khớp bộ lọc.</p>
+</AdminLayout>
+
+<script>
+  import { showToast, setLoading } from '../../../scripts/admin-shared';
+
+  type PostRow = {
+    id: string;
+    title: string;
+    slug: string;
+    category: string;
+    published: boolean;
+    updated_at: string;
+  };
+
+  const tbody = document.getElementById('posts-tbody');
+  const searchEl = document.getElementById('post-search') as HTMLInputElement | null;
+  const statusEl = document.getElementById('post-status-filter') as HTMLSelectElement | null;
+  const emptyFilter = document.getElementById('posts-empty-filter');
+
+  if (statusEl?.dataset.initial) statusEl.value = statusEl.dataset.initial;
+
+  const allPosts: PostRow[] = tbody?.dataset.posts ? JSON.parse(tbody.dataset.posts) : [];
+
+  function formatDate(iso: string): string {
+    try {
+      return new Date(iso).toLocaleString('vi-VN');
+    } catch {
+      return iso;
+    }
+  }
+
+  function escapeHtml(s: string): string {
+    return s
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;');
+  }
+
+  function filtered(): PostRow[] {
+    const q = (searchEl?.value || '').trim().toLowerCase();
+    const status = statusEl?.value || 'all';
+    return allPosts.filter((p) => {
+      if (status === 'published' && !p.published) return false;
+      if (status === 'draft' && p.published) return false;
+      if (q && !p.title.toLowerCase().includes(q)) return false;
+      return true;
+    });
+  }
+
+  function render() {
+    if (!tbody) return;
+    const rows = filtered();
+    if (emptyFilter) emptyFilter.hidden = rows.length > 0 || allPosts.length === 0;
+    tbody.innerHTML = rows
+      .map(
+        (p) => `
+      <tr data-id="${p.id}">
+        <td>
+          <a href="/admin/posts/${p.id}">${escapeHtml(p.title)}</a>
+          <div class="admin-hint"><code>${escapeHtml(p.slug)}</code></div>
+        </td>
+        <td>
+          <span class="admin-badge ${p.published ? 'admin-badge--ok' : 'admin-badge--muted'}">
+            ${p.published ? 'Đã xuất bản' : 'Nháp'}
+          </span>
+        </td>
+        <td>${escapeHtml(p.category || '—')}</td>
+        <td>${formatDate(p.updated_at)}</td>
+        <td>
+          <div class="admin-table__actions">
+            <a class="btn btn--ghost" href="/admin/posts/${p.id}">Sửa</a>
+            <a class="btn btn--ghost" href="/blog/${escapeHtml(p.slug)}" target="_blank" rel="noreferrer">Xem</a>
+            <button class="btn btn--danger" type="button" data-delete="${p.id}">Xoá</button>
+          </div>
+        </td>
+      </tr>`,
+      )
+      .join('');
+  }
+
+  searchEl?.addEventListener('input', render);
+  statusEl?.addEventListener('change', render);
+
+  tbody?.addEventListener('click', async (event) => {
+    const btn = (event.target as HTMLElement | null)?.closest(
+      'button[data-delete]',
+    ) as HTMLButtonElement | null;
+    if (!btn) return;
+    const id = btn.dataset.delete || '';
+    const post = allPosts.find((p) => p.id === id);
+    if (!id || !confirm(`Xoá bài “${post?.title || id}” vĩnh viễn?`)) return;
+    setLoading(btn, true, 'Đang xoá…');
+    const res = await fetch(`/api/admin/posts/${id}`, { method: 'DELETE' });
+    if (!res.ok) {
+      setLoading(btn, false);
+      showToast('Xoá thất bại.', 'err');
+      return;
+    }
+    const idx = allPosts.findIndex((p) => p.id === id);
+    if (idx >= 0) allPosts.splice(idx, 1);
+    showToast('Đã xoá bài.');
+    render();
+  });
+
+  render();
+</script>

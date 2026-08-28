@@ -1,5 +1,6 @@
 ---
 import BaseLayout from './BaseLayout.astro';
+import '../styles/admin.css';
 
 export type AdminNav = 'dashboard' | 'posts' | 'products';
 
@@ -34,7 +35,7 @@ function navClass(key: AdminNav): string {
       </a>
       <nav class="admin-nav" id="admin-sidebar-nav">
         <a class={navClass('dashboard')} href="/admin">Bảng điều khiển</a>
-        <a class={navClass('posts')} href="/admin#posts">Bài viết</a>
+        <a class={navClass('posts')} href="/admin/posts">Bài viết</a>
         <a class={navClass('products')} href="/admin/products">Sản phẩm</a>
       </nav>
       <div class="admin-sidebar__footer">
@@ -108,6 +109,10 @@ function navClass(key: AdminNav): string {
   });
 
   backdrop?.addEventListener('click', () => setSidebarOpen(false));
+
+  document.querySelectorAll('.admin-sidebar a.admin-nav__link').forEach((link) => {
+    link.addEventListener('click', () => setSidebarOpen(false));
+  });
 
   document.addEventListener('keydown', (event) => {
     if (event.key === 'Escape') setSidebarOpen(false);

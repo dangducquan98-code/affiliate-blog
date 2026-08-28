@@ -3,6 +3,7 @@ export const prerender = false;
 
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { readAdminSession } from '../../lib/admin-auth';
+import '../../styles/admin.css';
 
 if (readAdminSession(Astro.cookies)) {
   return Astro.redirect('/admin');
@@ -15,23 +16,26 @@ if (readAdminSession(Astro.cookies)) {
   canonicalPath="/admin/login"
   hideChrome={true}
 >
-  <section class="admin-login-wrap">
-    <h1>Admin</h1>
-    <p style="color: var(--ink-muted); margin-bottom: 1rem;">
-      Đăng nhập để quản lý bài viết và sản phẩm affiliate.
-    </p>
-    <p id="error" class="admin-error" hidden></p>
-    <form id="login-form" class="admin-form">
-      <label>
-        Mật khẩu
-        <input type="password" name="password" autocomplete="current-password" required />
-      </label>
-      <div class="admin-form__row">
-        <button class="btn btn--primary" type="submit">Đăng nhập</button>
-        <a class="btn btn--ghost" href="/">Về trang chủ</a>
-      </div>
-    </form>
-  </section>
+  <div class="admin-login-page">
+    <section class="admin-login-wrap">
+      <p class="admin-login-wrap__brand">Quân Kiu Admin</p>
+      <h1>Đăng nhập</h1>
+      <p class="admin-hint" style="margin-bottom: 1rem;">
+        Quản lý bài viết và sản phẩm affiliate.
+      </p>
+      <p id="error" class="admin-error" hidden></p>
+      <form id="login-form" class="admin-form">
+        <label>
+          Mật khẩu
+          <input type="password" name="password" autocomplete="current-password" required />
+        </label>
+        <div class="admin-form__row">
+          <button class="btn btn--primary" type="submit">Đăng nhập</button>
+          <a class="btn btn--ghost" href="/">Về trang chủ</a>
+        </div>
+      </form>
+    </section>
+  </div>
 </BaseLayout>
 
 <script>

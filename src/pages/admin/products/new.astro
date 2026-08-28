@@ -3,10 +3,13 @@ export const prerender = false;
 
 import AdminLayout from '../../../layouts/AdminLayout.astro';
 import { requireAdmin } from '../../../lib/admin-auth';
+import { productCategoryOptions } from '../../../lib/product-categories';
 
 if (!requireAdmin(Astro.cookies)) {
   return Astro.redirect('/admin/login');
 }
+
+const categoryOptions = productCategoryOptions();
 ---
 
 <AdminLayout
@@ -20,38 +23,46 @@ if (!requireAdmin(Astro.cookies)) {
   </div>
   <p id="error" class="admin-error" hidden></p>
   <form id="product-form" class="admin-form">
-      <label>
-        Tên *
-        <input name="name" required placeholder="Mic Boya BY-M1" />
-      </label>
-      <label>
-        Slug (khớp /go)
-        <input name="slug" placeholder="tu-dong-tu-ten" />
-      </label>
-      <label>
-        Category *
-        <input name="category" required placeholder="mic, den, gimbal-tripod..." />
-      </label>
-      <label>
-        Giá gợi ý
-        <input name="price_hint" placeholder="~150–250k" />
-      </label>
-      <label>
-        Affiliate URL (Shopee) — nên dán ngay; thiếu link thì không publish được bài gắn SP
-        <input name="affiliate_url" type="url" placeholder="https://s.shopee.vn/..." />
-      </label>
-      <label>
-        Image path/URL (optional)
-        <input name="image" placeholder="ten-file.jpg hoặc URL" />
-      </label>
-      <div class="admin-form__actions">
-        <button class="btn btn--primary" type="submit" id="save-btn">Lưu sản phẩm</button>
-        <a class="btn btn--ghost" href="/admin/products">← Quay lại</a>
-      </div>
-    </form>
+    <label>
+      Tên *
+      <input name="name" required placeholder="Mic Boya BY-M1" />
+    </label>
+    <label>
+      Slug (khớp /go)
+      <input name="slug" placeholder="tu-dong-tu-ten" />
+    </label>
+    <label>
+      Category *
+      <select name="category" required>
+        {categoryOptions.map((c) => (
+          <option value={c.value} selected={c.value === 'khac'}>
+            {c.label}
+          </option>
+        ))}
+      </select>
+    </label>
+    <label>
+      Giá gợi ý
+      <input name="price_hint" placeholder="~150–250k" />
+    </label>
+    <label>
+      Affiliate URL (Shopee)
+      <input name="affiliate_url" type="url" placeholder="https://s.shopee.vn/..." />
+      <span class="admin-hint">Nên dán ngay — thiếu link thì không publish được bài gắn SP.</span>
+    </label>
+    <label>
+      Image path/URL (optional)
+      <input name="image" placeholder="ten-file.jpg hoặc URL" />
+    </label>
+    <div class="admin-form__actions">
+      <button class="btn btn--primary" type="submit" id="save-btn">Lưu sản phẩm</button>
+      <a class="btn btn--ghost" href="/admin/products">← Quay lại</a>
+    </div>
+  </form>
 </AdminLayout>
 
 <script>
+  import { affiliateUrlError } from '../../../lib/affiliate-url';
   import { showToast, setLoading } from '../../../scripts/admin-shared';
 
   const form = document.getElementById('product-form') as HTMLFormElement | null;
@@ -65,12 +76,22 @@ if (!requireAdmin(Astro.cookies)) {
       errorEl.textContent = '';
     }
     const data = new FormData(form);
+    const affiliate_url = String(data.get('affiliate_url') || '');
+    const affErr = affiliateUrlError(affiliate_url);
+    if (affErr) {
+      if (errorEl) {
+        errorEl.hidden = false;
+        errorEl.textContent = affErr;
+      }
+      showToast(affErr, 'err');
+      return;
+    }
     const payload = {
       name: String(data.get('name') || ''),
       slug: String(data.get('slug') || ''),
       category: String(data.get('category') || ''),
       price_hint: String(data.get('price_hint') || ''),
-      affiliate_url: String(data.get('affiliate_url') || ''),
+      affiliate_url,
       image: String(data.get('image') || ''),
     };
 

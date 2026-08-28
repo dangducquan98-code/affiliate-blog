@@ -2,9 +2,11 @@
 export const prerender = false;
 
 import AdminLayout from '../../../layouts/AdminLayout.astro';
+import AdminFormSection from '../../../components/admin/AdminFormSection.astro';
 import { CATEGORIES, DEFAULT_CATEGORY_SLUG } from '../../../lib/categories';
 import { requireAdmin } from '../../../lib/admin-auth';
 import { listProductsAdmin } from '../../../lib/products';
+import { productCategoryOptions } from '../../../lib/product-categories';
 
 if (!requireAdmin(Astro.cookies)) {
   return Astro.redirect('/admin/login');
@@ -13,12 +15,14 @@ if (!requireAdmin(Astro.cookies)) {
 const { products: catalog, error: catalogError, tableMissing } = await listProductsAdmin();
 const catalogJson = JSON.stringify(
   catalog.map((p) => ({
+    id: p.id,
     slug: p.slug,
     name: p.name,
     price_hint: p.price_hint,
     has_affiliate: Boolean(p.affiliate_url),
   })),
 );
+const categoryOptions = productCategoryOptions();
 ---
 
 <AdminLayout
@@ -29,19 +33,19 @@ const catalogJson = JSON.stringify(
   wide={true}
 >
   <div slot="actions">
-    <a class="btn btn--ghost" href="/admin#posts">← Danh sách bài</a>
+    <a class="btn btn--ghost" href="/admin/posts">← Danh sách bài</a>
   </div>
   <p id="error" class="admin-error" hidden></p>
   <div id="publish-guard" class="admin-guard-banner" hidden></div>
-    {
-      (catalogError || tableMissing) && (
-        <p class="fallback-notice">
-          {catalogError ||
-            'Bảng products chưa có — chạy migration rồi gắn sản phẩm từ catalog.'}
-        </p>
-      )
-    }
-    <form id="post-form" class="admin-form">
+  {
+    (catalogError || tableMissing) && (
+      <p class="fallback-notice">
+        {catalogError || 'Bảng products chưa có — chạy migration rồi gắn sản phẩm từ catalog.'}
+      </p>
+    )
+  }
+  <form id="post-form" class="admin-form">
+    <AdminFormSection title="SEO & thông tin" hint="Tiêu đề, slug, mô tả và phân loại hiển thị trên blog.">
       <label>
         Tiêu đề *
         <input id="title" name="title" required />
@@ -70,18 +74,23 @@ const catalogJson = JSON.stringify(
         Tags (phẩy)
         <input name="tags" placeholder="tiktok, affiliate, review" />
       </label>
-      <label>
-        Cover image path/URL
-        <input name="cover_image" id="cover_image" placeholder="ten-file.jpg hoặc URL" />
-      </label>
-      <div class="admin-form__row">
-        <input type="file" id="cover_file" accept="image/*" />
+    </AdminFormSection>
+
+    <AdminFormSection title="Ảnh cover" hint="Upload ảnh — path lưu tự động, không cần nhập tay.">
+      <input type="hidden" name="cover_image" id="cover_image" value="" />
+      <div class="admin-cover-field">
+        <label>
+          Chọn ảnh
+          <input type="file" id="cover_file" accept="image/*" />
+        </label>
         <button class="btn btn--ghost" type="button" id="upload-cover">Upload ảnh cover</button>
       </div>
       <div id="cover-preview-wrap" class="admin-cover-preview" hidden>
         <img id="cover-preview" alt="Xem trước cover" />
       </div>
+    </AdminFormSection>
 
+    <AdminFormSection title="Nội dung Markdown">
       <div class="admin-editor__meta">
         <div class="admin-editor__tabs">
           <button class="btn btn--ghost" type="button" id="tab-edit" aria-selected="true">
@@ -100,7 +109,7 @@ const catalogJson = JSON.stringify(
       <div id="editor-panes" class="admin-editor__panes">
         <div id="edit-pane">
           <label>
-            Nội dung Markdown *
+            Nội dung *
             <textarea
               id="content"
               name="content"
@@ -113,46 +122,47 @@ const catalogJson = JSON.stringify(
           <div id="preview" class="admin-preview prose"></div>
         </div>
       </div>
+    </AdminFormSection>
 
-      <div>
-        <p style="font-weight: 600; margin: 0 0 0.5rem;">Sản phẩm từ catalog</p>
-        <input
-          id="product-search"
-          type="search"
-          placeholder="Tìm sản phẩm theo tên / slug…"
-          style="margin-bottom: 0.65rem;"
-        />
-        <div id="products" class="admin-products-pick" data-catalog={catalogJson} data-selected="[]"
-        ></div>
-      </div>
+    <AdminFormSection
+      title="Sản phẩm gắn kèm"
+      hint="Chọn từ catalog. Sản phẩm thiếu affiliate được ưu tiên hiển thị đầu danh sách."
+    >
+      <input
+        id="product-search"
+        type="search"
+        placeholder="Tìm sản phẩm theo tên / slug…"
+      />
+      <div id="products" class="admin-products-pick" data-catalog={catalogJson} data-selected="[]"></div>
+    </AdminFormSection>
 
-      <input type="checkbox" name="published" hidden />
+    <input type="checkbox" name="published" hidden />
 
-      <div class="admin-form__actions">
-        <button class="btn btn--ghost" type="button" id="save-draft">Lưu nháp</button>
-        <button class="btn btn--primary" type="button" id="save-publish">Xuất bản</button>
-      </div>
-    </form>
-
-    <div class="admin-quick-product" style="margin-top: 1.25rem;">
-      <p style="margin: 0; font-weight: 600;">Thêm sản phẩm nhanh</p>
-      <p class="admin-hint">Tạo product mới và tự gắn vào bài đang soạn — không cần rời trang.</p>
-      <div id="quick-product-form">
-        <div class="admin-form__row">
-          <input name="name" id="qp-name" required placeholder="Tên sản phẩm" style="flex: 1.4;" />
-          <input name="slug" id="qp-slug" placeholder="slug (tuỳ chọn)" style="flex: 1;" />
-          <input name="category" id="qp-category" placeholder="category" value="khac" style="flex: 0.8;" />
-          <input name="price_hint" id="qp-price" placeholder="Giá gợi ý" style="flex: 0.8;" />
-          <input
-            name="affiliate_url"
-            id="qp-aff"
-            placeholder="Affiliate URL (tuỳ chọn)"
-            style="flex: 1.2;"
-          />
-          <button class="btn btn--ghost" type="button" id="qp-submit">Thêm</button>
-        </div>
-      </div>
+    <div class="admin-form__actions">
+      <button class="btn btn--ghost" type="button" id="save-draft">Lưu nháp</button>
+      <button class="btn btn--primary" type="button" id="save-publish">Xuất bản</button>
+      <span id="save-status" class="admin-save-status" aria-live="polite"></span>
     </div>
+  </form>
+
+  <div class="admin-quick-product" style="margin-top: 1.25rem;">
+    <p style="margin: 0; font-weight: 600;">Thêm sản phẩm nhanh</p>
+    <p class="admin-hint">Tạo product mới và tự gắn vào bài đang soạn — không cần rời trang.</p>
+    <div id="quick-product-form" class="admin-quick-product__grid">
+      <input name="name" id="qp-name" required placeholder="Tên sản phẩm" />
+      <input name="slug" id="qp-slug" placeholder="slug (tuỳ chọn)" />
+      <select id="qp-category" name="category">
+        {categoryOptions.map((c) => (
+          <option value={c.value} selected={c.value === 'khac'}>
+            {c.label}
+          </option>
+        ))}
+      </select>
+      <input name="price_hint" id="qp-price" placeholder="Giá gợi ý" />
+      <input name="affiliate_url" id="qp-aff" placeholder="Affiliate URL (tuỳ chọn)" />
+      <button class="btn btn--ghost" type="button" id="qp-submit">Thêm</button>
+    </div>
+  </div>
 </AdminLayout>
 
 <script>

@@ -1,0 +1,14 @@
+---
+interface Props {
+  title: string;
+  hint?: string;
+}
+
+const { title, hint } = Astro.props;
+---
+
+<section class="admin-form-section">
+  <h2 class="admin-form-section__title">{title}</h2>
+  {hint && <p class="admin-hint admin-form-section__hint">{hint}</p>}
+  <slot />
+</section>

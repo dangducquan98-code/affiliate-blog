@@ -2,11 +2,13 @@
 export const prerender = false;
 
 import AdminLayout from '../../../layouts/AdminLayout.astro';
+import AdminFormSection from '../../../components/admin/AdminFormSection.astro';
 import { CATEGORIES, DEFAULT_CATEGORY_SLUG, isValidCategorySlug } from '../../../lib/categories';
 import { requireAdmin } from '../../../lib/admin-auth';
 import { productSlugOf } from '../../../lib/admin-posts';
 import { getPostByIdAdmin } from '../../../lib/posts';
 import { listProductsAdmin } from '../../../lib/products';
+import { productCategoryOptions } from '../../../lib/product-categories';
 
 if (!requireAdmin(Astro.cookies)) {
   return Astro.redirect('/admin/login');
@@ -23,6 +25,7 @@ if (!post && !error) {
 const selectedSlugs = post ? post.products.map(productSlugOf).filter(Boolean) : [];
 const catalogJson = JSON.stringify(
   catalog.map((p) => ({
+    id: p.id,
     slug: p.slug,
     name: p.name,
     price_hint: p.price_hint,
@@ -32,6 +35,7 @@ const catalogJson = JSON.stringify(
 const selectedJson = JSON.stringify(selectedSlugs);
 const rawCategory = post?.category || DEFAULT_CATEGORY_SLUG;
 const category = isValidCategorySlug(rawCategory) ? rawCategory : DEFAULT_CATEGORY_SLUG;
+const categoryOptions = productCategoryOptions();
 ---
 
 <AdminLayout
@@ -47,7 +51,7 @@ const category = isValidCategorySlug(rawCategory) ? rawCategory : DEFAULT_CATEGO
         <a class="btn btn--ghost" href={`/blog/${post.slug}`} target="_blank" rel="noreferrer">
           Xem trên blog
         </a>
-        <a class="btn btn--ghost" href="/admin#posts">← Danh sách</a>
+        <a class="btn btn--ghost" href="/admin/posts">← Danh sách</a>
       </div>
     )
   }
@@ -60,31 +64,29 @@ const category = isValidCategorySlug(rawCategory) ? rawCategory : DEFAULT_CATEGO
       </p>
     )
   }
-    {
-      !post ? (
-        <div>
-          <h1>Không tải được bài</h1>
-          <p class="fallback-notice">{error || 'Bài không tồn tại.'}</p>
-          <a class="btn btn--ghost" href="/admin">
-            ← Quay lại
-          </a>
-        </div>
-      ) : (
-        <>
-          <p id="error" class="admin-error" hidden></p>
-          <div id="publish-guard" class="admin-guard-banner" hidden></div>
-          {(catalogError || tableMissing) && (
-            <p class="fallback-notice">
-              {catalogError ||
-                'Bảng products chưa có — vẫn sửa được bài, gắn catalog sau khi migrate.'}
-            </p>
-          )}
-          <form
-            id="post-form"
-            class="admin-form"
-            data-id={post.id}
-            data-published={post.published ? '1' : '0'}
-          >
+  {
+    !post ? (
+      <div>
+        <h1>Không tải được bài</h1>
+        <p class="fallback-notice">{error || 'Bài không tồn tại.'}</p>
+        <a class="btn btn--ghost" href="/admin/posts">← Quay lại</a>
+      </div>
+    ) : (
+      <>
+        <p id="error" class="admin-error" hidden></p>
+        <div id="publish-guard" class="admin-guard-banner" hidden></div>
+        {(catalogError || tableMissing) && (
+          <p class="fallback-notice">
+            {catalogError || 'Bảng products chưa có — vẫn sửa được bài, gắn catalog sau khi migrate.'}
+          </p>
+        )}
+        <form
+          id="post-form"
+          class="admin-form"
+          data-id={post.id}
+          data-published={post.published ? '1' : '0'}
+        >
+          <AdminFormSection title="SEO & thông tin">
             <label>
               Tiêu đề *
               <input id="title" name="title" required value={post.title} />
@@ -113,20 +115,23 @@ const category = isValidCategorySlug(rawCategory) ? rawCategory : DEFAULT_CATEGO
               Tags (phẩy)
               <input name="tags" value={post.tags.join(', ')} />
             </label>
-            <label>
-              Cover image path/URL
-              <input name="cover_image" id="cover_image" value={post.cover_image ?? ''} />
-            </label>
-            <div class="admin-form__row">
-              <input type="file" id="cover_file" accept="image/*" />
-              <button class="btn btn--ghost" type="button" id="upload-cover">
-                Upload ảnh cover
-              </button>
+          </AdminFormSection>
+
+          <AdminFormSection title="Ảnh cover" hint="Upload ảnh mới hoặc giữ ảnh hiện tại.">
+            <input type="hidden" name="cover_image" id="cover_image" value={post.cover_image ?? ''} />
+            <div class="admin-cover-field">
+              <label>
+                Chọn ảnh mới
+                <input type="file" id="cover_file" accept="image/*" />
+              </label>
+              <button class="btn btn--ghost" type="button" id="upload-cover">Upload ảnh cover</button>
             </div>
             <div id="cover-preview-wrap" class="admin-cover-preview" hidden>
               <img id="cover-preview" alt="Xem trước cover" />
             </div>
+          </AdminFormSection>
 
+          <AdminFormSection title="Nội dung Markdown">
             <div class="admin-editor__meta">
               <div class="admin-editor__tabs">
                 <button class="btn btn--ghost" type="button" id="tab-edit" aria-selected="true">
@@ -145,7 +150,7 @@ const category = isValidCategorySlug(rawCategory) ? rawCategory : DEFAULT_CATEGO
             <div id="editor-panes" class="admin-editor__panes">
               <div id="edit-pane">
                 <label>
-                  Nội dung Markdown *
+                  Nội dung *
                   <textarea id="content" name="content" class="admin-editor__textarea" required>{post.content}</textarea>
                 </label>
               </div>
@@ -153,62 +158,50 @@ const category = isValidCategorySlug(rawCategory) ? rawCategory : DEFAULT_CATEGO
                 <div id="preview" class="admin-preview prose"></div>
               </div>
             </div>
+          </AdminFormSection>
 
-            <div>
-              <p style="font-weight: 600; margin: 0 0 0.5rem;">Sản phẩm từ catalog</p>
-              <input
-                id="product-search"
-                type="search"
-                placeholder="Tìm sản phẩm theo tên / slug…"
-                style="margin-bottom: 0.65rem;"
-              />
-              <div
-                id="products"
-                class="admin-products-pick"
-                data-catalog={catalogJson}
-                data-selected={selectedJson}
-              />
-            </div>
+          <AdminFormSection title="Sản phẩm gắn kèm">
+            <input id="product-search" type="search" placeholder="Tìm sản phẩm theo tên / slug…" />
+            <div
+              id="products"
+              class="admin-products-pick"
+              data-catalog={catalogJson}
+              data-selected={selectedJson}
+            />
+          </AdminFormSection>
 
-            <input type="checkbox" name="published" checked={post.published} hidden />
+          <input type="checkbox" name="published" checked={post.published} hidden />
 
-            <div class="admin-form__actions">
-              <button class="btn btn--ghost" type="button" id="save-draft">
-                Lưu nháp
-              </button>
-              <button class="btn btn--primary" type="button" id="save-publish">
-                Xuất bản
-              </button>
-              <button class="btn btn--ghost" type="button" id="unpublish">
-                Huỷ xuất bản
-              </button>
-              <button class="btn btn--danger" type="button" id="delete-post">
-                Xoá bài
-              </button>
-            </div>
-          </form>
-
-          <div class="admin-quick-product" style="margin-top: 1.25rem;">
-            <p style="margin: 0; font-weight: 600;">Thêm sản phẩm nhanh</p>
-            <p class="admin-hint">
-              Tạo product mới và tự gắn vào bài đang sửa — không cần rời trang.
-            </p>
-            <div id="quick-product-form">
-              <div class="admin-form__row">
-                <input id="qp-name" placeholder="Tên sản phẩm" style="flex: 1.4;" />
-                <input id="qp-slug" placeholder="slug (tuỳ chọn)" style="flex: 1;" />
-                <input id="qp-category" placeholder="category" value="khac" style="flex: 0.8;" />
-                <input id="qp-price" placeholder="Giá gợi ý" style="flex: 0.8;" />
-                <input id="qp-aff" placeholder="Affiliate URL (tuỳ chọn)" style="flex: 1.2;" />
-                <button class="btn btn--ghost" type="button" id="qp-submit">
-                  Thêm
-                </button>
-              </div>
-            </div>
+          <div class="admin-form__actions">
+            <button class="btn btn--ghost" type="button" id="save-draft">Lưu nháp</button>
+            <button class="btn btn--primary" type="button" id="save-publish">Xuất bản</button>
+            <button class="btn btn--ghost" type="button" id="unpublish">Huỷ xuất bản</button>
+            <button class="btn btn--danger" type="button" id="delete-post">Xoá bài</button>
+            <span id="save-status" class="admin-save-status" aria-live="polite"></span>
           </div>
-        </>
-      )
-    }
+        </form>
+
+        <div class="admin-quick-product" style="margin-top: 1.25rem;">
+          <p style="margin: 0; font-weight: 600;">Thêm sản phẩm nhanh</p>
+          <p class="admin-hint">Tạo product mới và tự gắn vào bài đang sửa — không cần rời trang.</p>
+          <div id="quick-product-form" class="admin-quick-product__grid">
+            <input id="qp-name" placeholder="Tên sản phẩm" />
+            <input id="qp-slug" placeholder="slug (tuỳ chọn)" />
+            <select id="qp-category">
+              {categoryOptions.map((c) => (
+                <option value={c.value} selected={c.value === 'khac'}>
+                  {c.label}
+                </option>
+              ))}
+            </select>
+            <input id="qp-price" placeholder="Giá gợi ý" />
+            <input id="qp-aff" placeholder="Affiliate URL (tuỳ chọn)" />
+            <button class="btn btn--ghost" type="button" id="qp-submit">Thêm</button>
+          </div>
+        </div>
+      </>
+    )
+  }
 </AdminLayout>
 
 {

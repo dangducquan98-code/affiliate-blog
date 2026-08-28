@@ -29,6 +29,10 @@ const productsJson = JSON.stringify(
     has_affiliate: Boolean(p.affiliate_url),
   })),
 );
+
+const missingCount = result.products.filter((p) => !p.affiliate_url).length;
+const initialAffiliate = Astro.url.searchParams.get('affiliate') || 'all';
+const validAffiliate = ['all', 'ok', 'empty'].includes(initialAffiliate) ? initialAffiliate : 'all';
 ---
 
 <AdminLayout
@@ -39,8 +43,12 @@ const productsJson = JSON.stringify(
   wide={true}
 >
   <p slot="lead">
-    Dán link Shopee vào <code>affiliate_url</code> trước khi publish bài gắn sản phẩm.
-    Badge vàng = <strong>chưa dán link</strong> (publish sẽ bị chặn).
+    Dán link Shopee vào affiliate URL trước khi publish bài gắn sản phẩm.
+    {missingCount > 0 && (
+      <span class="admin-badge admin-badge--warn" style="margin-left: 0.35rem;">
+        {missingCount} chưa dán link
+      </span>
+    )}
   </p>
   <div slot="actions">
     <a class="btn btn--primary" href="/admin/products/new">Thêm sản phẩm</a>
@@ -57,7 +65,7 @@ const productsJson = JSON.stringify(
 
   <div class="admin-toolbar">
     <input id="product-search" type="search" placeholder="Tìm theo tên / slug…" autocomplete="off" />
-    <select id="affiliate-filter" aria-label="Lọc affiliate">
+    <select id="affiliate-filter" aria-label="Lọc affiliate" data-initial={validAffiliate}>
       <option value="all">Tất cả link</option>
       <option value="ok">Đã dán affiliate</option>
       <option value="empty">Còn trống</option>
@@ -66,29 +74,35 @@ const productsJson = JSON.stringify(
 
   {
     !result.error && result.products.length === 0 && (
-      <p class="fallback-notice">
-        Chưa có sản phẩm. <a href="/admin/products/new">Thêm mới</a> hoặc chạy seed trong migration.
-      </p>
+      <div class="empty-state">
+        <p class="empty-state__title">Chưa có sản phẩm</p>
+        <p>
+          <a class="btn btn--primary" href="/admin/products/new">Thêm sản phẩm</a>
+        </p>
+      </div>
     )
   }
 
   {
     result.products.length > 0 && (
-      <div class="admin-table-wrap">
-        <table class="admin-table">
-          <thead>
-            <tr>
-              <th>Tên</th>
-              <th>Slug</th>
-              <th>Category</th>
-              <th>Giá</th>
-              <th>Affiliate</th>
-              <th>Thao tác</th>
-            </tr>
-          </thead>
-          <tbody id="products-tbody" data-products={productsJson}></tbody>
-        </table>
-      </div>
+      <>
+        <div class="admin-table-wrap admin-table-wrap--mobile-hidden">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Tên</th>
+                <th>Slug</th>
+                <th>Category</th>
+                <th>Giá</th>
+                <th>Affiliate</th>
+                <th>Thao tác</th>
+              </tr>
+            </thead>
+            <tbody id="products-tbody" data-products={productsJson}></tbody>
+          </table>
+        </div>
+        <ul id="products-cards" class="admin-card-list admin-card-list--desktop-hidden" data-products={productsJson}></ul>
+      </>
     )
   }
   <p id="products-empty-filter" class="fallback-notice" hidden>Không có sản phẩm khớp bộ lọc.</p>
@@ -107,10 +121,14 @@ const productsJson = JSON.stringify(
   };
 
   const tbody = document.getElementById('products-tbody');
+  const cardsEl = document.getElementById('products-cards');
   const searchEl = document.getElementById('product-search') as HTMLInputElement | null;
   const filterEl = document.getElementById('affiliate-filter') as HTMLSelectElement | null;
   const emptyFilter = document.getElementById('products-empty-filter');
-  const all: Row[] = tbody?.dataset.products ? JSON.parse(tbody.dataset.products) : [];
+  const dataSource = tbody?.dataset.products || cardsEl?.dataset.products || '[]';
+  const all: Row[] = JSON.parse(dataSource);
+
+  if (filterEl?.dataset.initial) filterEl.value = filterEl.dataset.initial;
 
   function escapeHtml(s: string): string {
     return s
@@ -138,13 +156,8 @@ const productsJson = JSON.stringify(
     });
   }
 
-  function render() {
-    if (!tbody) return;
-    const rows = filtered();
-    if (emptyFilter) emptyFilter.hidden = rows.length > 0 || all.length === 0;
-    tbody.innerHTML = rows
-      .map(
-        (p) => `
+  function rowHtml(p: Row): string {
+    return `
       <tr>
         <td><a href="/admin/products/${p.id}">${escapeHtml(p.name)}</a></td>
         <td><code>${escapeHtml(p.slug)}</code></td>
@@ -152,7 +165,7 @@ const productsJson = JSON.stringify(
         <td>${escapeHtml(p.price_hint || '—')}</td>
         <td>
           <span class="admin-badge ${p.has_affiliate ? 'admin-badge--ok' : 'admin-badge--warn'}">
-            ${p.has_affiliate ? 'Đã dán' : '⚠ Chưa dán link'}
+            ${p.has_affiliate ? 'Đã dán' : 'Chưa dán link'}
           </span>
         </td>
         <td>
@@ -162,19 +175,35 @@ const productsJson = JSON.stringify(
             <button class="btn btn--danger" type="button" data-delete="${p.id}">Xoá</button>
           </div>
         </td>
-      </tr>`,
-      )
-      .join('');
+      </tr>`;
   }
 
-  searchEl?.addEventListener('input', render);
-  filterEl?.addEventListener('change', render);
+  function cardHtml(p: Row): string {
+    return `
+      <li class="admin-product-card">
+        <div class="admin-product-card__top">
+          <p class="admin-product-card__name">${escapeHtml(p.name)}</p>
+          <span class="admin-badge ${p.has_affiliate ? 'admin-badge--ok' : 'admin-badge--warn'}">
+            ${p.has_affiliate ? 'Đã dán' : 'Chưa dán'}
+          </span>
+        </div>
+        <p class="admin-product-card__meta"><code>${escapeHtml(p.slug)}</code> · ${escapeHtml(p.category || '—')} · ${escapeHtml(p.price_hint || '—')}</p>
+        <div class="admin-product-card__actions">
+          <a class="btn btn--primary" href="/admin/products/${p.id}">Sửa</a>
+          <a class="btn btn--ghost" href="/go/${escapeHtml(p.slug)}" target="_blank" rel="noreferrer">Test</a>
+          <button class="btn btn--danger" type="button" data-delete="${p.id}">Xoá</button>
+        </div>
+      </li>`;
+  }
 
-  tbody?.addEventListener('click', async (event) => {
-    const btn = (event.target as HTMLElement | null)?.closest(
-      'button[data-delete]',
-    ) as HTMLButtonElement | null;
-    if (!btn) return;
+  function render() {
+    const rows = filtered();
+    if (emptyFilter) emptyFilter.hidden = rows.length > 0 || all.length === 0;
+    if (tbody) tbody.innerHTML = rows.map(rowHtml).join('');
+    if (cardsEl) cardsEl.innerHTML = rows.map(cardHtml).join('');
+  }
+
+  async function handleDelete(btn: HTMLButtonElement) {
     const id = btn.dataset.delete || '';
     const product = all.find((p) => p.id === id);
     if (!id || !confirm(`Xoá sản phẩm “${product?.name || id}”?`)) return;
@@ -189,7 +218,24 @@ const productsJson = JSON.stringify(
     if (idx >= 0) all.splice(idx, 1);
     showToast('Đã xoá sản phẩm.');
     render();
+  }
+
+  tbody?.addEventListener('click', async (event) => {
+    const btn = (event.target as HTMLElement | null)?.closest(
+      'button[data-delete]',
+    ) as HTMLButtonElement | null;
+    if (btn) await handleDelete(btn);
   });
+
+  cardsEl?.addEventListener('click', async (event) => {
+    const btn = (event.target as HTMLElement | null)?.closest(
+      'button[data-delete]',
+    ) as HTMLButtonElement | null;
+    if (btn) await handleDelete(btn);
+  });
+
+  searchEl?.addEventListener('input', render);
+  filterEl?.addEventListener('change', render);
 
   render();
 </script>

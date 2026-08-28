@@ -11,6 +11,7 @@ import {
 marked.setOptions({ gfm: true, breaks: false });
 
 export type CatalogItem = {
+  id?: string;
   slug: string;
   name: string;
   price_hint: string;
@@ -59,6 +60,7 @@ export function initPostEditor(opts: EditorOptions): void {
   const editPane = document.getElementById('edit-pane');
   const previewPane = document.getElementById('preview-pane');
   const quickSubmit = document.getElementById('qp-submit') as HTMLButtonElement | null;
+  const saveStatusEl = document.getElementById('save-status');
 
   if (hintEl) hintEl.textContent = MARKDOWN_HINT;
 
@@ -92,6 +94,10 @@ export function initPostEditor(opts: EditorOptions): void {
     previewEl.innerHTML = marked.parse(contentEl.value || '', { async: false }) as string;
   }
 
+  function setSaveStatus(text: string) {
+    if (saveStatusEl) saveStatusEl.textContent = text;
+  }
+
   function updatePublishGuard() {
     const banner = document.getElementById('publish-guard');
     if (!banner) return;
@@ -104,21 +110,40 @@ export function initPostEditor(opts: EditorOptions): void {
       return;
     }
     banner.hidden = false;
-    const names = missing.map((p) => p!.name).join(', ');
-    banner.innerHTML = `<strong>Không thể xuất bản</strong> Sản phẩm chưa dán link affiliate: ${escapeHtml(names)}. Vào <a href="/admin/products">Sản phẩm</a> để dán URL trước.`;
+    const items = missing
+      .map((p) => {
+        const href = p!.id ? `/admin/products/${p!.id}` : '/admin/products';
+        return `<li><a href="${href}">${escapeHtml(p!.name)}</a> <code>${escapeHtml(p!.slug)}</code></li>`;
+      })
+      .join('');
+    banner.innerHTML = `<strong>Không thể xuất bản</strong> Sản phẩm sau chưa dán link affiliate:<ul>${items}</ul>`;
+  }
+
+  function sortCatalog(list: CatalogItem[]): CatalogItem[] {
+    return [...list].sort((a, b) => {
+      const aSel = selected.has(a.slug) ? 0 : 1;
+      const bSel = selected.has(b.slug) ? 0 : 1;
+      if (aSel !== bSel) return aSel - bSel;
+      const aMiss = a.has_affiliate ? 1 : 0;
+      const bMiss = b.has_affiliate ? 1 : 0;
+      if (aMiss !== bMiss) return aMiss - bMiss;
+      return a.name.localeCompare(b.name, 'vi');
+    });
   }
 
   function renderCatalog() {
     if (!productsEl) return;
     const q = (productSearch?.value || '').trim().toLowerCase();
-    const list = catalog.filter((p) => {
-      if (!q) return true;
-      return (
-        p.name.toLowerCase().includes(q) ||
-        p.slug.toLowerCase().includes(q) ||
-        (p.price_hint || '').toLowerCase().includes(q)
-      );
-    });
+    const list = sortCatalog(
+      catalog.filter((p) => {
+        if (!q) return true;
+        return (
+          p.name.toLowerCase().includes(q) ||
+          p.slug.toLowerCase().includes(q) ||
+          (p.price_hint || '').toLowerCase().includes(q)
+        );
+      }),
+    );
     if (catalog.length === 0) {
       productsEl.innerHTML =
         '<p class="fallback-notice">Catalog trống. Thêm nhanh bên dưới hoặc <a href="/admin/products/new">tạo sản phẩm</a>.</p>';
@@ -134,7 +159,7 @@ export function initPostEditor(opts: EditorOptions): void {
           ? '<span class="admin-badge admin-badge--ok">Đã dán link</span>'
           : '<span class="admin-badge admin-badge--warn">Trống affiliate</span>';
         return `
-      <label class="admin-products-pick__item">
+      <label class="admin-products-pick__item${p.has_affiliate ? '' : ' admin-products-pick__item--missing'}">
         <input type="checkbox" data-slug="${escapeHtml(p.slug)}" ${selected.has(p.slug) ? 'checked' : ''} />
         <span>
           <strong>${escapeHtml(p.name)}</strong>
@@ -219,6 +244,7 @@ export function initPostEditor(opts: EditorOptions): void {
     if (!payload) return;
 
     setLoading(btn, true, 'Đang lưu…');
+    setSaveStatus('Đang lưu…');
     const url =
       opts.mode === 'create' ? '/api/admin/posts' : `/api/admin/posts/${opts.postId}`;
     const method = opts.mode === 'create' ? 'POST' : 'PUT';
@@ -232,6 +258,7 @@ export function initPostEditor(opts: EditorOptions): void {
 
     if (!res.ok) {
       const msg = result.error || 'Lưu thất bại.';
+      setSaveStatus('');
       if (errorEl) {
         errorEl.hidden = false;
         errorEl.textContent = msg;
@@ -241,6 +268,7 @@ export function initPostEditor(opts: EditorOptions): void {
     }
 
     showToast(published ? 'Đã xuất bản.' : 'Đã lưu nháp.');
+    setSaveStatus(`Đã lưu lúc ${new Date().toLocaleTimeString('vi-VN')}`);
     if (opts.mode === 'create' && result.post?.id) {
       window.location.href = `/admin/posts/${result.post.id}`;
       return;
@@ -357,7 +385,7 @@ export function initPostEditor(opts: EditorOptions): void {
       return;
     }
     showToast('Đã xoá.');
-    window.location.href = '/admin';
+    window.location.href = '/admin/posts';
   });
 
   form?.addEventListener('submit', (e) => {
@@ -371,7 +399,7 @@ export function initPostEditor(opts: EditorOptions): void {
     const name = (document.getElementById('qp-name') as HTMLInputElement | null)?.value || '';
     const slug = (document.getElementById('qp-slug') as HTMLInputElement | null)?.value || '';
     const category =
-      (document.getElementById('qp-category') as HTMLInputElement | null)?.value || 'khac';
+      (document.getElementById('qp-category') as HTMLSelectElement | null)?.value || 'khac';
     const price_hint =
       (document.getElementById('qp-price') as HTMLInputElement | null)?.value || '';
     const affiliate_url =
@@ -402,6 +430,7 @@ export function initPostEditor(opts: EditorOptions): void {
     const p = result.product;
     catalog = [
       {
+        id: p.id,
         slug: p.slug,
         name: p.name,
         price_hint: p.price_hint || '',
@@ -415,7 +444,7 @@ export function initPostEditor(opts: EditorOptions): void {
       const el = document.getElementById(id) as HTMLInputElement | null;
       if (el) el.value = '';
     }
-    const cat = document.getElementById('qp-category') as HTMLInputElement | null;
+    const cat = document.getElementById('qp-category') as HTMLSelectElement | null;
     if (cat) cat.value = 'khac';
     renderCatalog();
     showToast(`Đã thêm “${p.name}” và gắn vào bài.`);

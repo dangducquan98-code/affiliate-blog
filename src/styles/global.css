@@ -307,6 +307,11 @@ body.nav-open {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  width: 100%;
+}
+
+.site-main--bare > * {
+  width: 100%;
 }
 
 .body--bare .site-wrap {
@@ -1463,27 +1468,6 @@ body.admin-menu-open {
 .admin-guard-banner strong {
   display: block;
   margin-bottom: 0.25rem;
-}
-
-.admin-login-wrap {
-  width: min(100% - 2rem, 24rem);
-  margin: auto;
-  padding: 1.5rem 1.35rem;
-  border: 1px solid var(--line-soft);
-  border-radius: var(--radius);
-  background: var(--surface);
-  box-shadow: var(--shadow-sm);
-}
-
-.site-main--bare:has(.admin-login-wrap) {
-  align-items: center;
-  justify-content: center;
-  padding: 1.5rem 1rem;
-}
-
-.admin-login-wrap h1 {
-  margin: 0 0 0.35rem;
-  font-size: 1.35rem;
 }
 
 .admin-stats--5 {

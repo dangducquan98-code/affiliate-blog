@@ -4,6 +4,7 @@ export const prerender = false;
 import AdminLayout from '../../../layouts/AdminLayout.astro';
 import { requireAdmin } from '../../../lib/admin-auth';
 import { getProductByIdAdmin } from '../../../lib/products';
+import { productCategoryOptions } from '../../../lib/product-categories';
 
 if (!requireAdmin(Astro.cookies)) {
   return Astro.redirect('/admin/login');
@@ -15,6 +16,10 @@ const { product, error, tableMissing } = await getProductByIdAdmin(id);
 if (!product && !error && !tableMissing) {
   Astro.response.status = 404;
 }
+
+const categoryOptions = productCategoryOptions();
+const categoryValue = product?.category || 'khac';
+const hasKnownCategory = categoryOptions.some((c) => c.value === categoryValue);
 ---
 
 <AdminLayout
@@ -41,7 +46,7 @@ if (!product && !error && !tableMissing) {
         <span
           class={`admin-badge ${product.affiliate_url ? 'admin-badge--ok' : 'admin-badge--warn'}`}
         >
-          {product.affiliate_url ? 'Đã dán affiliate' : '⚠ Chưa dán link'}
+          {product.affiliate_url ? 'Đã dán affiliate' : 'Chưa dán link'}
         </span>
       </p>
     )
@@ -58,9 +63,10 @@ if (!product && !error && !tableMissing) {
       <>
         <p id="error" class="admin-error" hidden></p>
         {!product.affiliate_url && (
-          <p class="fallback-notice">
-            Chưa dán link affiliate. Điền URL Shopee bên dưới trước khi gắn sản phẩm vào bài và publish.
-          </p>
+          <div class="admin-guard-banner">
+            <strong>Chưa dán link affiliate</strong>
+            Điền URL Shopee bên dưới trước khi gắn sản phẩm vào bài và publish.
+          </div>
         )}
         <form id="product-form" class="admin-form" data-id={product.id}>
           <label>
@@ -73,14 +79,29 @@ if (!product && !error && !tableMissing) {
           </label>
           <label>
             Category *
-            <input name="category" required value={product.category} />
+            <select name="category" required>
+              {
+                !hasKnownCategory && (
+                  <option value={categoryValue} selected>
+                    {categoryValue} (hiện tại)
+                  </option>
+                )
+              }
+              {
+                categoryOptions.map((c) => (
+                  <option value={c.value} selected={c.value === categoryValue}>
+                    {c.label}
+                  </option>
+                ))
+              }
+            </select>
           </label>
           <label>
             Giá gợi ý
             <input name="price_hint" value={product.price_hint} />
           </label>
           <label>
-            Affiliate URL (Shopee) — bắt buộc trước khi publish bài gắn SP
+            Affiliate URL (Shopee)
             <input
               name="affiliate_url"
               type="url"
@@ -109,6 +130,7 @@ if (!product && !error && !tableMissing) {
 {
   product && (
     <script>
+      import { affiliateUrlError } from '../../../lib/affiliate-url';
       import { showToast, setLoading } from '../../../scripts/admin-shared';
 
       const form = document.getElementById('product-form') as HTMLFormElement | null;
@@ -124,12 +146,22 @@ if (!product && !error && !tableMissing) {
           errorEl.textContent = '';
         }
         const data = new FormData(form);
+        const affiliate_url = String(data.get('affiliate_url') || '');
+        const affErr = affiliateUrlError(affiliate_url);
+        if (affErr) {
+          if (errorEl) {
+            errorEl.hidden = false;
+            errorEl.textContent = affErr;
+          }
+          showToast(affErr, 'err');
+          return;
+        }
         const payload = {
           name: String(data.get('name') || ''),
           slug: String(data.get('slug') || ''),
           category: String(data.get('category') || ''),
           price_hint: String(data.get('price_hint') || ''),
-          affiliate_url: String(data.get('affiliate_url') || ''),
+          affiliate_url,
           image: String(data.get('image') || ''),
         };
 
