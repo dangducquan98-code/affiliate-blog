@@ -1,3 +1,6 @@
+---
+category: affiliate
+---
 Mỗi tuần mình nhận vài câu hỏi giống nhau — inbox, comment, bạn bè hỏi hộ. Không phải vì mình "chuyên gia". Vì người mới đang rối đúng chỗ đó. Hmm… thay vì trả lời lẻ tẻ, mình gom 5 câu gặp nhiều nhất và trả lời thẳng theo cách mình đang làm trên kênh ~4K.
 
 Mình viết mấy dòng này không có ý cam kết thu nhập hay lộ trình thần thánh. Chỉ quan điểm thực dụng — để anh em đỡ chờ phép màu.

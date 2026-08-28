@@ -1,3 +1,6 @@
+---
+category: lam-tiktok
+---
 Mình từng nghĩ mô tả TikTok chỉ là chỗ "nhét hashtag cho đủ". Quay xong, paste vài #TikTokVN, đăng. View có… rồi hết. Không ai search ra. Không ai nhớ. Cookie cũng chẳng có cửa dính nếu người ta không tìm thấy mình lần hai.
 
 Ơ thật ra phần mô tả không phải trang trí. Nó là lớp SEO nhỏ mà nhiều người bỏ qua vì "nội dung mới quan trọng". Đúng — nội dung phải đứng trước. Nhưng mô tả kém thì video hay cũng khó được tìm lại. Bài này mình viết lại cách mình đang làm mô tả cho thị trường Việt: ngắn, có từ khóa người ta thật sự gõ, không spam.

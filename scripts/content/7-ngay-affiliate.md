@@ -1,3 +1,6 @@
+---
+category: affiliate
+---
 Thứ Hai tuần trước mình ngồi nhìn dashboard Shopee Affiliate, thấy cookie có mà đơn thì lẻ tẻ. View TikTok tuần đó cũng không sập — nhưng cũng chẳng ai click. Hmm… thế là vẫn mệt đầu.
 
 Không phải vì mình không chịu làm. Mình làm khá nhiều. Nhưng làm sai thứ tự — bán trước, giá trị sau — thì mỗi clip như chữa cháy. Bài này mình gom lại thành lộ trình 7 ngày thực chiến: chọn ngách, viết hook, dựng checklist, tránh lỗi hay gặp. Ý tưởng gốc mình từng tổng hợp từ sách và ví dụ cộng đồng; phần dưới là cách mình hiểu và đang dùng lại trên kênh ~4K.

@@ -1,3 +1,6 @@
+---
+category: lam-tiktok
+---
 Mình từng có cả đống ý tưởng review… rồi ngồi nhìn ô trống "câu mở". Không phải hết chữ. Là hết cách vào. Quay đi quay lại vẫn ra "Hôm nay mình review…" — đúng kiểu bị vuốt trước khi kịp nói giá. Tuần đó mình đăng ít hơn bình thường, không phải vì lười — vì sợ nghe lại chính mình mở clip kiểu brochure.
 
 Lúc đó mình mới hiểu: hook không phải trang trí. Hook là cánh cửa. Khóa học và khung tạo phần mở đầu — tư duy kiểu DiamondHook — không phải để anh em thuộc lòng "câu hay", mà để có quy trình: ý tưởng → cấu trúc tư duy → câu mở → mới dựng kịch bản.

@@ -1,3 +1,6 @@
+---
+category: affiliate
+---
 Mình từng nghĩ làm TikTok affiliate từ 0 là một công thức: mua mic, quay, gắn link, có tiền. Thực tế lủng cà lủng củng hơn nhiều. Có tuần mình đăng đều mà gần như không ai click. Có tuần một video tạm ổn lại kéo vài đơn muộn — cookie dính từ trước.
 
 Bài này là pillar — bản đồ. Không phải checklist thần thánh. Mình nối các bài đang có trên blog thành một lộ trình: từ hook 3 giây đến mindset giá trị trước, kèm vài ngã rẽ mình đã đi sai.

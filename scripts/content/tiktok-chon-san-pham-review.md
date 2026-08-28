@@ -1,3 +1,6 @@
+---
+category: lam-tiktok
+---
 Hôm qua mình mở Shopee Affiliate, định review nhanh một món đang hot trên For You. Ngồi xuống, mở app TikTok, nghĩ tiếp một câu: video này giúp được ai? Hay chỉ giúp mình thấy mình đang bận?
 
 Có thế thôi đã đủ để dừng lại.

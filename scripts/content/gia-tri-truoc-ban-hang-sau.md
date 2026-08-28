@@ -1,3 +1,6 @@
+---
+category: affiliate
+---
 Lúc mới làm affiliate, mình ghét câu "giá trị trước, bán hàng sau". Nghe đạo lý. Nghe kiểu người đã có follow rồi mới khuyên người mới. Mình thì đang cần đơn. Hmm… thế là vẫn muốn bán trước.
 
 Rồi mình làm kiểu bán trước một thời gian. View có. Đơn lủng. Comment đầy "spam". Reach tụt. Lúc đó câu mình từng ghét bỗng thành… công cụ. Không phải slogan đẹp. Là cách cookie affiliate thực sự work nếu anh em chơi dài.

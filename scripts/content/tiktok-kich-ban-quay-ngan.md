@@ -1,3 +1,6 @@
+---
+category: lam-tiktok
+---
 Mình còn nhớ một đêm quay xong, ngồi dựng bốn mươi phút để cứu một take dài hai phút. Cắt "ờ", cắt "thì", cắt đoạn mình giải thích lại lần hai vì sợ người ta không hiểu. Cuối cùng còn lại khoảng ba mươi giây nghe… ổn. Nhưng lẽ ra từ đầu mình chỉ cần viết năm dòng rồi quay một mạch. Không biết có phải vì lúc đó mình còn tin freestyle nghe "thật" hơn không mà cứ bấm record rồi tính sau. Mệt phết.
 
 Giờ mình viết trước. Không phải viết tiểu thuyết — viết như tin nhắn gửi bạn. Mình viết mấy dòng này không có ý biến TikTok thành khoa học rocket. Chỉ là cách mình làm review sản phẩm kiểu affiliate mà không muốn biến kênh thành catalogue hét "mua đi".

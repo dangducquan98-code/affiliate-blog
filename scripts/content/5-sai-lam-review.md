@@ -1,3 +1,6 @@
+---
+category: affiliate
+---
 Mình từng nghĩ làm review là cầm sản phẩm lên, nói "đáng mua", thả link, xong. Nghe đơn giản. Làm thật thì view có — vài nghìn cũng có — mà đơn gần như không. Hmm… thế là vẫn mệt đầu.
 
 Không phải vì mình lười. Mình mắc đủ sai. Bài này liệt 5 sai lầm mình từng làm — và đôi lúc vẫn suýt tái phạm — kèm cách sửa thực dụng. Không phải checklist "chuyên gia". Là nhật ký tự vấn, để anh em đỡ mất vài tháng học bằng tiền view.

@@ -1,3 +1,6 @@
+---
+category: lam-tiktok
+---
 Tuần trước mình ngồi xem lại analytics, thấy một clip đăng đều mà retention 3 giây đầu thấp phết. View vào rồi đi gần như ngay. Không biết có phải mình tự hài lòng quá với câu mở trên giấy không mà quên một việc đơn giản: người lạ trên For You không nợ mình thời gian.
 
 Có thế thôi — ba giây đầu là thứ quyết định phần còn lại có còn cơ hội không.

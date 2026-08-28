@@ -1,3 +1,6 @@
+---
+category: lam-tiktok
+---
 Video đầu tiên của mình trên TikTok khoảng 200 view. Không phải "200k viết nhầm". Hai trăm. Đăng xong mình ngồi refresh như chờ tin nhắn — rồi im. Hmm… thế là vẫn mệt đầu.
 
 Nhiều người hỏi: "Làm sao lên 4K follow nhanh vậy?" Câu trả lời thật hơi chán. Không có clip viral thần thánh. Không có một đêm đổi đời. Chỉ có chuỗi việc nhỏ, đều, đôi lúc muốn bỏ. Mình viết bài này không có ý bán blueprint kiếm tiền. Chỉ kể lại hành trình thật để bạn đỡ ảo tưởng — và đỡ tự hành hạ sớm.
