@@ -37,7 +37,7 @@ Vào Ausync Lab, đăng ký bằng Google hoặc Apple hoặc email tùy họ h�
 
 Upload mẫu nói rõ, ít tạp âm. Phòng yên. Nói tự nhiên như clip thật — đừng đọc đều như MC đám cưới. Độ dài mẫu theo hướng dẫn tool; mình ưu tiên vài đoạn ngắn sạch hơn một file dài ồn.
 
-Đây là chỗ mic vẫn quan trọng: muốn clone gần giọng mình thì file gốc phải sạch. Mình đang dùng [Boya BY-M1](/go/mic-boya-m1) khi thu mẫu indoor — đỡ ù máy lạnh hơn mic máy. Ra ngoài gió thì tính bọc xốp sau; đừng mua set trước khi biết mình hay quay outdoor.
+Đây là chỗ mic vẫn quan trọng: muốn clone gần giọng mình thì file gốc phải sạch. Mình đang dùng Boya BY-M1 khi thu mẫu indoor — đỡ ù máy lạnh hơn mic máy. Ra ngoài gió thì tính bọc xốp sau; đừng mua set trước khi biết mình hay quay outdoor.
 
 ### Xuất và dựng
 

@@ -47,9 +47,9 @@ Cách mình tự kiểm trước khi đăng: xem lại giây 0–3 bằng loa đ
 
 Hai món từng cứu giây đầu của mình khi quay indoor — mình đang dùng vì đúng đau, không vì đủ nghề:
 
-[Mic Boya cài áo](/go/mic-boya-m1) — ngồi bàn, máy lạnh, nói gần miệng một chút là tiếng đủ sạch để người ta chịu nghe hết câu mở. Walk-and-talk mới tính mic không dây.
+Mic Boya cài áo — ngồi bàn, máy lạnh, nói gần miệng một chút là tiếng đủ sạch để người ta chịu nghe hết câu mở. Walk-and-talk mới tính mic không dây. Chi tiết sau ba tháng dùng: [review mic BY-M1](/blog/review-mic-boya-by-m1).
 
-[Đèn LED panel nhỏ](/go/den-led-panel) — chỉnh góc, đỡ bóng dưới mắt hơn ring thẳng mặt. Không phải mua đèn là hook hay; đèn chỉ để não khỏi reject vì mặt tối.
+Đèn LED panel nhỏ — chỉnh góc, đỡ bóng dưới mắt hơn ring thẳng mặt. Không phải mua đèn là hook hay; đèn chỉ để não khỏi reject vì mặt tối.
 
 Quay hook sạch đã là một nửa video. Nửa còn lại là đừng nói dài dòng trước khi vào điểm.
 

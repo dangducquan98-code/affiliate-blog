@@ -17,6 +17,7 @@ export const POST_CATEGORY_BY_SLUG: Readonly<Record<string, string>> = {
   '7-ngay-affiliate': 'affiliate',
   'lam-tiktok-affiliate-tu-0': 'affiliate',
   'huong-dan-honeygain-treo-may': 'affiliate',
+  'review-mic-boya-by-m1': 'review-gear',
   '20-mon-do-lam-video-tiktok': 'review-gear',
   'text-to-speech-ai-thu-am': 'ai-cong-cu',
 };

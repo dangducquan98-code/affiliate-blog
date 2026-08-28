@@ -82,7 +82,7 @@ const posts: SeedPost[] = [
     description:
       'Mình từng chọn sản phẩm TikTok theo trend và hoa hồng — view có, cookie lủng. Bộ lọc 5 câu + gear tối thiểu để đỡ phí công quay.',
     tags: ['tiktok', 'affiliate', 'review', 'series', 'chon-san-pham'],
-    products: [{ slug: 'mic-boya-m1' }, { slug: 'den-ring-light-10' }],
+    products: [],
     contentFile: 'tiktok-chon-san-pham-review.md',
     published: true,
     cover_image: null,
@@ -93,7 +93,7 @@ const posts: SeedPost[] = [
     description:
       'Hook TikTok không phải câu thần chú. 5 kiểu mở đầu mình đang dùng trên kênh ~4K — và vì sao tiếng/mặt sạch quyết định tay có dừng không.',
     tags: ['tiktok', 'hook', 'script', 'series', '3-giay'],
-    products: [{ slug: 'mic-boya-m1' }, { slug: 'den-led-panel' }],
+    products: [],
     contentFile: 'tiktok-hook-3-giay.md',
     published: true,
     cover_image: null,
@@ -104,7 +104,7 @@ const posts: SeedPost[] = [
     description:
       'Mình từng quay freestyle rồi dựng 40 phút cứu take. Giờ viết như tin nhắn: khung 15–60s, cắt gì, chốt gì, gear nào giúp quay một mạch.',
     tags: ['tiktok', 'script', 'quay-phim', 'series', 'kich-ban'],
-    products: [{ slug: 'tripod-phone-flexible' }, { slug: 'lav-mic-foam' }],
+    products: [],
     contentFile: 'tiktok-kich-ban-quay-ngan.md',
     published: true,
     cover_image: null,
@@ -117,8 +117,6 @@ const posts: SeedPost[] = [
     tags: ['tiktok', 'affiliate', 'huong-dan', '7-ngay', 'kich-ban'],
     products: [
       { slug: 'sach-7-ngay-affiliate' },
-      { slug: 'mic-boya-m1' },
-      { slug: 'den-ring-light-10' },
     ],
     contentFile: '7-ngay-affiliate.md',
     published: true,
@@ -130,7 +128,7 @@ const posts: SeedPost[] = [
     description:
       'Mệt giọng, phòng ồn, cần voice-over nhanh? Mình dùng TTS tiếng Việt (Ausync Lab) thế nào: viết script, train giọng, và lúc nào vẫn nên ngồi mic thật.',
     tags: ['tiktok', 'ai', 'tts', 'thu-am', 'capcut'],
-    products: [{ slug: 'ausync-lab-tts' }, { slug: 'mic-boya-m1' }],
+    products: [{ slug: 'ausync-lab-tts' }],
     contentFile: 'text-to-speech-ai-thu-am.md',
     published: true,
     cover_image: null,
@@ -200,7 +198,7 @@ const posts: SeedPost[] = [
     description:
       'Mở bằng giá, review đẹp đều, chọn theo hoa hồng, đổ lỗi thiết bị, đuổi view quên niềm tin. Mỗi sai: tình huống thật, hậu quả, cách sửa — giọng tự vấn.',
     tags: ['sai-lam', 'review', 'bai-hoc', 'affiliate', 'tiktok'],
-    products: [{ slug: 'mic-boya-m1' }, { slug: 'den-ring-light-10' }],
+    products: [],
     contentFile: '5-sai-lam-review.md',
     published: true,
     cover_image: null,
