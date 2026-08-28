@@ -21,7 +21,11 @@ public/build/
 # Vercel
 .vercel/
 
-# Misc
+# Import assets (upload to Supabase via npm run import:*)
+scripts/content/assets/**/*.png
+scripts/content/assets/**/*.jpg
+scripts/content/assets/**/*.jpeg
+scripts/content/assets/**/*.webp
 .DS_Store
 *.pem
 npm-debug.log*

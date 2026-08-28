@@ -15,6 +15,7 @@
     "rewrite:tiktok-series": "tsx scripts/rewrite-tiktok-series.ts",
     "import:blogspot": "tsx scripts/import-blogspot-posts.ts",
     "import:diverse": "tsx scripts/import-diverse-posts.ts",
+    "import:honeygain": "tsx scripts/import-honeygain-post.ts",
     "content:internal-links": "tsx scripts/upsert-pillar-and-internal-links.ts",
     "test:unit": "node --import tsx --test src/lib/products.test.ts src/lib/categories.test.ts src/lib/click-meta.test.ts src/lib/publish-guard.test.ts src/lib/reading-time.test.ts src/lib/affiliate-url.test.ts"
   },
