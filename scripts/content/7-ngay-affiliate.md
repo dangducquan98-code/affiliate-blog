@@ -1,3 +1,6 @@
+---
+category: affiliate
+---
 Thứ Hai tuần trước mình ngồi nhìn dashboard Shopee Affiliate, thấy cookie có mà đơn thì lẻ tẻ. View TikTok tuần đó cũng không sập — nhưng cũng chẳng ai click. Hmm… thế là vẫn mệt đầu.
 
 Không phải vì mình không chịu làm. Mình làm khá nhiều. Nhưng làm sai thứ tự — bán trước, giá trị sau — thì mỗi clip như chữa cháy. Bài này mình gom lại thành lộ trình 7 ngày thực chiến: chọn ngách, viết hook, dựng checklist, tránh lỗi hay gặp. Ý tưởng gốc mình từng tổng hợp từ sách và ví dụ cộng đồng; phần dưới là cách mình hiểu và đang dùng lại trên kênh ~4K.
@@ -60,9 +63,9 @@ Về gear: không cần đợi studio. Mình từng quay cửa sổ và điện 
 
 Hai món giải đúng nỗi đau lúc mình quay review nghiêm túc hơn — mình đang dùng khi đau thật, không mua trước:
 
-Mic cài áo [Boya BY-M1](/go/mic-boya-m1) — tiếng sạch hơn mic máy khi ngồi phòng điều hòa. Rẻ mà đủ bắt đầu.
+Mic cài áo Boya BY-M1 — tiếng sạch hơn mic máy khi ngồi phòng điều hòa. Rẻ mà đủ bắt đầu. Đọc [review mic sau 3 tháng](/blog/review-mic-boya-by-m1) nếu đang phân vân.
 
-[Đèn vòng 10 inch](/go/den-ring-light-10) — mặt đỡ tối, đỡ bóng đổ. Một góc bàn là đủ; cửa sổ cứu được thì chưa cần panel.
+Đèn vòng 10 inch — mặt đỡ tối, đỡ bóng đổ. Một góc bàn là đủ; cửa sổ cứu được thì chưa cần panel.
 
 Tripod hoặc gimbal mua sau cũng được — khi tay mỏi hoặc hay quay outdoor. Đừng mua set đủ nghề trước khi biết mình đau cái gì.
 

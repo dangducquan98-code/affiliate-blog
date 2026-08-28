@@ -1,3 +1,6 @@
+---
+category: lam-tiktok
+---
 Tuần trước mình ngồi xem lại analytics, thấy một clip đăng đều mà retention 3 giây đầu thấp phết. View vào rồi đi gần như ngay. Không biết có phải mình tự hài lòng quá với câu mở trên giấy không mà quên một việc đơn giản: người lạ trên For You không nợ mình thời gian.
 
 Có thế thôi — ba giây đầu là thứ quyết định phần còn lại có còn cơ hội không.
@@ -44,9 +47,9 @@ Cách mình tự kiểm trước khi đăng: xem lại giây 0–3 bằng loa đ
 
 Hai món từng cứu giây đầu của mình khi quay indoor — mình đang dùng vì đúng đau, không vì đủ nghề:
 
-[Mic Boya cài áo](/go/mic-boya-m1) — ngồi bàn, máy lạnh, nói gần miệng một chút là tiếng đủ sạch để người ta chịu nghe hết câu mở. Walk-and-talk mới tính mic không dây.
+Mic Boya cài áo — ngồi bàn, máy lạnh, nói gần miệng một chút là tiếng đủ sạch để người ta chịu nghe hết câu mở. Walk-and-talk mới tính mic không dây. Chi tiết sau ba tháng dùng: [review mic BY-M1](/blog/review-mic-boya-by-m1).
 
-[Đèn LED panel nhỏ](/go/den-led-panel) — chỉnh góc, đỡ bóng dưới mắt hơn ring thẳng mặt. Không phải mua đèn là hook hay; đèn chỉ để não khỏi reject vì mặt tối.
+Đèn LED panel nhỏ — chỉnh góc, đỡ bóng dưới mắt hơn ring thẳng mặt. Không phải mua đèn là hook hay; đèn chỉ để não khỏi reject vì mặt tối.
 
 Quay hook sạch đã là một nửa video. Nửa còn lại là đừng nói dài dòng trước khi vào điểm.
 

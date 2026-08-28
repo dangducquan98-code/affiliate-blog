@@ -1,3 +1,6 @@
+---
+category: lam-tiktok
+---
 Hôm qua mình mở Shopee Affiliate, định review nhanh một món đang hot trên For You. Ngồi xuống, mở app TikTok, nghĩ tiếp một câu: video này giúp được ai? Hay chỉ giúp mình thấy mình đang bận?
 
 Có thế thôi đã đủ để dừng lại.
@@ -74,9 +77,9 @@ Không cần đợi đủ đồ. Mình từng quay bằng điện thoại và á
 
 Hai món giải đúng nỗi đau lúc mình bắt đầu quay review nghiêm túc — mình đang dùng khi đau thật:
 
-Mic cài áo [Boya BY-M1](/go/mic-boya-m1) — tiếng sạch hơn mic điện thoại trong phòng máy lạnh. Rẻ mà đủ bắt đầu. Gió outdoor thì bọc xốp sau.
+Mic cài áo Boya BY-M1 — tiếng sạch hơn mic điện thoại trong phòng máy lạnh. Rẻ mà đủ bắt đầu. Gió outdoor thì bọc xốp sau. Đọc [review mic sau 3 tháng](/blog/review-mic-boya-by-m1) trước khi chốt.
 
-[Đèn vòng 10 inch](/go/den-ring-light-10) — mặt đỡ tối, đỡ bóng đổ. Một góc bàn là đủ. Cửa sổ và đèn nhỏ cứu được hook thì chưa cần panel.
+Đèn vòng 10 inch — mặt đỡ tối, đỡ bóng đổ. Một góc bàn là đủ. Cửa sổ và đèn nhỏ cứu được hook thì chưa cần panel. List đầy đủ hơn trong [20 món đồ quay TikTok](/blog/20-mon-do-lam-video-tiktok).
 
 Tripod? Mua khi mỏi tay thật — không mua trước khi biết mình hay run. Quan trọng là biết cần gì trước.
 

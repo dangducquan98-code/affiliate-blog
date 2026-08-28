@@ -18,6 +18,7 @@
     "import:honeygain": "tsx scripts/import-honeygain-post.ts",
     "content:internal-links": "tsx scripts/upsert-pillar-and-internal-links.ts",
     "rewrite:voice-dna": "tsx scripts/rewrite-voice-dna.ts",
+    "fix:categories": "tsx scripts/fix-post-categories.ts",
     "test:unit": "node --import tsx --test src/lib/products.test.ts src/lib/categories.test.ts src/lib/click-meta.test.ts src/lib/publish-guard.test.ts src/lib/reading-time.test.ts src/lib/affiliate-url.test.ts"
   },
   "dependencies": {

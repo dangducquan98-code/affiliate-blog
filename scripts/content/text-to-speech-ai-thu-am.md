@@ -1,3 +1,6 @@
+---
+category: ai-cong-cu
+---
 Mình từng ngồi trước mic, mở CapCut, viết xong kịch bản… rồi tắc. Không phải vì hết ý. Vì giọng mệt, phòng ồn, Gấu vừa khóc, máy lạnh ù một nhịp — take thứ bảy vẫn như đang nói trong toilet. Hmm… thế là lại để đó, hẹn "mai quay lại", rồi mai cũng y chang.
 
 Không phải ai làm TikTok hay review cũng thích ngồi thu âm từng câu. Có người ngại nghe giọng mình. Có người cần voice-over nhanh cho slideshow, unbox im lặng, hoặc đăng đều khi không kịp quay face-cam. Lúc đó text-to-speech — chuyển văn bản thành thu âm — cứu được nhịp đăng. Không thay được hết trải nghiệm "nói thiệt trước camera". Nhưng nó là công cụ. Công cụ thì phải biết khi nào dùng, khi nào đừng.
@@ -34,7 +37,7 @@ Vào Ausync Lab, đăng ký bằng Google hoặc Apple hoặc email tùy họ h�
 
 Upload mẫu nói rõ, ít tạp âm. Phòng yên. Nói tự nhiên như clip thật — đừng đọc đều như MC đám cưới. Độ dài mẫu theo hướng dẫn tool; mình ưu tiên vài đoạn ngắn sạch hơn một file dài ồn.
 
-Đây là chỗ mic vẫn quan trọng: muốn clone gần giọng mình thì file gốc phải sạch. Mình đang dùng [Boya BY-M1](/go/mic-boya-m1) khi thu mẫu indoor — đỡ ù máy lạnh hơn mic máy. Ra ngoài gió thì tính bọc xốp sau; đừng mua set trước khi biết mình hay quay outdoor.
+Đây là chỗ mic vẫn quan trọng: muốn clone gần giọng mình thì file gốc phải sạch. Mình đang dùng Boya BY-M1 khi thu mẫu indoor — đỡ ù máy lạnh hơn mic máy. Ra ngoài gió thì tính bọc xốp sau; đừng mua set trước khi biết mình hay quay outdoor.
 
 ### Xuất và dựng
 

@@ -1,3 +1,6 @@
+---
+category: review-gear
+---
 Mình từng kê điện thoại lên chồng sách, bật đèn trần, quay review. Xong xem lại: mặt tối, tiếng như trong toilet, khung hình nghiêng một nhịp. Không phải vì chưa đủ nghề. Vì thiếu đúng vài món nhỏ — và thừa ảo tưởng cần mua cả studio trước khi có video đầu tiên.
 
 Bài này mình tổng hợp hơn hai mươi món có thể cần khi làm video TikTok kiểu affiliate review. Không phải checklist mua hết hôm nay. Là menu: biết món nào bắt buộc, món nào nâng cấp, món nào bỏ cũng được. Mình viết mấy dòng này không có ý biến Shopee thành giỏ hàng ngày một.

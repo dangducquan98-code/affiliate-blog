@@ -12,6 +12,7 @@ import { existsSync, readFileSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { createClient } from '@supabase/supabase-js';
+import { resolveCategorySlug } from '../src/lib/post-category-map.ts';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
@@ -54,18 +55,6 @@ if (!url || url.includes('placeholder') || !serviceKey || serviceKey.includes('p
 const client = createClient(url, serviceKey, {
   auth: { persistSession: false, autoRefreshToken: false },
 });
-
-const CATEGORY_MAP: Record<string, string> = {
-  'huong-dan': 'lam-tiktok',
-  'hau-truong': 'lam-tiktok',
-  'tiktok-money': 'lam-tiktok',
-  'hanh-trinh': 'affiliate',
-  'sai-lam': 'affiliate',
-  mindset: 'affiliate',
-  faq: 'affiliate',
-  sach: 'affiliate',
-  'cong-cu-ai': 'ai-cong-cu',
-};
 
 /** Natural bridge paragraphs — ≥2 /blog links each (or pair of bridges). */
 const BRIDGES: Record<string, string[]> = {
@@ -178,7 +167,7 @@ async function patchPosts(): Promise<void> {
       }
     }
 
-    const mapped = CATEGORY_MAP[String(row.category)] || null;
+    const mapped = resolveCategorySlug(slug, String(row.category)) ?? null;
     const categoryUpdate = mapped && mapped !== row.category ? mapped : null;
     if (categoryUpdate) changed = true;
 

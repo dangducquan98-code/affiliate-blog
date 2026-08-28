@@ -1,3 +1,6 @@
+---
+category: affiliate
+---
 Mình từng nghĩ làm review là cầm sản phẩm lên, nói "đáng mua", thả link, xong. Nghe đơn giản. Làm thật thì view có — vài nghìn cũng có — mà đơn gần như không. Hmm… thế là vẫn mệt đầu.
 
 Không phải vì mình lười. Mình mắc đủ sai. Bài này liệt 5 sai lầm mình từng làm — và đôi lúc vẫn suýt tái phạm — kèm cách sửa thực dụng. Không phải checklist "chuyên gia". Là nhật ký tự vấn, để anh em đỡ mất vài tháng học bằng tiền view.
@@ -42,9 +45,9 @@ Cách sửa theo thứ tự đau: sửa kịch bản và nhịp nói trước �
 
 Hai món mình đang dùng khi cần "sửa sai" phần kỹ thuật — không phải mua để thành pro overnight:
 
-Mic cài áo [Boya BY-M1](/go/mic-boya-m1) — khi máy lạnh hoặc quạt át mic máy.
+Mic cài áo Boya BY-M1 — khi máy lạnh hoặc quạt át mic máy. Chi tiết ưng/không ưng: [review mic BY-M1](/blog/review-mic-boya-by-m1).
 
-[Đèn vòng 10 inch](/go/den-ring-light-10) — khi quay tối hoặc góc nhà thiếu sáng. Một góc bàn là đủ; cửa sổ buổi sáng cứu được thì chưa cần panel.
+Đèn vòng 10 inch — khi quay tối hoặc góc nhà thiếu sáng. Một góc bàn là đủ; cửa sổ buổi sáng cứu được thì chưa cần panel.
 
 Tripod mua sau cũng được. Đừng mua cả set vì FOMO sau một clip flop. Mình từng mua cả set — gimbal nằm góc tủ, nhắc nhẹ mình về sai lầm số 3 lẫn số 4.
 

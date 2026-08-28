@@ -1,3 +1,6 @@
+---
+category: lam-tiktok
+---
 Mình còn nhớ một đêm quay xong, ngồi dựng bốn mươi phút để cứu một take dài hai phút. Cắt "ờ", cắt "thì", cắt đoạn mình giải thích lại lần hai vì sợ người ta không hiểu. Cuối cùng còn lại khoảng ba mươi giây nghe… ổn. Nhưng lẽ ra từ đầu mình chỉ cần viết năm dòng rồi quay một mạch. Không biết có phải vì lúc đó mình còn tin freestyle nghe "thật" hơn không mà cứ bấm record rồi tính sau. Mệt phết.
 
 Giờ mình viết trước. Không phải viết tiểu thuyết — viết như tin nhắn gửi bạn. Mình viết mấy dòng này không có ý biến TikTok thành khoa học rocket. Chỉ là cách mình làm review sản phẩm kiểu affiliate mà không muốn biến kênh thành catalogue hét "mua đi".
@@ -36,9 +39,9 @@ Chốt của mình thường là một trong ba kiểu: đừng mua nếu…, mu
 
 ## Setup vừa đủ — để quay một mạch, không phải showroom
 
-Khi kịch bản đã ngắn, setup đỡ phải nghĩ giữa take. Không phải mua hết mới được đăng. Hai món mình hay đụng khi take bị "gãy" giữa chừng: [tripod linh hoạt cho điện thoại](/go/tripod-phone-flexible) — khỏi cầm máy run, khỏi cắt ngang vì mỏi tay. Quay một mạch hai mươi đến bốn mươi lăm giây theo script ngắn thì cái này cứu khá nhiều take. Walk-and-talk mới tính gimbal; indoor bàn thường thừa.
+Khi kịch bản đã ngắn, setup đỡ phải nghĩ giữa take. Không phải mua hết mới được đăng. Hai món mình hay đụng khi take bị "gãy" giữa chừng: tripod linh hoạt cho điện thoại — khỏi cầm máy run, khỏi cắt ngang vì mỏi tay. Quay một mạch hai mươi đến bốn mươi lăm giây theo script ngắn thì cái này cứu khá nhiều take. Walk-and-talk mới tính gimbal; indoor bàn thường thừa.
 
-Thứ hai là [bọc xốp / wind muff cho mic](/go/lav-mic-foam) — outdoor gió đỡ "phèo phèo". Indoor máy lạnh thì khoảng cách miệng và mic sạch quan trọng hơn; muff để khi bạn hay quay ngoài. Đèn? Cửa sổ trước. Ring chỉ khi cửa sổ không cứu nổi mặt. Mục tiêu là take sạch theo script, không phải trưng gear.
+Thứ hai là bọc xốp / wind muff cho mic — outdoor gió đỡ "phèo phèo". Indoor máy lạnh thì khoảng cách miệng và mic sạch quan trọng hơn; muff để khi bạn hay quay ngoài. Đèn? Cửa sổ trước. Ring chỉ khi cửa sổ không cứu nổi mặt. Mục tiêu là take sạch theo script, không phải trưng gear. Gear chi tiết nằm ở [hậu trường một video 30 giây](/blog/hau-truong-1-video-30-giay) và [list 20 món](/blog/20-mon-do-lam-video-tiktok).
 
 Mình hay viết dư rồi cắt. Đó vẫn ổn — dư có kiểm soát còn hơn thiếu rồi chữa bằng lời thoại dài lúc dựng. Một take quay được một mạch mà không cần nhảy cắt liên tục để giấu lỗi là mục tiêu thực dụng. Với affiliate, take ngắn còn giúp CTA nằm đúng chỗ: sau quan điểm, trước khi người xem chán.
 
