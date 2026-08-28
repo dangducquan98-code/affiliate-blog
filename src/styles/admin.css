@@ -773,6 +773,36 @@ a.admin-stat:hover {
   transition: opacity 0.25s ease, transform 0.25s ease;
 }
 
+/* Navigation progress */
+.admin-nav-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 120;
+  height: 3px;
+  width: 0;
+  background: var(--admin-accent);
+  box-shadow: 0 0 8px color-mix(in srgb, var(--admin-accent) 50%, transparent);
+  pointer-events: none;
+  transition: width 0.15s ease;
+}
+
+.admin-nav-progress.is-active {
+  width: 72%;
+  transition: width 6s cubic-bezier(0.1, 0.4, 0.2, 1);
+}
+
+body.admin-navigating {
+  cursor: progress;
+}
+
+.admin-app.is-navigating .admin-main,
+.admin-login-page.is-navigating .admin-login-wrap {
+  opacity: 0.72;
+  pointer-events: none;
+  transition: opacity 0.15s ease;
+}
+
 /* Login */
 .admin-login-page {
   width: 100%;

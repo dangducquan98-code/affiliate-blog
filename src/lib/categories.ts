@@ -11,28 +11,28 @@ export const CATEGORIES: readonly Category[] = [
     slug: 'lam-tiktok',
     label: 'Làm TikTok',
     description:
-      'Hook, kịch bản, SEO mô tả và hậu trường làm video ngắn — từ 0 đến ra content đều đặn.',
+      'Hook, kịch bản, SEO mô tả, hậu trường quay — những thứ mình vẫn làm đều trên kênh.',
   },
   {
     slug: 'affiliate',
     label: 'Affiliate & Kiếm tiền',
     description:
-      'Mindset, sai lầm thường gặp và lộ trình bắt đầu kiếm tiền affiliate bền vững.',
+      'Sai lầm mình từng mắc, mindset và lộ trình bắt đầu affiliate — không hứa làm giàu nhanh.',
   },
   {
     slug: 'review-gear',
     label: 'Review Gear',
-    description: 'Đồ quay, mic, đèn và phụ kiện đáng tiền cho creator — review thật tay.',
+    description: 'Mic, đèn, tripod — review tay thật, nói thẳng đồ tệ và đồ đáng tiền.',
   },
   {
     slug: 'ai-cong-cu',
     label: 'AI & Công cụ',
-    description: 'Công cụ AI và workflow giúp làm content nhanh hơn mà vẫn giữ chất lượng.',
+    description: 'AI và tool giúp làm content nhanh hơn — mình dùng gì, cái nào chỉ hype.',
   },
   {
     slug: 'deal',
     label: 'Deal / mua sắm',
-    description: 'Deal Shopee và gợi ý mua sắm đáng tiền — cập nhật khi có deal mới.',
+    description: 'Deal Shopee mình đang để ý — giá tham khảo, bạn check lại trước khi chốt.',
   },
 ] as const;
 

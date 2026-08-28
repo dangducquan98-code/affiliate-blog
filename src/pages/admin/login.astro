@@ -16,6 +16,7 @@ if (readAdminSession(Astro.cookies)) {
   canonicalPath="/admin/login"
   hideChrome={true}
 >
+  <div id="admin-nav-progress" class="admin-nav-progress" hidden aria-hidden="true"></div>
   <div class="admin-login-page">
     <section class="admin-login-wrap">
       <p class="admin-login-wrap__brand">Quân Kiu Admin</p>
@@ -39,6 +40,10 @@ if (readAdminSession(Astro.cookies)) {
 </BaseLayout>
 
 <script>
+  import { initAdminNavigation } from '../../scripts/admin-navigation';
+
+  initAdminNavigation();
+
   const form = document.getElementById('login-form') as HTMLFormElement | null;
   const errorEl = document.getElementById('error');
 
@@ -51,6 +56,13 @@ if (readAdminSession(Astro.cookies)) {
 
     const data = new FormData(form);
     const password = String(data.get('password') || '');
+    const submitBtn = form.querySelector('button[type="submit"]') as HTMLButtonElement | null;
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Đang đăng nhập…';
+    }
+    document.getElementById('admin-nav-progress')?.classList.add('is-active');
+    document.querySelector('.admin-login-page')?.classList.add('is-navigating');
 
     const res = await fetch('/api/admin/login', {
       method: 'POST',
@@ -60,6 +72,12 @@ if (readAdminSession(Astro.cookies)) {
 
     if (!res.ok) {
       const payload = await res.json().catch(() => ({}));
+      document.getElementById('admin-nav-progress')?.classList.remove('is-active');
+      document.querySelector('.admin-login-page')?.classList.remove('is-navigating');
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Đăng nhập';
+      }
       if (errorEl) {
         errorEl.hidden = false;
         errorEl.textContent = payload.error || 'Mật khẩu không đúng. Thử lại.';

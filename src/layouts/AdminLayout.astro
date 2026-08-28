@@ -26,6 +26,7 @@ function navClass(key: AdminNav): string {
 ---
 
 <BaseLayout title={title} description={description} canonicalPath={canonicalPath} hideChrome={true}>
+  <div id="admin-nav-progress" class="admin-nav-progress" hidden aria-hidden="true"></div>
   <div class="admin-app">
     <a class="skip-link" href="#admin-main">Bỏ qua đến nội dung admin</a>
     <div class="admin-sidebar-backdrop" id="admin-sidebar-backdrop" hidden></div>
@@ -92,6 +93,10 @@ function navClass(key: AdminNav): string {
 </BaseLayout>
 
 <script>
+  import { initAdminNavigation } from '../scripts/admin-navigation';
+
+  initAdminNavigation();
+
   const sidebar = document.querySelector('.admin-sidebar');
   const backdrop = document.getElementById('admin-sidebar-backdrop');
   const toggle = document.getElementById('admin-menu-toggle');
