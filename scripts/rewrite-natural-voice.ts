@@ -84,8 +84,8 @@ function auditContent(body: string): Check[] {
     }
   }
 
-  const banned = ['thế là vẫn mệt đầu', 'pretent', '## Mục lục', 'Liên quan trên blog'].filter(
-    (phrase) => body.includes(phrase),
+  const banned = ['pretent', '## Mục lục', 'Liên quan trên blog'].filter((phrase) =>
+    body.includes(phrase),
   );
 
   return [
@@ -181,6 +181,7 @@ function reportSignatureBudget(): void {
     'Ngã tính tiếp': 1,
     'Có thế thôi': 1,
     'Hmm': 1,
+    'mệt đầu': 1,
     'Mình viết mấy dòng này': 1,
     'lủng cà lủng củng': 1,
     'mệt phết': 1,

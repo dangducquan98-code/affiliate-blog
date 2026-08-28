@@ -157,6 +157,28 @@ Một bài chỉ được coi là xong khi qua hết 5 cửa:
 
 ## 5. Trạng thái thực hiện
 
-- [x] Phase 1 — 9 bài
-- [x] Phase 2 — 9 bài
-- [x] Phase 3 — 9 bài
+- [x] Phase 1 — 9 bài (commit `content(rewrite-1)`)
+- [x] Phase 2 — 9 bài (commit `content(rewrite-2)`)
+- [x] Phase 3 — 9 bài (commit `content(rewrite-3)`)
+
+## 6. Kết quả verify
+
+Chạy `npm run rewrite:natural-voice` (audit tự động) trên cả 27 bài: **27/27 PASS** mọi chỉ tiêu.
+
+| Chỉ số | Trước | Sau |
+|---|---|---|
+| Bài kết bằng "Ngã tính tiếp." | 18/27 | 1/27 (đúng bài mang tên đó) |
+| Bài mở bằng "Hmm… thế là vẫn mệt đầu" | 16/27 | 0/27 |
+| "Có thế thôi" | 13/27 | 1/27 |
+| Tổng dấu `—` trong 27 bài | ~800 | 15 |
+| H2 nhiều nhất trong một bài | 14 | 7 |
+| Link nội bộ nhiều nhất trong một bài | 19 | 4 |
+| Chuỗi ≥3 câu cụt liên tiếp | nhiều | 0 |
+| Note nội bộ / disclaimer trong content | 6 bài | 0 |
+| Lỗi chính tả và lẫn ngôn ngữ đã liệt kê ở mục 1.5 | 5 chỗ | 0 |
+| Link `/go/diamondhook-bo-the` (404) trong content | 2 bài | 0 |
+
+- `npm run build`: PASS
+- `npm run test:unit`: 27/27 PASS
+- Cả 27 bài `published = true`; `slug`, `title`, `tags`, `category`, `products` giữ nguyên; chỉ `content` và `description` được ghi đè.
+- Mọi slug `/go/...` còn lại đều tồn tại trong bảng `products`.
