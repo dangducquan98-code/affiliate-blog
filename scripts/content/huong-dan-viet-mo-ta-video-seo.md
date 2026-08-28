@@ -1,5 +1,5 @@
 ---
-category: lam-tiktok
+category: mmo
 ---
 Mình từng nghĩ mô tả TikTok chỉ là chỗ "nhét hashtag cho đủ". Quay xong, paste vài #TikTokVN, đăng. View có… rồi hết. Không ai search ra. Không ai nhớ. Cookie cũng chẳng có cửa dính nếu người ta không tìm thấy mình lần hai.
 

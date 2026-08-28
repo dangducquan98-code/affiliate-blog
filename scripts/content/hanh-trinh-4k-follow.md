@@ -1,5 +1,5 @@
 ---
-category: lam-tiktok
+category: mmo
 ---
 Video đầu tiên của mình trên TikTok khoảng 200 view. Không phải "200k viết nhầm". Hai trăm. Đăng xong mình ngồi refresh như chờ tin nhắn — rồi im. Hmm… thế là vẫn mệt đầu.
 

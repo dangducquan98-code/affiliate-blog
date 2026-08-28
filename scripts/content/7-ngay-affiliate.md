@@ -1,5 +1,5 @@
 ---
-category: affiliate
+category: mmo
 ---
 Thứ Hai tuần trước mình ngồi nhìn dashboard Shopee Affiliate, thấy cookie có mà đơn thì lẻ tẻ. View TikTok tuần đó cũng không sập — nhưng cũng chẳng ai click. Hmm… thế là vẫn mệt đầu.
 

@@ -1,5 +1,5 @@
 ---
-category: lam-tiktok
+category: mmo
 ---
 Người ngoài thấy clip 30 giây. Mình thấy cái đồng hồ: gần 3 tiếng. Không phải vì mình chậm cố ý. Vì mỗi bước nhỏ đều nuốt thời gian thật — chọn món, viết, quay hai mươi take, dựng, caption, rồi ngồi nhìn mười lăm phút đầu như chờ kết quả khám. Hmm…
 

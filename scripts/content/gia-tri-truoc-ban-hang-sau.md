@@ -1,5 +1,5 @@
 ---
-category: affiliate
+category: tu-duy
 ---
 Lúc mới làm affiliate, mình ghét câu "giá trị trước, bán hàng sau". Nghe đạo lý. Nghe kiểu người đã có follow rồi mới khuyên người mới. Mình thì đang cần đơn. Hmm… thế là vẫn muốn bán trước.
 

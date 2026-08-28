@@ -1,5 +1,5 @@
 ---
-category: lam-tiktok
+category: mmo
 ---
 Mình còn nhớ lần ngồi trên ghế sofa, lướt For You lúc nửa đêm — tay cứ dừng lại ở clip của một KOC nào đó, không phải vì mặt đẹp hay nhạc hay. Vì câu mở đụng đúng thứ mình đang nghĩ: cáp đứt lần thứ ba trong năm, tiếng máy lạnh nuốt hết lời review, hay cái cảm giác "mua xong hối hận trong ba ngày". Không biết có phải vì mình hay overthink không mà sau đó mình bắt đầu ghi chú lại các nhóm câu mở hay thấy trên kênh Việt — không để copy, mà để biến tấu bằng chuyện thật của mình.
 

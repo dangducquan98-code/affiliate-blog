@@ -1,5 +1,5 @@
 ---
-category: review-gear
+category: cong-nghe
 ---
 Mình từng kê điện thoại lên chồng sách, bật đèn trần, quay review. Xong xem lại: mặt tối, tiếng như trong toilet, khung hình nghiêng một nhịp. Không phải vì chưa đủ nghề. Vì thiếu đúng vài món nhỏ — và thừa ảo tưởng cần mua cả studio trước khi có video đầu tiên.
 

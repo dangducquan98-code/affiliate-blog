@@ -1,5 +1,5 @@
 ---
-category: affiliate
+category: mmo
 ---
 Mình từng nghĩ làm review là cầm sản phẩm lên, nói "đáng mua", thả link, xong. Nghe đơn giản. Làm thật thì view có — vài nghìn cũng có — mà đơn gần như không. Hmm… thế là vẫn mệt đầu.
 

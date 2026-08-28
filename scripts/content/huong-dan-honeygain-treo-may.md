@@ -1,5 +1,5 @@
 ---
-category: affiliate
+category: mmo
 ---
 > **Lưu ý:** Bài phụ — kiếm tiền thụ động treo máy, **không thuộc chuỗi làm TikTok affiliate** trên blog. Nếu bạn tìm hook, kịch bản, gear quay video, bắt đầu từ [pillar TikTok affiliate](/blog/lam-tiktok-affiliate-tu-0) hoặc [chọn chủ đề](/categories).
 

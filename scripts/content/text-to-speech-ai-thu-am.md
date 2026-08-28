@@ -1,5 +1,5 @@
 ---
-category: ai-cong-cu
+category: cong-nghe
 ---
 Mình từng ngồi trước mic, mở CapCut, viết xong kịch bản… rồi tắc. Không phải vì hết ý. Vì giọng mệt, phòng ồn, Gấu vừa khóc, máy lạnh ù một nhịp — take thứ bảy vẫn như đang nói trong toilet. Hmm… thế là lại để đó, hẹn "mai quay lại", rồi mai cũng y chang.
 

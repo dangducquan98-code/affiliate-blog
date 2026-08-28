@@ -1,4 +1,5 @@
 import { defineMiddleware } from 'astro:middleware';
+import { getLegacyCategoryRedirect } from './lib/categories';
 
 const NO_STORE = 'no-store';
 const PUBLIC_CACHE = 'public, s-maxage=120, stale-while-revalidate=300';
@@ -23,8 +24,17 @@ function isPublicCachePath(pathname: string): boolean {
 }
 
 export const onRequest = defineMiddleware(async (context, next) => {
-  const response = await next();
   const { pathname } = context.url;
+
+  const legacyMatch = pathname.match(/^\/category\/([^/]+)\/?$/);
+  if (legacyMatch) {
+    const redirectTo = getLegacyCategoryRedirect(legacyMatch[1] ?? '');
+    if (redirectTo) {
+      return context.redirect(redirectTo, 301);
+    }
+  }
+
+  const response = await next();
 
   if (isNoStorePath(pathname)) {
     response.headers.set('Cache-Control', NO_STORE);

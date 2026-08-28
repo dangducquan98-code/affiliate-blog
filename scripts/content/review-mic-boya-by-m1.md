@@ -1,5 +1,5 @@
 ---
-category: review-gear
+category: cong-nghe
 ---
 Mình mua mic Boya BY-M1 vì một buổi tối nghe lại clip review — tiếng máy lạnh ù như đang nói trong toilet. Caption hay, sản phẩm đẹp, mà giây đầu người ta đã vuốt. Hmm… thế là vẫn mệt đầu.
 

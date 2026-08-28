@@ -1,5 +1,5 @@
 ---
-category: affiliate
+category: mmo
 ---
 Mình từng nghĩ làm TikTok affiliate từ 0 là một công thức: mua mic, quay, gắn link, có tiền. Thực tế lủng cà lủng củng hơn nhiều. Có tuần mình đăng đều mà gần như không ai click. Có tuần một video tạm ổn lại kéo vài đơn muộn — cookie dính từ trước.
 

@@ -144,7 +144,7 @@ async function main() {
       'Mình ghi lại từng bước cài Honeygain trên Mac: treo máy, rút tiền, JumpTask, và vài lưu ý để đỡ mất thời gian mò.',
     content: content.trim(),
     tags: ['honeygain', 'kiem-tien-online', 'passive-income', 'huong-dan'],
-    category: 'affiliate',
+    category: 'mmo',
     products: [],
     published: true,
     cover_image: COVER_URL,

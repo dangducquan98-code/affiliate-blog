@@ -1,4 +1,4 @@
-/** Shared post categories — blog, admin, sitemap. */
+/** Shared post categories (content pillars) — blog, admin, sitemap. */
 
 export type Category = {
   slug: string;
@@ -8,35 +8,53 @@ export type Category = {
 
 export const CATEGORIES: readonly Category[] = [
   {
-    slug: 'lam-tiktok',
-    label: 'Làm TikTok',
+    slug: 'mmo',
+    label: 'MMO — Kiếm tiền online',
     description:
-      'Hook, kịch bản, SEO mô tả, hậu trường quay — những thứ mình vẫn làm đều trên kênh.',
+      'Lộ trình và bài học thực chiến về kiếm thêm thu nhập online — affiliate TikTok/Shopee, passive income, side project. Từ góc người đang làm kênh ~4K, có checklist và sai lầm thật.',
   },
   {
-    slug: 'affiliate',
-    label: 'Affiliate & Kiếm tiền',
+    slug: 'tu-duy',
+    label: 'Phát triển tư duy',
     description:
-      'Sai lầm mình từng mắc, mindset và lộ trình bắt đầu affiliate — không hứa làm giàu nhanh.',
+      'Góc nhìn Stoic, mindset, thói quen, tự vấn — viết chân thật như podcast Kiu Kể Lể. Giá trị đọc độc lập, không motivational sáo.',
   },
   {
-    slug: 'review-gear',
-    label: 'Review Gear',
-    description: 'Mic, đèn, tripod — review tay thật, nói thẳng đồ tệ và đồ đáng tiền.',
+    slug: 'tai-chinh',
+    label: 'Tài chính cá nhân',
+    description:
+      'Cách nghĩ và thực hành về tiền cá nhân: ngân sách, quỹ dự phòng, thu nhập phụ — góc người trẻ/văn phòng, không flex. Không phải tư vấn đầu tư chuyên nghiệp.',
   },
   {
-    slug: 'ai-cong-cu',
-    label: 'AI & Công cụ',
-    description: 'AI và tool giúp làm content nhanh hơn — mình dùng gì, cái nào chỉ hype.',
+    slug: 'review-sach',
+    label: 'Review sách',
+    description:
+      'Tóm tắt sách đã đọc, bài học rút ra, ai nên/không nên đọc — kiểu “mình đọc xong thấy X, áp dụng Y”. Phần giá trị đứng được khi bỏ link.',
   },
   {
-    slug: 'deal',
-    label: 'Deal / mua sắm',
-    description: 'Deal Shopee mình đang để ý — giá tham khảo, bạn check lại trước khi chốt.',
+    slug: 'cong-nghe',
+    label: 'Công nghệ & Công cụ',
+    description:
+      'Review hands-on mic, đèn, tripod, AI TTS, app — điều kiện dùng thật, ưng/không ưng, so sánh giá mềm. Content-first; link sau phần giá trị.',
+  },
+  {
+    slug: 'trai-nghiem',
+    label: 'Trải nghiệm & Đời sống',
+    description:
+      'Mẩu đời thật — công việc, gia đình, burnout, quyết định cá nhân — viết như nhật ký có chủ đích. Hầu như không affiliate.',
   },
 ] as const;
 
-export const DEFAULT_CATEGORY_SLUG = 'lam-tiktok';
+export const DEFAULT_CATEGORY_SLUG = 'mmo';
+
+/** Old category slugs → redirect target (301). `/deals` is not a pillar. */
+export const LEGACY_CATEGORY_REDIRECTS: Readonly<Record<string, string>> = {
+  'lam-tiktok': '/category/mmo',
+  affiliate: '/category/mmo',
+  'review-gear': '/category/cong-nghe',
+  'ai-cong-cu': '/category/cong-nghe',
+  deal: '/deals',
+};
 
 const bySlug = new Map(CATEGORIES.map((c) => [c.slug, c]));
 
@@ -50,6 +68,10 @@ export function getCategoryLabel(slug: string): string {
 
 export function isValidCategorySlug(slug: string): boolean {
   return bySlug.has(slug);
+}
+
+export function getLegacyCategoryRedirect(slug: string): string | undefined {
+  return LEGACY_CATEGORY_REDIRECTS[slug];
 }
 
 /** Options for admin <select> — same source as public routes. */

@@ -29,17 +29,21 @@ export const CONTENT_CLUSTERS: readonly (readonly string[])[] = [
   ],
 ] as const;
 
-/** Map legacy/misc categories → shared CATEGORIES slug for related browsing. */
+/** Map legacy/misc categories → pillar slug for related browsing. */
 export const CATEGORY_ALIASES: Record<string, string> = {
-  'huong-dan': 'lam-tiktok',
-  'hau-truong': 'lam-tiktok',
-  'tiktok-money': 'lam-tiktok',
-  'hanh-trinh': 'affiliate',
-  'sai-lam': 'affiliate',
-  mindset: 'affiliate',
-  faq: 'affiliate',
-  sach: 'affiliate',
-  'cong-cu-ai': 'ai-cong-cu',
+  'lam-tiktok': 'mmo',
+  affiliate: 'mmo',
+  'review-gear': 'cong-nghe',
+  'ai-cong-cu': 'cong-nghe',
+  'huong-dan': 'mmo',
+  'hau-truong': 'mmo',
+  'tiktok-money': 'mmo',
+  'hanh-trinh': 'mmo',
+  'sai-lam': 'mmo',
+  mindset: 'tu-duy',
+  faq: 'mmo',
+  sach: 'review-sach',
+  'cong-cu-ai': 'cong-nghe',
 };
 
 export function normalizeCategorySlug(category: string): string {
