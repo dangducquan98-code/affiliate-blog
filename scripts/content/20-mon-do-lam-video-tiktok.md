@@ -1,136 +1,81 @@
-Mình từng kê điện thoại lên chồng sách, bật đèn trần, quay review. Xong xem lại: mặt tối, tiếng như trong toilet, khung hình nghiêng một nhịp. Không phải vì “chưa đủ nghề”. Vì thiếu đúng vài món nhỏ — và thừa ảo tưởng cần mua cả studio trước khi có video đầu tiên.
+Mình từng kê điện thoại lên chồng sách, bật đèn trần, quay review. Xong xem lại: mặt tối, tiếng như trong toilet, khung hình nghiêng một nhịp. Không phải vì chưa đủ nghề. Vì thiếu đúng vài món nhỏ — và thừa ảo tưởng cần mua cả studio trước khi có video đầu tiên.
 
-Bài này mình tổng hợp **20+ món** có thể cần khi làm video TikTok kiếm tiền, kèm trải nghiệm thật lúc mới bắt đầu. Không phải checklist “mua hết hôm nay”. Là menu: biết món nào bắt buộc, món nào nâng cấp, món nào bỏ cũng được.
+Bài này mình tổng hợp hơn hai mươi món có thể cần khi làm video TikTok kiểu affiliate review. Không phải checklist mua hết hôm nay. Là menu: biết món nào bắt buộc, món nào nâng cấp, món nào bỏ cũng được. Mình viết mấy dòng này không có ý biến Shopee thành giỏ hàng ngày một.
 
-## Nguyên tắc trước khi đọc list
+## Nguyên tắc trước khi đọc tiếp
 
-Đừng vội mua đồ đắt. Bắt đầu với những gì đang có, nâng cấp khi **đau thật** (tiếng ù, mặt tối, tay mỏi). Ưu tiên đồ dễ dùng, đa năng, gọn. Đọc review thật — nhất là mic, đèn, tripod — trước khi chốt.
+Đừng vội mua đồ đắt. Bắt đầu với những gì đang có, nâng cấp khi đau thật — tiếng ù, mặt tối, tay mỏi. Ưu tiên đồ dễ dùng, đa năng, gọn. Đọc review thật, nhất là mic, đèn, tripod, trước khi chốt. List dài không có nghĩa phải mua hết.
 
-## Nhóm bắt buộc / gần bắt buộc
+## Nhóm gần bắt buộc
 
-### 1. Điện thoại quay video
+Điện thoại quay video: smartphone là đủ. Mình từng quay iPhone 7 vẫn ra video; lên đời 11 thì màu và chi tiết khác hẳn. Chưa cần máy mirrorless để làm affiliate review giá mềm.
 
-Smartphone là đủ. Ưu tiên máy camera ổn (iPhone 11 trở lên, Samsung S-series, Xiaomi đời mới…). Mình từng quay iPhone 7 vẫn ra video; lên đời 11 thì màu và chi tiết khác hẳn. Chưa cần máy mirrorless để làm affiliate review giá mềm.
+Đèn livestream hoặc ring light: đèn tròn khoảng 26 đến 33cm, chỉnh sáng và tông vàng trắng. Không đèn, mặt tối, lên hình xỉn. Mình dùng đèn tầm 200k là sáng bừng góc bàn — chưa đụng đồ tiền triệu. Ring nhỏ 10 inch mình đang dùng indoor cũng đủ: [đèn vòng 10 inch](/go/den-ring-light-10) — gắn vì rẻ mà đủ, không vì studio.
 
-### 2. Đèn livestream / ring light
+Tripod: loại khoảng 1.2 đến 1.6m, đầu xoay linh hoạt. Đợt đầu mình kê chồng sách; có tripod rồi mới thấy đổi góc dễ. Tripod đầu mình từng dùng chắc nhưng hơi nặng; sau chuyển loại gọn hơn vì hay unbox nhiều góc. Với setup bàn, mình hay để [tripod điện thoại linh hoạt](/go/tripod-phone-flexible) — nhẹ, gập được, đỡ mang cả chân máy đi phượt khi chỉ quay góc bàn. Không mỏi tay thì chồng sách vẫn sống.
 
-Đèn tròn ~26–33cm, chỉnh sáng + tông vàng/trắng. Không đèn, mặt tối, lên hình xỉn. Mình dùng đèn tầm ~200k là sáng bừng góc bàn — chưa đụng đồ tiền triệu. Ring nhỏ 10 inch mình đang dùng indoor cũng đủ: [đèn vòng 10 inch](/go/den-ring-light-10) — gắn vì rẻ mà đủ, không vì studio.
+Micro thu âm rời: lav, mic cắm Lightning hoặc USB-C, hoặc không dây. Tiếng rõ, đỡ rè, outdoor đỡ gió hơn mic máy — vẫn nên có bọc xốp nếu gió. Mình đang dùng mic cài áo giá mềm lúc đầu — [Boya BY-M1](/go/mic-boya-m1) — vì tiếng sạch hơn mic máy khi máy lạnh ồn. Hãng hot cũng nhiều; quan trọng là tiếng trên máy và phòng của bạn, không phải logo.
 
-### 3. Tripod (chân máy)
+## Nhóm có thì sướng, chưa có vẫn quay được
 
-Loại ~1.2–1.6m, đầu xoay linh hoạt. Đợt đầu mình kê chồng sách; có tripod rồi mới thấy đổi góc dễ. Tripod đầu mình từng dùng chắc nhưng hơi nặng; sau chuyển loại gọn hơn vì hay unbox nhiều góc. Với setup bàn, mình hay để [tripod điện thoại linh hoạt](/go/tripod-phone-flexible) — nhẹ, gập được, đỡ mang cả chân máy “đi phượt” khi chỉ quay góc bàn. Nếu bạn cần, link sạch ở đây; không mỏi tay thì chồng sách vẫn sống.
+Gậy selfie hoặc giá đỡ có remote: gập gọn, kéo dài, remote Bluetooth. Quay ngoài trời tự setup, không nhờ người giữ máy. Không quay ngoại cảnh thì bỏ qua cũng được.
 
-### 4. Micro thu âm rời
+Phông nền: vải trơn, giấy dán tường, backdrop in sẵn. Đổi phông là đổi vibe — review nhìn có set hơn. Không cần chuyên nghiệp thì tường sạch và góc gọn vẫn ổn.
 
-Lav, mic cắm Lightning/USB-C, hoặc không dây. Tiếng rõ, đỡ rè, outdoor đỡ gió hơn mic máy (vẫn nên có bọc xốp nếu gió). Mình đang dùng mic cài áo giá mềm lúc đầu — [Boya BY-M1](/go/mic-boya-m1) — vì tiếng sạch hơn mic máy khi máy lạnh ồn. Hãng “hot” cũng nhiều; quan trọng là tiếng trên *máy và phòng của bạn*, không phải logo.
+Đèn LED nhỏ hoặc đèn kẹp bàn: chiếu phụ, điểm nhấn sản phẩm, quay đêm. Mình hay kẹp đèn nhỏ vào sản phẩm cho lên màu. Vài chục nghìn đến trăm rẻ là đủ; panel softbox nâng cấp khi đã biết mình hay quay ban đêm.
 
-## Nhóm “có thì sướng”, chưa có vẫn quay được
+Lens rời cho điện thoại: góc rộng, macro, fish-eye. Hợp cận cảnh sản phẩm nhỏ hoặc đồ ăn. Dùng vừa — lens rẻ dễ méo; đừng biến mọi clip thành cá vàng.
 
-### 5. Gậy selfie / giá đỡ có remote
+Quạt mini để bàn: phòng kín mùa hè đỡ nóng, mặt đỡ đổ mồ hôi trên cam. Để quạt ngoài khung hoặc chế gió nhẹ — đừng để tóc bay kiểu MV nếu đang review hub USB.
 
-Gập gọn, kéo dài, remote Bluetooth. Quay ngoài trời tự setup, không nhờ người giữ máy. Không quay ngoại cảnh thì bỏ qua cũng được.
+Giá đỡ đa năng kẹp bàn hoặc giường: quay nằm lười, góc cao, quay tay làm đồ. Kẹp cold shoe tiện gắn mic hoặc đèn nhỏ sau này.
 
-### 6. Phông nền
+## Nhóm dựng và lưu trữ
 
-Vải trơn, giấy dán tường, backdrop in sẵn. Đổi phông là đổi vibe — review nhìn “có set” hơn. Không cần chuyên nghiệp thì tường sạch + góc gọn vẫn ổn. (Catalog có phông xanh portable nếu sau này cần keying — không phải mua ngày đầu.)
+Laptop hoặc PC dựng video: CapCut, Canva, Premiere… Dựng máy cũng được; máy tính nhanh hơn khi cắt nhiều take và xuất nhẹ. Mình dựng Mac và CapCut là chính.
 
-### 7. Đèn LED nhỏ / đèn kẹp bàn
+Ổ cứng hoặc SSD: backup footage. Mình từng mua SSD 500GB giá mềm — đỡ đầy máy và đỡ mất file take đẹp nhất hôm đó.
 
-Chiếu phụ, điểm nhấn sản phẩm, quay đêm. Mình hay kẹp đèn nhỏ vào sản phẩm cho lên màu. Vài chục nghìn đến trăm rẻ là đủ; panel softbox nâng cấp khi đã biết mình hay quay ban đêm.
+Tai nghe kiểm âm: nghe thử trước khi đăng — tạp âm, echo, nhạc át thoại. AirPods cũng tạm; tai nghe có dây đôi khi kiểm tra bass và ồn rõ hơn.
 
-### 8. Lens rời cho điện thoại
+Bộ vệ sinh lens hoặc máy: khăn và bút lau. Camera dính vân tay là filter xỉn miễn phí — theo hướng xấu.
 
-Góc rộng, macro, fish-eye. Hợp cận cảnh sản phẩm nhỏ / đồ ăn. Dùng vừa — lens rẻ dễ méo; đừng biến mọi clip thành cá vàng.
+## Nhóm học và ý tưởng — rẻ nhưng dễ bỏ quên
 
-### 9. Quạt mini để bàn
+Sách hoặc tài liệu làm TikTok: mình từng đọc kiểu Content Bạc Tỷ, 7 Ngày Affiliate, tài liệu TikTok A–Z… Không phải sách nào cũng thần thánh. Có checklist và mẫu script thì đỡ mò. Đọc xong vẫn phải quay — sách không đăng hộ.
 
-Phòng kín mùa hè: đỡ nóng, mặt đỡ đổ mồ hôi trên cam. Để quạt ngoài khung hoặc chế gió nhẹ — đừng để tóc bay kiểu MV nếu đang review hub USB.
-
-### 10. Giá đỡ đa năng (kẹp bàn / giường)
-
-Quay “nằm lười”, góc cao, quay tay làm đồ. Kẹp cold shoe tiện gắn mic/đèn nhỏ sau này.
-
-## Nhóm dựng & lưu trữ
-
-### 11. Laptop / PC dựng video
-
-CapCut, Canva, Premiere… Dựng máy cũng được; máy tính nhanh hơn khi cắt nhiều take + xuất nhẹ. Mình dựng Mac + CapCut là chính.
-
-### 12. Ổ cứng / SSD
-
-Backup footage. Mình từng mua SSD 500GB giá mềm — đỡ đầy máy và đỡ mất file “take đẹp nhất hôm đó”.
-
-### 13. Tai nghe kiểm âm
-
-Nghe thử trước khi đăng: tạp âm, echo, nhạc át thoại. AirPods cũng tạm; tai nghe có dây đôi khi kiểm tra bass/ồn rõ hơn.
-
-### 14. Bộ vệ sinh lens / máy
-
-Khăn + bút lau. Camera dính vân tay là “filter xỉn” miễn phí — theo hướng xấu.
-
-## Nhóm học & ý tưởng (rẻ nhưng dễ bỏ quên)
-
-### 15. Sách / tài liệu làm TikTok
-
-Mình từng đọc kiểu “Content Bạc Tỷ”, “7 Ngày Affiliate”, tài liệu TikTok A–Z… Không phải sách nào cũng thần thánh. Có checklist + mẫu script thì đỡ mò. Đọc xong vẫn phải quay — sách không đăng hộ.
-
-### 16. Sổ tay ý tưởng
-
-Ghi hook, checklist quay, lịch đăng. Điện thoại Notes cũng được; sổ giấy giúp mình ít bị kéo vào feed lúc “chỉ định mở ghi ý tưởng”.
+Sổ tay ý tưởng: ghi hook, checklist quay, lịch đăng. Điện thoại Notes cũng được; sổ giấy giúp mình ít bị kéo vào feed lúc chỉ định mở ghi ý tưởng.
 
 ## Nhóm nâng cấp khi đã quay đều
 
-### 17. Gimbal chống rung
+Gimbal chống rung: vlog hoặc review đường phố, hình mượt hơn. Indoor tripod thường đủ. Mua gimbal khi đã biết mình hay đi và hay rung — đừng mua vì thấy người khác cầm đẹp.
 
-Vlog / review đường phố: hình mượt hơn. Indoor tripod thường đủ. Mua gimbal khi đã biết mình hay đi và hay rung — đừng mua vì thấy người khác cầm đẹp.
+Props nhỏ: cây cảnh mini, sticker, bảng chữ, đèn nháy… Tạo điểm nhấn. Dùng vừa; props át sản phẩm thì ngược mục tiêu affiliate.
 
-### 18. Props nhỏ
+App chỉnh màu hoặc filter: CapCut, Lightroom, VSCO, Snow… Filter hợp trend giúp nhìn xịn, nhưng đừng lệch màu sản phẩm đến mức người mua nhận hàng khác ảnh.
 
-Cây cảnh mini, sticker, bảng chữ, đèn nháy… Tạo điểm nhấn. Dùng vừa; props át sản phẩm thì ngược mục tiêu affiliate.
+Đồng hồ bấm giờ hoặc smartwatch: hẹn giờ take, đếm ngược thử thách, time-lapse. Không bắt buộc — điện thoại có timer.
 
-### 19. App chỉnh màu / filter
+Adapter hoặc hub cổng: vừa mic vừa sạc hoặc đèn — tùy máy. iPhone và Android lỗ cổng khác nhau; mua đúng cổng, đúng chuẩn.
 
-CapCut, Lightroom, VSCO, Snow… Filter hợp trend giúp “nhìn xịn”, nhưng đừng lệch màu sản phẩm đến mức người mua nhận hàng khác ảnh.
+Pin dự phòng: quay ngoài, đi xa, livestream dài — hết pin giữa take là bỏ xừ. Sạc nhanh PD tiện nếu máy hỗ trợ.
 
-### 20. Đồng hồ bấm giờ / smartwatch
+## Thứ tự mua mình khuyên
 
-Hẹn giờ take, đếm ngược thử thách, time-lapse. Không bắt buộc — điện thoại có timer.
+Điện thoại đang có và ánh sáng cửa sổ trước. Mic khi tiếng làm hook chết. Đèn khi mặt tối hoặc sản phẩm xám. Tripod khi tay mỏi hoặc cần góc cố định. SSD hoặc dựng máy tính khi footage phình. Gimbal, phông, lens khi đã rõ style quay.
 
-### 21. Adapter / hub cổng
+Ba link ở trên — đèn, tripod, mic — là tầng một mình thấy hay đau sớm. Các món còn lại: mua đúng nỗi đau, không mua đúng FOMO.
 
-Vừa mic vừa sạc / đèn — tùy máy. iPhone / Android lỗ cổng khác nhau; mua đúng cổng, đúng chuẩn.
+Đồ không thay thế nội dung. Nếu bạn còn kẹt quay cái gì, đọc [chọn sản phẩm review](/blog/tiktok-chon-san-pham-review) rồi mới mua thêm. Muốn thấy mình dùng gear trong quy trình thật: [hậu trường 30 giây](/blog/hau-truong-1-video-30-giay).
 
-### 22. Pin dự phòng
+## Một vài câu hỏi mình từng tự hỏi
 
-Quay ngoài, đi xa, livestream dài: hết pin giữa take là… bỏ xừ. Sạc nhanh PD tiện nếu máy hỗ trợ.
+Mua hết list rồi mới đăng? Không. List là menu khi gặp vấn đề — không phải giỏ hàng ngày một.
 
-## Thứ tự mua mình khuyên (thực dụng)
+Sách Content Bạc Tỷ hay 7 Ngày Affiliate có bắt buộc không? Không. Có checklist và mẫu script thì đỡ mò; vẫn phải quay.
 
-1. **Điện thoại đang có** + ánh sáng cửa sổ  
-2. **Mic** khi tiếng làm hook chết  
-3. **Đèn** khi mặt tối / sản phẩm xám  
-4. **Tripod** khi tay mỏi / cần góc cố định  
-5. SSD / dựng máy tính khi footage phình  
-6. Gimbal / phông / lens khi đã rõ style quay  
-
-Ba link ở trên (đèn, tripod, mic) là “tầng một” mình thấy hay đau sớm. Các món còn lại — mua đúng nỗi đau, không mua đúng FOMO.
-
-Đồ không thay thế nội dung — nếu bạn còn kẹt “quay cái gì”, đọc [chọn sản phẩm review](/blog/tiktok-chon-san-pham-review) rồi mới mua thêm. Muốn thấy mình dùng gear trong quy trình thật: [hậu trường 30 giây](/blog/hau-truong-1-video-30-giay).
-
-## Nên mua tầng một nếu / Không nên nếu
-
-**Nên mua mic/đèn/tripod nếu:** tiếng, sáng, hoặc tay mỏi đang giết hook — và bạn đã biết đau cái nào trước.
-
-**Không nên nếu:** chưa có video nào; đang mua 20 món vì list. Điện thoại + cửa sổ trước.
-
-## FAQ nhanh
-
-**Mua hết list rồi mới đăng?** Không. List là menu khi gặp vấn đề — không phải giỏ hàng ngày 1.
-
-**Sách Content Bạc Tỷ / 7 Ngày Affiliate có bắt buộc không?** Không. Có checklist + mẫu script thì đỡ mò; vẫn phải quay.
+Nên mua mic, đèn, tripod khi nào? Khi tiếng, sáng, hoặc tay mỏi đang giết hook — và bạn đã biết đau cái nào trước. Chưa có video nào thì điện thoại và cửa sổ trước.
 
 ## Kết
 
-20+ món nghe nhiều. Thực tế tuần đầu chỉ cần vài món (hoặc không món nào ngoài điện thoại). List này để anh em **biết tên đồ** khi gặp vấn đề — không phải để đốt lương tháng một chiều.
-
-Anh em đang thiếu món nào khiến clip gần nhất “suýt được”? Tiếng, sáng, hay… ý tưởng? 👇
+Hơn hai mươi món nghe nhiều. Thực tế tuần đầu chỉ cần vài món — hoặc không món nào ngoài điện thoại. List này để bạn biết tên đồ khi gặp vấn đề, không phải để đốt lương tháng một chiều. Mình vẫn đang dùng góc bàn, vẫn có đêm quay lủng cà lủng củng. Gear chỉ cứu phần kỹ thuật. Phần còn lại vẫn là chọn đúng chuyện để nói. Có thế thôi.
