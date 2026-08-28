@@ -128,6 +128,34 @@ p {
   flex-direction: column;
 }
 
+.site-nav-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 200;
+  height: 3px;
+  width: 0;
+  background: var(--accent);
+  box-shadow: 0 0 10px color-mix(in srgb, var(--accent) 45%, transparent);
+  pointer-events: none;
+  transition: width 0.15s ease;
+}
+
+.site-nav-progress.is-active {
+  width: 72%;
+  transition: width 6s cubic-bezier(0.1, 0.4, 0.2, 1);
+}
+
+body.site-navigating {
+  cursor: progress;
+}
+
+.site-wrap.is-navigating {
+  opacity: 0.88;
+  pointer-events: none;
+  transition: opacity 0.15s ease;
+}
+
 .container {
   width: min(100% - 2rem, var(--wide));
   margin-inline: auto;
