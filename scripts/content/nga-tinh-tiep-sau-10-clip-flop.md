@@ -5,8 +5,6 @@ Mười clip liên tiếp — view dưới 300, comment toàn icon cười (ho�
 
 Bài này không toxic positivity kiểu "chỉ cần tin là thành công." Không. Mười clip flop là flop. Cảm giác tệ là tệ. Phần mình giữ: **hành vi cụ thể ngày hôm sau bật máy** — không drama thuật toán, không post status dài.
 
-> **Ghi chú sản phẩm:** Kế hoạch gốc gắn sách *Cái tôi là kẻ thù* (Ego is the Enemy) — chưa có link Shopee. Mình thay bằng **Suy tưởng** (Marcus Aurelius): cùng mạch kiểm soát cái tôi khi thất bại — không cần flex, không cần chứng minh thuật toán sai.
-
 ## Đêm flop — không cần kể lại hero journey
 
 Không có plot twist. Mình ăn vội, scroll group affiliate, so sánh view người khác, ngủ muộn. Sáng dậy mệt. Đó là data — không phải shame để post.
@@ -31,7 +29,7 @@ Ego không chỉ "tự cao." Còn là "mình xấu hổ nên im." Cả hai đề
 
 Marcus viết kiểu: đừng để ý kiến người khác (và metric ảo) chi phối duty của bạn. Duty mình lúc đó: một clip trung thực cho ngách gadget — không clip để repair self-esteem.
 
-Link sách mình đọc: [Suy tưởng](/go/sach-suy-tuong). (Thay thế tạm cho *Ego is the Enemy* khi có link sẽ cập nhật bài.)
+Link sách mình đọc: [Suy tưởng](/go/sach-suy-tuong).
 
 ## Không drama thuật toán
 

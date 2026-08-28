@@ -65,6 +65,30 @@ Link đi qua `/go/<slug>` (URL sạch). Không nhồi raw affiliate URL vào bod
 
 ---
 
+## CẤM note nội bộ trong content
+
+Mọi ghi chú dành cho chủ dự án — sản phẩm thiếu link, kế hoạch gốc, thay thế tạm, TODO, "điền sau", "chờ link", "sẽ cập nhật" — **TUYỆT ĐỐI KHÔNG** viết vào:
+
+- `content` bài trong Supabase (`posts`)
+- `scripts/content/*.md` (nguồn upsert)
+- Body bài public (MDX/markdown render)
+
+**Để note ở đâu:** file plan/docs riêng — ví dụ `docs/content-plan-*`, `docs/products-*`, issue nội bộ. Agent viết bài xong phải tự scan pattern trước khi upsert/publish.
+
+Pattern cấm (không xuất hiện trong bài public):
+
+| Pattern | Ví dụ sai |
+|---------|-----------|
+| `Ghi chú sản phẩm` | `> **Ghi chú sản phẩm:** Kế hoạch gốc gắn sách X...` |
+| `Kế hoạch gốc` | `Kế hoạch gốc gắn Ego is the Enemy — chưa có link` |
+| `chưa có link Shopee` | Trong blockquote hoặc ngoại lề bài |
+| `Thay thế tạm` | `(Thay thế tạm cho X khi có link sẽ cập nhật bài.)` |
+| `TODO`, `điền sau`, `chờ link` | Dòng ghi chú biên tập |
+
+Test trước publish: grep toàn bộ slug + `scripts/content/<slug>.md` với các pattern trên → **0 match**.
+
+---
+
 ## Liên quan
 
 - Voice: `docs/voice-profile-quankiu.md`
