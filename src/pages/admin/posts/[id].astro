@@ -1,7 +1,7 @@
 ---
 export const prerender = false;
 
-import BaseLayout from '../../../layouts/BaseLayout.astro';
+import AdminLayout from '../../../layouts/AdminLayout.astro';
 import { CATEGORIES, DEFAULT_CATEGORY_SLUG, isValidCategorySlug } from '../../../lib/categories';
 import { requireAdmin } from '../../../lib/admin-auth';
 import { productSlugOf } from '../../../lib/admin-posts';
@@ -34,13 +34,32 @@ const rawCategory = post?.category || DEFAULT_CATEGORY_SLUG;
 const category = isValidCategorySlug(rawCategory) ? rawCategory : DEFAULT_CATEGORY_SLUG;
 ---
 
-<BaseLayout
+<AdminLayout
   title={post ? `Sửa: ${post.title}` : 'Không tìm thấy bài'}
   description="Sửa bài viết"
   canonicalPath={`/admin/posts/${id}`}
-  hideChrome={true}
+  activeNav="posts"
+  wide={true}
 >
-  <section class="admin-shell admin-shell--wide">
+  {
+    post && (
+      <div slot="actions">
+        <a class="btn btn--ghost" href={`/blog/${post.slug}`} target="_blank" rel="noreferrer">
+          Xem trên blog
+        </a>
+        <a class="btn btn--ghost" href="/admin#posts">← Danh sách</a>
+      </div>
+    )
+  }
+  {
+    post && (
+      <p slot="lead">
+        <span class={`admin-badge ${post.published ? 'admin-badge--ok' : 'admin-badge--muted'}`}>
+          {post.published ? 'Đã xuất bản' : 'Nháp'}
+        </span>
+      </p>
+    )
+  }
     {
       !post ? (
         <div>
@@ -52,24 +71,8 @@ const category = isValidCategorySlug(rawCategory) ? rawCategory : DEFAULT_CATEGO
         </div>
       ) : (
         <>
-          <div class="admin-bar">
-            <div>
-              <h1 style="margin: 0;">Sửa bài</h1>
-              <p style="margin: 0.35rem 0 0; color: var(--ink-muted);">
-                <a href={`/blog/${post.slug}`} target="_blank" rel="noreferrer">
-                  Xem trên blog →
-                </a>
-                {' · '}
-                <span class={`admin-badge ${post.published ? 'admin-badge--ok' : 'admin-badge--muted'}`}>
-                  {post.published ? 'Đã xuất bản' : 'Nháp'}
-                </span>
-              </p>
-            </div>
-            <a class="btn btn--ghost" href="/admin">
-              ← Quay lại
-            </a>
-          </div>
           <p id="error" class="admin-error" hidden></p>
+          <div id="publish-guard" class="admin-guard-banner" hidden></div>
           {(catalogError || tableMissing) && (
             <p class="fallback-notice">
               {catalogError ||
@@ -206,8 +209,7 @@ const category = isValidCategorySlug(rawCategory) ? rawCategory : DEFAULT_CATEGO
         </>
       )
     }
-  </section>
-</BaseLayout>
+</AdminLayout>
 
 {
   post && (

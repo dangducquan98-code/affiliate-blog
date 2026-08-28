@@ -1,7 +1,7 @@
 ---
 export const prerender = false;
 
-import BaseLayout from '../../../layouts/BaseLayout.astro';
+import AdminLayout from '../../../layouts/AdminLayout.astro';
 import { CATEGORIES, DEFAULT_CATEGORY_SLUG } from '../../../lib/categories';
 import { requireAdmin } from '../../../lib/admin-auth';
 import { listProductsAdmin } from '../../../lib/products';
@@ -21,18 +21,18 @@ const catalogJson = JSON.stringify(
 );
 ---
 
-<BaseLayout
+<AdminLayout
   title="Viết bài mới"
   description="Tạo bài viết mới"
   canonicalPath="/admin/posts/new"
-  hideChrome={true}
+  activeNav="posts"
+  wide={true}
 >
-  <section class="admin-shell admin-shell--wide">
-    <div class="admin-bar">
-      <h1 style="margin: 0;">Viết bài mới</h1>
-      <a class="btn btn--ghost" href="/admin">← Quay lại</a>
-    </div>
-    <p id="error" class="admin-error" hidden></p>
+  <div slot="actions">
+    <a class="btn btn--ghost" href="/admin#posts">← Danh sách bài</a>
+  </div>
+  <p id="error" class="admin-error" hidden></p>
+  <div id="publish-guard" class="admin-guard-banner" hidden></div>
     {
       (catalogError || tableMissing) && (
         <p class="fallback-notice">
@@ -153,8 +153,7 @@ const catalogJson = JSON.stringify(
         </div>
       </div>
     </div>
-  </section>
-</BaseLayout>
+</AdminLayout>
 
 <script>
   import { initPostEditor } from '../../../scripts/admin-post-editor';

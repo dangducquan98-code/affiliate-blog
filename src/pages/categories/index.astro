@@ -2,6 +2,7 @@
 export const prerender = false;
 
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
 import { CATEGORIES } from '../../lib/categories';
 import { listPublishedPosts } from '../../lib/posts';
 
@@ -18,25 +19,27 @@ for (const post of posts) {
   canonicalPath="/categories"
 >
   <section class="container">
-    <h1>Chủ đề</h1>
-    <p style="color: var(--ink-muted); max-width: 36rem;">
-      Không biết bắt đầu bài nào? Chọn chủ đề khớp việc bạn đang cần — rồi vào list bài trong đó.
-    </p>
+    <PageHero
+      title="Chủ đề"
+      lead="Không biết bắt đầu bài nào? Chọn chủ đề khớp việc bạn đang cần — rồi vào list bài trong đó."
+    />
     {
       error ? (
-        <p class="fallback-notice" style="margin-top: 1.5rem;">{error}</p>
+        <p class="fallback-notice">{error}</p>
       ) : (
-        <ul class="category-list" style="margin-top: 1.5rem;">
+        <ul class="category-list">
           {CATEGORIES.map((cat) => {
             const count = counts.get(cat.slug) ?? 0;
             return (
               <li class="category-item">
                 <a href={`/category/${cat.slug}`}>
-                  <h2 class="category-item__title">{cat.label}</h2>
-                  <p class="category-item__desc">{cat.description}</p>
-                  <p class="category-item__meta">
-                    {count === 0 ? 'Chưa có bài' : `${count} bài`}
-                  </p>
+                  <div class="category-card__body">
+                    <h2 class="category-card__title">{cat.label}</h2>
+                    <p class="category-card__desc">{cat.description}</p>
+                    <p class="category-card__meta">
+                      {count === 0 ? 'Chưa có bài' : `${count} bài`}
+                    </p>
+                  </div>
                 </a>
               </li>
             );

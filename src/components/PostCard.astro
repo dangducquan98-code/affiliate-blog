@@ -18,14 +18,9 @@ const dateLabel = date.toLocaleDateString('vi-VN', {
   day: 'numeric',
 });
 const categoryLabel = getCategoryLabel(category);
-const categoryHref = `/category/${category}`;
 ---
 
 <li class="post-item">
-  <p class="post-item__meta">
-    {dateLabel} ·{' '}
-    <a class="post-item__cat" href={categoryHref}>{categoryLabel}</a>
-  </p>
   <a class="post-item__link" href={href}>
     {
       coverImage && (
@@ -34,7 +29,13 @@ const categoryHref = `/category/${category}`;
         </div>
       )
     }
-    <h3 class="post-item__title">{title}</h3>
-    <p class="post-item__desc">{description}</p>
+    <div class="post-item__body">
+      <p class="post-item__meta">
+        {dateLabel}
+        {categoryLabel && <> · <span class="post-item__cat">{categoryLabel}</span></>}
+      </p>
+      <h3 class="post-item__title">{title}</h3>
+      <p class="post-item__desc">{description}</p>
+    </div>
   </a>
 </li>

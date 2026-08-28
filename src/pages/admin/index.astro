@@ -1,7 +1,7 @@
 ---
 export const prerender = false;
 
-import BaseLayout from '../../layouts/BaseLayout.astro';
+import AdminLayout from '../../layouts/AdminLayout.astro';
 import { requireAdmin } from '../../lib/admin-auth';
 import { getClickStatsLast7Days } from '../../lib/click-events';
 import { listAllPostsAdmin } from '../../lib/posts';
@@ -48,101 +48,99 @@ const postsJson = JSON.stringify(
 );
 ---
 
-<BaseLayout
-  title="Admin"
+<AdminLayout
+  title="Bảng điều khiển"
   description="Quản trị Quân Kiu Daily"
   canonicalPath="/admin"
-  hideChrome={true}
+  activeNav="dashboard"
+  wide={true}
 >
-  <section class="admin-shell admin-shell--wide">
-    <div class="admin-bar">
-      <div>
-        <h1 style="margin: 0;">Bảng điều khiển</h1>
-        <p style="margin: 0.35rem 0 0; color: var(--ink-muted);">Quân Kiu Daily · Admin</p>
-      </div>
-      <div class="admin-form__row">
-        <a class="btn btn--primary" href="/admin/posts/new">Bài mới</a>
-        <a class="btn btn--ghost" href="/admin/products/new">Sản phẩm mới</a>
-        <a class="btn btn--ghost" href="/admin/products">Sản phẩm</a>
-        <form method="POST" action="/api/admin/logout">
-          <button class="btn btn--ghost" type="submit">Đăng xuất</button>
-        </form>
-      </div>
-    </div>
+  <p slot="lead">Tổng quan bài viết, sản phẩm và click affiliate 7 ngày.</p>
+  <div slot="actions">
+    <a class="btn btn--primary" href="/admin/posts/new">Bài mới</a>
+    <a class="btn btn--ghost" href="/admin/products/new">Sản phẩm mới</a>
+  </div>
 
-    {error && <p class="fallback-notice">{error}</p>}
+  {error && <p class="fallback-notice">{error}</p>}
 
-    {
-      !error && (
-        <div class="admin-stats">
-          <div class="admin-stat">
-            <div class="admin-stat__value">{publishedCount}</div>
-            <div class="admin-stat__label">Bài đã xuất bản</div>
-          </div>
-          <div class="admin-stat">
-            <div class="admin-stat__value">{draftCount}</div>
-            <div class="admin-stat__label">Bài nháp</div>
-          </div>
-          <div class="admin-stat">
-            <div class="admin-stat__value">{productCount}</div>
-            <div class="admin-stat__label">Tổng sản phẩm</div>
-          </div>
-          <div class="admin-stat">
-            <div class="admin-stat__value">{missingAffiliate}</div>
-            <div class="admin-stat__label">Chưa dán link affiliate</div>
-          </div>
-          <div class="admin-stat">
-            <div class="admin-stat__value">{clickStats.available ? clickStats.total : '—'}</div>
-            <div class="admin-stat__label">Click /go 7 ngày</div>
-          </div>
+  {
+    !error && (
+      <div class="admin-stats admin-stats--5">
+        <div class="admin-stat">
+          <div class="admin-stat__value">{publishedCount}</div>
+          <div class="admin-stat__label">Bài đã xuất bản</div>
         </div>
-      )
-    }
+        <div class="admin-stat">
+          <div class="admin-stat__value">{draftCount}</div>
+          <div class="admin-stat__label">Bài nháp</div>
+        </div>
+        <div class="admin-stat">
+          <div class="admin-stat__value">{productCount}</div>
+          <div class="admin-stat__label">Tổng sản phẩm</div>
+        </div>
+        <div class="admin-stat">
+          <div class="admin-stat__value">{missingAffiliate}</div>
+          <div class="admin-stat__label">Chưa dán link</div>
+        </div>
+        <div class="admin-stat">
+          <div class="admin-stat__value">{clickStats.available ? clickStats.total : '—'}</div>
+          <div class="admin-stat__label">Click /go 7 ngày</div>
+        </div>
+      </div>
+    )
+  }
 
-    {
-      clickStats.error && (
-        <p class="fallback-notice">{clickStats.error}</p>
-      )
-    }
+  {clickStats.error && <p class="fallback-notice">{clickStats.error}</p>}
 
-    {
-      clickStats.available && (
-        <section class="admin-click-panel" aria-label="Top click /go 7 ngày">
-          <div class="section__head" style="margin-bottom: 0.75rem;">
-            <h2 style="margin: 0; font-size: 1.1rem;">Top slug /go (7 ngày)</h2>
-            <span style="color: var(--ink-muted); font-size: 0.9rem;">
-              Tổng {clickStats.total} click
-            </span>
-          </div>
-          {clickStats.top.length === 0 ? (
-            <p class="fallback-notice">Chưa có click nào trong 7 ngày.</p>
-          ) : (
-            <div class="admin-table-wrap">
-              <table class="admin-table">
-                <thead>
+  {
+    clickStats.available && (
+      <section class="admin-click-panel" aria-label="Top click /go 7 ngày">
+        <div class="section__head" style="margin-bottom: 0.75rem;">
+          <h2 style="margin: 0; font-size: 1.1rem;">Top slug /go (7 ngày)</h2>
+          <span style="color: var(--ink-muted); font-size: 0.9rem;">
+            Tổng {clickStats.total} click
+          </span>
+        </div>
+        {clickStats.top.length === 0 ? (
+          <p class="fallback-notice">Chưa có click nào trong 7 ngày.</p>
+        ) : (
+          <div class="admin-table-wrap">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Slug</th>
+                  <th>Clicks</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                {clickStats.top.map((row, i) => (
                   <tr>
-                    <th>#</th>
-                    <th>Slug</th>
-                    <th>Clicks</th>
+                    <td>{i + 1}</td>
+                    <td>
+                      <code>{row.slug}</code>
+                    </td>
+                    <td>{row.count}</td>
+                    <td>
+                      <a class="btn btn--ghost" href={`/go/${row.slug}`} target="_blank" rel="noreferrer">
+                        Test
+                      </a>
+                    </td>
                   </tr>
-                </thead>
-                <tbody>
-                  {clickStats.top.map((row, i) => (
-                    <tr>
-                      <td>{i + 1}</td>
-                      <td>
-                        <code>{row.slug}</code>
-                      </td>
-                      <td>{row.count}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          )}
-        </section>
-      )
-    }
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
+      </section>
+    )
+  }
+
+  <section id="posts">
+    <div class="section__head">
+      <h2 style="margin: 0;">Bài viết</h2>
+    </div>
 
     <div class="admin-toolbar">
       <input id="post-search" type="search" placeholder="Tìm theo tiêu đề…" autocomplete="off" />
@@ -181,7 +179,7 @@ const postsJson = JSON.stringify(
     }
     <p id="posts-empty-filter" class="fallback-notice" hidden>Không có bài khớp bộ lọc.</p>
   </section>
-</BaseLayout>
+</AdminLayout>
 
 <script>
   import { showToast, setLoading } from '../../scripts/admin-shared';
@@ -243,6 +241,7 @@ const postsJson = JSON.stringify(
         <td>
           <div class="admin-table__actions">
             <a class="btn btn--ghost" href="/admin/posts/${p.id}">Sửa</a>
+            <a class="btn btn--ghost" href="/blog/${escapeHtml(p.slug)}" target="_blank" rel="noreferrer">Xem</a>
             <button class="btn btn--danger" type="button" data-delete="${p.id}">Xoá</button>
           </div>
         </td>

@@ -15,9 +15,11 @@ if (readAdminSession(Astro.cookies)) {
   canonicalPath="/admin/login"
   hideChrome={true}
 >
-  <section class="admin-shell">
-    <h1>Admin · Đăng nhập</h1>
-    <p style="color: var(--ink-muted);">Nhập mật khẩu admin (biến <code>ADMIN_PASSWORD</code>).</p>
+  <section class="admin-login-wrap">
+    <h1>Admin</h1>
+    <p style="color: var(--ink-muted); margin-bottom: 1rem;">
+      Đăng nhập để quản lý bài viết và sản phẩm affiliate.
+    </p>
     <p id="error" class="admin-error" hidden></p>
     <form id="login-form" class="admin-form">
       <label>
@@ -56,7 +58,7 @@ if (readAdminSession(Astro.cookies)) {
       const payload = await res.json().catch(() => ({}));
       if (errorEl) {
         errorEl.hidden = false;
-        errorEl.textContent = payload.error || 'Đăng nhập thất bại.';
+        errorEl.textContent = payload.error || 'Mật khẩu không đúng. Thử lại.';
       }
       return;
     }

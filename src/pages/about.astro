@@ -2,6 +2,7 @@
 export const prerender = true;
 
 import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
 ---
 
 <BaseLayout
@@ -10,7 +11,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   canonicalPath="/about"
 >
   <article class="container-narrow">
-    <h1>Về Quân Kiu Daily</h1>
+    <PageHero title="Về Quân Kiu Daily" />
     <p>
       Chào anh em — mình là <strong>Quân Kiu</strong>. Mình làm TikTok affiliate (review /
       hướng dẫn), kênh quanh ~4K followers. Blog này viết dài hơn video: hook, kịch bản, lộ
@@ -28,6 +29,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     </p>
     <p>
       <strong>Quân Kiu Daily</strong> — góc kể thật việc làm TikTok kiếm tiền + gear đáng tiền.
+    </p>
+    <p style="margin-top: 1.5rem;">
+      <a class="btn btn--primary" href="/blog/lam-tiktok-affiliate-tu-0">Bắt đầu từ bài pillar</a>
     </p>
   </article>
 </BaseLayout>

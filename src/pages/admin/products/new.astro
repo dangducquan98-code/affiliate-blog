@@ -1,7 +1,7 @@
 ---
 export const prerender = false;
 
-import BaseLayout from '../../../layouts/BaseLayout.astro';
+import AdminLayout from '../../../layouts/AdminLayout.astro';
 import { requireAdmin } from '../../../lib/admin-auth';
 
 if (!requireAdmin(Astro.cookies)) {
@@ -9,19 +9,17 @@ if (!requireAdmin(Astro.cookies)) {
 }
 ---
 
-<BaseLayout
+<AdminLayout
   title="Thêm sản phẩm"
   description="Tạo sản phẩm catalog"
   canonicalPath="/admin/products/new"
-  hideChrome={true}
+  activeNav="products"
 >
-  <section class="admin-shell">
-    <div class="admin-bar">
-      <h1 style="margin: 0;">Thêm sản phẩm</h1>
-      <a class="btn btn--ghost" href="/admin/products">← Danh sách</a>
-    </div>
-    <p id="error" class="admin-error" hidden></p>
-    <form id="product-form" class="admin-form">
+  <div slot="actions">
+    <a class="btn btn--ghost" href="/admin/products">← Danh sách</a>
+  </div>
+  <p id="error" class="admin-error" hidden></p>
+  <form id="product-form" class="admin-form">
       <label>
         Tên *
         <input name="name" required placeholder="Mic Boya BY-M1" />
@@ -51,8 +49,7 @@ if (!requireAdmin(Astro.cookies)) {
         <a class="btn btn--ghost" href="/admin/products">← Quay lại</a>
       </div>
     </form>
-  </section>
-</BaseLayout>
+</AdminLayout>
 
 <script>
   import { showToast, setLoading } from '../../../scripts/admin-shared';

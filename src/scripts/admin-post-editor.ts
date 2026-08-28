@@ -92,6 +92,22 @@ export function initPostEditor(opts: EditorOptions): void {
     previewEl.innerHTML = marked.parse(contentEl.value || '', { async: false }) as string;
   }
 
+  function updatePublishGuard() {
+    const banner = document.getElementById('publish-guard');
+    if (!banner) return;
+    const missing = [...selected]
+      .map((slug) => catalog.find((p) => p.slug === slug))
+      .filter((p) => p && !p.has_affiliate);
+    if (missing.length === 0) {
+      banner.hidden = true;
+      banner.innerHTML = '';
+      return;
+    }
+    banner.hidden = false;
+    const names = missing.map((p) => p!.name).join(', ');
+    banner.innerHTML = `<strong>Không thể xuất bản</strong> Sản phẩm chưa dán link affiliate: ${escapeHtml(names)}. Vào <a href="/admin/products">Sản phẩm</a> để dán URL trước.`;
+  }
+
   function renderCatalog() {
     if (!productsEl) return;
     const q = (productSearch?.value || '').trim().toLowerCase();
@@ -136,8 +152,10 @@ export function initPostEditor(opts: EditorOptions): void {
         if (!slug) return;
         if (input.checked) selected.add(slug);
         else selected.delete(slug);
+        updatePublishGuard();
       });
     });
+    updatePublishGuard();
   }
 
   function readProducts(): { slug: string }[] {
@@ -401,6 +419,7 @@ export function initPostEditor(opts: EditorOptions): void {
     if (cat) cat.value = 'khac';
     renderCatalog();
     showToast(`Đã thêm “${p.name}” và gắn vào bài.`);
+    updatePublishGuard();
   });
 
   // Init
@@ -413,6 +432,7 @@ export function initPostEditor(opts: EditorOptions): void {
     if (publishBtn) publishBtn.hidden = !!opts.initialPublished;
   }
   renderCatalog();
+  updatePublishGuard();
   updateWordCount();
   setView(window.matchMedia('(min-width: 900px)').matches ? 'split' : 'edit');
 }

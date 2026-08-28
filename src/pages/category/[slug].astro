@@ -2,6 +2,8 @@
 export const prerender = false;
 
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import PageHero from '../../components/PageHero.astro';
 import PostCard from '../../components/PostCard.astro';
 import { getCategoryBySlug } from '../../lib/categories';
 import { listPublishedPostsByCategory } from '../../lib/posts';
@@ -26,10 +28,12 @@ const { posts, configured, error } = category
       canonicalPath={`/category/${slug}`}
     >
       <section class="container">
-        <h1>Không tìm thấy chủ đề</h1>
-        <p class="fallback-notice">Không có chủ đề này. Xem danh sách chủ đề bên dưới.</p>
-        <p>
-          <a href="/categories">← Tất cả chủ đề</a>
+        <div class="empty-state">
+          <p class="empty-state__title">Không tìm thấy chủ đề</p>
+          <p>Không có chủ đề này trên blog.</p>
+        </div>
+        <p style="margin-top: 1rem;">
+          <a class="btn btn--ghost" href="/categories">← Tất cả chủ đề</a>
         </p>
       </section>
     </BaseLayout>
@@ -40,25 +44,27 @@ const { posts, configured, error } = category
       canonicalPath={`/category/${category.slug}`}
     >
       <section class="container">
-        <p style="margin: 0 0 0.5rem;">
-          <a href="/categories" style="color: var(--ink-muted); text-decoration: none;">
-            ← Chủ đề
-          </a>
-        </p>
-        <h1>{category.label}</h1>
-        <p style="color: var(--ink-muted); max-width: 36rem;">{category.description}</p>
+        <Breadcrumb
+          items={[
+            { label: 'Trang chủ', href: '/' },
+            { label: 'Chủ đề', href: '/categories' },
+            { label: category.label },
+          ]}
+        />
+        <PageHero title={category.label} lead={category.description} />
         {error ? (
-          <p class="fallback-notice" style="margin-top: 1.5rem;">
-            {error}
-          </p>
+          <p class="fallback-notice">{error}</p>
         ) : posts.length === 0 ? (
-          <p class="fallback-notice" style="margin-top: 1.5rem;">
-            {configured
-              ? 'Chưa có bài trong chủ đề này.'
-              : 'Supabase chưa cấu hình — danh sách bài sẽ xuất hiện sau khi điền env.'}
-          </p>
+          <div class="empty-state">
+            <p class="empty-state__title">Chưa có bài trong chủ đề này</p>
+            <p>
+              {configured
+                ? 'Quay lại sau hoặc chọn chủ đề khác.'
+                : 'Supabase chưa cấu hình — danh sách bài sẽ xuất hiện sau khi điền env.'}
+            </p>
+          </div>
         ) : (
-          <ul class="post-list" style="margin-top: 1.5rem;">
+          <ul class="post-list">
             {posts.map((post) => (
               <PostCard
                 href={`/blog/${post.slug}`}

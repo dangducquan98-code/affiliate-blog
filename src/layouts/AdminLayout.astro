@@ -1,0 +1,115 @@
+---
+import BaseLayout from './BaseLayout.astro';
+
+export type AdminNav = 'dashboard' | 'posts' | 'products';
+
+interface Props {
+  title: string;
+  description?: string;
+  canonicalPath: string;
+  activeNav?: AdminNav;
+  wide?: boolean;
+}
+
+const {
+  title,
+  description = 'Quản trị Quân Kiu Daily',
+  canonicalPath,
+  activeNav,
+  wide = false,
+} = Astro.props;
+
+function navClass(key: AdminNav): string {
+  return activeNav === key ? 'admin-nav__link is-active' : 'admin-nav__link';
+}
+---
+
+<BaseLayout title={title} description={description} canonicalPath={canonicalPath} hideChrome={true}>
+  <div class="admin-app">
+    <a class="skip-link" href="#admin-main">Bỏ qua đến nội dung admin</a>
+    <div class="admin-sidebar-backdrop" id="admin-sidebar-backdrop" hidden></div>
+    <aside class="admin-sidebar" aria-label="Điều hướng admin">
+      <a class="admin-sidebar__brand" href="/admin">
+        Quân Kiu <span>Admin</span>
+      </a>
+      <nav class="admin-nav" id="admin-sidebar-nav">
+        <a class={navClass('dashboard')} href="/admin">Bảng điều khiển</a>
+        <a class={navClass('posts')} href="/admin#posts">Bài viết</a>
+        <a class={navClass('products')} href="/admin/products">Sản phẩm</a>
+      </nav>
+      <div class="admin-sidebar__footer">
+        <a class="admin-nav__link admin-nav__link--muted" href="/" target="_blank" rel="noreferrer">
+          Xem site →
+        </a>
+        <form method="POST" action="/api/admin/logout">
+          <button class="admin-nav__link admin-nav__link--button" type="submit">Đăng xuất</button>
+        </form>
+      </div>
+    </aside>
+
+    <div class="admin-main" id="admin-main">
+      <div class="admin-mobile-bar">
+        <button
+          class="admin-menu-toggle"
+          type="button"
+          id="admin-menu-toggle"
+          aria-expanded="false"
+          aria-controls="admin-sidebar-nav"
+        >
+          Menu
+        </button>
+        <span class="admin-mobile-bar__title">{title}</span>
+      </div>
+      <header class="admin-page-head">
+        <div class="admin-page-head__text">
+          <h1 class="admin-page-head__title">
+            <slot name="title">{title}</slot>
+          </h1>
+          {
+            Astro.slots.has('lead') && (
+              <div class="admin-page-head__lead">
+                <slot name="lead" />
+              </div>
+            )
+          }
+        </div>
+        {
+          Astro.slots.has('actions') && (
+            <div class="admin-page-head__actions">
+              <slot name="actions" />
+            </div>
+          )
+        }
+      </header>
+
+      <div class:list={['admin-content', wide && 'admin-content--wide']}>
+        <slot />
+      </div>
+    </div>
+  </div>
+  <div id="admin-toast-host" class="admin-toast-host" aria-live="polite"></div>
+</BaseLayout>
+
+<script>
+  const sidebar = document.querySelector('.admin-sidebar');
+  const backdrop = document.getElementById('admin-sidebar-backdrop');
+  const toggle = document.getElementById('admin-menu-toggle');
+
+  function setSidebarOpen(open: boolean) {
+    sidebar?.classList.toggle('admin-sidebar--open', open);
+    toggle?.setAttribute('aria-expanded', open ? 'true' : 'false');
+    document.body.classList.toggle('admin-menu-open', open);
+    if (backdrop) backdrop.hidden = !open;
+  }
+
+  toggle?.addEventListener('click', () => {
+    const open = !sidebar?.classList.contains('admin-sidebar--open');
+    setSidebarOpen(open);
+  });
+
+  backdrop?.addEventListener('click', () => setSidebarOpen(false));
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') setSidebarOpen(false);
+  });
+</script>

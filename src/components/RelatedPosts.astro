@@ -13,10 +13,10 @@ const { posts } = Astro.props;
     <section class="related-posts" aria-label="Đọc tiếp">
       <h2>Đọc tiếp</h2>
       <p class="related-posts__lead">Bài gần chủ đề này — chọn tiếp nếu bạn còn muốn đọc.</p>
-      <ul class="related-posts__list">
+      <ul class="related-posts__list card-grid">
         {posts.map((p) => (
           <li>
-            <a href={`/blog/${p.slug}`}>
+            <a class="related-posts__card" href={`/blog/${p.slug}`}>
               <strong>{p.title}</strong>
               <span>{p.description}</span>
             </a>

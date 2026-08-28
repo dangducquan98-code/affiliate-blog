@@ -1,7 +1,7 @@
 ---
 export const prerender = false;
 
-import BaseLayout from '../../../layouts/BaseLayout.astro';
+import AdminLayout from '../../../layouts/AdminLayout.astro';
 import { requireAdmin } from '../../../lib/admin-auth';
 import { getProductByIdAdmin } from '../../../lib/products';
 
@@ -17,93 +17,94 @@ if (!product && !error && !tableMissing) {
 }
 ---
 
-<BaseLayout
+<AdminLayout
   title={product ? `Sửa: ${product.name}` : 'Không tìm thấy sản phẩm'}
   description="Sửa sản phẩm catalog"
   canonicalPath={`/admin/products/${id}`}
-  hideChrome={true}
+  activeNav="products"
 >
-  <section class="admin-shell">
-    {
-      !product ? (
-        <div>
-          <h1>Không tải được sản phẩm</h1>
+  {
+    product && (
+      <div slot="actions">
+        <a class="btn btn--ghost" href={`/go/${product.slug}`} target="_blank" rel="noreferrer">
+          Test /go
+        </a>
+        <a class="btn btn--ghost" href="/admin/products">← Danh sách</a>
+      </div>
+    )
+  }
+  {
+    product && (
+      <p slot="lead">
+        /go/<code>{product.slug}</code>
+        {' · '}
+        <span
+          class={`admin-badge ${product.affiliate_url ? 'admin-badge--ok' : 'admin-badge--warn'}`}
+        >
+          {product.affiliate_url ? 'Đã dán affiliate' : '⚠ Chưa dán link'}
+        </span>
+      </p>
+    )
+  }
+  {
+    !product ? (
+      <div>
+        <p class="fallback-notice">
+          {error || (tableMissing ? 'Bảng products chưa tồn tại.' : 'Sản phẩm không tồn tại.')}
+        </p>
+        <a class="btn btn--ghost" href="/admin/products">← Quay lại</a>
+      </div>
+    ) : (
+      <>
+        <p id="error" class="admin-error" hidden></p>
+        {!product.affiliate_url && (
           <p class="fallback-notice">
-            {error || (tableMissing ? 'Bảng products chưa tồn tại.' : 'Sản phẩm không tồn tại.')}
+            Chưa dán link affiliate. Điền URL Shopee bên dưới trước khi gắn sản phẩm vào bài và publish.
           </p>
-          <a class="btn btn--ghost" href="/admin/products">
-            ← Quay lại
-          </a>
-        </div>
-      ) : (
-        <>
-          <div class="admin-bar">
-            <div>
-              <h1 style="margin: 0;">Sửa sản phẩm</h1>
-              <p style="margin: 0.35rem 0 0; color: var(--ink-muted);">
-                /go/<code>{product.slug}</code>
-                {' · '}
-                <span
-                  class={`admin-badge ${product.affiliate_url ? 'admin-badge--ok' : 'admin-badge--warn'}`}
-                >
-                  {product.affiliate_url ? 'Đã dán affiliate' : '⚠ Chưa dán link — publish bài gắn SP sẽ bị chặn'}
-                </span>
-              </p>
-            </div>
-            <a class="btn btn--ghost" href="/admin/products">
-              ← Quay lại
-            </a>
+        )}
+        <form id="product-form" class="admin-form" data-id={product.id}>
+          <label>
+            Tên *
+            <input name="name" required value={product.name} />
+          </label>
+          <label>
+            Slug (khớp /go) *
+            <input name="slug" required value={product.slug} />
+          </label>
+          <label>
+            Category *
+            <input name="category" required value={product.category} />
+          </label>
+          <label>
+            Giá gợi ý
+            <input name="price_hint" value={product.price_hint} />
+          </label>
+          <label>
+            Affiliate URL (Shopee) — bắt buộc trước khi publish bài gắn SP
+            <input
+              name="affiliate_url"
+              type="url"
+              value={product.affiliate_url ?? ''}
+              placeholder="https://s.shopee.vn/..."
+            />
+          </label>
+          <label>
+            Image path/URL (optional)
+            <input name="image" value={product.image ?? ''} />
+          </label>
+          <div class="admin-form__actions">
+            <button class="btn btn--primary" type="submit" id="save-btn">
+              Lưu thay đổi
+            </button>
+            <button class="btn btn--danger" type="button" id="delete-product">
+              Xoá
+            </button>
           </div>
-          <p id="error" class="admin-error" hidden></p>
-          {!product.affiliate_url && (
-            <p class="fallback-notice">
-              Chưa dán link affiliate. Điền URL Shopee bên dưới trước khi gắn sản phẩm vào bài và publish.
-            </p>
-          )}
-          <form id="product-form" class="admin-form" data-id={product.id}>
-            <label>
-              Tên *
-              <input name="name" required value={product.name} />
-            </label>
-            <label>
-              Slug (khớp /go) *
-              <input name="slug" required value={product.slug} />
-            </label>
-            <label>
-              Category *
-              <input name="category" required value={product.category} />
-            </label>
-            <label>
-              Giá gợi ý
-              <input name="price_hint" value={product.price_hint} />
-            </label>
-            <label>
-              Affiliate URL (Shopee) — bắt buộc trước khi publish bài gắn SP
-              <input
-                name="affiliate_url"
-                type="url"
-                value={product.affiliate_url ?? ''}
-                placeholder="https://s.shopee.vn/..."
-              />
-            </label>
-            <label>
-              Image path/URL (optional)
-              <input name="image" value={product.image ?? ''} />
-            </label>
-            <div class="admin-form__actions">
-              <button class="btn btn--primary" type="submit" id="save-btn">
-                Lưu thay đổi
-              </button>
-              <button class="btn btn--danger" type="button" id="delete-product">
-                Xoá
-              </button>
-            </div>
-          </form>
-        </>
-      )
-    }
-  </section>
-</BaseLayout>
+        </form>
+      </>
+    )
+  }
+</AdminLayout>
 
 {
   product && (
@@ -150,6 +151,7 @@ if (!product && !error && !tableMissing) {
           return;
         }
         showToast('Đã lưu sản phẩm.');
+        window.location.reload();
       });
 
       deleteBtn?.addEventListener('click', async () => {

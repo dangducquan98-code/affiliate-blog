@@ -2,6 +2,7 @@
 import Analytics from '@vercel/analytics/astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import SkipLink from '../components/SkipLink.astro';
 import { BRAND_NAME, getSiteUrl } from '../lib/site';
 import '../styles/global.css';
 
@@ -12,15 +13,17 @@ interface Props {
   ogImage?: string;
   ogType?: string;
   hideChrome?: boolean;
+  bareMain?: boolean;
 }
 
 const {
   title,
-  description = 'Review gadget Shopee thật tay — nói rõ đáng mua hay không, kèm deal đang chạy.',
+  description = 'Làm TikTok affiliate + review gear quay đáng tiền — Quân Kiu kể thật, đọc trước mua sau.',
   canonicalPath = Astro.url.pathname,
   ogImage = '/og-default.svg',
   ogType = 'website',
   hideChrome = false,
+  bareMain = hideChrome,
 } = Astro.props;
 
 const siteUrl = getSiteUrl().replace(/\/$/, '');
@@ -56,10 +59,11 @@ const fullTitle = title.includes(BRAND_NAME) ? title : `${title} · ${BRAND_NAME
       rel="stylesheet"
     />
   </head>
-  <body>
+  <body class:list={[bareMain && 'body--bare']}>
+    <SkipLink />
     <div class="site-wrap">
       {!hideChrome && <Header />}
-      <main class="site-main">
+      <main class:list={['site-main', bareMain && 'site-main--bare']} id="main-content">
         <slot />
       </main>
       {!hideChrome && <Footer />}

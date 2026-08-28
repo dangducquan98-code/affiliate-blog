@@ -2,10 +2,13 @@
 export const prerender = false;
 
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
 import BlogImage from '../../components/BlogImage.astro';
 import RelatedPosts from '../../components/RelatedPosts.astro';
+import { getCategoryLabel } from '../../lib/categories';
 import { getPublishedPostBySlug, hydratePostProducts, listRelatedPosts } from '../../lib/posts';
 import { renderMarkdown } from '../../lib/markdown';
+import { estimateReadingMinutes, formatReadingTime } from '../../lib/reading-time';
 import { getPublicStorageUrl } from '../../lib/supabase';
 import { BRAND_NAME, getSiteUrl } from '../../lib/site';
 
@@ -26,6 +29,8 @@ const dateLabel = post
       day: 'numeric',
     })
   : '';
+const readingLabel = post ? formatReadingTime(estimateReadingMinutes(post.content)) : '';
+const categoryLabel = post ? getCategoryLabel(post.category) : '';
 
 const siteUrl = getSiteUrl().replace(/\/$/, '');
 const coverPublic = post?.cover_image ? getPublicStorageUrl(post.cover_image) : null;
@@ -57,15 +62,22 @@ const jsonLd = post
       canonicalPath={`/blog/${slug}`}
     >
       <section class="container-narrow">
-        <h1>{configured && !error ? 'Không tìm thấy bài' : 'Chưa xem được bài này'}</h1>
-        <p class="fallback-notice">
-          {configured && !error
-            ? 'Bài không tồn tại hoặc chưa được publish.'
-            : error ||
-              'Supabase chưa cấu hình. Điền env thật, chạy SQL migration và import bài viết.'}
-        </p>
-        <p>
-          <a href="/blog">← Về danh sách blog</a>
+        <div class="empty-state">
+          <p class="empty-state__title">
+            {configured && !error ? 'Không tìm thấy bài' : 'Chưa xem được bài này'}
+          </p>
+          <p>
+            {configured && !error
+              ? 'Bài không tồn tại hoặc chưa được publish.'
+              : error ||
+                'Supabase chưa cấu hình. Điền env thật, chạy SQL migration và import bài viết.'}
+          </p>
+        </div>
+        <p style="margin-top: 1rem;">
+          <a class="btn btn--ghost" href="/blog">← Về danh sách blog</a>
+          <a class="btn btn--primary" href="/blog/lam-tiktok-affiliate-tu-0" style="margin-left: 0.5rem;">
+            Đọc bài pillar
+          </a>
         </p>
       </section>
     </BaseLayout>
@@ -78,6 +90,14 @@ const jsonLd = post
       ogType="article"
     >
       <article class="container-narrow">
+        <Breadcrumb
+          items={[
+            { label: 'Trang chủ', href: '/' },
+            { label: 'Chủ đề', href: '/categories' },
+            { label: categoryLabel, href: `/category/${post.category}` },
+            { label: post.title },
+          ]}
+        />
         <header class="post-hero">
           {post.cover_image && (
             <div class="post-hero__cover">
@@ -91,7 +111,8 @@ const jsonLd = post
             </div>
           )}
           <p class="post-hero__meta">
-            {dateLabel} · {post.category}
+            {dateLabel}
+            <span class="post-hero__reading">· {readingLabel}</span>
           </p>
           <h1>{post.title}</h1>
           <p style="color: var(--ink-muted);">{post.description}</p>
@@ -107,6 +128,9 @@ const jsonLd = post
         {displayProducts.length > 0 && (
           <section class="product-block" aria-label="Sản phẩm trong bài">
             <h2>Sản phẩm đề xuất</h2>
+            <p style="color: var(--ink-muted); font-size: 0.95rem;">
+              Mình gắn khi đúng nỗi đau trong bài — đọc xong phần trên rồi hãy xem.
+            </p>
             <ul class="product-block__list">
               {displayProducts.map((product) => (
                 <li class="product-block__item">
@@ -120,7 +144,7 @@ const jsonLd = post
                   </div>
                   {product.hasLink && (
                     <a class="btn btn--primary" href={`/go/${product.slug}`}>
-                      Xem deal
+                      Xem trên Shopee
                     </a>
                   )}
                 </li>

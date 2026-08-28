@@ -8,17 +8,78 @@ function isCurrent(href: string): boolean {
   }
   return pathname === href || pathname.startsWith(`${href}/`);
 }
+
+const links = [
+  { href: '/', label: 'Trang chủ' },
+  { href: '/blog', label: 'Blog' },
+  { href: '/categories', label: 'Chủ đề' },
+  { href: '/deals', label: 'Deals' },
+  { href: '/about', label: 'Về Kiu' },
+];
 ---
 
 <header class="site-header">
   <div class="container site-header__inner">
     <a class="brand" href="/">Quân Kiu <span>Daily</span></a>
-    <nav class="nav" aria-label="Điều hướng chính">
-      <a href="/" aria-current={isCurrent('/') ? 'page' : undefined}>Trang chủ</a>
-      <a href="/blog" aria-current={isCurrent('/blog') ? 'page' : undefined}>Blog</a>
-      <a href="/categories" aria-current={isCurrent('/categories') ? 'page' : undefined}>Chủ đề</a>
-      <a href="/deals" aria-current={isCurrent('/deals') ? 'page' : undefined}>Deals</a>
-      <a href="/about" aria-current={isCurrent('/about') ? 'page' : undefined}>Về Kiu</a>
+    <button
+      class="nav-toggle"
+      type="button"
+      id="nav-toggle"
+      aria-expanded="false"
+      aria-controls="mobile-nav"
+    >
+      Menu
+    </button>
+    <nav class="nav--desktop" aria-label="Điều hướng chính">
+      {
+        links.map((link) => (
+          <a href={link.href} aria-current={isCurrent(link.href) ? 'page' : undefined}>
+            {link.label}
+          </a>
+        ))
+      }
     </nav>
   </div>
 </header>
+<nav class="nav--mobile" id="mobile-nav" aria-label="Menu di động" hidden>
+  <div class="nav--mobile__panel" id="mobile-nav-panel">
+    {
+      links.map((link) => (
+        <a href={link.href} aria-current={isCurrent(link.href) ? 'page' : undefined}>
+          {link.label}
+        </a>
+      ))
+    }
+  </div>
+</nav>
+
+<script>
+  const toggle = document.getElementById('nav-toggle');
+  const mobileNav = document.getElementById('mobile-nav');
+  const panel = document.getElementById('mobile-nav-panel');
+
+  function setOpen(open: boolean) {
+    if (!toggle || !mobileNav) return;
+    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    mobileNav.hidden = !open;
+    mobileNav.classList.toggle('is-open', open);
+    document.body.classList.toggle('nav-open', open);
+  }
+
+  toggle?.addEventListener('click', () => {
+    const open = toggle.getAttribute('aria-expanded') !== 'true';
+    setOpen(open);
+  });
+
+  mobileNav?.addEventListener('click', (event) => {
+    if (event.target === mobileNav) setOpen(false);
+  });
+
+  panel?.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', () => setOpen(false));
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') setOpen(false);
+  });
+</script>

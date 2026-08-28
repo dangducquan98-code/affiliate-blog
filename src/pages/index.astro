@@ -3,6 +3,7 @@ export const prerender = false;
 
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PostCard from '../components/PostCard.astro';
+import DealItem from '../components/DealItem.astro';
 import { listPublishedPosts } from '../lib/posts';
 import { getFeaturedDeals } from '../lib/deals';
 import { BRAND_NAME } from '../lib/site';
@@ -28,6 +29,17 @@ const featuredDeals = getFeaturedDeals().slice(0, 3);
     </div>
   </section>
 
+  <section class="container">
+    <article class="pillar-card">
+      <p class="pillar-card__eyebrow">Bắt đầu từ đây</p>
+      <h2 class="pillar-card__title">Làm TikTok affiliate từ 0</h2>
+      <p class="pillar-card__desc">
+        Lộ trình 30 ngày thực tế: chọn niche, viết hook, quay video ngắn, gắn link đúng chỗ — không cần mua gear trước khi hiểu flow.
+      </p>
+      <a class="btn btn--primary" href="/blog/lam-tiktok-affiliate-tu-0">Đọc bài pillar →</a>
+    </article>
+  </section>
+
   <section class="container section">
     <div class="section__head">
       <h2>Bài mới</h2>
@@ -43,7 +55,7 @@ const featuredDeals = getFeaturedDeals().slice(0, 3);
             : 'Supabase chưa cấu hình — blog sẽ hiển thị bài sau khi điền env thật và migrate dữ liệu.'}
         </p>
       ) : (
-        <ul class="post-list">
+        <ul class="post-list post-list--3">
           {posts.map((post) => (
             <PostCard
               href={`/blog/${post.slug}`}
@@ -70,16 +82,12 @@ const featuredDeals = getFeaturedDeals().slice(0, 3);
     <ul class="deal-list">
       {
         featuredDeals.map((deal) => (
-          <li class="deal-item">
-            <div class="deal-item__top">
-              <h3 class="deal-item__name">{deal.name}</h3>
-              <span class="deal-item__price">{deal.priceHint}</span>
-            </div>
-            <p class="deal-item__blurb">{deal.blurb}</p>
-            <p>
-              <a href={`/go/${deal.goSlug}`}>Xem deal →</a>
-            </p>
-          </li>
+          <DealItem
+            name={deal.name}
+            blurb={deal.blurb}
+            priceHint={deal.priceHint}
+            goSlug={deal.goSlug}
+          />
         ))
       }
     </ul>
