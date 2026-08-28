@@ -64,7 +64,8 @@ function auditContent(body: string): Check[] {
 
   const sentences = body
     .replace(/\[([^\]]*)\]\([^)]*\)/g, '$1')
-    .split(/(?<=[.!?…])\s+|\n+/)
+    // Split on sentence ends, but not on an ellipsis (templates use "Đừng... nếu...")
+    .split(/(?<=[^.][.!?])\s+|\n+/)
     .map((s) => s.trim())
     .filter(Boolean);
   let runOfShort = 0;
