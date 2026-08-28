@@ -20,6 +20,16 @@ export const POST_CATEGORY_BY_SLUG: Readonly<Record<string, string>> = {
   '20-mon-do-lam-video-tiktok': 'cong-nghe',
   'text-to-speech-ai-thu-am': 'cong-nghe',
   'review-mic-boya-by-m1': 'cong-nghe',
+  'view-co-click-khong-7-cho-soi': 'mmo',
+  'cookie-shopee-affiliate-tiktok-4k': 'mmo',
+  'thang-dau-co-don-affiliate-so-that': 'mmo',
+  'comment-ghim-3-mau-khong-spam': 'mmo',
+  'funnel-tiktok-blog-caption': 'mmo',
+  'chuc-mung-neu-ban-khong-giau': 'tu-duy',
+  've-khac-ky-phan-1-tham-lam-mong-cau': 'tu-duy',
+  'tam-the-con-tot-hoi-khac': 'tu-duy',
+  'nga-tinh-tiep-sau-10-clip-flop': 'tu-duy',
+  'thoi-quen-sang-15-phut-truoc-khi-quay': 'tu-duy',
 };
 
 /** Pre-pillar / old category slugs → current pillar slugs. */
