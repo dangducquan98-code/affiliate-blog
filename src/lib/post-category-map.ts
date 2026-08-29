@@ -30,6 +30,23 @@ export const POST_CATEGORY_BY_SLUG: Readonly<Record<string, string>> = {
   'tam-the-con-tot-hoi-khac': 'tu-duy',
   'nga-tinh-tiep-sau-10-clip-flop': 'tu-duy',
   'thoi-quen-sang-15-phut-truoc-khi-quay': 'tu-duy',
+  'chi-phi-kenh-tiktok-mot-thang': 'tai-chinh',
+  'quy-khan-cap-khi-vua-co-con': 'tai-chinh',
+  'thu-nhap-phu-khi-nao-dang': 'tai-chinh',
+  'ngan-sach-3-tang-lam-them-online': 'tai-chinh',
+  'tra-gop-gear-creator-co-nen': 'tai-chinh',
+  'review-sach-7-ngay-affiliate': 'review-sach',
+  'review-sach-content-bac-ty': 'review-sach',
+  'review-sach-suy-tuong-stoic-nguoi-moi': 'review-sach',
+  'review-sach-tam-ly-hoc-ve-tien': 'review-sach',
+  'review-sach-khoi-nghiep-tinh-gon': 'review-sach',
+  'nhung-ngay-phai-chiu-dung': 'trai-nghiem',
+  'khong-thuong-tet-dong-cam': 'trai-nghiem',
+  'kiem-them-va-gia-dinh-lech-nhip': 'trai-nghiem',
+  'tuan-view-tut-lam-gi': 'trai-nghiem',
+  'lam-tiktok-mot-minh-11h-toi': 'trai-nghiem',
+  'den-ring-light-10-inch-2-thang': 'cong-nghe',
+  'tripod-linh-hoat-vs-ke-sach': 'cong-nghe',
 };
 
 /** Pre-pillar / old category slugs → current pillar slugs. */
