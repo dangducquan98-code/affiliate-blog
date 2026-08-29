@@ -104,6 +104,26 @@ Bài round 2 link về trụ cũ và link chéo trong round 2:
 - Trụ tư duy: `/blog/tam-the-con-tot-hoi-khac`, `/blog/chuc-mung-neu-ban-khong-giau`, `/blog/nga-tinh-tiep-sau-10-clip-flop`
 - Chéo round 2: TC-01 ↔ TC-04 ↔ TC-05, RS-01 ↔ `/blog/7-ngay-affiliate`, TN-04 ↔ `/blog/nga-tinh-tiep-sau-10-clip-flop`, CN-01 ↔ TN-05
 
+## Kết quả thực hiện (2026-08-29)
+
+Đã viết và upsert đủ **17/17 bài**, `published=true`, category đúng pillar.
+
+| Pillar | Trước | Sau |
+|--------|-------|-----|
+| `mmo` | 18 | 18 |
+| `tu-duy` | 6 | 6 |
+| `tai-chinh` | 0 | **5** |
+| `review-sach` | 0 | **5** |
+| `cong-nghe` | 3 | **5** |
+| `trai-nghiem` | 0 | **5** |
+| **Tổng published** | **27** | **44** |
+
+Đo trên 17 bài mới: 1071–1305 từ phần thân, **1** link `/go` mỗi bài, 2–4 link `/blog` mỗi bài, 17 câu kết khác nhau hoàn toàn.
+
+Verify đã chạy: `npm run build` PASS · `npm run test:unit` 27/27 PASS · 4 bài mới + 6 trang category trả 200 · `/go/{so-thu-chi-a5, sach-cha-giau-cha-ngheo, sach-khoi-nghiep-tinh-gon}` trả 302 · sitemap 55 URL · 0 internal link chết · scan 44 bài không có note nội bộ và không có disclosure.
+
+Commit: `content(round2-1)` plan + tai-chinh · `content(round2-2)` review-sach · `content(round2-3)` trai-nghiem + cong-nghe. Chưa push.
+
 ## Còn lại sau round 2 (vòng sau)
 
 - `cong-nghe`: CN-03 wind muff, CN-04 pin dự phòng review, CN-05 gimbal review (plan cũ) — chưa viết, không chặn mục tiêu ≥5.
