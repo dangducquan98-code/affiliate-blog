@@ -161,3 +161,20 @@ Rà toàn bộ 58 bài: blog cố tình **không** nêu tỷ lệ hoa hồng c�
 4. **Số liệu thuật toán TikTok** (completion rate 70%, cohort 200–500) — không có nguồn chính thức. Không dùng.
 5. **`diamondhook-bo-the`** — product slug treo, không có trong DB lẫn YAML. Không tự xoá tham chiếu.
 6. **CapCut đổi điều khoản 6/2025** — đúng và đáng viết, nhưng không phải tin mới. Để round sau.
+
+---
+
+## 6. Lỗi có sẵn phát hiện khi verify — cần chủ dự án xử lý
+
+### `/go/honeygain` đang trả 500 trên bài đã publish
+
+Bài `huong-dan-honeygain-treo-may` có link `[link đăng ký](/go/honeygain)`. Slug `honeygain` **có** metadata trong `src/data/affiliates.yaml` nhưng **không có** URL đích:
+
+- không có row `honeygain` với `affiliate_url` trong bảng `products`
+- không có biến `AFFILIATE_HONEYGAIN` trong `.env.local` (hiện chỉ có 5 biến: `AFFILIATE_CAP_SILICON_IPHONE`, `AFFILIATE_CU_SAC_20W`, `AFFILIATE_GAY_SELFIE_MINI`, `AFFILIATE_TAI_NGHE_BT_300K`, `AFFILIATE_UGREEN_HUB_UNO`)
+
+Theo `src/lib/go-resolve.ts`, trường hợp có metadata nhưng không có URL sẽ trả **500**, không phải 404. Đã verify bằng curl trên dev server: 19/20 slug `/go` trả 302, riêng `honeygain` trả 500.
+
+Đây là lỗi **có từ trước**, không phải do đợt cập nhật này. Agent **không tự sửa** vì link giới thiệu Honeygain là credential, không được bịa và không được commit.
+
+→ Chủ dự án cần thêm `AFFILIATE_HONEYGAIN=<link giới thiệu>` vào `.env.local` (và vào biến môi trường trên Vercel), hoặc gỡ link `/go/honeygain` khỏi bài nếu không còn dùng Honeygain.
