@@ -99,9 +99,25 @@ Sau round 3, cả 21 sản phẩm trong catalog đều đã xuất hiện ít nh
 - `trai-nghiem`: chưa mở rộng thêm, pillar đang đủ mốc.
 - `cong-nghe`: `den-led-panel`, `backdrop-green-portable`, `phone-clamp-cold-shoe` mới nhắc rải rác, chưa có bài review riêng.
 
-## Kết quả thực hiện
+## Kết quả thực hiện (2026-08-30)
 
-_(cập nhật sau khi viết xong)_
+Đã viết và upsert đủ **14/14 bài**, `published=true`, category đúng pillar.
+
+| Pillar | Trước | Sau |
+|--------|-------|-----|
+| `mmo` | 18 | **22** |
+| `tu-duy` | 6 | **9** |
+| `cong-nghe` | 5 | **9** |
+| `tai-chinh` | 5 | **8** |
+| `review-sach` | 5 | 5 |
+| `trai-nghiem` | 5 | 5 |
+| **Tổng published** | **44** | **58** |
+
+Đo trên 14 bài mới: 1132–1468 từ phần thân, **0–1** link `/go` mỗi bài, 3–4 link `/blog` mỗi bài, 14 câu kết khác nhau. Bốn bài trust/policy (MMO-06, MMO-08, MMO-09, TD-08) giữ 0 link như plan.
+
+Verify đã chạy: `npm run build` PASS · `npm run test:unit` 27/27 PASS · 5 bài phase 3 + 6 trang category trả 200 · `/go/{so-thu-chi-a5, sach-cha-giau-cha-ngheo, sach-tam-ly-hoc-ve-tien, mic-wireless-mini}` trả 302 · sitemap 69 URL · 0 internal link chết · scan 58 bài: 0 note nội bộ, 0 disclosure.
+
+Commit: `content(round3-1)` plan + 3 gear + Stoic 2–3 · `content(round3-2)` 4 bài MMO · `content(round3-3)` 3 tài chính + 1 tư duy + 1 công nghệ. Chưa push.
 
 ## Liên quan
 
